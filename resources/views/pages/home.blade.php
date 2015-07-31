@@ -62,31 +62,29 @@
 			  <table border="0" align="center" cellpadding="2" cellspacing="2">
 			    <tbody><tr>
 				    <td width="130"><span class="roundBox purple"><a href="/index.php/Public_BINSearch?searchtype=records"><img src="{{ asset('public/img/publicDataPortal_icon.png') }}"></a></span></td>
-				    <td width="400" valign="top" style=""><h3 style="font-size: 20px!important;">Public Data Portal:</h3>A data retrieval interface that allows for searching over 1.7M public records in BOLD using multiple search criteria including, but not limited to, geography, taxonomy, and depository.</td>
+				    <td width="400" valign="top" style="font-size: 15px!important;"><h3 style="font-size: 20px!important;">Cổng Thông Tin Dữ liệu:</h3>Một giao diện hiển thị dữ liệu trả về cho phép tìm kiếm trên 1.7M hồ sơ công bố trong hệ thống sử dụng nhiểu tiêu chí tìm kiếm bao gồm, nhưng không giới hạn, địa lý, phân loại, và lưu trữ.</td>
 				    <td width="20">&nbsp;</td>
 				    <td width="130"><span class="roundBox purple"><a href="/index.php/Public_BarcodeIndexNumber_Home"><img src="{{ asset('public/img/barcodeIndexNumbers_icon.png') }}" alt=""></a></span></td>
-				    <td width="400" valign="top" style="font-size: 15px!important;"><h3 style="font-size: 20px!important;">Barcode Index Numbers:</h3>
-			        A searchable database of Barcode Index Numbers (BINs), sequence clusters that closely approximate species. </td>
+				    <td width="400" valign="top" style="font-size: 15px!important;"><h3 style="font-size: 20px!important;">Cơ Sở Dữ Liệu của Cụm Mã Vạch:</h3>
+			        Một cơ sở dữ liệu cho phép tìm kiếm về chỉ số mã vạch (BINs), các nhóm trình tự có quan hệ gần về loài</td>
 			      </tr>
 				  <tr>
 				    <td><span class="roundBox purple"><a href="/edu"><img src="{{ asset('public/img/studentDataPortal_icon.png') }}" alt=""></a></span></td>
-				    <td valign="top" style="font-size: 15px!important;"><h3 style="font-size: 20px!important;">DNA Barcode Education Portal:</h3>
-				    A custom platform for educators and students to explore barcode data and contribute  novel barcodes to the BOLD database.</td>
+				    <td valign="top" style="font-size: 15px!important;"><h3 style="font-size: 20px!important;">Cổng Thông Tin Giáo Dục:</h3>
+				    Một nền tảng tùy chỉnh cho các nhà giáo dục và học sinh để khám phá dữ liệu mã vạch và đóng góp mã vạch mới vào cơ sở dữ liệu của hệ thống.</td>
 				    <td>&nbsp;</td>
 				    <td><span class="roundBox purple"><a href="/index.php/MAS_Management_UserConsole"><img src="{{ asset('public/img/workbench_icon.png') }}" alt=""></a></span></td>
-				    <td valign="top" style="font-size: 15px!important;"><h3 style="font-size: 20px!important;">Workbench:</h3>An integrated data collection and analysis environment that securely supports the assembly and validation of DNA barcodes and ancillary sequences.</td>
+				    <td valign="top" style="font-size: 15px!important;"><h3 style="font-size: 20px!important;">Bàn Làm Việc Thu Thập Dữ Liệu:</h3>Tích hợp dữ liệu và môi trường phân tích để hỗ trợ an toàn trong việc lắp ráp và xác nhận mã vạch DNA và các trình tự phụ thuộc.</td>
 			      </tr>
 			  </tbody></table>
 			  <hr style="border: none; height: 1px; color: #DDD; background: #DDD;"><br>
-              <h2 style="font-size: 15px!important;text-align:center">The Barcode of Life Data Systems  is designed to support the generation and application of DNA barcode data.  The platform consists of four main modules: a data portal, a database of barcode clusters, an educational portal, and a data collection workbench.</h2>
-              <br>
-              <br>
-			  <div id="stats" style="background:#333;color: #eee;padding: 40px;padding-top: 14px;border-radius: 10px;">
+              <h2 style="margin-top:0px;font-size: 15px!important;text-align:center">Các mã vạch của các hệ thống dữ liệu trong cuộc sống được thiết kế để hỗ trợ các thế hệ và ứng dụng các dữ liệu mã vạch DNA. Nền tảng này bao gồm bốn mô-đun chính: một cổng thông tin dữ liệu, cơ sở dữ liệu của cụm mã vạch, một cổng thông tin giáo dục, và một bàn làm việc thu thập dữ liệu.</h2>
+			  <!--<div id="stats" style="background:#333;color: #eee;padding: 40px;padding-top: 14px;border-radius: 10px;">
 				<table border="0" align="center" cellpadding="2" cellspacing="2">
 				<tbody><tr>
-				<td colspan="2"><h3>Sequence statistics</h3></td>
+				<td colspan="2"><h3>Thống kê chuỗi</h3></td>
 				<td width="50">&nbsp;</td>
-				<td colspan="2"><h3>Species coverage (formally described)</h3></td>
+				<td colspan="2"><h3>Bảo hiểm Loài (tên chính thức)</h3></td>
 				</tr>
 				<tr>
 				<td>&nbsp;</td>
@@ -117,11 +115,7 @@
 				<td><fungispeciesdataforlivestats>20,053<fungispeciesdataforlivestats></fungispeciesdataforlivestats></fungispeciesdataforlivestats></td>
 				</tr>
 				</tbody></table>
-			  </div>
-
-
-				<br><br><br>
-			 
+			  </div>-->
 
 			</div>
 @endsection

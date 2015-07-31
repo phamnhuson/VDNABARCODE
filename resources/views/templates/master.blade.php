@@ -53,61 +53,6 @@
 			<div class="box">
 			<table style="width: 800px;">
 				<tr>
-				<td valign="top" class="footerMenu">
-
-					<h4>Databases</h4>
-					<ul>
-					<li><a href="/index.php/Public_BINSearch?searchtype=records">Public Data Portal</a></li>
-					<li><a href="/index.php/TaxBrowser_Home">Taxonomy Browser</a></li>
-					<li><a href="/index.php/Public_Publication_PublicationSearch">Publications</a></li>
-					<li><a href="/index.php/Public_Primer_PrimerSearch">Primers</a></li>
-					</ul>
-
-				</td>
-				<td valign="top" class="footerMenu">
-
-					<h4>Resources</h4>
-					<ul>
-					<li><a href="/index.php/resources/handbook?chapter=1_gettingstarted.html">Documentation</a></li>
-					<li><a href="/libhtml/docs/bold.pdf">Citing BOLD</a></li>
-					<li><a href="/index.php/NewsFeed">News and Events</a></li>
-					<li><a href="/index.php/datarelease">Data Releases</a></li>
-					</ul>
-
-				</td>
-				<td valign="top" class="footerMenu">
-
-					<h4>Organization</h4>
-					<ul>
-					<li><a href="/index.php/Resources/whatIsBOLD">About Us</a></li>
-					<li><a href="/index.php/Resources/ContactUs">Contact Us</a></li>
-					</ul>
-
-				</td>
-				<td valign="top" class="footerMenu">
-
-					<h4>Community</h4>
-					<ul>
-					<li><a href="/index.php/NewsFeed">News &amp; Events</a></li>
-					<li><a href="http://connect.barcodeoflife.net/group/boldsystems">Connect</a></li>
-					</ul>
-
-				</td>
-				<td valign="top" class="footerMenu">
-
-					<h4>Partners</h4>
-					<ul>
-					<li><a href="http://www.ibol.org">iBOL</a></li>
-					<li><a href="http://barcodeoflife.org">CBOL</a></li>
-					<li><a href="http://ccdb.ca">CCDB</a></li>
-					<li><a href="http://www.ncbi.nlm.nih.gov">GenBank</a></li>
-					<li><a href="http://www.eol.org">EOL</a></li>
-					<li><a href="http://www.gbif.org">GBIF</a></li>
-					</ul>
-
-				</td>
-				</tr>
-				<tr>
 				<td colspan="5" id="copyright">
 					<!-- TODO: Magnoliatize this whole section, should the year be dynamic? yes I think so -->
 					Copyright © 2014 BOLD Systems. All rights reserved.&nbsp
