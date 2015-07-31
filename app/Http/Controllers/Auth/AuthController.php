@@ -84,7 +84,11 @@ class AuthController extends Controller
 			
 			return redirect()->intended('user');
 			
-        }
+        } else {
+		
+			return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Thông tin đăng nhập không chính xác'));
+			
+		}
 	}
 	
 	protected function logout()
