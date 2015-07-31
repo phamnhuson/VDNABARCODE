@@ -53,9 +53,9 @@
 			<div class="box">
 			<table style="width: 800px;">
 				<tr>
-				<td colspan="5" id="copyright">
+				<td colspan="5" id="copyright" style="text-align:center;">
 					<!-- TODO: Magnoliatize this whole section, should the year be dynamic? yes I think so -->
-					Copyright © 2014 BOLD Systems. All rights reserved.&nbsp
+					<span style="color:fff;">Copyright © 2015 VDNABARCODE. All rights reserved.&nbsp</span>
 				</td>
 				</tr>
 			</table>
