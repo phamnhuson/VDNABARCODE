@@ -143,6 +143,7 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+		Nathanmac\Utilities\Parser\ParserServiceProvider::class
 		
     ],
 
@@ -193,6 +194,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 		'Form'      => Collective\Html\FormFacade::class,
 		'View'      => Collective\Html\HtmlFacade::class,
+		'Parser' => Nathanmac\Utilities\Parser\Facades\Parser::class,
     ],
 	'fastq_qual_check_path'	=>	'/home/juhuvn/scripts/fastq_avg_qual.py',
 	'blast_tool_path'		=>	'blast+/bin/makeblastdb'

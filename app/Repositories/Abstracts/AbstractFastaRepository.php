@@ -3,7 +3,7 @@
 	namespace Repositories\Abstracts;
 	use Repositories\Constracts\InterfaceRepository;
 
-	abstract class AbstractEloquentRepository implements InterfaceRepository
+	abstract class AbstractFastaRepository implements InterfaceRepository
 	{
 	
 		protected $dataFileName;

@@ -52,7 +52,7 @@
 
 			</div>
 		</div>
-		<div class="container" style="width:100%;padding:0px;">
+		<div class="container" style="width:100%;padding:0px;padding-bottom: 86px;">
 			@yield('content')
 		</div>
 		<div id="footer">

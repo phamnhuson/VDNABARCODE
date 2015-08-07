@@ -17,10 +17,28 @@
 			@endif
 			
 			{!! Form::open(array('method'=>'POST', 'action'=>array('BlastController@blast'))) !!}
-				<div class="form-group">
-					<label class="control-label">Công cụ</label>
-					{!! Form::select('tool', array('blastn' => 'Blastn', 'tblastn' => 'tBlastn'), null, array('class' => 'form-control w-200')) !!}
-				</div>
+				<table width="100%" class="form-table">
+					<tr>
+						<td><label class="control-label">Công cụ</label></td>
+						<td>{!! Form::select('tool', array('blastn' => 'Blastn', 'tblastn' => 'tBlastn'), null, array('class' => 'form-control')) !!}</td>
+					</tr>
+					<tr>
+						<td><label class="control-label">Threadhold</label></td>
+						<td>{!! Form::text('threadshold', null, array('class' => 'form-control')) !!}</td>
+					</tr>
+					<tr>
+						<td><label class="control-label">Word size</label></td>
+						<td>{!! Form::select('wordsize', array('7' => '7', '11' => '11', '15' => '15'), null, array('class' => 'form-control')) !!}</td>
+					</tr>
+					<tr>
+						<td><label class="control-label">Max target sequences</label></td>
+						<td>{!! Form::select('targetseqs', array('20' => '20', '50' => '50', '200' => '200', '500' => '500', '1000' => '1000'), null, array('class' => 'form-control')) !!}</td>
+					</tr>
+					<tr>
+						<td><label class="control-label">Match/Mismatch scores</label></td>
+						<td>{!! Form::text('scores', null, array('class' => 'form-control')) !!}</td>
+					</tr>
+				</table>
 				
 				<div class="form-group">
 					<label class="control-label">Trình tự</label>
@@ -28,6 +46,7 @@
 				</div>
 				{!! Form::submit('Tìm kiếm', array('class' => 'btn btn-primary')) !!}
 			{!! Form::close() !!}
+			
 		</div>
 	</div>
 </div>	

@@ -19,6 +19,7 @@ body{
     margin:0;
     padding:0;
 	position: relative;
+	min-height:100%;
 }
 
 body.careers{
@@ -613,9 +614,9 @@ input{
     background:#036;/*repeat-x*/
     color:#2b5d88;
     margin:28px 0 -16px;
-    clear: both;
 	position:absolute;
 	bottom:0;
+	left:0;
 }
 
 #footer .box{
@@ -841,4 +842,8 @@ div.roundBox{
 }
 .w-200 {
 	width:200px!important;
+}
+.form-table td  {
+	font-size:14px!important;
+	padding-bottom: 15px;
 }
