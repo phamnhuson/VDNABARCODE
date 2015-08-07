@@ -20,6 +20,12 @@
 					<ul style='margin-top:10px;'>
 						@if (Auth::check() && Auth::user()->role==3)
 						<li class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hệ thống <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="/error">Lịch sử lỗi</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quản lý danh mục <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="/user">Tài khoản</a></li>

@@ -32,29 +32,30 @@
 <div id="search">
 	<div style="width:900px; margin:auto;margin-top: 5px;">
 
-		<form id="searchForm" name="searchForm" onsubmit="submitSearch()">
+		{!! Form::open(array('method'=>'POST', 'action'=>array('SearchController@search'))) !!}
 						<input type="hidden" name="taxon">
 						<table style="margin: auto;">
 							<tbody>
 								<tr>
 									<td>
-										<select name="searchMenu" id="searchMenu" class="selectMenu" style="vertical-align: middle;">
-											<option value="taxonomy" selected="">Taxonomy</option>
-											<option value="records">Public Data</option>
-											<option value="bins">BINs</option>
+										<select name="search_type" id="searchMenu" class="selectMenu" style="vertical-align: middle;">
+											<option value="keyword" selected="">Từ khóa</option>
+											<option value="sequence">Trình tự</option>
+											<option value="location">Địa phương</option>
+											<option value="time">Thời gian</option>
 										</select>
 									</td>
 									<td>
 										<div id="search-control-container">
-											<input type="text" style="width:620px;height: 30px;border: 0;font-size: 15px;padding-left: 10px;" />
-											<input type="submit" value="Tìm kiếm" style="  height: 30px;border: 0;float: right;background-color: F07C0B;color: #fff;font-size: 15px;" />
+											<input type="text" name="search_content" style="width:620px;height: 30px;border: 0;font-size: 15px;padding-left: 10px;" />
+											<input type="submit" name="search" value="Tìm kiếm" style="  height: 30px;border: 0;float: right;background-color: F07C0B;color: #fff;font-size: 15px;" />
 										</div>	
 									</td>
 								</tr>
 							</tbody>
 						</table>
 
-		  </form>
+		  {!! Form::close() !!}
 	  </div>
 </div>
 <div class="box">

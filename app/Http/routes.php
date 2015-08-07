@@ -20,15 +20,21 @@ Route::post('login', ['uses' => 'Auth\AuthController@authenticate', 'middleware'
 
 Route::get('logout', ['uses' => 'Auth\AuthController@logout', 'middleware' => ['auth']]);
 
-// Route::get('/admin', 'AdminController@index');
-
-// Route::post('/admin', 'AdminController@index');
+Route::post('/search', 'SearchController@search');
 
 Route::get('/home', 'HomeController@index');
 
 Route::resource('contact', 'ContactController');
 
+Route::get('blast', 'BlastController@index');
+
+Route::post('blast', 'BlastController@blast');
+
 Route::get('/report', 'ReportController@index');
+
+Route::get('/error', ['as' => 'error', 'uses' => 'ErrorController@index', 'middleware' => ['auth', 'role:3']]);
+
+Route::post('/error', ['as' => 'error', 'uses' => 'ErrorController@clear', 'middleware' => ['auth', 'role:3']]);
 
 Route::get('/user', ['as' => 'user', 'uses' => 'UserController@index', 'middleware' => ['auth', 'role:3']]);
 

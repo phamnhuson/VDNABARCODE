@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'http://dnabarcode.ibt.ac.vn',
+    'url' => 'http://localhost',
 
     /*
     |--------------------------------------------------------------------------
@@ -194,5 +194,6 @@ return [
 		'Form'      => Collective\Html\FormFacade::class,
 		'View'      => Collective\Html\HtmlFacade::class,
     ],
-
+	'fastq_qual_check_path'	=>	'/home/juhuvn/scripts/fastq_avg_qual.py',
+	'blast_tool_path'		=>	'blast+/bin/makeblastdb'
 ];

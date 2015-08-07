@@ -1,7 +1,7 @@
 @extends('templates.master')
 
 @section('content')
-<div class="container">
+<div class="box">
 	<div class="row">
 		<div class="col-md-6">
 			<h3>Liên hệ</h3>
