@@ -48,6 +48,47 @@
 			{!! Form::close() !!}
 			
 		</div>
+		<div class="col-md-7">
+		@if (isset($blastResult))
+			<h3>Kết quả Blast</h3>
+			<hr/>
+			@if (isset($blastResult['BlastOutput_iterations']) && count($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'][0]) > 0 )
+			<table class="table table-stripped table-bordered">
+				<tr>
+					<th>Gen</th>
+					<th>Điểm</th>
+					<th>Tương đồng (Query length)</th>
+					<th>Tỉ lệ %</th>
+					<th>E-value</th>
+				</tr>
+				@if (isset($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'][0]))
+					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
+						{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
+						<tr>
+							<td><a href="{{ url('barcode/'.substr($item['Hit_def'], 3)) }}">{{ $item['Hit_def'] }}</a></td>
+							<td>{{ $topHsp['Hsp_bit-score'] }}</td>
+							<td>{{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }}</td>
+							<td>{{ ($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100 }}%</td>
+							<td>{{ $topHsp['Hsp_evalue'] }}</td>
+						</tr>
+					@endforeach
+				@else
+					{{-- */ $item = $blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] /* --}}
+					{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
+					<tr>
+						<td><a href="{{ url('barcode/'.substr($item['Hit_def'], 3)) }}">{{ $item['Hit_def'] }}</a></td>
+						<td>{{ $topHsp['Hsp_bit-score'] }}</td>
+						<td>{{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }}</td>
+						<td>{{ ($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100 }}%</td>
+						<td>{{ $topHsp['Hsp_evalue'] }}</td>
+					</tr>
+				@endif
+			</table>
+			@else
+				Không có kết quả phù hợp
+			@endif
+		@endif	
+		</div>
 	</div>
 </div>	
 @endsection

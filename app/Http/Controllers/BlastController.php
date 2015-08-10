@@ -16,7 +16,7 @@
 		function blast(Request $request)
 		{
 			$validator = Validator::make($request->all(), [
-				'sequence'	=>	'in:A,T,G,C'
+				'sequence'	=>	'required|Regex:/^([ATGC\n]+)$/'
 			]);
 			
 			if ($validator->fails()) {
@@ -26,10 +26,11 @@
 						->withInput();
 						
 			} else {
+				$viewData = array();
 			
-				$blastResult = $this->blastProccess($request->all());
+				$viewData['blastResult'] = $this->blastProccess($request->all());
 				
-				return view('blast', $blastResult);
+				return view('blast', $viewData);
 				
 			}
 		}
@@ -37,19 +38,19 @@
 		function blastProccess($request)
 		{
 			
-			$blastTool = $request->input('tool');
-			$threadsHold = $request->input('threadshold');
-			$wordSize = $request->input('wordsize');
-			$targetSeqs = $request->input('targetseqs');
-			$scores	= $request->input('scores');
-			$sequence = $request->input('sequence');
+			$blastTool = storage_path()."/blast+/bin/".$request['tool'];
+			$threadsHold = $request['threadshold'];
+			$wordSize = $request['wordsize'];
+			$targetSeqs = $request['targetseqs'];
+			$scores	= $request['scores'];
+			$sequence = $request['sequence'];
 			
-			$inputFile = storage_path().'linux/blast.input';
+			$inputFile = storage_path().'/linux/blast.input';
 			file_put_contents($inputFile, $sequence);
 			
-			$command = storage_path()."blast+/bin/$blastTool -query ".storage_path()."linux/$inputFile -db ".storage_path()."linux/fasta/nucleotide_db -outfmt 5";
+			$command = "$blastTool -query $inputFile -db ".storage_path()."/linux/fasta/nucleotide_db -outfmt 5";
 			
-			if ($theadsHold) {
+			if ($threadsHold) {
 				$command .= " -num-threads $threadsHold";
 			}
 			
@@ -61,11 +62,13 @@
 				$command .= " -max_target_seqs $targetSeqs";
 			}
 			
+			ob_start();
 			system($command, $xml);
+			$xml = ob_get_clean();
 			
 			$result = Parser::xml($xml);
 			
-			print_r($result);
+			return $result;
 			
 		}
 	
