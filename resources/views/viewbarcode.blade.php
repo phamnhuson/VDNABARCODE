@@ -228,7 +228,7 @@
 				<h4>Species</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['species']; ?>
+				<?php echo $data['barcode'][0]['species_name']; ?>
 			</div>
 		</div>
 		<!--<hr/>

@@ -222,7 +222,6 @@
 									@endif
 									<a href="{{ url('barcode') }}" class="btn btn-warning">Xem danh sách</a>-->
 									<input type="hidden" name="barcode_id" value="{{ @$data['barcode'][0]['barcode_id'] }}" />
-									<a class="btn btn-primary" id="next2">Tiếp tục</a>
 								</div>
 							</div>
 						</div>
@@ -261,14 +260,6 @@
 						<?php } ?>
 					</div>
 					<?php } ?>
-					<hr/>
-					<div class="row">
-						<div class="col-lg-2">
-							<div class="form-group">							
-								<a class="btn btn-primary" id="next3">Tiếp tục</a>
-							</div>
-						</div>						
-					</div>
 				</div>
 				<div class="tab-pane" id="tab3">
 					<div class="row">
@@ -300,11 +291,6 @@
 								<?php } ?>
 								<?php } ?>
 							</table>
-						</div>
-					</div>
-					<div class="row">
-						<div class="form-group">							
-							<a class="btn btn-primary" id="next4">Tiếp tục</a>
 						</div>
 					</div>
 				</div>
@@ -360,15 +346,13 @@
 								<div class="form-group">
 									<button type="button" class="btn btn-success atd" id="atd_1" data_id="1"><span class="glyphicon glyphicon-plus"></span></button>
 								</div>
-							</div>
-							<div class="row">
-								<div class="form-group">
-									<input type="submit" name="submit" class="btn btn-primary" value="@if (isset($data['barcode'])) Cập nhật @else Thêm mới @endif" />
-								</div>
-							</div>
+							</div>							
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="form-group">
+				<input type="submit" name="submit" class="btn btn-primary" value="@if (isset($data['barcode'])) Cập nhật @else Thêm mới @endif" />
 			</div>
 		{!! Form::close() !!}
 	</div>
@@ -443,19 +427,7 @@ $(document).ready(function(){
 		$data_id = $(this).attr('data_id');
 		//$('#img_'+$data_id).attr('src','');
 		$('#cot_'+$data_id).remove();
-	})
-	
-	$(document).on('click','#next2',function(){
-		$('#page2').click();
-	})
-	
-	$(document).on('click','#next3',function(){
-		$('#page3').click();
-	})
-	
-	$(document).on('click','#next4',function(){
-		$('#page4').click();
-	})
+	})	
 	
 	var $lightbox = $('#lightbox');
     
