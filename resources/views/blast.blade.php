@@ -52,7 +52,7 @@
 		@if (isset($blastResult))
 			<h3>Kết quả Blast</h3>
 			<hr/>
-			@if (isset($blastResult['BlastOutput_iterations']) && count($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'][0]) > 0 )
+			@if (isset($blastResult['BlastOutput_iterations']))
 			<table class="table table-stripped table-bordered">
 				<tr>
 					<th>Gen</th>
