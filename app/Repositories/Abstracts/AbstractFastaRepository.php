@@ -1,6 +1,6 @@
 <?php
 	
-	namespace Repositories\Abstracts;
+	namespace App\Repositories\Abstracts;
 	use Repositories\Constracts\InterfaceRepository;
 
 	abstract class AbstractFastaRepository implements InterfaceRepository
@@ -9,11 +9,12 @@
 		protected $dataFileName;
 		protected $reader;
 		protected $tmpReader;
+		protected $dbFile;
 	
 		public function __construct()
 		{
-			$this->dbFile =  storage_path().'linux/fasta/'.$this->dataFileName;
-			$this->tmpReader = fopen(torage_path().'linux/fasta/tmp_db',"a");
+			$this->dbFile =  storage_path().'/linux/fasta/'.$this->dataFileName;
+			$this->tmpReader = fopen(storage_path().'/linux/fasta/tmp_db',"a");
 			fwrite($this->tmpReader,'');
 			$this->reader = fopen($this->dbFile, 'r');
 		}
@@ -38,12 +39,12 @@
 			return $this->fastaHandler($data, 'insert');
 		}
 		
-		public function update($data)
+		public function update($data, $id=null, $attributeId = 'id')
 		{
 			return $this->fastaHandler($data, 'update');
 		}
 		
-		public function delete($data)
+		public function delete($data, $attributeId = 'id')
 		{
 			return $this->fastaHandler($data, 'delete');
 		}
@@ -52,13 +53,17 @@
 		{
 			try {
 				$cursor = 0;
-				$newline = ">gi|".$data['id']."\n".$data['sequence'];
+				
+				if (isset($data['sequence'])) {
+					$newline = ">gi|".$data['id']."\n".$data['sequence'];
+				}
+				
 			
 				if ($action=='insert') {
 				
-					fputs($this->tmpReader, "\n".$newline);
+					fputs($this->tmpReader, file_get_contents($this->dbFile).$newline."\n\n");
 					
-				} elseif (filesize($this->reader)) {
+				} elseif (filesize($this->dbFile)) {
 				
 					while(!feof($this->reader))
 					{
@@ -91,10 +96,10 @@
 				fclose($this->reader);
 				
 				unlink($this->dbFile);
-				rename(torage_path().'linux/fasta/tmp_db', $this->dbFile);
+				rename(storage_path().'/linux/fasta/tmp_db', $this->dbFile);
 				
 				// Call make database function
-				chdir(storage_path().'linux/fasta/');
+				chdir(storage_path().'/linux/fasta/');
 				system(config('app.blast_tool_path')." -in ".$this->dataFileName." -input_type fasta -dbtype nucl -out ".$this->dataFileName, $retVal);
 				
 				return true;

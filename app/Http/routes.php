@@ -98,7 +98,7 @@ Route::put('/ibarcode', ['uses' => 'IbarcodeController@update', 'middleware' => 
 
 Route::get('/barcode', ['uses' => 'BarcodeController@index', 'middleware' => ['auth', 'role:3']]);
 
-Route::get('/viewbarcode', ['uses' => 'ViewbarcodeController@index', 'middleware' => ['auth', 'role:3']]);
+Route::get('/viewbarcode', 'ViewbarcodeController@index');
 
 /*Route::controller([
 	'city'	=> 'System\CityController',

@@ -6,6 +6,7 @@ use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use App\Repositories\Fastas\NucleotideRepository;
 
 class BarcodeController extends Controller {
 	
@@ -38,6 +39,9 @@ class BarcodeController extends Controller {
 			DB::table('file_img')->where('barcode_id', $barcodeId)->delete();
 			
 			DB::table('file_trace')->where('barcode_id', $barcodeId)->delete();
+			
+			$nuRepo = new NucleotideRepository;
+			$nuRepo->delete(array('id' => $barcodeId));
 			
 			return \Redirect('barcode')->with('responseData', array('statusCode' => 1, 'message' => 'Đã xóa thành công'));		
 						

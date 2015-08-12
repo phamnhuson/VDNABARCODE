@@ -1,9 +1,9 @@
 <?php
-	namespace Repositories\Fastas;
+	namespace App\Repositories\Fastas;
 	
-	use Repositories\Abstracts\AbstractFastaRepository.php;
+	use App\Repositories\Abstracts\AbstractFastaRepository;
 	
 	class NucleotideRepository extends AbstractFastaRepository
 	{
-		protected dataFileName = 'nucleotide_db';
+		protected $dataFileName = 'nucleotide_db';
 	}
