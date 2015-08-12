@@ -197,5 +197,5 @@ return [
 		'Parser' => Nathanmac\Utilities\Parser\Facades\Parser::class,
     ],
 	'fastq_qual_check_path'	=>	'/home/juhuvn/scripts/fastq_avg_qual.py',
-	'blast_tool_path'		=>	'blast+/bin/makeblastdb'
+	'blast_tool_path'		=>	'/blast+/bin/makeblastdb'
 ];

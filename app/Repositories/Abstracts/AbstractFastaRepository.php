@@ -100,7 +100,7 @@
 				
 				// Call make database function
 				chdir(storage_path().'/linux/fasta/');
-				system(config('app.blast_tool_path')." -in ".$this->dataFileName." -input_type fasta -dbtype nucl -out ".$this->dataFileName, $retVal);
+				system(storage_path().config('app.blast_tool_path')." -in ".$this->dataFileName." -input_type fasta -dbtype nucl -out ".$this->dataFileName, $retVal);
 				
 				return true;
 				
