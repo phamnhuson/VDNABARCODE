@@ -112,7 +112,7 @@ h1{
     margin-bottom:21px !important;
     font-weight:300 !important;
 }
-h2{
+/*h2{
     color:#036 !important;
     font-family:"adelle",Helvetica,Arial,Verdana,sans-serif !important;
     font-size:154% !important;
@@ -121,12 +121,12 @@ h2{
     margin-bottom:15px !important;
 }
 h3{
-    color: #7ca60a !important;
+    color: #7ca60a;
     font-family:"adelle",Helvetica,Arial,Verdana,sans-serif !important; 
-    font-size:130% !important;
-    font-weight:300 !important;
-    line-height:20px !important;
-    margin-bottom:15px !important;
+    font-size:130%;
+    font-weight:300;
+    line-height:20px;
+    margin-bottom:15px;
 }
 h4{
     color: #000 !important;
@@ -148,7 +148,7 @@ h2 em{
     font-weight:300 !important;
     font-style:normal !important;
 }
-
+*/
 /*table*/
 
 th {

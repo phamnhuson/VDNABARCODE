@@ -29,9 +29,11 @@
 		
 		z-index:1032;
 	}
+	
 }
 </style>
-<script src="{{ asset('public/js/google_map.js') }}"></script>
+<!--<script src="{{ asset('public/js/google_map.js') }}"></script>-->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <div id="subheader" style='height:49px;'>
 	<div class="box">
 		<table width="100%" cellspacing="0" cellpadding="0">
@@ -308,6 +310,10 @@
 				</div>
 				<div class="tab-pane" id="tab4">
 					<div class="row">
+						<div id="map" style="width: 100%; height: 700px;"></div>
+					</div>
+					</br>
+					<div class="row">
 						<div class="col-lg-6" style="padding:0px;">
 							<table class="table table-striped table-bordered">
 								<tr>
@@ -330,12 +336,9 @@
 								<?php } ?>
 								<?php } ?>
 							</table>
+							
 						</div>
 						<div class="col-lg-5 col-lg-offset-1" style="padding:0px;">
-							<div class="row">
-								<div id="map" style="width: 100%; height: 300px;"></div>
-							</div>
-							</br>
 							<div id="add_td">
 								<div class="row">
 									<div class="col-lg-5" style="padding:0px;">
@@ -554,8 +557,8 @@ $(document).ready(function(){
 
 
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
-      center: new google.maps.LatLng(-33.923036, 151.259052),
+      zoom: 7,
+      center: new google.maps.LatLng(21.033333,105.849998),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
@@ -576,7 +579,7 @@ $(document).ready(function(){
         }
       })(marker, i));
     }	
-
+	
 });
 </script>
 @endsection
