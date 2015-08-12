@@ -71,7 +71,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Barcode</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -80,7 +80,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Sequence</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -89,7 +89,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Peptide</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -98,7 +98,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Sequence size</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -107,7 +107,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Peptide size</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -116,7 +116,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Gene</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -125,7 +125,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Taxon id</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -134,7 +134,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Stop</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -143,7 +143,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Quality</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -152,7 +152,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Life stage</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -161,7 +161,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Organelle</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -170,7 +170,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Tissue type</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -179,7 +179,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Reproduction</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -188,7 +188,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Notes</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -197,7 +197,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Extra info</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -206,7 +206,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Sex</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -215,7 +215,7 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Lineage</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
@@ -224,16 +224,34 @@
 		</div>
 		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Species</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
 				<?php echo $data['barcode'][0]['species_name']; ?>
 			</div>
 		</div>
+		<hr/>
+		<div class="row">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
+				<h4>Scientific name</h4>
+			</div>
+			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
+				<?php echo $data['barcode'][0]['scientific_name']; ?>	
+			</div>
+		</div>
+		<hr/>
+		<div class="row">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
+				<h4>Vietnamese name</h4>
+			</div>
+			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
+				<?php echo $data['barcode'][0]['vietnamese_name']; ?>
+			</div>
+		</div>
 		<!--<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:125px;">
+			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
 				<h4>Files</h4>
 			</div>
 			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
