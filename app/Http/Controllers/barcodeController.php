@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use DB;
-use Validator;
+use Validator; 
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
