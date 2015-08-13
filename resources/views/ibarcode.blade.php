@@ -369,10 +369,9 @@
 </div>
 <script type="text/javascript">
 
-var locations= <?php echo $data['loca']; ?>;
-
 $(document).ready(function(){
-	 function readURL(input, bien) {
+	var locations= <?php echo $data['loca']; ?>;
+	function readURL(input, bien) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -524,34 +523,33 @@ $(document).ready(function(){
 				$('#loca_'+id_loca).remove();
 			}
 		});
-	});
-	//////////
-
-
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 7,
-      center: new google.maps.LatLng(21.033333,105.849998),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-
-    var infowindow = new google.maps.InfoWindow();
-
-    var marker, i;
-
-    for (i = 0; i < locations.length; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
-      });
-
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));
-    }	
+	});	
 	
+	$(document).on('click','#page4',function(){
+		var map = new google.maps.Map(document.getElementById('map'), {
+		  zoom: 6,
+		  center: new google.maps.LatLng(16.450001,107.583336),
+		  mapTypeId: google.maps.MapTypeId.ROADMAP
+		});
+
+		var infowindow = new google.maps.InfoWindow();
+
+		var marker, i;
+
+		for (i = 0; i < locations.length; i++) {  
+		  marker = new google.maps.Marker({
+			position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+			map: map
+		  });
+
+		  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			return function() {
+			  infowindow.setContent(locations[i][0]);
+			  infowindow.open(map, marker);
+			}
+		  })(marker, i));
+		}
+	});
 });
 </script>
 @endsection

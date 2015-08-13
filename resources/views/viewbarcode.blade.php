@@ -42,6 +42,17 @@
 		#000 !important;
 		margin:0px;
 	}
+	.panel-default{
+		border-color: #B5D2FF !important;
+	}
+	.panel-heading{
+		background-color: #fff !important;
+		border-color: #B5D2FF !important;
+	}
+	.panel-body table td{
+		padding:5px;
+		border-bottom: 1px solid #eee;
+	}
 }
 </style>
 <!--<script src="{{ asset('public/js/google_map.js') }}"></script>-->
@@ -59,194 +70,104 @@
 </div>
 <div class="box">
 		<div class="row">
-			<?php foreach($data['file_img'] as $ds){ ?>
-				<div class="col-lg-3">
-					<div class="form-group">
-						<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
-							<img style="height:160px;width:240" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="...">
-						</a>					
-					</div>								
-				</div>
-			<?php } ?>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Barcode</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['barcode']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Sequence</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['sequence']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Peptide</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['peptide']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Sequence size</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['seq_size']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Peptide size</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['pep_size']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Gene</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['gene']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Taxon id</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['taxon_id']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Stop</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['stop']; ?>
+			<div class="panel panel-default">
+				<div class="panel-heading"><h4 style="color:#e17009;">Thông Tin Barcode</h4></div>
+					<div class="panel-body">
+						<table class="col-lg-12">
+							<tr>
+								<td style="width:150px;">Sequence:</td>
+								<td colspan="3"><?php echo $data['barcode'][0]['sequence']; ?></td>								
+							</tr>
+							<tr>
+								<td style="width:150px;">Peptide:</td>
+								<td colspan="3"><?php echo $data['barcode'][0]['peptide']; ?></td>								
+							</tr>							
+							<tr>
+								<td style="width:150px;">Sequence size:</td>
+								<td style="width:363px;text-align:center;"><?php echo $data['barcode'][0]['seq_size']; ?></td>
+								<td style="width:150px;">Peptide size:</td>
+								<td style="text-align:center;"><?php echo $data['barcode'][0]['pep_size']; ?></td>								
+							</tr>
+							<tr>
+								<td style="width:150px;">Barcode:</td>
+								<td style="width:363px;text-align:center;"><?php echo $data['barcode'][0]['barcode']; ?></td>
+								<td style="width:150px;">Taxon id:</td>
+								<td style="text-align:center;"><?php echo $data['barcode'][0]['taxon_id']; ?></td>								
+							</tr>
+							<tr>
+								<td style="width:150px;">Start:</td>
+								<td style="width:363px;text-align:center;"><?php echo $data['barcode'][0]['start']; ?></td>
+								<td style="width:150px;">Stop:</td>
+								<td style="text-align:center;"><?php echo $data['barcode'][0]['stop']; ?></td>								
+							</tr>
+							<tr>
+								<td style="width:150px;">Life stage:</td>
+								<td style="width:363px;text-align:center;"><?php echo $data['barcode'][0]['life_stage']; ?></td>
+								<td style="width:150px;">Organelle:</td>
+								<td style="text-align:center;"><?php echo $data['barcode'][0]['organelle']; ?></td>								
+							</tr>
+							<tr>
+								<td style="width:150px;">Tissue type:</td>
+								<td style="width:363px;text-align:center;"><?php echo $data['barcode'][0]['tissue_type']; ?></td>
+								<td style="width:150px;">Reproduction:</td>
+								<td style="text-align:center;"><?php echo $data['barcode'][0]['reproduction']; ?></td>								
+							</tr>
+							<tr>
+								<td style="width:150px;">Sex:</td>
+								<td style="width:363px;text-align:center;"><?php echo $data['barcode'][0]['sex']; ?></td>
+								<td style="width:150px;">Lineage:</td>
+								<td style="text-align:center;"><?php echo $data['barcode'][0]['lineage']; ?></td>								
+							</tr>
+							<tr>
+								<td style="width:150px;">Species name:</td>
+								<td style="width:363px;text-align:center;"><?php echo $data['barcode'][0]['species']; ?></td>
+								<td style="width:150px;">Scientific name:</td>
+								<td style="text-align:center;"><?php echo $data['barcode'][0]['scientific_name']; ?></td>								
+							</tr>
+							<tr>
+								<td style="width:150px;">Vietnamese name:</td>
+								<td style="width:363px;text-align:center;"><?php echo $data['barcode'][0]['vietnamese_name']; ?></td>
+								<td style="width:150px;">Quality:</td>
+								<td style="text-align:center;"><?php echo $data['barcode'][0]['quality']; ?></td>								
+							</tr>
+							<tr>
+								<td style="width:150px;">Gene:</td>
+								<td colspan="3"><?php echo $data['barcode'][0]['gene']; ?></td>								
+							</tr>
+							<tr>
+								<td style="width:150px;">Notes:</td>
+								<td colspan="3"><?php echo $data['barcode'][0]['notes']; ?></td>								
+							</tr>
+							<tr>
+								<td style="width:150px;">Extra info:</td>
+								<td colspan="3"><?php echo $data['barcode'][0]['extra_info']; ?></td>								
+							</tr>
+						</table>
+					</div>
 			</div>
 		</div>
-		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Quality</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['quality']; ?>
+			<div class="panel panel-default">
+				<div class="panel-heading"><h4 style="color:#e17009;">Ảnh</h4></div>
+					<div class="panel-body">
+						<?php foreach($data['file_img'] as $ds){ ?>
+							<div class="col-lg-3">
+								<div class="form-group">
+									<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
+										<img style="height:160px;width:240" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="...">
+									</a>					
+								</div>								
+							</div>
+						<?php } ?>
+					</div>
 			</div>
 		</div>
-		<hr/>
 		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Life stage</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['life_stage']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Organelle</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['organelle']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Tissue type</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['tissue_type']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Reproduction</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['reproduction']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Notes</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['notes']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Extra info</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['extra_info']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Sex</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['sex']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Lineage</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['lineage']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Species</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['species_name']; ?>
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Scientific name</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['scientific_name']; ?>	
-			</div>
-		</div>
-		<hr/>
-		<div class="row">
-			<div class="col-lg-2" style="padding:0px;text-align:right;width:150px;">
-				<h4>Vietnamese name</h4>
-			</div>
-			<div class="col-lg-9 col-lg-offset-1" style="padding:0px;">
-				<?php echo $data['barcode'][0]['vietnamese_name']; ?>
+			<div class="panel panel-default">
+				<div class="panel-heading"><h4 style="color:#e17009;">Vị trí</h4></div>
+					<div class="panel-body">
+						<div id="map" style="width: 100%; height: 700px;"></div>
+					</div>
 			</div>
 		</div>
 		<!--<hr/>
@@ -272,7 +193,6 @@
 				</table>
 			</div>
 		</div>-->
-		<hr/>
 </div>
 <div id="lightbox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog" style='margin-top:100px;'>
@@ -308,5 +228,32 @@
         $lightbox.find('.modal-dialog').css({'width': $img.width()});
         $lightbox.find('.close').removeClass('hidden');
     });
+	
+	$(document).ready(function(){
+		var locations= <?php echo $data['loca']; ?>;
+		var map = new google.maps.Map(document.getElementById('map'), {
+		  zoom: 6,
+		  center: new google.maps.LatLng(16.450001,107.583336),
+		  mapTypeId: google.maps.MapTypeId.ROADMAP
+		});
+
+		var infowindow = new google.maps.InfoWindow();
+
+		var marker, i;
+
+		for (i = 0; i < locations.length; i++) {  
+		  marker = new google.maps.Marker({
+			position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+			map: map
+		  });
+
+		  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			return function() {
+			  infowindow.setContent(locations[i][0]);
+			  infowindow.open(map, marker);
+			}
+		  })(marker, i));
+		}	
+	});
 </script>	
 @endsection

@@ -39,8 +39,8 @@ class IbarcodeController extends Controller {
 			foreach($location as $key=>$lc)
 			{
 				$loca[$key][]='';
-				$loca[$key][]=$lc['longitude'];
 				$loca[$key][]=$lc['latitude'];
+				$loca[$key][]=$lc['longitude'];
 			}				
 			
 			$viewData['file_trace'] = $file_trace;

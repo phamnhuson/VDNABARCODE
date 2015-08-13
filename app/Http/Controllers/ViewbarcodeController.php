@@ -25,6 +25,20 @@ class ViewbarcodeController extends Controller {
 		
 		$location = DB::table('location')->Where('location.barcode_id',$barcodeId)->get();
 		
+		$loca=array();
+		
+		if($location!=null)
+		{
+			foreach($location as $key=>$lc)
+			{
+				$loca[$key][]='';
+				$loca[$key][]=$lc['latitude'];
+				$loca[$key][]=$lc['longitude'];
+			}
+		}
+
+		$viewData['loca'] = json_encode($loca);	
+		
 		$viewData['location'] = $location;												
 		
 		$viewData['file_trace'] = $file_trace;
