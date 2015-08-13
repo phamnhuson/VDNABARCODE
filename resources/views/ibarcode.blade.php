@@ -29,7 +29,21 @@
 		
 		z-index:1032;
 	}
-	
+	h4{
+		#000 !important;
+		margin:0px;
+	}
+	.panel-default{
+		border-color: #B5D2FF !important;
+	}
+	.panel-heading{
+		background-color: #fff !important;
+		border-color: #B5D2FF !important;
+	}
+	.panel-body table td{
+		padding:5px;
+		border-bottom: 1px solid #eee;
+	}
 }
 </style>
 <!--<script src="{{ asset('public/js/google_map.js') }}"></script>-->
@@ -228,36 +242,46 @@
 					</div>					
 				</div>
 				<div class="tab-pane" id="tab2">
-					<div class="row" id="app">
-						<div class="col-lg-2" id="cot_1">
-							<div class="form-group" >
-								<div class="upanh" id="upanh_1" data_id="1">
-									<a> 
-										<img class='col-lg-12' style="padding:6px;margin-top:10px;margin-bottom:10px;border:2px dashed #0087F7;height:130px;width:140" id="img_1" src="{{asset('public/img/add.png')}}" alt="Chọn mẫu vật" />										
-									</a>									
+					<div class="row">
+						<div class="panel panel-default">
+							<div class="panel-heading"><h4 style="color:#e17009;">Chọn ảnh mẫu vật</h4></div>
+								<div class="panel-body" id="app">
+									<div class="col-lg-2" id="cot_1">
+										<div class="form-group" >
+											<div class="upanh" id="upanh_1" data_id="1">
+												<a> 
+													<img class='col-lg-12' style="padding:6px;margin-top:10px;margin-bottom:10px;border:2px dashed #0087F7;height:130px;width:140" id="img_1" src="{{asset('public/img/add.png')}}" alt="Chọn mẫu vật" />										
+												</a>									
+											</div>
+											<div id="btx_1">
+											</div>
+											<!--<button type="button" class="btn btn-primary xoa" data_id="1" style="width:140px;"><span class='glyphicon glyphicon-trash'></span></button>-->
+											{!! Form::file('images[]', array('class'=>'form-control imgInp','style'=>'display:none;','id'=>'imgInp_1','data_id'=>'1')) !!}
+										</div>
+									</div>
 								</div>
-								<div id="btx_1">
-								</div>
-								<!--<button type="button" class="btn btn-primary xoa" data_id="1" style="width:140px;"><span class='glyphicon glyphicon-trash'></span></button>-->
-								{!! Form::file('images[]', array('class'=>'form-control imgInp','style'=>'display:none;','id'=>'imgInp_1','data_id'=>'1')) !!}
-							</div>
-						</div>
+						</div>						
 					</div>
 					<?php if(isset($data['file_img'])){ ?>					
 					<div class="row">						
 						<hr style="border-top: 1px solid #ddd;"/>						
 					</div>
 					<div class="row">
-						<?php foreach($data['file_img'] as $ds){ ?>
-							<div class="col-lg-2" id="group_img_<?php echo $ds['file_id']; ?>">
-								<div class="form-group">
-									<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
-										<img style="height:130px;width:140" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="...">
-									</a>
-									<button type="button" class="btn btn-danger delete" data_id="<?php echo $ds['file_id']; ?>" style="width:146px;"><span class='glyphicon glyphicon-trash'></span></button>
-								</div>								
+						<div class="panel panel-default">
+							<div class="panel-heading"><h4 style="color:#e17009;">Dữ liệu ảnh</h4></div>
+							<div class="panel-body">
+								<?php foreach($data['file_img'] as $ds){ ?>
+									<div class="col-lg-2" id="group_img_<?php echo $ds['file_id']; ?>">
+										<div class="form-group">
+											<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
+												<img style="height:130px;width:140" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="...">
+											</a>
+											<button type="button" class="btn btn-danger delete" data_id="<?php echo $ds['file_id']; ?>" style="width:146px;"><span class='glyphicon glyphicon-trash'></span></button>
+										</div>								
+									</div>
+								<?php } ?>
 							</div>
-						<?php } ?>
+						</div>						
 					</div>
 					<?php } ?>
 				</div>
