@@ -52,7 +52,7 @@
 		@if (isset($blastResult))
 			<h3>Kết quả Blast</h3>
 			<hr/>
-			@if (isset($blastResult['BlastOutput_iterations']) && count($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'][0]) > 0 )
+			@if (isset($blastResult['BlastOutput_iterations']))
 			<table class="table table-stripped table-bordered">
 				<tr>
 					<th>Gen</th>
@@ -65,7 +65,7 @@
 					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
 						{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
 						<tr>
-							<td><a href="{{ url('barcode/'.substr($item['Hit_def'], 3)) }}">{{ $item['Hit_def'] }}</a></td>
+							<td><a href="{{ url('viewbarcode?id='.substr($item['Hit_def'], 3)) }}">{{ $item['Hit_def'] }}</a></td>
 							<td>{{ $topHsp['Hsp_bit-score'] }}</td>
 							<td>{{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }}</td>
 							<td>{{ ($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100 }}%</td>
@@ -76,7 +76,7 @@
 					{{-- */ $item = $blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] /* --}}
 					{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
 					<tr>
-						<td><a href="{{ url('barcode/'.substr($item['Hit_def'], 3)) }}">{{ $item['Hit_def'] }}</a></td>
+						<td><a href="{{ url('viewbarcode?id='.substr($item['Hit_def'], 3)) }}">{{ $item['Hit_def'] }}</a></td>
 						<td>{{ $topHsp['Hsp_bit-score'] }}</td>
 						<td>{{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }}</td>
 						<td>{{ ($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100 }}%</td>

@@ -37,7 +37,7 @@
 					<ol>
 					@foreach ($searchResult AS $item)
 						<li>
-							<a href="#">{{ $item['vietnamese_name'] }}</a> ({{ $item['common_name'] }} - {{ $item['scientific_name'] }})
+							<a href="viewbarcode?id={{ $item['id'] }}">{{ $item['vietnamese_name'] }}</a> ({{ $item['common_name'] }} - {{ $item['scientific_name'] }})
 						</li>
 					@endforeach
 					</ol>

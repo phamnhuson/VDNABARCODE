@@ -38,6 +38,7 @@
 								<li><a href="/species">Danh mục phân loài</a></li>
 							</ul>
 						</li>
+						<li class=""><a href="/barcode">Barcode</a></li>
 						@endif
 						<li class=""><a href="/blast">Blast</a></li>
 						<li class=""><a href="/contact">Giới thiệu</a></li>

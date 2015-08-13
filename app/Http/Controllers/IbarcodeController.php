@@ -7,8 +7,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use File;
+use App\Repositories\Fastas\NucleotideRepository;
 
 class IbarcodeController extends Controller {
+	
+	protected $nuRepo;
+	
+	function __construct()
+	{
+		$this->nuRepo = new NucleotideRepository;
+	}
 	
 	public function index(Request $request)
 	{	
@@ -103,6 +111,8 @@ class IbarcodeController extends Controller {
 			if ($barcode->insert($inputData)) {
 				
 				$id	=	DB::getPdo()->lastInsertId();
+				
+				$this->nuRepo->create(array('id' => $id, 'sequence' => $inputData['sequence']));
 				
 				$inputData=array();								
 				
@@ -253,6 +263,8 @@ class IbarcodeController extends Controller {
 			}
 
 			DB::table('barcode')->where('barcode_id', $barcodeId)->update($inputData);
+			
+			$this->nuRepo->update(array('id' => $barcodeId, 'sequence' => $inputData['sequence']));
 				
 			$inputData=array();
 			
