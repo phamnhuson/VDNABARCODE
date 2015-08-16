@@ -1,0 +1,6 @@
+@@6:MultiSeqTask@@1: (25 aa seqs, MSF, /@@13:clustalo_d...ttree_full@@1:)
+@@5:AlgTask@@1: (25 aa seqs, Clustal-Omega, /@@13:clustalo_d...ttree_full@@1:)
+   438b7b544aec15be403f15a541de36ec	0:00:01	clustalo---threads-1	/home/huypham/.etetoolkit/ext_apps-latest/bin/clustalo --threads 1 -o alg.fasta -i /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/input/6deb80c4cc88730400e6392e30e08265.100 --outfmt fa
+@@3:TreeTask@@1: (25 aa seqs, FastTree, /@@13:clustalo_d...ttree_full@@1:)
+   f2d47b938ff4734bd88a01e40eda168c	0:00:13	FastTree	export OMP_NUM_THREADS=1; /home/huypham/.etetoolkit/ext_apps-latest/bin/FastTree -nopr  -pseudo  -mlacc 3 -slownni  /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/input/c4e2c5d3de6c9324100b9086cab7eef3.201 
+@@7:TreeMergeTask@@1: (25 aa seqs, TreeMerger, /@@13:clustalo_d...ttree_full@@1:)

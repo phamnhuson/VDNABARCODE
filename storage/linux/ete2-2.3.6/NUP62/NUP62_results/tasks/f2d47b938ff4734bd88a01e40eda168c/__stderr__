@@ -1,0 +1,26 @@
+FastTree Version 2.1.8 Double precision (No SSE3), OpenMP (1 threads)
+Alignment: /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/input/c4e2c5d3de6c9324100b9086cab7eef3.201
+Amino acid distances: BLOSUM45 Joins: balanced Support: SH-like 1000
+Search: Normal +NNI +SPR (2 rounds range 10) +ML-NNI opt-each=3
+TopHits: 1.00*sqrtN close=default refresh=0.80
+ML Model: Jones-Taylor-Thorton, CAT approximation with 20 rate categories
+Pseudocount weight for comparing sequences with little overlap: 1.000
+Ignored unknown character X (seen 6 times)
+Initial topology in 0.02 seconds
+Refining topology: 19 rounds ME-NNIs, 2 rounds ME-SPRs, 9 rounds ML-NNIs
+Total branch-length 1.515 after 0.17 sec
+ML-NNI round 1: LogLk = -5765.292 NNIs 6 max delta 3.02 Time 1.56
+Switched to using 20 rate categories (CAT approximation)
+Rate categories were divided by 0.770 so that average rate = 1.0
+CAT-based log-likelihoods may not be comparable across runs
+Use -gamma for approximate but comparable Gamma(20) log-likelihoods
+ML-NNI round 2: LogLk = -5430.042 NNIs 3 max delta 1.39 Time 3.34
+ML-NNI round 3: LogLk = -5426.864 NNIs 3 max delta 1.58 Time 4.80
+ML-NNI round 4: LogLk = -5417.921 NNIs 4 max delta 3.68 Time 6.26
+ML-NNI round 5: LogLk = -5414.086 NNIs 8 max delta 0.80 Time 7.72
+ML-NNI round 6: LogLk = -5406.914 NNIs 3 max delta 5.89 Time 9.18
+ML-NNI round 7: LogLk = -5406.911 NNIs 0 max delta 0.00 Time 10.63
+Turning off heuristics for final round of ML NNIs (converged)
+ML-NNI round 8: LogLk = -5406.911 NNIs 0 max delta 0.00 Time 12.08 (final)
+Optimize all lengths: LogLk = -5406.911 Time 12.25
+Total time: 12.87 seconds Unique: 25/25 Bad splits: 0/22

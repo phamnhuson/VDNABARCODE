@@ -1,0 +1,4 @@
+#!/bin/sh
+ (echo R > /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/tasks/f2d47b938ff4734bd88a01e40eda168c/__status__ && date +'%a %b %d %H:%M:%S %Y' > /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/tasks/f2d47b938ff4734bd88a01e40eda168c/__time__) &&
+ (cd /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/tasks/f2d47b938ff4734bd88a01e40eda168c && export OMP_NUM_THREADS=1; /home/huypham/.etetoolkit/ext_apps-latest/bin/FastTree -nopr  -pseudo  -mlacc 3 -slownni  /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/input/c4e2c5d3de6c9324100b9086cab7eef3.201  && (echo D > /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/tasks/f2d47b938ff4734bd88a01e40eda168c/__status__; ) || (echo E > /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/tasks/f2d47b938ff4734bd88a01e40eda168c/__status__; ));
+ date +'%a %b %d %H:%M:%S %Y' >> /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/tasks/f2d47b938ff4734bd88a01e40eda168c/__time__; 

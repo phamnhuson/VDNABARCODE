@@ -1,0 +1,4 @@
+#!/bin/sh
+ (echo R > /var/www/html/dnabarcode/storage/linux/ete2-2.3.6/data/tasks/09a08bb450e482201093e4cfbc0e8a68/__status__ && date +'%a %b %d %H:%M:%S %Y' > /var/www/html/dnabarcode/storage/linux/ete2-2.3.6/data/tasks/09a08bb450e482201093e4cfbc0e8a68/__time__) &&
+ (cd /var/www/html/dnabarcode/storage/linux/ete2-2.3.6/data/tasks/09a08bb450e482201093e4cfbc0e8a68 && /home/juhuvn/.etetoolkit/ext_apps-latest/bin/clustalo --threads 1 -o alg.fasta -i /var/www/html/dnabarcode/storage/linux/ete2-2.3.6/data/input/415d3aefa69b94bb7016e6196b31ac9d.100 --outfmt fa && (echo D > /var/www/html/dnabarcode/storage/linux/ete2-2.3.6/data/tasks/09a08bb450e482201093e4cfbc0e8a68/__status__; ) || (echo E > /var/www/html/dnabarcode/storage/linux/ete2-2.3.6/data/tasks/09a08bb450e482201093e4cfbc0e8a68/__status__; ));
+ date +'%a %b %d %H:%M:%S %Y' >> /var/www/html/dnabarcode/storage/linux/ete2-2.3.6/data/tasks/09a08bb450e482201093e4cfbc0e8a68/__time__; 

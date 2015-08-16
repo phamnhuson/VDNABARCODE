@@ -1,0 +1,22 @@
+FastTree Version 2.1.8 Double precision (No SSE3), OpenMP (1 threads)
+Alignment: /var/www/html/dnabarcode/storage/linux/ete2-2.3.6/p53/p53_results/input/3d8f89f7386c8875b128ce2d3209e01f.201
+Amino acid distances: BLOSUM45 Joins: balanced Support: SH-like 1000
+Search: Normal +NNI +SPR (2 rounds range 10) +ML-NNI opt-each=3
+TopHits: 1.00*sqrtN close=default refresh=0.80
+ML Model: Jones-Taylor-Thorton, CAT approximation with 20 rate categories
+Pseudocount weight for comparing sequences with little overlap: 1.000
+Initial topology in 0.07 seconds
+Refining topology: 22 rounds ME-NNIs, 2 rounds ME-SPRs, 11 rounds ML-NNIs
+Total branch-length 12.468 after 0.70 sec
+ML-NNI round 1: LogLk = -26178.247 NNIs 8 max delta 10.20 Time 4.61
+Switched to using 20 rate categories (CAT approximation)
+Rate categories were divided by 0.904 so that average rate = 1.0
+CAT-based log-likelihoods may not be comparable across runs
+Use -gamma for approximate but comparable Gamma(20) log-likelihoods
+ML-NNI round 2: LogLk = -25043.128 NNIs 1 max delta 2.79 Time 9.22
+ML-NNI round 3: LogLk = -25042.454 NNIs 1 max delta 0.60 Time 13.14
+ML-NNI round 4: LogLk = -25042.445 NNIs 0 max delta 0.00 Time 17.04
+Turning off heuristics for final round of ML NNIs (converged)
+ML-NNI round 5: LogLk = -25042.445 NNIs 0 max delta 0.00 Time 20.94 (final)
+Optimize all lengths: LogLk = -25042.445 Time 21.39
+Total time: 23.06 seconds Unique: 43/45 Bad splits: 0/40
