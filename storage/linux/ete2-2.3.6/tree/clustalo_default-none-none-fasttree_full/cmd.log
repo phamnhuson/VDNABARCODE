@@ -1,0 +1,5 @@
+@@6:MultiSeqTask@@1: (2 aa seqs, MSF, /@@13:clustalo_d...ttree_full@@1:)
+@@5:AlgTask@@1: (2 aa seqs, Clustal-Omega, /@@13:clustalo_d...ttree_full@@1:)
+   9c546890e77f892afa052c4a2d822534	0:00:01	clustalo---threads-1	/var/www/.etetoolkit/ext_apps-latest/bin/clustalo --threads 1 -o alg.fasta -i /var/www/html/dnabarcode/storage/linux/ete2-2.3.6/tree/input/78e00e7b26f71641633ec6ac5ca947c1.100 --outfmt fa
+@@3:TreeTask@@1: (2 aa seqs, DummyTree, /@@13:clustalo_d...ttree_full@@1:)
+@@7:TreeMergeTask@@1: (2 aa seqs, TreeMerger, /@@13:clustalo_d...ttree_full@@1:)

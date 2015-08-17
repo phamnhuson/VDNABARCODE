@@ -1,0 +1,4 @@
+#!/bin/sh
+ (echo R > /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/tasks/438b7b544aec15be403f15a541de36ec/__status__ && date +'%a %b %d %H:%M:%S %Y' > /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/tasks/438b7b544aec15be403f15a541de36ec/__time__) &&
+ (cd /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/tasks/438b7b544aec15be403f15a541de36ec && /home/huypham/.etetoolkit/ext_apps-latest/bin/clustalo --threads 1 -o alg.fasta -i /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/input/6deb80c4cc88730400e6392e30e08265.100 --outfmt fa && (echo D > /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/tasks/438b7b544aec15be403f15a541de36ec/__status__; ) || (echo E > /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/tasks/438b7b544aec15be403f15a541de36ec/__status__; ));
+ date +'%a %b %d %H:%M:%S %Y' >> /home/huypham/bin/ete2-2.3.6/NUP62/NUP62_results/tasks/438b7b544aec15be403f15a541de36ec/__time__; 

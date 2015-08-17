@@ -1,0 +1,11 @@
+Fri Aug 14 11:18:50 2015	dc2143817188ec883809ee53318a5cb1	False	/usr/local/bin/ete -a p53.fasta -o p53_results/ -w standard_fasttree --noimg
+Fri Aug 14 11:20:15 2015	1b3d537903f941e3ff41eb7a48dffb39	False	/usr/local/bin/ete -a p53.fasta -o p53_results/ -w standard_fasttree --noimg
+Fri Aug 14 11:22:38 2015	d42d47ffb587f4372f5a0a62f81eb6db	False	/usr/local/bin/ete -a p53.fasta -o p53_results/ -w standard_fasttree --noimg
+Fri Aug 14 11:23:39 2015	8a7f460e9ed953d586ffeeb404974fe2	False	/usr/local/bin/ete -a p53.fasta -o p53_results/ -w standard_fasttree --noimg
+Fri Aug 14 11:24:58 2015	eec45e70cebea26aa214bb7d7a99e0cf	False	/usr/local/bin/ete -a p53.fasta -o p53_results/ -w standard_fasttree --noimg
+Fri Aug 14 11:35:33 2015	5221e64528392dbf40f40089dfcb04cd	False	/usr/local/bin/ete -a p53.fasta -o p53_results/ -w standard_fasttree --noimg
+Fri Aug 14 11:39:16 2015	6772107c17123713ff234668f1af2d8e	False	/usr/local/bin/ete -a p53.fasta -o p53_results/ -w standard_fasttree --noimg
+Fri Aug 14 11:42:51 2015	bc1b8cd1cadf3962e71542b83b4414e9	False	/usr/local/bin/ete -a p53.fasta -o p53_results/ -w standard_fasttree --noimg
+Fri Aug 14 12:28:00 2015	0eebfba0ceaf853ca504fed83ec0aaaf	False	/usr/local/bin/ete -a p53.fasta -o p53_results/ -w standard_fasttree --noimg
+Fri Aug 14 14:20:00 2015	7436d1ec7999f32063d91accef24d08b	False	/usr/local/bin/ete -a p53.fasta -o p53_results/ -w standard_fasttree --noimg
+Fri Aug 14 15:46:53 2015	43a30526134b4a67949c49643500037e	False	/usr/local/bin/ete -a p53.fasta -o p53_results/ -w standard_fasttree --noimg

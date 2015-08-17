@@ -1,0 +1,5 @@
+Fri Aug 14 09:32:31 2015	f18023f54b052e0aadb0b6079caeba06	False	/usr/local/bin/ete -a ../fasta/nucleotide_db -o data/ -w standard_fasttree --noimg
+Fri Aug 14 09:51:16 2015	e6dd85ea127c127d85a212bca27e576b	False	/usr/local/bin/ete -a ../fasta/nucleotide_db -o data/ -w standard_fasttree --noimg
+Fri Aug 14 10:20:07 2015	68a1da316e363e76b87a329554bfb31f	False	/usr/local/bin/ete -a ../fasta/nucleotide_db -o data/ -w standard_fasttree --noimg
+Fri Aug 14 10:31:55 2015	4736388ca418bb712f7e66dd3ff796cf	False	/usr/local/bin/ete -a ../fasta/nucleotide_db -o data/ -w standard_fasttree --noimg
+Fri Aug 14 10:33:31 2015	cc0e3a38c5a5698a0bd223806c2ffc68	False	/usr/local/bin/ete -a ../fasta/nucleotide_db -o data/ -w standard_fasttree --noimg
