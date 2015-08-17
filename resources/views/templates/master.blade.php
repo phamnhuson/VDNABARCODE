@@ -44,6 +44,7 @@
 						<li class=""><a href="/barcode">Barcode</a></li>
 						@endif
 						<li class=""><a href="/blast">Blast</a></li>
+						<li class=""><a href="/phylogenetictree">Cây di truyền</a></li>
 						<li class=""><a href="/contact">Giới thiệu</a></li>
 						<li class=""><a href="/contact">Liên hệ</a></li>
 						

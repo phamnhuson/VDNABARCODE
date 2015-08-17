@@ -128,7 +128,7 @@ class IbarcodeController extends Controller {
 				
 				$id	=	DB::getPdo()->lastInsertId();
 				
-				$this->nuRepo->create(array('id' => $id, 'sequence' => $inputData['sequence']));
+				$this->nuRepo->create(array('id' => $id, 'sequence' => $inputData['sequence'], 'name' => $inputData['scientific_name']));
 				
 				$cityData=array();
 				
@@ -303,7 +303,7 @@ class IbarcodeController extends Controller {
 
 			DB::table('barcode')->where('barcode_id', $barcodeId)->update($inputData);
 			
-			$this->nuRepo->update(array('id' => $barcodeId, 'sequence' => $inputData['sequence']));
+			$this->nuRepo->update(array('id' => $barcodeId, 'sequence' => $inputData['sequence'], 'name' => $inputData['scientific_name']));
 			
 			$cityData=array();
 				
