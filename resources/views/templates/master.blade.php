@@ -4,11 +4,8 @@
 		<link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
 		<link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('public/css/jquery.dataTables.min.css') }}">
-		<link rel="stylesheet" href="{{ asset('public/datepicker/css/datepicker.css') }}">
 		
 		<script src="{{ asset('public/js/jquery.min.js') }}"></script>
-		<script src="{{ asset('public/datepicker/js/bootstrap-datepicker.js') }}"></script>
-		<script src="{{ asset('public/datepicker/js/locales/bootstrap-datepicker.de.js') }}"></script>
 		<script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('public/js/jquery.dataTables.min.js') }}"></script>
 		<script src="{{ asset('public/js/app.js') }}"></script>
@@ -44,12 +41,15 @@
 						<li class=""><a href="/barcode">Barcode</a></li>
 						@endif
 						<li class=""><a href="/blast">Blast</a></li>
+						@if (Auth::check() && Auth::user()->role!=3)
 						<li class=""><a href="/contact">Giới thiệu</a></li>
 						<li class=""><a href="/contact">Liên hệ</a></li>
-						
+						@endif
 						@if (Auth::check())
 						<li class=""><a href="/logout">Đăng xuất</a></li>
 						@else
+						<li class=""><a href="/contact">Giới thiệu</a></li>
+						<li class=""><a href="/contact">Liên hệ</a></li>
 						<li class=""><a href="/login">Đăng nhập</a></li>
 						@endif
 					</ul>
