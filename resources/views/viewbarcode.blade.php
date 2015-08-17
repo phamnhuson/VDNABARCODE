@@ -71,7 +71,7 @@
 <div class="box">
 		<div class="row">
 			<div class="panel panel-default">
-				<div class="panel-heading"><h4 style="color:#e17009;">Thông Tin Barcode</h4></div>
+				<div class="panel-heading"><h4 style="color:#f0ad4e;">Thông Tin Barcode</h4></div>
 					<div class="panel-body">
 						<table class="col-lg-12">
 							<tr>
@@ -148,7 +148,7 @@
 		</div>
 		<div class="row">
 			<div class="panel panel-default">
-				<div class="panel-heading"><h4 style="color:#e17009;">Ảnh</h4></div>
+				<div class="panel-heading"><h4 style="color:#f0ad4e;">Ảnh</h4></div>
 					<div class="panel-body">
 						<?php foreach($data['file_img'] as $ds){ ?>
 							<div class="col-lg-3">
@@ -164,7 +164,7 @@
 		</div>
 		<div class="row">
 			<div class="panel panel-default">
-				<div class="panel-heading"><h4 style="color:#e17009;">Vị trí</h4></div>
+				<div class="panel-heading"><h4 style="color:#f0ad4e;">Vị trí</h4></div>
 					<div class="panel-body">
 						<div id="map" style="width: 100%; height: 700px;"></div>
 					</div>

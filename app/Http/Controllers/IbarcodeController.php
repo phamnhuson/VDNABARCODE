@@ -70,6 +70,19 @@ class IbarcodeController extends Controller {
 		
 		$viewData['arr_species']=$arr_species;
 		
+		$list_city = DB::table('city')->get();
+						
+		$arr_city=array();		
+		
+		foreach($list_city as $ct)
+		{
+			$arr_city[$ct['city_id']]=$ct['city_name'];
+		}
+		
+		$viewData['list_city']=$list_city;
+		
+		$viewData['arr_city']=$arr_city;
+		
 		$viewData['loca'] = json_encode($loca);	
 
 		return view('ibarcode')->with('data',$viewData);
@@ -79,11 +92,14 @@ class IbarcodeController extends Controller {
 	{		
 
 		$validator = Validator::make($request->all(), [
-			'sequence'		=>	'required',
-			//'quality'		=>	'required',
-			'barcode' 		=>	'required',
-			'taxon_id'		=>	'required',
-			'species' 		=>	'required',
+			'sequence'			=>	'required',
+			//'quality'			=>	'required',
+			'barcode' 			=>	'required',
+			'taxon_id'			=>	'required',
+			'species' 			=>	'required',
+			'common_name'   	=>	'required',
+			'scientific_name'	=>	'required',
+			'vietnamese_name'	=>	'required',
 		]);
 		
 		$error=0;
@@ -98,7 +114,7 @@ class IbarcodeController extends Controller {
 
 			$barcode = DB::table('barcode');
 			
-			$inputData = $request->only('sequence','peptide','seq_size','pep_size','gene','start','stop','life_stage','taxon_id','organelle','barcode','sex','tissue_type','notes','extra_info','reproduction','lineage','collector','collected_date','species');			
+			$inputData = $request->only('sequence','peptide','seq_size','pep_size','gene','start','stop','life_stage','taxon_id','common_name','scientific_name','vietnamese_name','organelle','barcode','sex','tissue_type','notes','extra_info','reproduction','lineage','collector','collected_date','species');			
 			
 			$inputData['stop']= $this->stopCodonDetect($request['sequence']);
 			
@@ -113,6 +129,27 @@ class IbarcodeController extends Controller {
 				$id	=	DB::getPdo()->lastInsertId();
 				
 				$this->nuRepo->create(array('id' => $id, 'sequence' => $inputData['sequence']));
+				
+				$cityData=array();
+				
+				foreach($request['cities'] as $ct)
+				{
+					if($ct!='')
+					{
+						$b2c = DB::table('barcode2city')->where('barcode2city.city_id', $ct)->get();
+						if(empty($b2c))
+						{
+							$cityData['city_id'] = $ct;
+				
+							$cityData['barcode_id'] = $id;
+							
+							if(!DB::table('barcode2city')->insert($cityData))
+							{
+								$error=1;
+							}
+						}
+					}
+				};
 				
 				$inputData=array();								
 				
@@ -232,15 +269,17 @@ class IbarcodeController extends Controller {
 	
 	public function update(Request $request)
 	{	
-
 		$error=0;
 		
 		$validator = Validator::make($request->all(), [
-			'sequence'		=>	'required',
-			//'quality'		=>	'required',
-			'barcode' 		=>	'required',
-			'taxon_id'		=>	'required',
-			'species' 		=>	'required',
+			'sequence'			=>	'required',
+			//'quality'			=>	'required',
+			'barcode' 			=>	'required',
+			'taxon_id'			=>	'required',
+			'species' 			=>	'required',
+			'common_name'   	=>	'required',
+			'scientific_name'	=>	'required',
+			'vietnamese_name'	=>	'required',
 		]);
 		
 		if ($validator->fails()) {
@@ -252,7 +291,7 @@ class IbarcodeController extends Controller {
 
 			$barcodeId = $request->get('barcode_id');
 						
-			$inputData = $request->only('sequence','peptide','seq_size','pep_size','gene','start','stop','life_stage','taxon_id','organelle','barcode','sex','tissue_type','notes','extra_info','reproduction','lineage','collector','collected_date','species');			
+			$inputData = $request->only('sequence','peptide','seq_size','pep_size','gene','start','stop','life_stage','taxon_id','common_name','scientific_name','vietnamese_name','organelle','barcode','sex','tissue_type','notes','extra_info','reproduction','lineage','collector','collected_date','species');			
 			
 			$inputData['stop']= $this->stopCodonDetect($request['sequence']);
 			
@@ -265,6 +304,27 @@ class IbarcodeController extends Controller {
 			DB::table('barcode')->where('barcode_id', $barcodeId)->update($inputData);
 			
 			$this->nuRepo->update(array('id' => $barcodeId, 'sequence' => $inputData['sequence']));
+			
+			$cityData=array();
+				
+			foreach($request['cities'] as $ct)
+			{
+				if($ct!='')
+				{
+					$b2c = DB::table('barcode2city')->where('barcode2city.city_id', $ct)->get();
+					if(empty($b2c))
+					{
+						$cityData['city_id'] = $ct;
+			
+						$cityData['barcode_id'] = $barcodeId;
+						
+						if(!DB::table('barcode2city')->insert($cityData))
+						{
+							$error=1;
+						}
+					}
+				}
+			};
 				
 			$inputData=array();
 			

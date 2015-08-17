@@ -25,7 +25,7 @@
 </div>
 <div class="box">
 	<div class="row">
-		<div class="col-lg-12" style="padding-right:0px;">
+		<div class="col-lg-12" style="padding:0px;">
 			@if (Session::has('responseData'))
 				@if (Session::get('responseData')['statusCode'] == 1)
 					<div class="alert alert-success">{{ Session::get('responseData')['message'] }}</div>

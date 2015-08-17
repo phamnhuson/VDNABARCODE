@@ -208,9 +208,8 @@
 										{!! Form::select('sex',array('0'=>'Đực','1'=>'Cái'), @$data['barcode'][0]['sex'], array('class'=>'form-control')) !!}
 									</div>
 								</div>
-							</div>
-							
-							<div class="row">
+							</div>							
+							<div class="row">								
 								<div class="col-lg-4" style="padding:0px;">
 									<div class="form-group">
 										<label class="control-label">Lineage:</label>
@@ -223,6 +222,26 @@
 										{!! Form::select('species', @$data['arr_species'],@$data['barcode'][0]['species'], array('class'=>'form-control')) !!}
 									</div>	
 								</div>
+								<div class="col-lg-2 col-lg-offset-1" style="padding:0px;">
+									<div class="form-group">
+										<label class="control-label">Tên khoa học:</label>
+										{!! Form::text('scientific_name', @$data['barcode'][0]['scientific_name'], array('class'=>'form-control')) !!}
+									</div>
+								</div>								
+							</div>
+							<div class="row">
+								<div class="col-lg-4" style="padding:0px;">
+									<div class="form-group">
+										<label class="control-label">Tên thường gọi:</label>
+										{!! Form::text('common_name', @$data['barcode'][0]['common_name'], array('class'=>'form-control')) !!}
+									</div>	
+								</div>
+								<div class="col-lg-4 col-lg-offset-1" style="padding:0px;">
+									<div class="form-group">										
+										<label class="control-label">Tên tiếng việt:</label>
+										{!! Form::text('vietnamese_name', @$data['barcode'][0]['vietnamese_name'], array('class'=>'form-control')) !!}
+									</div>	
+								</div>								
 							</div>
 							<br/>
 							<div class="row">
@@ -244,7 +263,7 @@
 				<div class="tab-pane" id="tab2">
 					<div class="row">
 						<div class="panel panel-default">
-							<div class="panel-heading"><h4 style="color:#e17009;">Chọn ảnh mẫu vật</h4></div>
+							<div class="panel-heading"><h4 style="color:#f0ad4e;">Chọn ảnh mẫu vật</h4></div>
 								<div class="panel-body" id="app">
 									<div class="col-lg-2" id="cot_1">
 										<div class="form-group" >
@@ -268,7 +287,7 @@
 					</div>
 					<div class="row">
 						<div class="panel panel-default">
-							<div class="panel-heading"><h4 style="color:#e17009;">Dữ liệu ảnh</h4></div>
+							<div class="panel-heading"><h4 style="color:#f0ad4e;">Dữ liệu ảnh</h4></div>
 							<div class="panel-body">
 								<?php foreach($data['file_img'] as $ds){ ?>
 									<div class="col-lg-2" id="group_img_<?php echo $ds['file_id']; ?>">
@@ -351,6 +370,12 @@
 						<div class="col-lg-5 col-lg-offset-1" style="padding:0px;">
 							<div id="add_td">
 								<div class="row">
+									<div class="form-group">
+										<label class="control-label">Tỉnh thành:</label>
+										{!! Form::select('cities[]', @$data['arr_city'],@$data['barcode'][0]['city'], array('class'=>'form-control')) !!}
+									</div>
+								</div>
+								<div class="row">
 									<div class="col-lg-5" style="padding:0px;">
 											<div class="form-group">
 												<label class="control-label">Kinh độ:</label>
@@ -427,7 +452,7 @@ $(document).ready(function(){
 		$(this).attr('class','form-control imgch');
 		$('#upanh_'+$data_id).attr('class','change');
 		$option2 ="";
-		$option2 += "<button type='button' class='btn btn-primary xoa' style='width:140px;' data_id='" + $data_id + "'><span class='glyphicon glyphicon-trash'></span></button>";
+		$option2 += "<button type='button' class='btn btn-warning xoa' style='width:140px;' data_id='" + $data_id + "'><span class='glyphicon glyphicon-trash'></span></button>";
 		$("#btx_"+$data_id).append($option2);
     });
 	
@@ -493,6 +518,16 @@ $(document).ready(function(){
 	
 	$(document).on('click','.atd',function(){
 		$option = "";
+		$option += "<div class='row'>";
+		$option += 		"<div class='form-grounp'>";
+		$option += 			"<label class='control-label'>Tỉnh thành:</label>";
+		$option +=			"<select class='form-control' name='cities[]'>";
+		$option +=				"<?php foreach($data['list_city'] as $ct){ ?>";
+		$option +=					"<option value='<?php echo $ct['city_id'] ?>'><?php echo $ct['city_name'] ?></option>";
+		$option +=				"<?php } ?>"		
+		$option +=			"</select>";
+		$option += 		"</div>"
+		$option += "</div>"
 		$option += "<div class='row'>";
 		$option += 		"<div class='col-lg-5' style='padding:0px;'>";
 		$option +=			"<div class='form-grounp'>";

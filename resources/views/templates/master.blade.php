@@ -4,8 +4,11 @@
 		<link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
 		<link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('public/css/jquery.dataTables.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('public/datepicker/css/datepicker.css') }}">
 		
 		<script src="{{ asset('public/js/jquery.min.js') }}"></script>
+		<script src="{{ asset('public/datepicker/js/bootstrap-datepicker.js') }}"></script>
+		<script src="{{ asset('public/datepicker/js/locales/bootstrap-datepicker.de.js') }}"></script>
 		<script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('public/js/jquery.dataTables.min.js') }}"></script>
 		<script src="{{ asset('public/js/app.js') }}"></script>
