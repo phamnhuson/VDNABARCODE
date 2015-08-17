@@ -38,7 +38,7 @@
 			<button id="hierarchy" class="btn btn-default btn-sm btn-info">Hierarchical</button>
 		</div>
 		<div class="col-md-4">
-			<a href="{{ url('phylogenetic/update') }}" class="btn btn-default pull-right"><span class="glyphicon glyphicon-refresh"></span> Cập nhật</a>
+			<a href="{{ url('phylogenetictree/update') }}" class="btn btn-default pull-right"><span class="glyphicon glyphicon-refresh"></span> Cập nhật</a>
 		</div>
 	</div>	
 	<hr/>
