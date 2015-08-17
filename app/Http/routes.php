@@ -101,6 +101,7 @@ Route::get('/barcode', ['uses' => 'BarcodeController@index', 'middleware' => ['a
 Route::get('/viewbarcode', 'ViewbarcodeController@index');
 
 Route::get('/phylogenetictree', 'PhylogeneticController@index');
+Route::get('/phylogenetictree/update', 'PhylogeneticController@update');
 
 /*Route::controller([
 	'city'	=> 'System\CityController',

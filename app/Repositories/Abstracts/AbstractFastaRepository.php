@@ -55,7 +55,7 @@
 				$cursor = 0;
 				
 				if (isset($data['sequence'])) {
-					$newline = ">gi|".$data['id']."\n".$data['sequence'];
+					$newline = ">ID".$data['id']."_".$data['name']."\n".$data['sequence'];
 				}
 				
 			
@@ -75,7 +75,7 @@
 							
 						}
 						
-						if (strpos($line, '>gi|'.$data['id'])===0) {
+						if (strpos($line, '>ID'.$data['id']."_")===0) {
 							$cursor = 1;
 							if ($action == 'update') {
 							

@@ -28,14 +28,19 @@
 	<div class="box">
 	<h3>Cây quan hệ di truyền</h3>
 	<hr/>
-	<div id="pc-buttons">
-		<label>Kiểu hiển thị&nbsp;&nbsp;</label>
-	  <button id="rectangular" class="btn btn-default btn-sm">Rectangular</button>
-	  <button id="circular" class="btn btn-sm btn-default">Circular</button>
-	  <button id="radial" class="btn btn-default btn-sm">Radial</button>
-	  <button id="diagonal" class="btn btn-default btn-sm">Diagonal</button>
-	  <button id="hierarchy" class="btn btn-default btn-sm btn-info">Hierarchical</button>
-	</div>
+	<div class="row">
+		<div class="col-md-8" id="pc-buttons">
+			<label>Kiểu hiển thị&nbsp;&nbsp;</label>
+			<button id="rectangular" class="btn btn-default btn-sm">Rectangular</button>
+			<button id="circular" class="btn btn-sm btn-default">Circular</button>
+			<button id="radial" class="btn btn-default btn-sm">Radial</button>
+			<button id="diagonal" class="btn btn-default btn-sm">Diagonal</button>
+			<button id="hierarchy" class="btn btn-default btn-sm btn-info">Hierarchical</button>
+		</div>
+		<div class="col-md-4">
+			<a href="{{ url('phylogenetictree/update') }}" class="btn btn-default pull-right"><span class="glyphicon glyphicon-refresh"></span> Cập nhật</a>
+		</div>
+	</div>	
 	<hr/>
 	<div id="phylocanvasDiv"></div>
 	<br/><br/><br/>
