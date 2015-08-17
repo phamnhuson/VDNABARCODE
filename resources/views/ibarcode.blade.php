@@ -110,13 +110,13 @@
 							<div class="row">
 								<div class="col-lg-9" style="padding:0px;">
 									<div class="form-group">
-										<label class="control-label">Sequence:</label>
+										<label class="control-label">Trình tự:</label>
 										{!! Form::textarea('sequence', @$data['barcode'][0]['sequence'], array('class'=>'form-control','rows'=>'4','cols'=>'1')) !!}
 									</div>
 								</div>
 								<div class="col-lg-2 col-lg-offset-1" style="padding:0px;">
 									<div class="form-group">
-										<label class="control-label">Sequence size:</label>
+										<label class="control-label">Độ dài trình tự:</label>
 										{!! Form::text('seq_size', @$data['barcode'][0]['seq_size'], array('class'=>'form-control')) !!}
 									</div>
 								</div>
@@ -130,7 +130,7 @@
 								</div>
 								<div class="col-lg-2 col-lg-offset-1" style="padding:0px;">
 									<div class="form-group">
-										<label class="control-label">Peptide size:</label>
+										<label class="control-label">Độ dài peptide:</label>
 										{!! Form::text('pep_size', @$data['barcode'][0]['pep_size'], array('class'=>'form-control')) !!}
 									</div>	
 								</div>
@@ -152,19 +152,19 @@
 							<div class="row">
 								<div class="col-lg-4" style="padding:0px;">
 									<div class="form-group">
-										<label class="control-label">Life stage:</label>
+										<label class="control-label">Giai đoạn sinh trưởng mẫu:</label>
 										{!! Form::text('life_stage', @$data['barcode'][0]['life_stage'], array('class'=>'form-control')) !!}
 									</div>
 								</div>
 								<div class="col-lg-4 col-lg-offset-1" style="padding:0px;">
 									<div class="form-group">
-										<label class="control-label">Organelle:</label>
+										<label class="control-label">Bào quan:</label>
 										{!! Form::text('organelle', @$data['barcode'][0]['organelle'], array('class'=>'form-control')) !!}
 									</div>
 								</div>
 								<div class="col-lg-2 col-lg-offset-1" style="padding:0px;">
 									<div class="form-group">
-										<label class="control-label">Quality:</label>
+										<label class="control-label">Chất lượng:</label>
 										{!! Form::text('quality', @$data['barcode'][0]['quality'], array('class'=>'form-control')) !!}										
 									</div>
 								</div>
@@ -172,7 +172,7 @@
 							<div class="row">
 								<div class="col-lg-4" style="padding:0px;">
 									<div class="form-group">
-										<label class="control-label">Tissue type:</label>
+										<label class="control-label">Loại mô:</label>
 										{!! Form::text('tissue_type', @$data['barcode'][0]['tissue_type'], array('class'=>'form-control')) !!}
 									</div>		
 								</div>
@@ -184,7 +184,7 @@
 								</div>
 								<div class="col-lg-2 col-lg-offset-1" style="padding:0px;">
 									<div class="form-group">
-										<label class="control-label">Reproduction:</label>
+										<label class="control-label">Sinh sản:</label>
 										{!! Form::text('reproduction', @$data['barcode'][0]['reproduction'], array('class'=>'form-control')) !!}
 									</div>
 								</div>
@@ -192,19 +192,19 @@
 							<div class="row">
 								<div class="col-lg-4" style="padding:0px;">
 									<div class="form-group">
-										<label class="control-label">Notes:</label>
+										<label class="control-label">Ghi chú:</label>
 										{!! Form::textarea('notes', @$data['barcode'][0]['notes'], array('class'=>'form-control','rows'=>'5')) !!}
 									</div>	
 								</div>
 								<div class="col-lg-4 col-lg-offset-1" style="padding:0px;">
 									<div class="form-group">
-										<label class="control-label">Extra info:</label>
+										<label class="control-label">Thông tin thêm:</label>
 										{!! Form::textarea('extra_info', @$data['barcode'][0]['extra_info'], array('class'=>'form-control','rows'=>'5')) !!}
 									</div>
 								</div>
 								<div class="col-lg-2 col-lg-offset-1" style="padding:0px;">
 									<div class="form-group">
-										<label class="control-label">Sex:</label>
+										<label class="control-label">Giới tính:</label>
 										{!! Form::select('sex',array('0'=>'Đực','1'=>'Cái'), @$data['barcode'][0]['sex'], array('class'=>'form-control')) !!}
 									</div>
 								</div>
@@ -212,13 +212,13 @@
 							<div class="row">								
 								<div class="col-lg-4" style="padding:0px;">
 									<div class="form-group">
-										<label class="control-label">Lineage:</label>
+										<label class="control-label">Nhánh tiến hóa:</label>
 										{!! Form::text('lineage', @$data['barcode'][0]['lineage'], array('class'=>'form-control')) !!}
 									</div>	
 								</div>
 								<div class="col-lg-4 col-lg-offset-1" style="padding:0px;">
 									<div class="form-group">
-										<label class="control-label">Species:</label>
+										<label class="control-label">Loài:</label>
 										{!! Form::select('species', @$data['arr_species'],@$data['barcode'][0]['species'], array('class'=>'form-control')) !!}
 									</div>	
 								</div>
