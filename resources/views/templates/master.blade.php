@@ -41,11 +41,8 @@
 						<li class=""><a href="/barcode">Barcode</a></li>
 						@endif
 						<li class=""><a href="/blast">Blast</a></li>
-<<<<<<< HEAD
 						@if (Auth::check() && Auth::user()->role!=3)
-=======
 						<li class=""><a href="/phylogenetictree">Cây di truyền</a></li>
->>>>>>> e8546dba41afb27a36d1a9f6a319ce95c97caf8a
 						<li class=""><a href="/contact">Giới thiệu</a></li>
 						<li class=""><a href="/contact">Liên hệ</a></li>
 						@endif
