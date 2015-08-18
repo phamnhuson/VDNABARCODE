@@ -38,6 +38,7 @@
 		{
 		
 			$this->barcode
+				 ->select('barcode.*')
 				 ->leftjoin('species', 'species.species_id', '=', 'barcode.species')
 				 ->leftjoin('barcode2city', 'barcode2city.barcode_id', '=', 'barcode.barcode_id')
 				 ->leftjoin('city', 'city.city_id', '=', 'barcode2city.city_id');

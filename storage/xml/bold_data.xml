@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bold_records  xsi:noNamespaceSchemaLocation="http://www.boldsystems.org/schemas/BOLDPublic_record.xsd"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <record>
+    <record_id>6029057</record_id>
+    <processid>GENG1278-15</processid>
+    <bin_uri></bin_uri>
+    <specimen_identifiers>
+      <sampleid>DNAFR001282</sampleid>
+      <catalognum>BIOMTFR-HER-003590</catalognum>
+      <fieldnum>IMG140823-0012</fieldnum>
+      <institution_storing>Gujarat Biodiversity Gene Bank</institution_storing>
+    </specimen_identifiers>
+    <taxonomy>
+      <identification_provided_by>Manish Jani</identification_provided_by>
+      <phylum>
+        <taxon>
+          <taxID>12</taxID>
+          <name>Magnoliophyta</name>
+        </taxon>
+      </phylum>
+      <class>
+        <taxon>
+          <taxID>41</taxID>
+          <name>Magnoliopsida</name>
+        </taxon>
+      </class>
+      <order>
+        <taxon>
+          <taxID>121377</taxID>
+          <name>Myrtales</name>
+        </taxon>
+      </order>
+      <family>
+        <taxon>
+          <taxID>121648</taxID>
+          <name>Lythraceae</name>
+        </taxon>
+      </family>
+      <genus>
+        <taxon>
+          <taxID>223556</taxID>
+          <name>Lagerstroemia</name>
+        </taxon>
+      </genus>
+      <species>
+        <taxon>
+          <taxID>484105</taxID>
+          <name>Lagerstroemia speciosa</name>
+        </taxon>
+      </species>
+    </taxonomy>
+    <specimen_details>
+      <voucher_type>Vouchered:Registered Collection</voucher_type>
+      <voucher_desc></voucher_desc>
+      <tissue_type>Leaf</tissue_type>
+    </specimen_details>
+    <collection_event>
+      <collectors></collectors>
+      <collectiondate>2014-08-23</collectiondate>
+      <coordinates>
+        <lat>21.528</lat>
+        <lon>70.494</lon>
+        <coord_source>Garmin etrax 30</coord_source>
+        <coord_accuracy></coord_accuracy>
+      </coordinates>
+      <region>Junagadh</region>
+      <exactsite>Girnar</exactsite>
+      <country>India</country>
+      <province>Gujarat</province>
+    </collection_event>
+    <sequences>
+      <sequence>
+        <sequenceID>7582627</sequenceID>
+        <markercode>rbcL</markercode>
+        <nucleotides>ACAGAGACTAAAGCTTTTGTTGGATTCAAAGCCGGTGTTAAAGATTATAAACTGACTTATTATACTCCTAACTATCAAACCAAAGATACTGATATCTTGGCAGCATTCCGAGTAACTCCTCAACCTGGTGTTCCGCCTGAGGAAGCAGGGGCTGCAGTAGCTGCTGAATCTTCTACTGGTACCTGGACAACTGTGTGGACCGATGGGCTTACCAGCCTTGATCGTTATAAAGGAAGATGCTACAACATCGAGCCTGTTGCTGGAGAAGAAAATCAATATATATGTTATGTCGCTTACCCTTTAGACCTTTTTGAAGAAGGTTCTGTTACTAATATGTTTACTTCCATTGTGGGTAATGTATTTGGGTTCAAAGCCCTGCGCGCTCTACGTCTGGAGGATCTGAGAATCCCTACTGCCTATATTAAAACTTTCCAAGGCCCGCCTCATGGTATCCAAGTTGAGAGAGATAAATTGAACAAGTATGGCCGTCCCCTATTGGGATGTACTATTAAACCTAAATTGGGATTATC</nucleotides>
+      </sequence>
+    </sequences>
+    <notes></notes>
+  </record>
+</bold_records>

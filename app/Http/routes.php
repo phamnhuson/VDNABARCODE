@@ -96,6 +96,10 @@ Route::get('/delete_loca', ['uses' => 'IbarcodeController@delete_loca', 'middlew
 
 Route::put('/ibarcode', ['uses' => 'IbarcodeController@update', 'middleware' => ['auth', 'role:3']]);
 
+Route::post('/ibarcode/import', ['uses' => 'IbarcodeController@importFromFile', 'middleware' => ['auth', 'role:3']]);
+
+Route::get('/download_data', ['uses' => 'IbarcodeController@exportFile']);
+
 Route::get('/barcode', ['uses' => 'BarcodeController@index', 'middleware' => ['auth', 'role:3']]);
 
 Route::get('/viewbarcode', 'ViewbarcodeController@index');

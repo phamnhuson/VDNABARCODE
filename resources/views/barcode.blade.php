@@ -43,9 +43,22 @@
 					</ul>
 				</div>
 			@endif
-			<div class="form-group">				
-				<a href="{{ url('ibarcode') }}" class="btn btn-success">Thêm mới</a>
-			</div>
+		</div>
+		<div class="col-lg-12">			
+			{!! Form::open(array('method' => 'POST', 'action'=>array('IbarcodeController@importFromFile'), 'enctype'=>'multipart/form-data', 'files' => true, 'class'	=> 'form-inline')) !!}
+				<div class="form-group">
+					<a href="{{ url('ibarcode') }}" class="btn btn-success">Thêm mới</a>
+					<label class="control-label">&nbsp;&nbsp;hoặc&nbsp;&nbsp;</label>
+				</div>
+				<div class="form-group">				
+					{!! Form::file('tsv'); !!}
+				</div>
+				<div class="form-group">
+					<button type="submit" name="submit" class="btn btn-primary"><span class="glyphicon glyphicon-upload"></span> Nhập dữ liệu</button>
+				</div>	
+			{!! Form::close(); !!}
+		</div>
+		<div class="col-lg-12">	
 			<table class="table table-striped table-bordered">
 				<tr>
 					<th style="text-align:center !important;width:5%">STT</th>
