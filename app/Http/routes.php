@@ -105,7 +105,20 @@ Route::get('/barcode', ['uses' => 'BarcodeController@index', 'middleware' => ['a
 Route::get('/viewbarcode', 'ViewbarcodeController@index');
 
 Route::get('/phylogenetictree', 'PhylogeneticController@index');
+
 Route::get('/phylogenetictree/update', 'PhylogeneticController@update');
+
+Route::get('/message', ['uses' => 'MessageController@index', 'middleware' => ['auth', 'role:3']]);
+
+Route::put('/message', ['uses' => 'MessageController@update', 'middleware' => ['auth', 'role:3']]);
+
+Route::get('/inew', ['uses' => 'InewController@index', 'middleware' => ['auth', 'role:3']]);
+
+Route::post('/inew', ['uses' => 'InewController@create', 'middleware' => ['auth', 'role:3']]);
+
+Route::put('/inew', ['uses' => 'InewController@update', 'middleware' => ['auth', 'role:3']]);
+
+Route::get('/news', ['uses' => 'NewsController@index']);
 
 /*Route::controller([
 	'city'	=> 'System\CityController',

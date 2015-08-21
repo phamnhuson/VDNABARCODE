@@ -41,6 +41,13 @@ class IbarcodeController extends Controller {
 			
 			$file_trace = DB::table('file_trace')->Where('file_trace.barcode_id',$barcodeId)->get();
 			
+			$barcode2city = DB::table('barcode2city')
+												->join('city','city.city_id','=','barcode2city.city_id')
+												->where('barcode2city.barcode_id',$barcodeId)
+												->get();
+												
+			$viewData['barcode2city'] = $barcode2city;	
+			
 			$location = DB::table('location')->Where('location.barcode_id',$barcodeId)->get();
 			
 			$viewData['location'] = $location;						

@@ -9,6 +9,8 @@
 		<script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('public/js/jquery.dataTables.min.js') }}"></script>
 		<script src="{{ asset('public/js/app.js') }}"></script>
+		<script src="{{ asset('public/ckeditor/ckeditor.js') }}"></script>
+		<script src="{{ asset('public/ckfinder/ckfinder.js') }}"></script>
     </head>
     <body style="background-color:#f0f6fa">
 		<div id="header">
