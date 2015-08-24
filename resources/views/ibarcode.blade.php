@@ -96,6 +96,9 @@
 						<li>
 							<a href="#tab4" data-toggle='tab' id='page4'>Vị trí</a>
 						</li>
+						<li>
+							<a href="#tab5" data-toggle='tab' id='page5'>Địa Phương</a>
+						</li>
 					</ul>
 				</div>
 			</div>				
@@ -370,12 +373,6 @@
 						<div class="col-lg-5 col-lg-offset-1" style="padding:0px;">
 							<div id="add_td">
 								<div class="row">
-									<div class="form-group">
-										<label class="control-label">Tỉnh thành:</label>
-										{!! Form::select('cities[]', @$data['arr_city'],@$data['barcode'][0]['city'], array('class'=>'form-control')) !!}
-									</div>
-								</div>
-								<div class="row">
 									<div class="col-lg-5" style="padding:0px;">
 											<div class="form-group">
 												<label class="control-label">Kinh độ:</label>
@@ -396,6 +393,50 @@
 									<button type="button" class="btn btn-success atd" id="atd_1" data_id="1"><span class="glyphicon glyphicon-plus"></span></button>
 								</div>
 							</div>							
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab5">
+					<div class="row">
+						<div class="col-lg-5" style="padding:0px;">
+							<div class="row" id="addtp" >
+								<div class="form-group">
+									<label class="control-label">Tỉnh thành:</label>	
+									<select class="form-control" name="cities[]">
+										<option value=''>Chọn tỉnh thành</option>
+										<?php foreach($data['list_city'] as $ct){ ?>
+											<option value="<?php echo $ct['city_id']; ?>"><?php echo $ct['city_name']; ?></option>
+										<?php } ?>
+									</select>
+								</div>
+							</div>
+							<br/>
+							<div class="row">
+								<div class="form-group">
+									<button type="button" class="btn btn-success" id="addcity"><span class="glyphicon glyphicon-plus"></span></button>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-lg-offset-1" style="padding:0px;">
+							<table class="table table-striped table-bordered">
+								<tr>
+									<th style="text-align:center;width:70px;">STT</th>
+									<th >Tên địa phương</th>
+									<th style="text-align:center;width:100px;">Chức năng</th>
+								</tr>
+								@if (isset($data['barcode']))
+								<?php $i=1; ?>
+								<?php foreach($data['barcode2city'] as $b2c){ ?>
+									<tr id="b2c_<?php echo $b2c['id']; ?>">
+										<td style="text-align:center;"><?php echo $i; ?></td>
+										<td><?php echo $b2c['city_name']; ?></td>
+										<td style="text-align:center;">
+											<button type="button" class="btn btn-danger delete_city" data_id="<?php echo $b2c['id'] ?>"><span class="glyphicon glyphicon-trash"></span></button>											
+										</td>
+									</tr>
+								<?php } ?>
+								@endif
+							</table>
 						</div>
 					</div>
 				</div>
@@ -514,7 +555,20 @@ $(document).ready(function(){
 		$option += "</div>";
 		$('#addf').append($option);
 	});
-	
+
+	$(document).on('click','#addcity',function(){
+		$option = "";
+		$option += 		"<div class='form-grounp'>";
+		$option += 			"<label class='control-label'>Tỉnh thành:</label>";
+		$option +=			"<select class='form-control' name='cities[]'>";
+		$option += 				"<option value=''>Chọn tỉnh thành</option>";
+		$option +=				"<?php foreach($data['list_city'] as $ct){ ?>";
+		$option +=					"<option value='<?php echo $ct['city_id'] ?>'><?php echo $ct['city_name'] ?></option>";
+		$option +=				"<?php } ?>"		
+		$option +=			"</select>";
+		$option += 		"</div>";
+		$('#addtp').append($option);
+	});
 	
 	$(document).on('click','.atd',function(){
 		$option = "";
@@ -580,6 +634,19 @@ $(document).ready(function(){
 			dataType: 'json',
 			success:function(data){
 				$('#loca_'+id_loca).remove();
+			}
+		});
+	});	
+	
+	$(document).on('click','.delete_city',function(){
+		id = $(this).attr('data_id');
+		$.ajax({
+			type: "GET",
+			url : "/delete_city",
+			data: {'id':id},
+			dataType: 'json',
+			success:function(data){
+				$('#b2c_'+id).remove();
 			}
 		});
 	});	

@@ -66,45 +66,7 @@
 		</table>
 	</div>
 </div>
-<div class="box">
-	<!--<div class="row">	
-		<form>
-			<div class="row">
-				<div class="col-lg-2" style="padding:0px;">
-					<div class="form-group">
-						<select class="form-control" name="criteria">
-							<option value="">Chọn tiêu chí</option>
-							<option value="1">Barcode</option>
-						</select>
-					</div>	
-				</div>
-				<div class="col-lg-3">
-					<div class="form-group">
-						{!! Form::select('species', @$data['arr_city'],@$data['barcode'][0]['city'], array('class'=>'form-control')) !!}
-					</div>	
-				</div>
-				<div class="col-lg-2" style="padding-left:0px;">
-					<div class="form-group">
-						<select class="form-control" name="time">
-							<option value="">Chọn thời gian</option>
-							<option value="1">Tháng</option>
-							<option value="2">Quý</option>
-							<option value="3">Năm</option>
-						</select>
-					</div>	
-				</div>
-				<div class="col-lg-2" style="padding-left:0px;">
-					<div class="form-group">
-						<input type="submit" class="btn btn-primary" value="Tạo báo cáo" />
-					</div>	
-				</div>
-			</div>
-			<div class="row">
-				<hr/>
-				<p style="text-align:center;"><a href="#" class="btn btn-link btn-lg"><span class="glyphicon glyphicon-download-alt"></span> Tải xuống báo cáo</a></p>
-			</div>
-		</form>
-	</div>-->
+<div class="box">	
 	<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-heading"><h4 style="color:#f0ad4e;">Thống kê phân loại</h4></div>
@@ -112,21 +74,21 @@
 				<table class="col-lg-12">						
 					<tr>
 						<td style="width:150px;">Ngành:</td>
-						<td style="width:363px;text-align:center;"></td>
+						<td style="width:363px;text-align:center;"><?php echo $data['count_phylum'][0]['count_phylum']; ?></td>
 						<td style="width:150px;">Lớp:</td>
-						<td style="text-align:center;"></td>								
+						<td style="text-align:center;"><?php echo $data['count_class'][0]['count_class']; ?></td>								
 					</tr>
 					<tr>
 						<td style="width:150px;">Bộ:</td>
-						<td style="width:363px;text-align:center;"></td>
+						<td style="width:363px;text-align:center;"><?php echo $data['count_order'][0]['count_order']; ?></td>
 						<td style="width:150px;">Họ:</td>
-						<td style="text-align:center;"></td>								
+						<td style="text-align:center;"><?php echo $data['count_family'][0]['count_family']; ?></td>								
 					</tr>
 					<tr>
 						<td style="width:150px;">Chi:</td>
-						<td style="width:363px;text-align:center;"></td>
+						<td style="width:363px;text-align:center;"><?php echo $data['count_genus'][0]['count_genus']; ?></td>
 						<td style="width:150px;">Loài:</td>
-						<td style="text-align:center;"></td>								
+						<td style="text-align:center;"><?php echo $data['count_species'][0]['count_species']; ?></td>								
 					</tr>						
 				</table>
 			</div>
@@ -139,15 +101,21 @@
 				<table class="col-lg-12">						
 					<tr>
 						<td style="width:150px;">Tổng số:</td>
-						<td style="width:363px;text-align:center;"></td>								
+						<td style="width:363px;text-align:center;"><?php echo $data['count_account']; ?></td>
+						<td></td>
+						<td></td>
 					</tr>
 					<tr>
 						<td style="width:150px;">Người quản trị:</td>
-						<td style="width:363px;text-align:center;"></td>							
+						<td style="width:363px;text-align:center;"><?php echo $data['count_admin']; ?></td>		
+						<td></td>
+						<td></td>
 					</tr>
 					<tr>
 						<td style="width:150px;">Người sử dụng:</td>
-						<td style="width:363px;text-align:center;"></td>								
+						<td style="width:363px;text-align:center;"><?php echo $data['count_user']; ?></td>
+						<td></td>
+						<td></td>
 					</tr>						
 				</table>
 			</div>
@@ -157,43 +125,41 @@
 		<div class="panel panel-default">
 			<div class="panel-heading"><h4 style="color:#f0ad4e;">Thống kê barcode</h4></div>
 			<div class="panel-body">
+				<table class="col-lg-12">
+					<tr>
+						<td style="width:150px;">Tổng số:</td>
+						<td style="width:363px;text-align:center;"><?php echo $data['total_barcode'][0]['count_barcode']; ?></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
 				<table class="col-lg-6">
-					<?php foreach($data['list_city'] as $ct){ ?>
+					<?php foreach($data['tk_city'] as $key=>$ct){ ?>
+					<?php if($key%2==0){ ?>
 					<tr>
 						<td style="width:150px;"><?php echo $ct['city_name']; ?>:</td>
-						<td style="width:363px;text-align:center;"></td>								
+						<td style="width:363px;text-align:center;"><?php echo $ct['count']; ?></td>								
 					</tr>
+					<?php } ?>
 					<?php } ?>
 				</table>
 				<table class="col-lg-6">
-					<?php foreach($data['list_city'] as $ct){ ?>
+					<?php foreach($data['tk_city'] as $key=>$ct){ ?>
+					<?php if($key%2==1){ ?>
 					<tr>
 						<td style="width:150px;"><?php echo $ct['city_name']; ?>:</td>
-						<td style="width:363px;text-align:center;"></td>							
+						<td style="width:363px;text-align:center;"><?php echo $ct['count']; ?></td>					
 					</tr>
 					<?php } ?>
-					<tr>
-						<td style="width:150px;"><b>Tổng số:</b></td>
-						<td style="width:363px;text-align:center;"></td>							
-					</tr>
-				</table>
-							
+					<?php } ?>
+				</table>							
 			</div>
 		</div>
 	</div>
+	<!--<div class="row">
+		<hr/>
+		<p style="text-align:center;"><a href="#" class="btn btn-link btn-lg"><span class="glyphicon glyphicon-download-alt"></span> Tải xuống báo cáo</a></p>
+	</div>-->
 </div>
 
-<script>
-	 $(document).ready(function () {
-                
-		/*$('#datepicker').datepicker({
-			format: "yyyy",
-		});  
-		
-		$(document).on('click','#datepicker',function(){
-			$(this).show();
-		});*/
-	
-	});
-</script>
 @endsection

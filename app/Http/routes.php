@@ -120,6 +120,8 @@ Route::put('/inew', ['uses' => 'InewController@update', 'middleware' => ['auth',
 
 Route::get('/news', ['uses' => 'NewsController@index']);
 
+Route::post('/news', ['uses' => 'NewsController@comment']);
+
 /*Route::controller([
 	'city'	=> 'System\CityController',
 ]);*/
