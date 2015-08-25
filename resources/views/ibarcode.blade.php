@@ -337,6 +337,7 @@
 								<?php } ?>
 								<?php } ?>
 							</table>
+							<?php echo $data['file_trace']->render(); ?>
 						</div>
 					</div>
 				</div>
@@ -368,7 +369,7 @@
 								<?php } ?>
 								<?php } ?>
 							</table>
-							
+							<?php echo $data['location']->render(); ?>
 						</div>
 						<div class="col-lg-5 col-lg-offset-1" style="padding:0px;">
 							<div id="add_td">
@@ -437,6 +438,7 @@
 								<?php } ?>
 								@endif
 							</table>
+							<?php echo $data['barcode2city']->render(); ?>
 						</div>
 					</div>
 				</div>
