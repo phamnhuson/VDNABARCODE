@@ -327,7 +327,7 @@
 								<?php $i=1; ?>
 								<?php foreach($data['file_trace'] as $dsf){ ?>
 									<tr id="file_<?php echo $dsf['file_id']; ?>">
-										<td style="text-align:center;"><?php echo $i; ?></td>
+										<td style="text-align:center;"><?php echo $i++; ?></td>
 										<td>file_<?php echo $dsf['file_id']; ?></td>
 										<td style="text-align:center;">
 											<button type="button" class="btn btn-danger delete_file" data_id="<?php echo $dsf['file_id'] ?>"><span class="glyphicon glyphicon-trash"></span></button>
@@ -358,7 +358,7 @@
 								<?php $i=1; ?>
 								<?php foreach($data['location'] as $dsf){ ?>
 									<tr id="loca_<?php echo $dsf['location_id']; ?>">
-										<td style="text-align:center;"><?php echo $i; ?></td>
+										<td style="text-align:center;"><?php echo $i++; ?></td>
 										<td><?php echo $dsf['longitude']; ?></td>
 										<td><?php echo $dsf['latitude']; ?></td>
 										<td style="text-align:center;">
@@ -428,7 +428,7 @@
 								<?php $i=1; ?>
 								<?php foreach($data['barcode2city'] as $b2c){ ?>
 									<tr id="b2c_<?php echo $b2c['id']; ?>">
-										<td style="text-align:center;"><?php echo $i; ?></td>
+										<td style="text-align:center;"><?php echo $i++; ?></td>
 										<td><?php echo $b2c['city_name']; ?></td>
 										<td style="text-align:center;">
 											<button type="button" class="btn btn-danger delete_city" data_id="<?php echo $b2c['id'] ?>"><span class="glyphicon glyphicon-trash"></span></button>											

@@ -46,7 +46,7 @@
 						</div>
 						<div class="row">
 							<div class="col-lg-3" style="padding:0px;">
-								<img style="padding:0px 10px 0px 0px;" class='col-lg-12' src="{{asset('public/uploads/img/new_'.$ln['new_id'].'.jpg')}}" alt="Chọn ảnh" />
+								<img style="padding:0px 10px 0px 0px; height:150px;" class='col-lg-12' src="{{asset('public/uploads/img/new_'.$ln['new_id'].'.jpg')}}" alt="Chọn ảnh" />
 							</div>
 							<div class="col-lg-9" style="padding:0px;">
 								<?php echo $ln['summary']; ?>

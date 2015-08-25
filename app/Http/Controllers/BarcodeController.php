@@ -24,9 +24,9 @@ class BarcodeController extends Controller {
 
 		$list_barcode = DB::table('barcode')
 								->join('species','barcode.species','=','species.species_id')
-								->select('barcode_id','barcode.quality','barcode.taxon_id','barcode.barcode','species.species_name','species.scientific_name','species.vietnamese_name')
+								->select('barcode_id','barcode.quality','barcode.taxon_id','barcode.common_name','species.species_name','barcode.scientific_name','barcode.vietnamese_name')
 								->paginate(20);
-		
+	
 		$viewData['list_barcode']=$list_barcode;		
 		return view('barcode')->with('data',$viewData);
 

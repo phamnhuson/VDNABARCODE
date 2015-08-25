@@ -61,10 +61,10 @@
 		<div class="col-lg-12">	
 			<table class="table table-striped table-bordered">
 				<tr>
-					<th style="text-align:center !important;width:5%">STT</th>
-					<th style="width:10%">Barcode</th>					
-					<th style="width:15%">Taxon_id</th>
+					<th style="text-align:center !important;width:5%">STT</th>								
+					<th style="width:10%">Taxon_id</th>
 					<th style="width:15%">Tên loài</th>
+					<th style="width:15%">Tên chung</th>		
 					<th style="width:15%">Tên khoa học</th>
 					<th style="width:15%">Tên tiếng việt</th>
 					<th style="width:10%">Chất lượng</th>
@@ -73,10 +73,10 @@
 				<?php $i=1; ?>
 				<?php foreach($data['list_barcode'] as $bc){ ?>
 					<tr>
-						<td style="text-align:center;"><?php echo $i; ?></td>
-						<td><?php echo $bc['barcode']; ?></td>		
+						<td style="text-align:center;"><?php echo $i; ?></td>								
 						<td><?php echo $bc['taxon_id']; ?></td>
 						<td><?php echo $bc['species_name']; ?></td>
+						<td><?php echo $bc['common_name']; ?></td>
 						<td><?php echo $bc['scientific_name']; ?></td>
 						<td><?php echo $bc['vietnamese_name']; ?></td>
 						<td><?php echo $bc['quality']; ?></td>
