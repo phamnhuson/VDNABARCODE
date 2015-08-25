@@ -34,8 +34,11 @@ class ReportController extends Controller
 		
 		$list_city = DB::table('city')->get();									
 		
-		$count_city = DB::table('barcode2city')->select(DB::raw(' COUNT(*) as count, city_id'))->get();
-		
+		$count_city = DB::table('barcode2city')->select(DB::raw(' COUNT(*) as count, city_id'))->groupBy('city_id')->get();
+		echo "<pre>";
+		print_r($count_city);
+		echo "</pre>";
+		exit();
 		$c_city=array();
 		
 		foreach($count_city as $cc)
