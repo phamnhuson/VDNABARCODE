@@ -431,7 +431,7 @@ class IbarcodeController extends Controller {
 
 			if($error==0){
 				
-				return \Redirect('barcode')->with('responseData', array('statusCode' => 1, 'message' => 'Cập nhật thành công'));
+				return \Redirect::back()->with('responseData', array('statusCode' => 1, 'message' => 'Cập nhật thành công'));
 				
 			}else{
 				
@@ -511,6 +511,17 @@ class IbarcodeController extends Controller {
 		$id=$request->get('id');
 		
 		if(DB::table('location')->where('location_id', $id)->delete())
+		{
+			echo json_encode("correct");
+		}
+		
+	}
+	
+	public function delete_city(Request $request)
+	{
+		$id=$request->get('id');
+		
+		if(DB::table('barcode2city')->where('id', $id)->delete())
 		{
 			echo json_encode("correct");
 		}

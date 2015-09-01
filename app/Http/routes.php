@@ -94,6 +94,8 @@ Route::get('/delete_file', ['uses' => 'IbarcodeController@delete_file', 'middlew
 
 Route::get('/delete_loca', ['uses' => 'IbarcodeController@delete_loca', 'middleware' => ['auth', 'role:3']]);
 
+Route::get('/delete_city', ['uses' => 'IbarcodeController@delete_city', 'middleware' => ['auth', 'role:3']]);
+
 Route::put('/ibarcode', ['uses' => 'IbarcodeController@update', 'middleware' => ['auth', 'role:3']]);
 
 Route::post('/ibarcode/import', ['uses' => 'IbarcodeController@importFromFile', 'middleware' => ['auth', 'role:3']]);

@@ -81,7 +81,7 @@
 		@endif
 		</br>
 		<div class="row">
-			<div class="col-lg-12" style="padding:0px">
+			<div class="col-md-12" style="padding:0px">
 				<div class="nav-tabs-custom" style="margin-bottom: 0px; box-shadow:none;">
 					<ul class="nav nav-tabs">
 						<li class='active'>
@@ -106,182 +106,171 @@
 		</br>
 		{!! Form::open(array('method' => (isset($data['barcode'])) ? 'PUT' : 'POST', 'enctype'=>'multipart/form-data', 'files' => true)) !!}
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			<div class="tab-content col-lg-12" style="padding:0px;">
+			<div class="tab-content col-md-12" style="padding:0px;">
 				<div class="tab-pane active" id="tab1">
-					<div class="row">
-						<div class="col-lg-12" style="padding:0px;">
-							<div class="row">
-								<div class="col-lg-9" style="padding:0px;">
+						<table width="100%" class="form-table">
+							<tr>
+								<td class="col-md-8" colspan="2" style="padding:0px">
 									<div class="form-group">
 										<label class="control-label">Trình tự:</label>
 										{!! Form::textarea('sequence', @$data['barcode'][0]['sequence'], array('class'=>'form-control','rows'=>'4','cols'=>'1')) !!}
 									</div>
-								</div>
-								<div class="col-lg-2 col-lg-offset-1" style="padding:0px;">
+								</td>
+								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
 									<div class="form-group">
 										<label class="control-label">Độ dài trình tự:</label>
 										{!! Form::text('seq_size', @$data['barcode'][0]['seq_size'], array('class'=>'form-control')) !!}
 									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-9" style="padding:0px;">
+								</td>
+							</tr>
+							<tr>
+								<td class="col-md-8" colspan="2" style="padding:0px;">
 									<div class="form-group">
 										<label class="control-label">Peptide:</label>
 										{!! Form::textarea('peptide', @$data['barcode'][0]['peptide'], array('class'=>'form-control','rows'=>'4','cols'=>'1')) !!}
 									</div>
-								</div>
-								<div class="col-lg-2 col-lg-offset-1" style="padding:0px;">
+								</td>
+								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
 									<div class="form-group">
 										<label class="control-label">Độ dài peptide:</label>
 										{!! Form::text('pep_size', @$data['barcode'][0]['pep_size'], array('class'=>'form-control')) !!}
-									</div>	
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-9" style="padding:0px;">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="col-md-8" colspan="2" style="padding:0px;">
 									<div class="form-group">
 										<label class="control-label">Gene:</label>
 										{!! Form::text('gene', @$data['barcode'][0]['gene'], array('class'=>'form-control')) !!}
 									</div>
-								</div>
-								<div class="col-lg-2 col-lg-offset-1" style="padding:0px;">
+								</td>
+								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
 									<div class="form-group">
 										<label class="control-label">Taxon id:</label>
 										{!! Form::text('taxon_id', @$data['barcode'][0]['taxon_id'], array('class'=>'form-control')) !!}
 									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-4" style="padding:0px;">
+								</td>
+							</tr>							
+							<tr>
+								<td class="col-md-4" style="padding:0px 5px 0px 0px;">
 									<div class="form-group">
 										<label class="control-label">Giai đoạn sinh trưởng mẫu:</label>
 										{!! Form::text('life_stage', @$data['barcode'][0]['life_stage'], array('class'=>'form-control')) !!}
 									</div>
-								</div>
-								<div class="col-lg-4 col-lg-offset-1" style="padding:0px;">
+								</td>
+								<td class="col-md-4" style="padding:0px 0px 0px 5px;">
 									<div class="form-group">
 										<label class="control-label">Bào quan:</label>
 										{!! Form::text('organelle', @$data['barcode'][0]['organelle'], array('class'=>'form-control')) !!}
 									</div>
-								</div>
-								<div class="col-lg-2 col-lg-offset-1" style="padding:0px;">
+								</td>
+								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
 									<div class="form-group">
 										<label class="control-label">Chất lượng:</label>
 										{!! Form::text('quality', @$data['barcode'][0]['quality'], array('class'=>'form-control')) !!}										
 									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-4" style="padding:0px;">
+								</td>
+							</tr>
+							<tr>
+								<td class="col-md-4" style="padding:0px 5px 0px 0px;">
 									<div class="form-group">
 										<label class="control-label">Loại mô:</label>
 										{!! Form::text('tissue_type', @$data['barcode'][0]['tissue_type'], array('class'=>'form-control')) !!}
 									</div>		
-								</div>
-								<div class="col-lg-4 col-lg-offset-1" style="padding:0px;">
+								</td>
+								<td class="col-md-4" style="padding:0px 0px 0px 5px;">
 									<div class="form-group">
 										<label class="control-label">Barcode:</label>
 										{!! Form::text('barcode', @$data['barcode'][0]['barcode'], array('class'=>'form-control')) !!}
 									</div>
-								</div>
-								<div class="col-lg-2 col-lg-offset-1" style="padding:0px;">
+								</td>
+								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
 									<div class="form-group">
 										<label class="control-label">Sinh sản:</label>
 										{!! Form::text('reproduction', @$data['barcode'][0]['reproduction'], array('class'=>'form-control')) !!}
 									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-4" style="padding:0px;">
+								</td>
+							</tr>
+							<tr>
+								<td class="col-md-4" style="padding:0px 5px 0px 0px;">
 									<div class="form-group">
 										<label class="control-label">Ghi chú:</label>
 										{!! Form::textarea('notes', @$data['barcode'][0]['notes'], array('class'=>'form-control','rows'=>'5')) !!}
 									</div>	
-								</div>
-								<div class="col-lg-4 col-lg-offset-1" style="padding:0px;">
+								</td>
+								<td class="col-md-4" style="padding:0px 0px 0px 5px;">
 									<div class="form-group">
 										<label class="control-label">Thông tin thêm:</label>
 										{!! Form::textarea('extra_info', @$data['barcode'][0]['extra_info'], array('class'=>'form-control','rows'=>'5')) !!}
 									</div>
-								</div>
-								<div class="col-lg-2 col-lg-offset-1" style="padding:0px;">
+								</td>
+								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
 									<div class="form-group">
 										<label class="control-label">Giới tính:</label>
 										{!! Form::select('sex',array('0'=>'Đực','1'=>'Cái'), @$data['barcode'][0]['sex'], array('class'=>'form-control')) !!}
 									</div>
-								</div>
-							</div>							
-							<div class="row">								
-								<div class="col-lg-4" style="padding:0px;">
+								</td>
+							</tr>							
+							<tr>
+								<td class="col-md-4" style="padding:0px 5px 0px 0px;">
 									<div class="form-group">
 										<label class="control-label">Nhánh tiến hóa:</label>
 										{!! Form::text('lineage', @$data['barcode'][0]['lineage'], array('class'=>'form-control')) !!}
 									</div>	
-								</div>
-								<div class="col-lg-4 col-lg-offset-1" style="padding:0px;">
+								</td>
+								<td class="col-md-4" style="padding:0px 0px 0px 5px;">
 									<div class="form-group">
 										<label class="control-label">Loài:</label>
 										{!! Form::select('species', @$data['arr_species'],@$data['barcode'][0]['species'], array('class'=>'form-control')) !!}
 									</div>	
-								</div>
-								<div class="col-lg-2 col-lg-offset-1" style="padding:0px;">
+								</td>
+								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
 									<div class="form-group">
 										<label class="control-label">Tên khoa học:</label>
 										{!! Form::text('scientific_name', @$data['barcode'][0]['scientific_name'], array('class'=>'form-control')) !!}
 									</div>
-								</div>								
-							</div>
-							<div class="row">
-								<div class="col-lg-4" style="padding:0px;">
+								</td>
+							</tr>
+							<tr>
+								<td class="col-md-4" style="padding:0px 5px 0px 0px;">
 									<div class="form-group">
 										<label class="control-label">Tên thường gọi:</label>
 										{!! Form::text('common_name', @$data['barcode'][0]['common_name'], array('class'=>'form-control')) !!}
 									</div>	
-								</div>
-								<div class="col-lg-4 col-lg-offset-1" style="padding:0px;">
+								</td>
+								<td class="col-md-4" style="padding:0px 0px 0px 5px;">
 									<div class="form-group">										
 										<label class="control-label">Tên tiếng việt:</label>
 										{!! Form::text('vietnamese_name', @$data['barcode'][0]['vietnamese_name'], array('class'=>'form-control')) !!}
 									</div>	
-								</div>								
-							</div>
+								</td>
+							</tr>
 							<br/>
-							<div class="row">
-								<div class="form-group">														
-									<!--@if (isset($data['barcode']))
-										<a href="{{ url('ibarcode') }}" class="btn btn-success">Thêm mới</a>
-									@endif
-									@if (isset($data['barcode']))
+							<tr>
+								<td style="padding:0px 5px 0px 0px;">													
 									<input type="hidden" name="barcode_id" value="{{ @$data['barcode'][0]['barcode_id'] }}" />
-									<input type="hidden" name="location_id" value="{{ @$data['barcode'][0]['location_id'] }}" />
-									@endif
-									<a href="{{ url('barcode') }}" class="btn btn-warning">Xem danh sách</a>-->
-									<input type="hidden" name="barcode_id" value="{{ @$data['barcode'][0]['barcode_id'] }}" />
-								</div>
-							</div>
-						</div>
-					</div>					
+								</td>
+							</tr>
+						</table>			
 				</div>
 				<div class="tab-pane" id="tab2">
 					<div class="row">
 						<div class="panel panel-default">
 							<div class="panel-heading"><h4 style="color:#f0ad4e;">Chọn ảnh mẫu vật</h4></div>
-								<div class="panel-body" id="app">
-									<div class="col-lg-2" id="cot_1">
-										<div class="form-group" >
-											<div class="upanh" id="upanh_1" data_id="1">
-												<a> 
-													<img class='col-lg-12' style="padding:6px;margin-top:10px;margin-bottom:10px;border:2px dashed #0087F7;height:130px;width:140" id="img_1" src="{{asset('public/img/add.png')}}" alt="Chọn mẫu vật" />										
-												</a>									
-											</div>
-											<div id="btx_1">
-											</div>
-											<!--<button type="button" class="btn btn-primary xoa" data_id="1" style="width:140px;"><span class='glyphicon glyphicon-trash'></span></button>-->
-											{!! Form::file('images[]', array('class'=>'form-control imgInp','style'=>'display:none;','id'=>'imgInp_1','data_id'=>'1')) !!}
+							<div class="panel-body" id="app">
+								<div class="col-md-2" id="cot_1">
+									<div class="form-group" >
+										<div class="upanh" id="upanh_1" data_id="1">
+											<a> 
+												<img class='col-md-12' style="padding:6px;margin-top:10px;margin-bottom:10px;border:2px dashed #0087F7;height:130px;width:140" id="img_1" src="{{asset('public/img/add.png')}}" alt="Chọn mẫu vật" />										
+											</a>									
 										</div>
+										<div id="btx_1">
+										</div>				
+										{!! Form::file('images[]', array('class'=>'form-control imgInp','style'=>'display:none;','id'=>'imgInp_1','data_id'=>'1')) !!}
 									</div>
 								</div>
+							</div>
 						</div>						
 					</div>
 					<?php if(isset($data['file_img'])){ ?>					
@@ -293,7 +282,7 @@
 							<div class="panel-heading"><h4 style="color:#f0ad4e;">Dữ liệu ảnh</h4></div>
 							<div class="panel-body">
 								<?php foreach($data['file_img'] as $ds){ ?>
-									<div class="col-lg-2" id="group_img_<?php echo $ds['file_id']; ?>">
+									<div class="col-md-2" id="group_img_<?php echo $ds['file_id']; ?>">
 										<div class="form-group">
 											<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
 												<img style="height:130px;width:140" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="...">
@@ -308,15 +297,16 @@
 					<?php } ?>
 				</div>
 				<div class="tab-pane" id="tab3">
-					<div class="row">
-						<div class="col-lg-5" id="addf" style="padding:0px;">
-							<div class="form-group">
-								{!! Form::file('files[]', array('class'=>'form-control file','id'=>'file_1','data_id'=>'1')) !!}
-								</br>
-								<button type="button" class="btn btn-success afile" id="afile_1" data_id="1"><span class="glyphicon glyphicon-plus"></span></button>
-							</div>
-						</div>
-						<div class="col-lg-6 col-lg-offset-1" style="padding:0px;">
+					<table width="100%" class="form-table">
+						<tr>
+							<td class="col-md-5" id="addf" style="padding:0px 5px 0px 0px;">
+								<div class="form-group">
+									{!! Form::file('files[]', array('class'=>'form-control file','id'=>'file_1','data_id'=>'1')) !!}
+									</br>
+									<button type="button" class="btn btn-success afile" id="afile_1" data_id="1"><span class="glyphicon glyphicon-plus"></span></button>
+								</div>
+							</td>							
+							<td class="col-md-6" style="padding:0px 0px 0px 5px;">
 							<table class="table table-striped table-bordered">
 								<tr>
 									<th style="text-align:center;width:70px;">STT</th>
@@ -340,16 +330,18 @@
 							<?php if(isset($data['file_trace'])){ ?>
 								<?php echo $data['file_trace']->render(); ?>
 							<?php } ?>
-						</div>
-					</div>
+							</td>							
+					</table>
 				</div>
+				
 				<div class="tab-pane" id="tab4">
 					<div class="row">
 						<div id="map" style="width: 100%; height: 700px;"></div>
 					</div>
 					</br>
-					<div class="row">
-						<div class="col-lg-6" style="padding:0px;">
+					<table width="100%" class="form-table">
+						<tr>
+						<td class="col-md-6" style="padding:0px 5px 0px 0px;">
 							<table class="table table-striped table-bordered">
 								<tr>
 									<th style="text-align:center !important;width:70px;">STT</th>
@@ -374,39 +366,36 @@
 							<?php if(isset($data['location'])){ ?>
 								<?php echo $data['location']->render(); ?>
 							<?php } ?>
-						</div>
-						<div class="col-lg-5 col-lg-offset-1" style="padding:0px;">
-							<div id="add_td">
-								<div class="row">
-									<div class="col-lg-5" style="padding:0px;">
+						</td>
+						<td class="col-md-5" style="padding:0px 0px 0px 5px;">
+							<table width="100%" class="form-table" id="add_td">
+									<tr>
+										<td class="col-md-6" style="padding:0px 5px 0px 0px;">
 											<div class="form-group">
-												<label class="control-label">Kinh độ:</label>
-												{!! Form::text('longitude[]', @$data['barcode'][0]['longitude'], array('class'=>'form-control')) !!}
+												{!! Form::text('longitude[]', @$data['barcode'][0]['longitude'], array('class'=>'form-control','placeholder'=>'Kinh độ')) !!}
+											</div>										
+										</td>
+										<td class="col-md-6" style="padding:0px 0px 0px 5px;">
+											<div class="form-group">
+												{!! Form::text('latitude[]', @$data['barcode'][0]['latitude'], array('class'=>'form-control','placeholder'=>'Vĩ độ')) !!}
 											</div>
-										</div>
-									<div class="col-lg-5 col-lg-offset-2" style="padding:0px;">
-										<div class="form-group">
-											<label class="control-label">Vĩ độ:</label>
-											{!! Form::text('latitude[]', @$data['barcode'][0]['latitude'], array('class'=>'form-control')) !!}
-										</div>
-									</div>						
-								</div>
-							</div>
+										</td>
+									</tr>
+							</table>
 							</br>
 							<div class="row">
 								<div class="form-group">
 									<button type="button" class="btn btn-success atd" id="atd_1" data_id="1"><span class="glyphicon glyphicon-plus"></span></button>
 								</div>
 							</div>							
-						</div>
-					</div>
+						</td>
+					</table>
 				</div>
 				<div class="tab-pane" id="tab5">
-					<div class="row">
-						<div class="col-lg-5" style="padding:0px;">
-							<div class="row" id="addtp" >
+					<table width="100%" class="form-table">					
+						<td class="col-md-5" style="padding:0px 5px 0px 0px;">
+							<div class="row" id="addtp">
 								<div class="form-group">
-									<label class="control-label">Tỉnh thành:</label>	
 									<select class="form-control" name="cities[]">
 										<option value=''>Chọn tỉnh thành</option>
 										<?php foreach($data['list_city'] as $ct){ ?>
@@ -421,8 +410,8 @@
 									<button type="button" class="btn btn-success" id="addcity"><span class="glyphicon glyphicon-plus"></span></button>
 								</div>
 							</div>
-						</div>
-						<div class="col-lg-6 col-lg-offset-1" style="padding:0px;">
+						</td>
+						<td class="col-md-6" style="padding:0px 0px 0px 5px;">
 							<table class="table table-striped table-bordered">
 								<tr>
 									<th style="text-align:center;width:70px;">STT</th>
@@ -445,8 +434,8 @@
 							@if (isset($data['barcode']))
 								<?php echo $data['barcode2city']->render(); ?>
 							@endif
-						</div>
-					</div>
+						</td>
+					</table>
 				</div>
 			</div>
 			<div class="form-group">
@@ -484,11 +473,11 @@ $(document).ready(function(){
         readURL(this, 'img_'+$data_id);
 		$id=parseInt($data_id)+1;
 		$option= "";
-		$option += "<div class='col-lg-2' id='cot_"+$id+"'>";
+		$option += "<div class='col-md-2' id='cot_"+$id+"'>";
 		$option += 		"<div class='form-group'>";
 		$option += 			"<div class='upanh' id='upanh_" + $id + "' data_id='" + $id + "'>";
 		$option +=				"<a>";
-		$option +=					"<img class='col-lg-12' style='padding:6px;margin-top:10px;margin-bottom:10px;border:2px dashed #0087F7;height:130px;width:140' src='{{asset('public/img/add.png')}}' alt='Chọn mẫu vật' id='img_"+$id+"' />";
+		$option +=					"<img class='col-md-12' style='padding:6px;margin-top:10px;margin-bottom:10px;border:2px dashed #0087F7;height:130px;width:140' src='{{asset('public/img/add.png')}}' alt='Chọn mẫu vật' id='img_"+$id+"' />";
 		$option +=				"</a>";
 		$option += 			"</div>";
 		$option +=			"<div id='btx_"+$id+"'>";
@@ -567,7 +556,6 @@ $(document).ready(function(){
 	$(document).on('click','#addcity',function(){
 		$option = "";
 		$option += 		"<div class='form-grounp'>";
-		$option += 			"<label class='control-label'>Tỉnh thành:</label>";
 		$option +=			"<select class='form-control' name='cities[]'>";
 		$option += 				"<option value=''>Chọn tỉnh thành</option>";
 		$option +=				"<?php foreach($data['list_city'] as $ct){ ?>";
@@ -580,30 +568,18 @@ $(document).ready(function(){
 	
 	$(document).on('click','.atd',function(){
 		$option = "";
-		$option += "<div class='row'>";
-		$option += 		"<div class='form-grounp'>";
-		$option += 			"<label class='control-label'>Tỉnh thành:</label>";
-		$option +=			"<select class='form-control' name='cities[]'>";
-		$option +=				"<?php foreach($data['list_city'] as $ct){ ?>";
-		$option +=					"<option value='<?php echo $ct['city_id'] ?>'><?php echo $ct['city_name'] ?></option>";
-		$option +=				"<?php } ?>"		
-		$option +=			"</select>";
-		$option += 		"</div>"
-		$option += "</div>"
-		$option += "<div class='row'>";
-		$option += 		"<div class='col-lg-5' style='padding:0px;'>";
+		$option += "<tr style='height:49px;'>";
+		$option += 		"<td class='col-md-6' style='padding:0px 5px 0px 0px;'>";
 		$option +=			"<div class='form-grounp'>";
-		$option +=				"<label class='control-label'>Kinh độ:</label>";
-		$option +=				"<input type='text' class='form-control' name='longitude[]'/>";
+		$option +=				"<input type='text' class='form-control' name='longitude[]' placeholder='Kinh độ'/>";
 		$option +=			"</div>";
-		$option +=		"</div>";
-		$option += 		"<div class='col-lg-5 col-lg-offset-2' style='padding:0px;'>";
+		$option +=		"</td>";
+		$option += 		"<td class='col-md-6' style='padding:0px 0px 0px 5px;'>";
 		$option +=			"<div class='form-grounp'>";
-		$option +=				"<label class='control-label'>vĩ độ:</label>";
-		$option +=				"<input type='text' class='form-control' name='latitude[]'/>";
+		$option +=				"<input type='text' class='form-control' name='latitude[]' placeholder='Vĩ độ'/>";
 		$option +=			"</div>";
-		$option +=		"</div>";
-		$option += "</div>";
+		$option +=		"</td>";
+		$option += "</tr>";
 		$('#add_td').append($option);
 	});
 	

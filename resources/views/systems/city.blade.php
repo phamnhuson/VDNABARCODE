@@ -7,7 +7,7 @@
 	.row{
 		margin:0px;
 		margin-bottom:5px;
-	}
+	}	
 </style>
 <div id="subheader" style='height:49px;'>
 	<div class="box">
@@ -21,8 +21,10 @@
 	</div>
 </div>
 <div class="box">
-	<div class="row">
-		<div class="col-lg-4" style="padding-left:0px;">
+	<table width="100%" class="form-table">
+		<tr>
+			<td class="col-md-4" style="padding-left:0px;">
+		<!--<div class="col-md-4" style="padding-left:0px;">-->
 			@if (Session::has('responseData'))
 				@if (Session::get('responseData')['statusCode'] == 1)
 					<div class="alert alert-success">{{ Session::get('responseData')['message'] }}</div>
@@ -44,7 +46,7 @@
 			{!! Form::open(array('method' => (isset($data['city'])) ? 'PUT' : 'POST' )) !!}
 				@if (isset($data['city']))
 					<input type="hidden" name="city_id" value="{{ @$data['city'][0]['city_id'] }}" />
-				@endif	
+				@endif
 				<div class="form-group">
 					<label class="control-label">City name:</label>
 					{!! Form::text('city_name', @$data['city'][0]['city_name'], array('class'=>'form-control')) !!}
@@ -60,8 +62,10 @@
 					@endif
 				</div>
 			{!! Form::close() !!}
-		</div>		
-		<div class="col-lg-8" style="padding-right:0px;">
+		<!--</div>-->
+			</td>
+			<td class="col-md-8" style="padding-right:0px;">
+		<!--<div class="col-md-8" style="padding-right:0px;">-->
 			<table class="table table-striped table-bordered">
 				<tr>
 					<th style="text-align:center !important;width:5%">STT</th>
@@ -84,7 +88,9 @@
 				<?php } ?>
 			</table>
 			<?php echo $data['list_city']->render(); ?>
-		</div>
-	</div>
+			</td>
+		<!--</div>-->
+		</tr>
+	</table>
 </div>
 @endsection

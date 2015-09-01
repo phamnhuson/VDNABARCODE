@@ -44,30 +44,31 @@
 				</div>
 			@endif
 			{!! Form::open(array('method' => (isset($data['new'])) ? 'PUT' : 'POST', 'enctype'=>'multipart/form-data', 'files' => true)) !!}
-				<div class="row">
-					<div class="col-lg-2" style="padding:0px;">
-						<div class="form-group" >
-							<div class="upanh" id="upanh_1" data_id="1">
-								<a> 
-									<img class='col-lg-12' style="padding:6px;border:2px dashed #0087F7;height:130px;width:140" id="img_1" src="@if (isset($data['new'])){{asset('public/uploads/img/new_'.$data['new'][0]['id'].'.jpg')}}@else{{asset('public/img/add.png')}}@endif" alt="Chọn mẫu vật" />										
-								</a>									
-							</div>
-							<div id="btx_1">
-							</div>
-							<!--<button type="button" class="btn btn-primary xoa" data_id="1" style="width:140px;"><span class='glyphicon glyphicon-trash'></span></button>-->
-							{!! Form::file('images', array('class'=>'form-control imgInp','style'=>'display:none;','id'=>'imgInp_1','data_id'=>'1')) !!}
-						</div>
-					</div>					
-					<div class="col-lg-10" style="padding:0px;">
-						<div class="row">
+				<table width="100%" class="form-table">
+					<tr>
+						<td class="col-lg-2" style="padding:0px;">
 							<div class="form-group" >
-							{!! Form::text('subject', @$data['new'][0]['subject'], array('class'=>'form-control','placeholder'=>'Tiêu đề')) !!}
-							</br>
-							{!! Form::textarea('summary', @$data['new'][0]['summary'], array('class'=>'form-control','rows'=>'3','placeholder'=>'Nội dung tóm tắt')) !!}
+								<div class="upanh" id="upanh_1" data_id="1">
+									<a> 
+										<img class='col-lg-12' style="padding:6px;border:2px dashed #0087F7;height:130px;width:140" id="img_1" src="@if (isset($data['new'])){{asset('public/uploads/img/new_'.$data['new'][0]['new_id'].'.jpg')}}@else{{asset('public/img/add.png')}}@endif" alt="Chọn mẫu vật" />										
+									</a>									
+								</div>
+								<div id="btx_1">
+								</div>								
+								{!! Form::file('images', array('class'=>'form-control imgInp','style'=>'display:none;','id'=>'imgInp_1','data_id'=>'1')) !!}
+							</div>				
+						</td>
+						<td class="col-lg-10" style="padding:0px;">
+							<div class="row">
+								<div class="form-group" >
+								{!! Form::text('subject', @$data['new'][0]['subject'], array('class'=>'form-control','placeholder'=>'Tiêu đề')) !!}
+								</br>
+								{!! Form::textarea('summary', @$data['new'][0]['summary'], array('class'=>'form-control','rows'=>'3','placeholder'=>'Nội dung tóm tắt')) !!}
+								</div>
 							</div>
- 						</div>
-					</div>
-				</div>
+						</td>
+					</tr>
+				</table>
 				</br>
 				<div class="row">
 					{!! Form::textarea('content', @$data['new'][0]['content'], array('class'=>'form-control','rows'=>'4','cols'=>'1','id'=>'content')) !!}
@@ -76,7 +77,7 @@
 				<div class="row">
 					<input type="submit" name="submit" class="btn btn-primary" value="@if (isset($data['new'])) Cập nhật bài viết @else Thêm bài viết @endif" />
 					@if (isset($data['new']))
-						<input type="hidden" class="form-control" name="id" value="{{$data['new'][0]['id']}}" />
+						<input type="hidden" class="form-control" name="id" value="{{$data['new'][0]['new_id']}}" />
 					@endif
 				</div>
 				<hr style="border-top: 1px solid #CECECE"/>
@@ -95,8 +96,8 @@
 								<td><?php echo $ln['subject'] ?></td>
 								<td><?php echo $ln['summary'] ?></td>
 								<td align="center">
-									<a href="inew?action=edit&id={{ $ln['id'] }}" class="btn btn-default btn-xs" title="Sửa"><span class="glyphicon glyphicon-edit"></span> sửa</a>&nbsp;
-									<a href="inew?action=delete&id={{ $ln['id'] }}" onClick="return confirm('Bạn có chắc muốn xóa?');" title="Xóa" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> xóa</a>
+									<a href="inew?action=edit&id={{ $ln['new_id'] }}" class="btn btn-default btn-xs" title="Sửa"><span class="glyphicon glyphicon-edit"></span> sửa</a>&nbsp;
+									<a href="inew?action=delete&id={{ $ln['new_id'] }}" onClick="return confirm('Bạn có chắc muốn xóa?');" title="Xóa" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> xóa</a>
 								</td>
 							</tr>
 						<?php } ?>

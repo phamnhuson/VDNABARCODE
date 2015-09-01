@@ -51,5 +51,6 @@ class BarcodeController extends Controller {
 			return \Redirect('barcode')->with('responseData', array('statusCode' => 2, 'message' => 'Chưa xóa được, vui lòng thử lại'));
 		
 		}
-	}
+	}	
+
 }

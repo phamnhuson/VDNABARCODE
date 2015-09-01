@@ -57,19 +57,27 @@
 				<h4><?php echo $data['count']; ?> bình Luận</h4>
 				<div class="col-lg-12" style="border:1px solid #C3BCBC;background:#eee;padding:10px;">
 					{!! Form::open(array('method' => 'POST' )) !!}
-					<div class="row">					
-						<div class="col-lg-6" style="padding:0px 5px 0px 0px">
-							{!! Form::text('fullname', null , array('class'=>'form-control','placeholder'=>'Họ và tên')) !!}
-						</div>
-						<div class="col-lg-6" style="padding:0px 0px 0px 5px">
-							{!! Form::text('email', null, array('class'=>'form-control','placeholder'=>'Email')) !!}
-						</div>
-					</div>
-					<div class="form-group">						
-						{!! Form::textarea('comment', null, array('class'=>'form-control','rows'=>'3','placeholder'=>'Viết bình luận','style'=>'margin-bottom:10px;')) !!}
-						<input type="hidden" class="form-control" value="<?php echo $data['new_id']; ?>" name="new" />
-						<input type="submit" class="btn btn-primary" value="Gửi bình luận" name="submit" style="float:right;"/>						
-					</div>
+					<table style="width:100%" class="form-table">
+						<tr style="height:49px;">
+							<td class="col-lg-6" style="padding:0px 5px 0px 0px">
+								{!! Form::text('fullname', null , array('class'=>'form-control','placeholder'=>'Họ và tên')) !!}
+							</td>
+							<td class="col-lg-6" style="padding:0px 0px 0px 5px">
+								{!! Form::text('email', null, array('class'=>'form-control','placeholder'=>'Email')) !!}
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+							{!! Form::textarea('comment', null, array('class'=>'form-control','rows'=>'3','placeholder'=>'Viết bình luận','style'=>'margin-bottom:10px;')) !!}
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="hidden" class="form-control" value="<?php echo $data['new_id']; ?>" name="new" />
+								<input type="submit" class="btn btn-primary" value="Gửi bình luận" name="submit" style="float:right;"/>
+							</td>
+						</tr>	
+					</table>
 					{!! Form::close() !!}				
 				</div>			
 			</div>

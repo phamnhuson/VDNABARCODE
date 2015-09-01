@@ -125,6 +125,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading"><h4 style="color:#f0ad4e;">Thống kê barcode</h4></div>
 			<div class="panel-body">
+				<div class="row">
 				<table class="col-lg-12">
 					<tr>
 						<td style="width:150px;">Tổng số:</td>
@@ -133,6 +134,8 @@
 						<td></td>
 					</tr>
 				</table>
+				</div>
+				<div class="row">				
 				<table class="col-lg-6">
 					<?php foreach($data['tk_city'] as $key=>$ct){ ?>
 					<?php if($key%2==0){ ?>
@@ -152,7 +155,8 @@
 					</tr>
 					<?php } ?>
 					<?php } ?>
-				</table>							
+				</table>		
+				</div>
 			</div>
 		</div>
 	</div>

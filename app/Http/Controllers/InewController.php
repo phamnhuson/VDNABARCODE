@@ -29,7 +29,7 @@ class InewController extends Controller {
 		
 		if($newId)
 		{
-			$new = DB::table('news')->where('news.id', $newId)->get();
+			$new = DB::table('news')->where('news.new_id', $newId)->get();
 			
 			$viewData['new']=$new;
 		}
@@ -128,7 +128,7 @@ class InewController extends Controller {
 			
 			$inputData['updated_by']=$user['id'];
 			
-			if(DB::table('news')->where('id', $id_new)->update($inputData))
+			if(DB::table('news')->where('new_id', $id_new)->update($inputData))
 			{
 				if($request['images']!='')
 				{

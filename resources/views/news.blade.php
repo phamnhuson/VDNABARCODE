@@ -15,17 +15,6 @@
 		text-decoration: none;
 	}
 </style>
-<!--<div id="subheader" style='height:49px;'>
-	<div class="box">
-		<table width="100%" cellspacing="0" cellpadding="0">
-			<tr>
-				<td>
-					<h1 id="title">QUẢN LÝ BÀI VIẾT</h1>
-				</td>
-			</tr>
-		</table>
-	</div>
-</div>-->
 <div class="box">
 	<div class="row">
 		<div class="col-lg-10 col-lg-offset-1" style="padding:0px;">
