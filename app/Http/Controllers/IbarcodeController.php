@@ -101,22 +101,20 @@ class IbarcodeController extends Controller {
 
 		$validator = Validator::make($request->all(), [
 			'sequence'			=>	'required',
-			//'quality'			=>	'required',
+			/*'quality'			=>	'required',
 			'barcode' 			=>	'required',
 			'taxon_id'			=>	'required',
 			'species' 			=>	'required',
 			'common_name'   	=>	'required',
 			'scientific_name'	=>	'required',
-			'vietnamese_name'	=>	'required',
+			'vietnamese_name'	=>	'required',*/
 		]);
 		
 		$error=0;
 		
 		if ($validator->fails()) {
 		
-            return \Redirect::back()
-                        ->withErrors($validator)
-                        ->withInput();
+            return \Redirect::back()->with('errors',$validator->errors()->toArray());
 						
         } else {
 
@@ -281,19 +279,18 @@ class IbarcodeController extends Controller {
 		
 		$validator = Validator::make($request->all(), [
 			'sequence'			=>	'required',
-			//'quality'			=>	'required',
+			/*'quality'			=>	'required',
 			'barcode' 			=>	'required',
 			'taxon_id'			=>	'required',
 			'species' 			=>	'required',
 			'common_name'   	=>	'required',
 			'scientific_name'	=>	'required',
-			'vietnamese_name'	=>	'required',
+			'vietnamese_name'	=>	'required',*/
 		]);
 		
 		if ($validator->fails()) {
-            return \Redirect::back()
-                        ->withErrors($validator)
-                        ->withInput();
+			
+            return \Redirect::back()->with('errors',$validator->errors()->toArray());
 						
         } else {
 
