@@ -30,7 +30,7 @@
 				file_put_contents(storage_path()."/linux/ete2-2.3.6/treeview/$jobId/inputsequence.fa", $sequence);
 				exec("ete build -a fasta/nucleotide_db -o ete2-2.3.6/treeview/$jobId  -w standard_fasttree --noimg --tools-dir /home/juhuvn/.etetoolkit/ext_apps-latest", $output, $retval);
 				if(isset($retval))
-					return \Redirect::route('treeview', array('jobid' => $jobId));
+					return \Redirect("treeview/job/$jobId");
 			}
 			
 		}
