@@ -15,8 +15,7 @@
 		{
 			chdir("/var/www/html/dnabarcode/storage/linux");
 			exec("rm -rf ete2-2.3.6/tree");
-			exec("ete build -a fasta/nucleotide_db -o ete2-2.3.6/tree  -w standard_fasttree --noimg", $output, $retval);
-			
+			exec("ete build -a fasta/nucleotide_db -o ete2-2.3.6/tree  -w standard_fasttree --noimg --tools-dir /home/juhuvn/.etetoolkit/ext_apps-latest", $output, $retval);
 			if(isset($retval))
 				return \Redirect('phylogenetictree');
 		}
