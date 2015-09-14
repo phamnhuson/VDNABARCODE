@@ -10,7 +10,7 @@
 		<hr/>
 		<div class="row">
 			<div class="col-md-12">
-				{!! Form::open() !!}
+				{!! Form::open(array('action' => array('TreeviewController@create'))) !!}
 					<label class="control-label">Sequences in Fasta format</label>
 					{!! Form::textarea('sequence', @$sequence, array('class' => 'form-control', 'rows' => '5')) !!}
 					<br/>
