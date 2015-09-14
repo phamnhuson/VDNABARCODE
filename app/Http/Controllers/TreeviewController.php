@@ -9,7 +9,7 @@
 			$viewData = [];
 			if($jobId)
 			{
-				@$phyloData = file_get_contents(storage_path().'/linux/ete2-2.3.6/treeview/'.$jobId.'/clustalo_default-none-none-fasttree_full/nucleotide_db.final_tree.nw');
+				@$phyloData = file_get_contents(storage_path().'/linux/ete2-2.3.6/treeview/'.$jobId.'/clustalo_default-none-none-fasttree_full/inputsequence.fa.final_tree.nw');
 				if($phyloData){
 					$sequence  = file_get_contents(storage_path().'/linux/ete2-2.3.6/treeview/'.$jobId.'/inputsequence.fa');
 				
