@@ -273,13 +273,19 @@ input{
 
 /*header*/
 #header{
-    background:#036;
+    
     //border-bottom:3px solid #57afe6;
     color:#fff;
     //height:65px;
     //margin-bottom:40px;
 }
-
+#logo img {
+	width:100%;
+}
+.header-title {
+	color: #0B23B6;
+    padding: 10px 0;
+}
 /*
 #header #logo{
     float:left;
@@ -618,11 +624,13 @@ input{
 }
 #footer{
     background:#036;/*repeat-x*/
-    color:#2b5d88;
-    //margin:28px 0 -16px;
+    color:#fff;
+	height:40px;
 	position:absolute;
-	bottom:0;
 	left:0;
+	bottom:-40px;
+	line-height:40px;
+	text-align:center;
 }
 
 #footer .box{

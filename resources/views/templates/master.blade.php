@@ -15,23 +15,23 @@
     <body >
 		<!--<div style="width:78%; margin-left:11%; background:#fff">-->
 			<div id="header">
-				<div class="row" style="background:#F5F5F5;margin-bottom:0px !important;">
-					<div class="col-lg-10 col-lg-offset-1">
-						<div class="row">
-							<div id="logo" class="col-lg-3" style="margin-top:10px;">
-								<a href="/"><img src="{{ asset('public/img/medLogo.png') }}" /></a>	
-							</div>
-							<div class="col-lg-7" style="text-align:center">
-								<div class="row">
-									<h3 style="color:#F90000;margin-top:10px;">CƠ SỞ DỮ LIỆU MÃ VẠCH SINH VẬT VIỆT NAM</h3>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 top-header">
+							<div class="row">
+								<div id="logo" class="col-lg-3">
+									<a href="/"><img src="{{ asset('public/img/medLogo.png') }}" /></a>	
 								</div>
-								<div class="row" style="margin-bottom:5px;">
-									<span style="color:#006599;font-size: 18px;">VIET NAM BIOBARCODE DATABASE (VNBD)</span>
+								<div class="col-lg-7">
+									<div class="header-title">
+										<span><b>CƠ SỞ DỮ LIỆU MÃ VẠCH SINH VẬT VIỆT NAM</b></span><br/>
+										<span>VIET NAM BIOBARCODE DATABASE (VNBD)</span>
+									</div>	
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>				
+					</div>				
+				</div>	
 				<div class="row" style="background:#036">
 					<div class="col-lg-10 col-lg-offset-1">
 						<div class="col-lg-9 col-lg-offset-3">
@@ -39,7 +39,7 @@
 							  <div class="container-fluid" style="padding:0px;">
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding:0px;">
 								  <ul class="nav navbar-nav">
-									<li class="active"><a href="#">HOME <span class="sr-only">(current)</span></a></li>
+									<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
 									<li><a href="#">INTRODUCTION</a></li>
 									<li class="dropdown">
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DATABASES <span class="caret"></span></a>
@@ -64,18 +64,18 @@
 									<li class="dropdown">
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">TOOLS <span class="caret"></span></a>
 									  <ul class="dropdown-menu" style="border:0px;">
-										<li><a href="#">BLAST</a></li>
-										<li><a href="#">TREE</a></li>
+										<li><a href="/blast">BLAST</a></li>
+										<li><a href="/treeview">TREE</a></li>
 										<li><a href="#">ILLUSTRATIVE BARCODE</a></li>
 									  </ul>
 									</li>
 									<li class="dropdown">
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SUBMIT <span class="caret"></span></a>
 									  <ul class="dropdown-menu" style="border:0px;">
-										<li><a href="#">FORM</a></li>
+										<li><a href="/contact">FORM</a></li>
 									  </ul>
 									</li>
-									<li><a href="#">LOGIN</a></li>
+									<li><a href="/login">LOGIN</a></li>
 								  </ul>								  								 
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->
@@ -85,15 +85,17 @@
 				</div>
 			</div>
 			</br>
-			<div class="container" style="width:100%;padding:0px;">
-				<div class="row">
-					<div class="col-lg-10 col-lg-offset-1">
-						@yield('content')
+			<div id="main-content">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							@yield('content')
+						</div>
 					</div>
 				</div>
-			</div>
-			<div id="footer" style="background:#036;min-height:38px;bottom:0;">
-				
+			</div>	
+			<div id="footer">
+				Copyright © 2015 VNBiobarcode. All rights reserved. 
 			</div>
 		<!--</div>-->
     </body>

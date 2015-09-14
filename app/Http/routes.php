@@ -30,6 +30,12 @@ Route::get('blast', 'BlastController@index');
 
 Route::post('blast', 'BlastController@blast');
 
+Route::get('treeview', 'TreeviewController@index');
+
+Route::get('treeview/job/{jobId}', 'TreeviewController@index');
+
+Route::post('treeview', 'TreeviewController@create');
+
 Route::get('/report', 'ReportController@index');
 
 Route::get('/error', ['as' => 'error', 'uses' => 'ErrorController@index', 'middleware' => ['auth', 'role:3']]);
