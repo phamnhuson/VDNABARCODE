@@ -367,13 +367,16 @@ input{
 }
 #mainNav .dropdown-menu li a {
 	padding: 3px 20px!important;
-}	
+}
+
+/*	
 #header a:hover{
     color:#9fc71c;
 }
 #mainNav .selected a{
     color:#9fc71c;
 }
+*/
 /*
 #subheader{
     background:#def1fa;
