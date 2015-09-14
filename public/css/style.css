@@ -252,12 +252,12 @@ input{
 }
 
 .box{
-    display:block;
-    margin:0 auto;
+    //display:block;
+    //margin:0 auto;
     padding:0 10px;
-    position:relative;
-    min-width: 960px;
-    width:80%;
+    //position:relative;
+    //min-width: 960px;
+    //width:80%;
 }
 
 .selectMenu {
@@ -274,19 +274,20 @@ input{
 /*header*/
 #header{
     background:#036;
-    border-bottom:3px solid #57afe6;
+    //border-bottom:3px solid #57afe6;
     color:#fff;
-    height:65px;
+    //height:65px;
     margin-bottom:40px;
 }
 
-
+/*
 #header #logo{
     float:left;
-    margin:19px 0 0 -2px; /*17px 0 0 -2px*/
+    margin:19px 0 0 -2px;
     width:175px;
     height:27px;
 }
+*/
 /* sujeevan */
 /*#header #logo a{
     background:url('public/img/medLogo.png') no-repeat 0 0;
@@ -373,6 +374,7 @@ input{
 #mainNav .selected a{
     color:#9fc71c;
 }
+/*
 #subheader{
     background:#def1fa;
     display:block;
@@ -386,7 +388,7 @@ input{
 #subheader h1{
     line-height: 20px;
 }
-
+*/
 #globalNav {
     color: #99aec7;
     line-height: 17px;
@@ -614,7 +616,7 @@ input{
 #footer{
     background:#036;/*repeat-x*/
     color:#2b5d88;
-    margin:28px 0 -16px;
+    //margin:28px 0 -16px;
 	position:absolute;
 	bottom:0;
 	left:0;

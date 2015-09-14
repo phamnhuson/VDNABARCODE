@@ -44,7 +44,7 @@
 				</div>
 			@endif
 		</div>
-		<div class="col-lg-12">			
+		<div class="col-lg-12" style="padding:0px;">			
 			{!! Form::open(array('method' => 'POST', 'action'=>array('IbarcodeController@importFromFile'), 'enctype'=>'multipart/form-data', 'files' => true, 'class'	=> 'form-inline')) !!}
 				<div class="form-group">
 					<a href="{{ url('ibarcode') }}" class="btn btn-success">Thêm mới</a>
@@ -58,7 +58,7 @@
 				</div>	
 			{!! Form::close(); !!}
 		</div>
-		<div class="col-lg-12">	
+		<div class="col-lg-12" style="padding:0px;">	
 			<table class="table table-striped table-bordered">
 				<tr>
 					<th style="text-align:center !important;width:5%">STT</th>								

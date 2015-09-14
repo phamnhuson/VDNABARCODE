@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>@yield('title')</title>
-		<!--<link rel="stylesheet" href="{{ asset('public/css/style.css') }}">-->
+		<link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
 		<link rel="stylesheet" href="{{ asset('public/css/bootstrap.css') }}">
 		<link rel="stylesheet" href="{{ asset('public/css/jquery.dataTables.min.css') }}">
 		
