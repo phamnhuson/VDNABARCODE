@@ -56,9 +56,9 @@
 									<li class="dropdown">
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SEARCH <span class="caret"></span></a>
 									  <ul class="dropdown-menu" style="border:0px;">
-										<li><a href="#">KEY WORD</a></li>
-										<li><a href="#">SAMPLE ID</a></li>
-										<li><a href="#">SEQUENCES</a></li>
+										<li><a href="/search/keyword">KEY WORD</a></li>
+										<li><a href="/search/id">SAMPLE ID</a></li>
+										<li><a href="/search/sequence">SEQUENCES</a></li>
 									  </ul>
 									</li>
 									<li class="dropdown">

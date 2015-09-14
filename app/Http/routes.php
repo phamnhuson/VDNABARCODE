@@ -20,6 +20,8 @@ Route::post('login', ['uses' => 'Auth\AuthController@authenticate', 'middleware'
 
 Route::get('logout', ['uses' => 'Auth\AuthController@logout', 'middleware' => ['auth']]);
 
+Route::get('/search/{searchType}', 'SearchController@index');
+
 Route::post('/search', 'SearchController@search');
 
 Route::get('/home', 'HomeController@index');

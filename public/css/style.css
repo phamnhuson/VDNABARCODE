@@ -261,16 +261,26 @@ input{
 }
 
 .selectMenu {
-    height: 30px;
-    /*padding-top: 8px;*/
+    height: 34px;
+    border: solid 2px #036!important;
+    border-right: none!important;
     padding: 1px;
     color: #666;
     border: none;
     font: 12px/21px arial,sans-serif;
-    /*background: url(/libhtml_v3/images/bgHeader.png) repeat-x;*/
     overflow: hidden;
 }
-
+#search-control-container {
+	border: solid 2px #036;
+}
+.search-button{
+	height: 30px;
+	border: 0;
+	float: right;
+	background: #036;
+	color: #fff;
+	font-size: 15px;
+}
 /*header*/
 #header{
     

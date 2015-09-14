@@ -8,27 +8,34 @@
 				<div style="margin:auto;margin-top: 5px;">
 
 					{!! Form::open(array('method'=>'POST', 'action'=>array('SearchController@search'))) !!}
-									<input type="hidden" name="taxon">
+						@if ($searchType == 'sequence')
+							<label class="control-label">Search by Sequence</label>
+							<input type="hidden" name="search_type" value="sequence" />
+							{!! Form::textarea('search_content', @$searchContent, array('class' => 'form-control', 'rows' => '5')) !!}
+							<br/>
+							<input type="submit" name="search" value="Search" class="search-button pull-right" />
+						@else
 									<table>
 										<tbody>
 											<tr>
 												<td>
-													{!! Form::select('search_type', array('keyword' => 'Từ khóa', 'sequence' => 'Trình tự', 'location' => 'Địa phương', 'time' => 'Thời gian'), @$searchType, array('style' => 'vertical-align: middle;', 'class' => 'selectMenu')) !!}
+													{!! Form::select('search_type', array('keyword' => 'Từ khóa', 'id' => 'Barcode ID'), @$searchType, array('style' => 'vertical-align: middle;', 'class' => 'selectMenu')) !!}
 												</td>
 												<td>
 													<div id="search-control-container">
 														{!! Form::text('search_content', @$searchContent, array('style'	=>	'width:620px;height: 30px;border: 0;font-size: 15px;padding-left: 10px;')) !!}
-														<input type="submit" name="search" value="Tìm kiếm" style="  height: 30px;border: 0;float: right;background-color: F07C0B;color: #fff;font-size: 15px;" />
+														<input type="submit" name="search" value="Tìm kiếm" class="search-button" />
 													</div>	
 												</td>
 											</tr>
 										</tbody>
 									</table>
-
+						@endif
 					  {!! Form::close() !!}
 				  </div>
 			</div>
 		</div>
+		@if (isset($searchContent))
 		<div class="col-md-12">
 			<h3>Kết quả tìm kiếm</h3>
 			<hr/>
@@ -46,6 +53,7 @@
 				<p>Không tìm thấy dữ liệu phù hợp</p>
 			@endif
 		</div>
+		@endif
 	</div>
 </div>
 @endsection

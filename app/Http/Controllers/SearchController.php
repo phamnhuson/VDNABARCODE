@@ -17,6 +17,12 @@
 			$this->barcode = DB::table('barcode');
 		}
 	
+		function index($searchType = 'keyword')
+		{
+			$viewData = array('searchType' => $searchType);
+			return view('search', $viewData);
+		}
+	
 		function search(Request $request)
 		{
 			$this->searchType = $request->input('search_type');
@@ -50,12 +56,12 @@
 				case 'sequence':
 					$this->searchBySequence();
 					break;
-				case 'location':
-					$this->searchByLocation();
+				case 'id':
+					$this->searchById();
 					break;
-				case 'time':
-					$this->searchByTime();
-					break;
+				// case 'time':
+					// $this->searchByTime();
+					// break;
 				default: return false;	
 			}
 			
@@ -83,6 +89,12 @@
 		{
 			$this->barcode
 				 ->where('city.city_name', 'LIKE', "%{$this->searchContent}%");
+		}
+	
+		function searchById()
+		{
+			$this->barcode
+				 ->where('barcode.barcode_id', '=', $this->searchContent);
 		}
 	
 		function searchByTime()
