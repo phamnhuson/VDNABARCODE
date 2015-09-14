@@ -34,7 +34,7 @@
 				</div>				
 				<div class="row" style="background:#036">
 					<div class="col-lg-10 col-lg-offset-1">
-						<div class="col-lg-12">
+						<div class="col-lg-9 col-lg-offset-3">
 							<nav class="navbar navbar-default" style="margin-bottom:0px;border:0px;">
 							  <div class="container-fluid" style="padding:0px;">
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding:0px;">
@@ -75,10 +75,6 @@
 										<li><a href="#">FORM</a></li>
 									  </ul>
 									</li>
-									<li><a href="#">SERVICE</a></li>
-									<li><a href="#">MEMBERS</a></li>
-									<li><a href="#">LINK</a></li>
-									<li><a href="#">HELF</a></li>
 									<li><a href="#">LOGIN</a></li>
 								  </ul>								  								 
 								</div><!-- /.navbar-collapse -->
