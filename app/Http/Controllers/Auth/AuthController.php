@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Auth;
 use Validator;
+use Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -80,7 +81,9 @@ class AuthController extends Controller
 				
 		if (Auth::attempt($loginData)) {
             
-			$user = Auth::user();
+			$user = Auth::user()->toArray();
+			
+			Session::put('user', $user);
 			
 			return redirect()->intended('user');
 			

@@ -15,6 +15,8 @@ class BarcodeController extends Controller {
 
 		$speciesId = $request->get('id');
 		
+		$user = Session::get('user');
+		
 		$action = $request->get('action');
 		
 		if($action=='delete')
@@ -22,11 +24,8 @@ class BarcodeController extends Controller {
 			return $this->delete($speciesId);
 		}
 
-		$list_barcode = DB::table('barcode')
-								->join('species','barcode.species','=','species.species_id')
-								->select('barcode_id','barcode.quality','barcode.taxon_id','barcode.common_name','species.species_name','barcode.scientific_name','barcode.vietnamese_name')
-								->paginate(20);
-	
+		$list_barcode = DB::table('barcode')->where('created_by',$user['id'])->paginate(20);
+		
 		$viewData['list_barcode']=$list_barcode;		
 		return view('barcode')->with('data',$viewData);
 

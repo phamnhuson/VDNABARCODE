@@ -21,7 +21,8 @@ class IbarcodeController extends Controller {
 	
 	public function index(Request $request)
 	{	
-	
+				
+		
 		$barcodeId = $request->get('id');
 		
 		$action = $request->get('action');
@@ -34,7 +35,8 @@ class IbarcodeController extends Controller {
 		}
 		
 		if ($barcodeId)
-		{						
+		{					
+			
 			$barcode = DB::table('barcode')->where('barcode.barcode_id', $barcodeId)->get();
 			
 			$file_img = DB::table('file_img')->where('file_img.barcode_id',$barcodeId)->get();
@@ -91,28 +93,30 @@ class IbarcodeController extends Controller {
 		
 		$viewData['arr_city']=$arr_city;
 		
-		$viewData['loca'] = json_encode($loca);	
+		$viewData['loca'] = json_encode($loca);
 
 		return view('ibarcode')->with('data',$viewData);
 	}
 	
 	public function create(Request $request)
 	{		
-
+		$user = Session::get('user');
+		
 		$validator = Validator::make($request->all(), [
+			'phylum'			=>	'required',
+			'class'				=>	'required',
+			'order'				=>	'required',
+			'family'			=>	'required',
+			'genus'				=>	'required',
+			'species'			=>	'required',
+			'gene'				=>	'required',
+			'seq_size'			=>	'required',
 			'sequence'			=>	'required',
-			/*'quality'			=>	'required',
-			'barcode' 			=>	'required',
-			'taxon_id'			=>	'required',
-			'species' 			=>	'required',
-			'common_name'   	=>	'required',
-			'scientific_name'	=>	'required',
-			'vietnamese_name'	=>	'required',*/
 		]);
 		
 		$error=0;
 		
-		if ($validator->fails()) {
+		if ($validator->fails()) {			
 		
             return \Redirect::back()->with('errors',$validator->errors()->toArray());
 						
@@ -120,7 +124,7 @@ class IbarcodeController extends Controller {
 
 			$barcode = DB::table('barcode');
 			
-			$inputData = $request->only('sequence','peptide','seq_size','pep_size','gene','start','stop','life_stage','taxon_id','common_name','scientific_name','vietnamese_name','organelle','barcode','sex','tissue_type','notes','extra_info','reproduction','lineage','collector','collected_date','species');			
+			$inputData = $request->only('sample_id','museum_id','field_id','collection_code','deposited_in','phylum','class','order','family','subfamily','genus','species','common_name','scientific_name','vietnamese_name','bin','voucher_status','reproduction','tissue_descriptor','sex','brief_note','taxon_id','life_stage','organelle','lineage','detailed_notes','sequence_id','gene','genbank_accession','genome','locus','quality','seq_size','sequence','pep_size','peptide');			
 			
 			$inputData['stop']= $this->stopCodonDetect($request['sequence']);
 			
@@ -129,7 +133,11 @@ class IbarcodeController extends Controller {
 			}else{
 				$inputData['quality']='';
 			}
-
+			
+			$inputData['created']=date('Y-m-d');
+			
+			$inputData['created_by']=$user['id'];
+			
 			if ($barcode->insert($inputData)) {
 				
 				$id	=	DB::getPdo()->lastInsertId();
@@ -229,19 +237,21 @@ class IbarcodeController extends Controller {
 					}
 				}
 			
-				foreach($request['longitude'] as $key=>$kd)
+				foreach($request['sector'] as $key=>$st)
 				{
 					
-					if($kd!='')
+					if($st!='')
 					{
 						
 						$locationData = array();
 						
 						$locationData['barcode_id'] = $id;
 						
-						$locationData['longitude'] = $kd;
+						$locationData['sector']		= $st;
 						
-						$locationData['latitude'] = $request['latitude'][$key];
+						$locationData['longitude'] 	= $request['longitude'][$key];
+						
+						$locationData['latitude'] 	= $request['latitude'][$key];
 						
 						$insert=DB::table('location')->insert($locationData);
 						
@@ -277,15 +287,18 @@ class IbarcodeController extends Controller {
 	{	
 		$error=0;
 		
+		$user = Session::get('user');
+		
 		$validator = Validator::make($request->all(), [
+			'phylum'			=>	'required',
+			'class'				=>	'required',
+			'order'				=>	'required',
+			'family'			=>	'required',
+			'genus'				=>	'required',
+			'species'			=>	'required',
+			'gene'				=>	'required',
+			'seq_size'			=>	'required',
 			'sequence'			=>	'required',
-			/*'quality'			=>	'required',
-			'barcode' 			=>	'required',
-			'taxon_id'			=>	'required',
-			'species' 			=>	'required',
-			'common_name'   	=>	'required',
-			'scientific_name'	=>	'required',
-			'vietnamese_name'	=>	'required',*/
 		]);
 		
 		if ($validator->fails()) {
@@ -296,7 +309,7 @@ class IbarcodeController extends Controller {
 
 			$barcodeId = $request->get('barcode_id');
 						
-			$inputData = $request->only('sequence','peptide','seq_size','pep_size','gene','start','stop','life_stage','taxon_id','common_name','scientific_name','vietnamese_name','organelle','barcode','sex','tissue_type','notes','extra_info','reproduction','lineage','collector','collected_date','species');			
+			$inputData = $request->only('sample_id','museum_id','field_id','collection_code','deposited_in','phylum','class','order','family','subfamily','genus','species','common_name','scientific_name','vietnamese_name','bin','voucher_status','reproduction','tissue_descriptor','sex','brief_note','taxon_id','life_stage','organelle','lineage','detailed_notes','sequence_id','gene','genbank_accession','genome','locus','quality','seq_size','sequence','pep_size','peptide');			
 			
 			$inputData['stop']= $this->stopCodonDetect($request['sequence']);
 			
@@ -305,6 +318,10 @@ class IbarcodeController extends Controller {
 			}else{
 				$inputData['quality']='';
 			}
+			
+			$inputData['updated']=date('Y-m-d');
+			
+			$inputData['updated_by']=$user['id'];
 
 			DB::table('barcode')->where('barcode_id', $barcodeId)->update($inputData);
 			

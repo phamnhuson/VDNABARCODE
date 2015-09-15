@@ -62,24 +62,22 @@
 			<table class="table table-striped table-bordered">
 				<tr>
 					<th style="text-align:center !important;width:5%">STT</th>								
-					<th style="width:10%">Taxon_id</th>
-					<th style="width:15%">Tên loài</th>
-					<th style="width:15%">Tên chung</th>		
-					<th style="width:15%">Tên khoa học</th>
-					<th style="width:15%">Tên tiếng việt</th>
-					<th style="width:10%">Chất lượng</th>
-					<th style="width:15%;"></th>
+					<th style="width:13%">Gene</th>
+					<th style="width:20%">Sequence ID</th>
+					<th style="width:15%">GenBank Accession</th>		
+					<th style="width:15%">Taxon ID</th>
+					<th style="width:20%">Species</th>
+					<th style="width:12%;"></th>
 				</tr>
 				<?php $i=1; ?>
 				<?php foreach($data['list_barcode'] as $bc){ ?>
 					<tr>
 						<td style="text-align:center;"><?php echo $i; ?></td>								
+						<td><?php echo $bc['gene']; ?></td>
+						<td><?php echo $bc['sequence_id']; ?></td>
+						<td><?php echo $bc['genbank_accession']; ?></td>
 						<td><?php echo $bc['taxon_id']; ?></td>
-						<td><?php echo $bc['species_name']; ?></td>
-						<td><?php echo $bc['common_name']; ?></td>
-						<td><?php echo $bc['scientific_name']; ?></td>
-						<td><?php echo $bc['vietnamese_name']; ?></td>
-						<td><?php echo $bc['quality']; ?></td>
+						<td><?php echo $bc['species']; ?></td>
 						<td align="center">
 							<a href="ibarcode?action=edit&id={{ $bc['barcode_id'] }}" class="btn btn-default btn-xs" title="Sửa"><span class="glyphicon glyphicon-edit"></span> sửa</a>&nbsp;
 							<a href="?action=delete&id={{ $bc['barcode_id'] }}" onClick="return confirm('Bạn có chắc muốn xóa?');" title="Xóa" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> xóa</a>

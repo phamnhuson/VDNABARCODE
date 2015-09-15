@@ -44,6 +44,9 @@
 		padding:5px;
 		border-bottom: 1px solid #eee;
 	}
+	.tbl th{
+		background:#F5F5F5;
+	}
 }
 </style>
 <!--<script src="{{ asset('public/js/google_map.js') }}"></script>-->
@@ -74,7 +77,7 @@
 			<div class="alert alert-danger">
 				<ul>
 					@foreach ($errors as $error)
-						<li>{{ $error }}</li>
+						<li>{{ $error[0] }}</li>
 					@endforeach
 				</ul>
 			</div>
@@ -94,10 +97,10 @@
 							<a href="#tab3" data-toggle='tab' id='page3'>File</a>
 						</li>
 						<li>
-							<a href="#tab4" data-toggle='tab' id='page4'>Vị trí</a>
+							<a href="#tab5" data-toggle='tab' id='page5'>Địa Phương</a>
 						</li>
 						<li>
-							<a href="#tab5" data-toggle='tab' id='page5'>Địa Phương</a>
+							<a href="#tab4" data-toggle='tab' id='page4'>Vị trí</a>
 						</li>
 					</ul>
 				</div>
@@ -108,150 +111,178 @@
 			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			<div class="tab-content col-md-12" style="padding:0px;">
 				<div class="tab-pane active" id="tab1">
-						<table width="100%" class="form-table">
-							<tr>
-								<td class="col-md-8" colspan="2" style="padding:0px">
-									<div class="form-group">
-										<label class="control-label">Trình tự:</label>
-										{!! Form::textarea('sequence', @$data['barcode'][0]['sequence'], array('class'=>'form-control','rows'=>'4','cols'=>'1')) !!}
-									</div>
-								</td>
-								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
-									<div class="form-group">
-										<label class="control-label">Độ dài trình tự:</label>
-										{!! Form::text('seq_size', @$data['barcode'][0]['seq_size'], array('class'=>'form-control')) !!}
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="col-md-8" colspan="2" style="padding:0px;">
-									<div class="form-group">
-										<label class="control-label">Peptide:</label>
-										{!! Form::textarea('peptide', @$data['barcode'][0]['peptide'], array('class'=>'form-control','rows'=>'4','cols'=>'1')) !!}
-									</div>
-								</td>
-								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
-									<div class="form-group">
-										<label class="control-label">Độ dài peptide:</label>
-										{!! Form::text('pep_size', @$data['barcode'][0]['pep_size'], array('class'=>'form-control')) !!}
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="col-md-8" colspan="2" style="padding:0px;">
-									<div class="form-group">
-										<label class="control-label">Gene:</label>
-										{!! Form::text('gene', @$data['barcode'][0]['gene'], array('class'=>'form-control')) !!}
-									</div>
-								</td>
-								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
-									<div class="form-group">
-										<label class="control-label">Taxon id:</label>
-										{!! Form::text('taxon_id', @$data['barcode'][0]['taxon_id'], array('class'=>'form-control')) !!}
-									</div>
-								</td>
-							</tr>							
-							<tr>
-								<td class="col-md-4" style="padding:0px 5px 0px 0px;">
-									<div class="form-group">
-										<label class="control-label">Giai đoạn sinh trưởng mẫu:</label>
-										{!! Form::text('life_stage', @$data['barcode'][0]['life_stage'], array('class'=>'form-control')) !!}
-									</div>
-								</td>
-								<td class="col-md-4" style="padding:0px 0px 0px 5px;">
-									<div class="form-group">
-										<label class="control-label">Bào quan:</label>
-										{!! Form::text('organelle', @$data['barcode'][0]['organelle'], array('class'=>'form-control')) !!}
-									</div>
-								</td>
-								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
-									<div class="form-group">
-										<label class="control-label">Chất lượng:</label>
-										{!! Form::text('quality', @$data['barcode'][0]['quality'], array('class'=>'form-control')) !!}										
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="col-md-4" style="padding:0px 5px 0px 0px;">
-									<div class="form-group">
-										<label class="control-label">Loại mô:</label>
-										{!! Form::text('tissue_type', @$data['barcode'][0]['tissue_type'], array('class'=>'form-control')) !!}
-									</div>		
-								</td>
-								<td class="col-md-4" style="padding:0px 0px 0px 5px;">
-									<div class="form-group">
-										<label class="control-label">Barcode:</label>
-										{!! Form::text('barcode', @$data['barcode'][0]['barcode'], array('class'=>'form-control')) !!}
-									</div>
-								</td>
-								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
-									<div class="form-group">
-										<label class="control-label">Sinh sản:</label>
-										{!! Form::text('reproduction', @$data['barcode'][0]['reproduction'], array('class'=>'form-control')) !!}
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="col-md-4" style="padding:0px 5px 0px 0px;">
-									<div class="form-group">
-										<label class="control-label">Ghi chú:</label>
-										{!! Form::textarea('notes', @$data['barcode'][0]['notes'], array('class'=>'form-control','rows'=>'5')) !!}
-									</div>	
-								</td>
-								<td class="col-md-4" style="padding:0px 0px 0px 5px;">
-									<div class="form-group">
-										<label class="control-label">Thông tin thêm:</label>
-										{!! Form::textarea('extra_info', @$data['barcode'][0]['extra_info'], array('class'=>'form-control','rows'=>'5')) !!}
-									</div>
-								</td>
-								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
-									<div class="form-group">
-										<label class="control-label">Giới tính:</label>
-										{!! Form::select('sex',array('0'=>'Đực','1'=>'Cái'), @$data['barcode'][0]['sex'], array('class'=>'form-control')) !!}
-									</div>
-								</td>
-							</tr>							
-							<tr>
-								<td class="col-md-4" style="padding:0px 5px 0px 0px;">
-									<div class="form-group">
-										<label class="control-label">Nhánh tiến hóa:</label>
-										{!! Form::text('lineage', @$data['barcode'][0]['lineage'], array('class'=>'form-control')) !!}
-									</div>	
-								</td>
-								<td class="col-md-4" style="padding:0px 0px 0px 5px;">
-									<div class="form-group">
-										<label class="control-label">Loài:</label>
-										{!! Form::select('species', @$data['arr_species'],@$data['barcode'][0]['species'], array('class'=>'form-control')) !!}
-									</div>	
-								</td>
-								<td class="col-md-4" style="padding:0px 0px 0px 10px;">
-									<div class="form-group">
-										<label class="control-label">Tên khoa học:</label>
-										{!! Form::text('scientific_name', @$data['barcode'][0]['scientific_name'], array('class'=>'form-control')) !!}
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="col-md-4" style="padding:0px 5px 0px 0px;">
-									<div class="form-group">
-										<label class="control-label">Tên thường gọi:</label>
-										{!! Form::text('common_name', @$data['barcode'][0]['common_name'], array('class'=>'form-control')) !!}
-									</div>	
-								</td>
-								<td class="col-md-4" style="padding:0px 0px 0px 5px;">
-									<div class="form-group">										
-										<label class="control-label">Tên tiếng việt:</label>
-										{!! Form::text('vietnamese_name', @$data['barcode'][0]['vietnamese_name'], array('class'=>'form-control')) !!}
-									</div>	
-								</td>
-							</tr>
-							<br/>
-							<tr>
-								<td style="padding:0px 5px 0px 0px;">													
-									<input type="hidden" name="barcode_id" value="{{ @$data['barcode'][0]['barcode_id'] }}" />
-								</td>
-							</tr>
-						</table>			
+					<input type="hidden" name="barcode_id" value="{{ @$data['barcode'][0]['barcode_id'] }}" />
+					<table class="col-lg-12">
+						<tr>
+							<td>
+								<table width="100%" class="table table-bordered tbl">
+									<tr>
+										<th colspan="4">IDENTIFIERS</th>								
+									</tr>
+									<tr>
+										<td style="width:200px;">Sample ID:</td>
+										<td>{!! Form::text('sample_id', @$data['barcode'][0]['sample_id'], array('style'=>'width:100%')) !!}</td>
+										<td>Field ID:</td>
+										<td>{!! Form::text('field_id', @$data['barcode'][0]['field_id'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+									<tr>
+										<td style="width:200px;">Museun ID:</td>
+										<td>{!! Form::text('museun_id', @$data['barcode'][0]['museum_id'], array('style'=>'width:100%')) !!}</td>										
+										<td>Collection Code:</td>
+										<td>{!! Form::text('collection_code', @$data['barcode'][0]['collection_code'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+									<tr>
+										<td>Deposited In:</td>
+										<td colspan="3">{!! Form::text('deposited_in', @$data['barcode'][0]['deposited_in'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table width="100%" class="table table-bordered tbl">
+									<tr>
+										<th colspan="4">TAXONOMY</th>								
+									</tr>
+									<tr>
+										<td style="width:200px;">Phylum:</td>
+										<td>{!! Form::text('phylum', @$data['barcode'][0]['phylum'], array('style'=>'width:100%')) !!}</td>										
+										<td style="width:200px;">Class:</td>
+										<td>{!! Form::text('class', @$data['barcode'][0]['class'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+									<tr>
+										<td>Order:</td>
+										<td>{!! Form::text('order', @$data['barcode'][0]['order'], array('style'=>'width:100%')) !!}</td>
+										<td>Family:</td>
+										<td>{!! Form::text('family', @$data['barcode'][0]['family'], array('style'=>'width:100%')) !!}</td>										
+									</tr>
+									<tr>
+										<td>Subfamily:</td>
+										<td>{!! Form::text('subfamily', @$data['barcode'][0]['subfamily'], array('style'=>'width:100%')) !!}</td>
+										<td>Genus:</td>
+										<td>{!! Form::text('genus', @$data['barcode'][0]['genus'], array('style'=>'width:100%')) !!}</td>										
+									</tr>
+									<tr>
+										<td>Species:</td>
+										<td>{!! Form::text('species', @$data['barcode'][0]['species'], array('style'=>'width:100%')) !!}</td>
+										<td>Common Name:</td>
+										<td>{!! Form::text('common_name', @$data['barcode'][0]['common_name'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+									<tr>
+										<td>Scientific Name:</td>
+										<td>{!! Form::text('scientific_name', @$data['barcode'][0]['scientific_name'], array('style'=>'width:100%')) !!}</td>
+										<td>Vietnamese Name:</td>
+										<td>{!! Form::text('vietnamese_name', @$data['barcode'][0]['vietnamese_name'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+									<tr>
+										<td>BIN (Cluster ID):</td>
+										<td>{!! Form::text('bin', @$data['barcode'][0]['bin'], array('style'=>'width:100%')) !!}</td>
+										<td colspan="2"></td>
+									</tr>
+									<tr>
+										<td colspan="4"><i>* Barcode Index Numbers(BIN): cluster barcode sequence to create OTUs that closely reflect species groupings</i></td>										
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table width="100%" class="table table-bordered tbl">
+									<tr>
+										<th colspan="4">SPECIMEN DETAILS</th>								
+									</tr>
+									<tr>
+										<td style="width:200px;">Voucher Status:</td>
+										<td>{!! Form::text('voucher_status', @$data['barcode'][0]['voucher_status'], array('style'=>'width:100%')) !!}</td>										
+										<td style="width:200px;">Reproduction:</td>
+										<td>{!! Form::text('reproduction', @$data['barcode'][0]['reproduction'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+									<tr>
+										<td>Tissue Descriptor:</td>
+										<td>{!! Form::text('tissue_descriptor', @$data['barcode'][0]['tissue_descriptor'], array('style'=>'width:100%')) !!}</td>
+										<td>Sex:</td>
+										<td>{!! Form::text('sex', @$data['barcode'][0]['sex'], array('style'=>'width:100%')) !!}</td>										
+									</tr>
+									<tr>
+										<td>Brief Note:</td>
+										<td>{!! Form::text('brief_note', @$data['barcode'][0]['brief_note'], array('style'=>'width:100%')) !!}</td>
+										<td>Taxon Id:</td>
+										<td>{!! Form::text('taxon_id', @$data['barcode'][0]['taxon_id'], array('style'=>'width:100%')) !!}</td>										
+									</tr>
+									<tr>
+										<td>Life Stage:</td>
+										<td>{!! Form::text('life_stage', @$data['barcode'][0]['life_stage'], array('style'=>'width:100%')) !!}</td>
+										<td>Organelle:</td>
+										<td>
+										{!! Form::text('organelle', @$data['barcode'][0]['organelle'], array('style'=>'width:100%')) !!}
+										</td>
+									</tr>
+									<tr>
+										<td>Lineage:</td>
+										<td>{!! Form::text('lineage', @$data['barcode'][0]['lineage'], array('style'=>'width:100%')) !!}</td>
+										<td colspan="2"></td>
+									</tr>
+									<tr>
+										<td>Detailed Notes:</td>
+										<td colspan="3">
+										{!! Form::textarea('detailed_notes', @$data['barcode'][0]['detailed_notes'], array('style'=>'width:100%','rows'=>'4','cols'=>'1')) !!}
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table width="100%" class="table table-bordered tbl">
+									<tr>
+										<th colspan="4">SEQUENCE</th>								
+									</tr>
+									<tr>
+										<td style="width:200px;">Sequence Id:</td>
+										<td>{!! Form::text('sequence_id', @$data['barcode'][0]['sequence_id'], array('style'=>'width:100%')) !!}</td>										
+										<td style="width:200px;">Gene:</td>
+										<td>{!! Form::text('gene', @$data['barcode'][0]['gene'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+									<tr>
+										<td>GenBank Accession:</td>
+										<td>{!! Form::text('genbank_accession', @$data['barcode'][0]['genbank_accession'], array('style'=>'width:100%')) !!}</td>
+										<td>Genome:</td>
+										<td>{!! Form::text('genome', @$data['barcode'][0]['genome'], array('style'=>'width:100%')) !!}</td>										
+									</tr>
+									<tr>
+										<td>Locus:</td>
+										<td>
+										{!! Form::text('locus', @$data['barcode'][0]['locus'], array('style'=>'width:100%')) !!}
+										</td>
+										<td>Quality:</td>
+										<td>
+										{!! Form::text('quality', @$data['barcode'][0]['quality'], array('style'=>'width:100%')) !!}
+										</td>							
+									</tr>
+									<tr>
+										<td>Nucleotides:</td>
+										<td colspan="3">
+										{!! Form::text('seq_size', @$data['barcode'][0]['seq_size'], array('style'=>'width:100%','placeholder'=>'Độ dài nucleotides')) !!}</td>
+									</tr>
+									<tr>
+										<td colspan="4">
+										{!!Form::textarea('sequence',@$data['barcode'][0]['sequence'],array('style'=>'width:100%','rows'=>'10','cols'=>'1')) !!}
+										</td>
+									</tr>
+									<tr>
+										<td>Amino Acids:</td>
+										<td colspan="3">{!! Form::text('pep_size',@$data['barcode'][0]['pep_size'],array('style'=>'width:100%','placeholder'=>'Độ dài amino acids')) !!}</td>
+									</tr>
+									<tr>
+										<td colspan="4">
+											{!! Form::textarea('peptide', @$data['barcode'][0]['peptide'], array('style'=>'width:100%','rows'=>'10','cols'=>'1')) !!}											
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					
 				</div>
 				<div class="tab-pane" id="tab2">
 					<div class="row">
@@ -369,6 +400,13 @@
 						</td>
 						<td class="col-md-5" style="padding:0px 0px 0px 5px;">
 							<table width="100%" class="form-table" id="add_td">
+									<tr>
+										<td colspan="2" class="col-md-12" style="padding:0px">
+											<div class="form-group">
+												{!! Form::text('sector[]', @$data['barcode'][0]['sector'], array('class'=>'form-control','placeholder'=>'Khu vực')) !!}
+											</div>										
+										</td>
+									</tr>
 									<tr>
 										<td class="col-md-6" style="padding:0px 5px 0px 0px;">
 											<div class="form-group">
@@ -565,9 +603,16 @@ $(document).ready(function(){
 		$option += 		"</div>";
 		$('#addtp').append($option);
 	});
-	
+
 	$(document).on('click','.atd',function(){
 		$option = "";
+		$option += "<tr>";
+		$option += 		"<td colspan='2' class='col-md-12' style='padding:0px'>";
+		$option +=			"<div class='form-group'>";
+		$option +=				"<input type='text' class='form-control' name='sector[]' placeholder='Khu vực'/>";
+		$option +=			"</div>";
+		$option +=		"</td>";
+		$option	+= "</tr>"
 		$option += "<tr style='height:49px;'>";
 		$option += 		"<td class='col-md-6' style='padding:0px 5px 0px 0px;'>";
 		$option +=			"<div class='form-grounp'>";
