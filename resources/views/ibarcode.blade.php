@@ -119,17 +119,17 @@
 									<tr>
 										<th colspan="4">IDENTIFIERS</th>								
 									</tr>
-									<tr>
+									<!--<tr>
 										<td style="width:200px;">Sample ID:</td>
 										<td>{!! Form::text('sample_id', @$data['barcode'][0]['sample_id'], array('style'=>'width:100%')) !!}</td>
 										<td>Field ID:</td>
 										<td>{!! Form::text('field_id', @$data['barcode'][0]['field_id'], array('style'=>'width:100%')) !!}</td>
-									</tr>
+									</tr>-->
 									<tr>
-										<td style="width:200px;">Museun ID:</td>
-										<td>{!! Form::text('museun_id', @$data['barcode'][0]['museum_id'], array('style'=>'width:100%')) !!}</td>										
-										<td>Collection Code:</td>
-										<td>{!! Form::text('collection_code', @$data['barcode'][0]['collection_code'], array('style'=>'width:100%')) !!}</td>
+										<td style="width:20%;">Museun ID:</td>
+										<td style="width:30%;">{!! Form::text('museun_id', @$data['barcode'][0]['museum_id'], array('style'=>'width:100%')) !!}</td>										
+										<td style="width:20%;">Collection Code:</td>
+										<td style="width:30%;">{!! Form::text('collection_code', @$data['barcode'][0]['collection_code'], array('style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>Deposited In:</td>
@@ -163,10 +163,10 @@
 										<td>{!! Form::text('genus', @$data['barcode'][0]['genus'], array('style'=>'width:100%')) !!}</td>										
 									</tr>-->
 									<tr>
-										<td>Species:</td>
-										<td>{!! Form::select('species', @$data['arr_species'],@$data['barcode'][0]['species'], array('style'=>'width:100%')) !!}</td>
-										<td>Common Name:</td>
-										<td>{!! Form::text('common_name', @$data['barcode'][0]['common_name'], array('style'=>'width:100%')) !!}</td>
+										<td style="width:20%;">Species:</td>
+										<td style="width:30%;">{!! Form::select('species', @$data['arr_species'],@$data['barcode'][0]['species'], array('style'=>'width:100%')) !!}</td>
+										<td style="width:20%;">Common Name:</td>
+										<td style="width:30%;">{!! Form::text('common_name', @$data['barcode'][0]['common_name'], array('style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>Scientific Name:</td>
@@ -192,10 +192,10 @@
 										<th colspan="4">SPECIMEN DETAILS</th>								
 									</tr>
 									<tr>
-										<td style="width:200px;">Voucher Status:</td>
-										<td>{!! Form::text('voucher_status', @$data['barcode'][0]['voucher_status'], array('style'=>'width:100%')) !!}</td>										
-										<td style="width:200px;">Reproduction:</td>
-										<td>{!! Form::text('reproduction', @$data['barcode'][0]['reproduction'], array('style'=>'width:100%')) !!}</td>
+										<td style="width:20%;">Voucher Status:</td>
+										<td style="width:30%;">{!! Form::text('voucher_status', @$data['barcode'][0]['voucher_status'], array('style'=>'width:100%')) !!}</td>										
+										<td style="width:20%;">Reproduction:</td>
+										<td style="width:30%;">{!! Form::text('reproduction', @$data['barcode'][0]['reproduction'], array('style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>Tissue Descriptor:</td>
@@ -238,10 +238,10 @@
 										<th colspan="4">SEQUENCE</th>								
 									</tr>
 									<tr>
-										<td style="width:200px;">Sequence Id:</td>
-										<td>{!! Form::text('sequence_id', @$data['barcode'][0]['sequence_id'], array('style'=>'width:100%')) !!}</td>										
-										<td style="width:200px;">Gene:</td>
-										<td>{!! Form::text('gene', @$data['barcode'][0]['gene'], array('style'=>'width:100%')) !!}</td>
+										<td style="width:20%;">Sequence Id:</td>
+										<td style="width:30%;">{!! Form::text('sequence_id', @$data['barcode'][0]['sequence_id'], array('style'=>'width:100%')) !!}</td>										
+										<td style="width:20%;">Gene:</td>
+										<td style="width:30%;">{!! Form::text('gene', @$data['barcode'][0]['gene'], array('style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>GenBank Accession:</td>

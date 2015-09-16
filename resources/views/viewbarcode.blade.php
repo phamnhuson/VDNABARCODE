@@ -80,13 +80,13 @@
 						<th colspan="4">IDENTIFIERS</th>								
 					</tr>
 					<tr>
-						<td style="width:200px;">Sample ID:</td>
-						<td><?php echo $data['barcode']['sample_id'] ?></td>
-						<td>Field ID:</td>
-						<td><?php echo $data['barcode']['field_id'] ?></td>
+						<td style="width:20%;">Barcode ID:</td>
+						<td style="width:30%;"><?php echo $data['barcode']['barcode_id'] ?></td>
+						<td style="width:20%;">Field ID:</td>
+						<td style="width:30%;"><?php echo $data['barcode']['field_id'] ?></td>
 					</tr>
 					<tr>
-						<td style="width:200px;">Museun ID:</td>
+						<td>Museun ID:</td>
 						<td><?php echo $data['barcode']['museum_id'] ?></td>										
 						<td>Collection Code:</td>
 						<td><?php echo $data['barcode']['collection_code'] ?></td>
@@ -105,10 +105,10 @@
 						<th colspan="4">TAXONOMY</th>								
 					</tr>
 					<tr>
-						<td style="width:200px;">Phylum:</td>
-						<td><?php echo $data['barcode']['phylum_name'] ?></td>										
-						<td style="width:200px;">Class:</td>
-						<td><?php echo $data['barcode']['class_name'] ?></td>
+						<td style="width:20%;">Phylum:</td>
+						<td style="width:30%;"><?php echo $data['barcode']['phylum_name'] ?></td>										
+						<td style="width:20%;">Class:</td>
+						<td style="width:30%;"><?php echo $data['barcode']['class_name'] ?></td>
 					</tr>
 					<tr>
 						<td>Order:</td>
@@ -147,10 +147,10 @@
 						<th colspan="4">SPECIMEN DETAILS</th>								
 					</tr>
 					<tr>
-						<td style="width:200px;">Voucher Status:</td>
-						<td><?php echo $data['barcode']['voucher_status'] ?></td>										
-						<td style="width:200px;">Reproduction:</td>
-						<td><?php echo $data['barcode']['reproduction'] ?></td>
+						<td style="width:20%;">Voucher Status:</td>
+						<td style="width:30%;"><?php echo $data['barcode']['voucher_status'] ?></td>										
+						<td style="width:20%;">Reproduction:</td>
+						<td style="width:30%;"><?php echo $data['barcode']['reproduction'] ?></td>
 					</tr>
 					<tr>
 						<td>Tissue Type:</td>
@@ -188,10 +188,10 @@
 						<th colspan="4">SEQUENCE</th>								
 					</tr>
 					<tr>
-						<td style="width:200px;">Sequence Id:</td>
-						<td><?php echo $data['barcode']['sequence_id'] ?></td>										
-						<td style="width:200px;">Gene:</td>
-						<td><?php echo $data['barcode']['gene'] ?></td>
+						<td style="width:20%;">Sequence Id:</td>
+						<td style="width:30%;"><?php echo $data['barcode']['sequence_id'] ?></td>										
+						<td style="width:20%;">Gene:</td>
+						<td style="width:30%;"><?php echo $data['barcode']['gene'] ?></td>
 					</tr>
 					<tr>
 						<td>GenBank Accession:</td>
