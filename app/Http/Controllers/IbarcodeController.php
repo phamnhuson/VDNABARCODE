@@ -414,17 +414,19 @@ class IbarcodeController extends Controller {
 				}
 			};
 			
-			foreach($request['longitude'] as $key=>$kd)
+			foreach($request['sector'] as $key=>$st)
 			{
 				
-				if($kd!='')
+				if($st!='')
 				{
 					
 					$locationData = array();
 					
 					$locationData['barcode_id'] = $barcodeId;
 					
-					$locationData['longitude'] = $kd;
+					$locationData['sector'] 	= $st;
+					
+					$locationData['longitude'] = $request['longitude'][$key];
 					
 					$locationData['latitude'] = $request['latitude'][$key];
 					

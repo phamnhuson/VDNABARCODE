@@ -250,11 +250,30 @@
 			<td>
 				<table width="100%" class="table table-bordered tbl">
 					<tr>
-						<th colspan="4">LOCATION</th>								
+						<th colspan="2">LOCATION</th>								
 					</tr>
 					<tr>
-						<td colspan="4">
-							<div id="map" style="width: 100%; height: 700px;"></div>
+						<td style="width:40%">
+							<div id="map" style="width:100%; height: 350px;"></div>
+						</td>
+						<td style="width:60%">
+							<table width="100%" class="table table-bordered">
+								<tr>
+									<th style="background:#fff;"></th>
+									<th style="background:#fff;">Sector</th>
+									<th style="background:#fff;">Longitude</th>
+									<th style="background:#fff;">Latitude</th>
+								</tr>
+								<?php $i=1; ?>
+								<?php foreach($data['location'] as $lc){ ?>								
+								<tr>
+									<td style="text-align:center;width:10%"><?php echo $i++ ?></td>
+									<td style="width:50%"><?php echo $lc['sector'] ?></td>
+									<td style="width:20%"><?php echo $lc['longitude'] ?></td>
+									<td style="width:20%"><?php echo $lc['latitude'] ?></td>
+								</tr>
+								<?php } ?>
+							</table>
 						</td>
 					</tr>
 				</table>
@@ -300,7 +319,7 @@
 	$(document).ready(function(){
 		var locations= <?php echo $data['loca']; ?>;
 		var map = new google.maps.Map(document.getElementById('map'), {
-		  zoom: 6,
+		  zoom: 5,
 		  center: new google.maps.LatLng(16.450001,107.583336),
 		  mapTypeId: google.maps.MapTypeId.ROADMAP
 		});

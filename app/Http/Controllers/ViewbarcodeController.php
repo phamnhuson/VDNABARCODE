@@ -52,6 +52,11 @@ class ViewbarcodeController extends Controller {
 		
 		$viewData['file_img'] = $file_img;
 		
+		/*echo "<pre>";
+		print_r($viewData);
+		echo "</pre>";
+		exit();*/
+		
 		return view('viewbarcode')->with('data',$viewData);
 		
 	}
