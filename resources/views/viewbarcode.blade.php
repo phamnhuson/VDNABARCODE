@@ -221,6 +221,17 @@
 							<?php echo $data['barcode']['peptide'] ?>											
 						</td>
 					</tr>
+					<tr>
+						<td colspan="4">
+							<?php echo $data['barcode']['peptide'] ?>											
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">Illustrative Barcode:</td>
+					</tr>
+					<tr>
+						<td colspan="4"><canvas id="barcode-canvas"></canvas></td>
+					</tr>
 				</table>
 			</td>
 		</tr>
@@ -343,4 +354,59 @@
 		}	
 	});
 </script>	
+<script>
+	var sequence = "<?php echo preg_replace( "/\r|\n/", "", $data['barcode']['sequence']) ?>";
+	
+	function drawBarcode(element, sequence){
+		var c=document.getElementById(element); 
+		
+		var ctx=c.getContext("2d"); 
+		ctx.canvas.height = (Math.floor(sequence.length/c.offsetWidth)+1)*80;
+		ctx.canvas.width  = c.parentNode.offsetWidth;
+		var color;
+		var bheigh = 20;
+		var theigh = 10;
+		
+		ctx.fillStyle="black";
+		ctx.fillText("0", 0, theigh);
+		
+		var j = 0;
+		
+		for(var i=0; i<sequence.length; i++)
+		{
+			switch(sequence[i])
+			{
+				case 'A': color = 'rgb(0,248,0)'; break;
+				case 'T': color = 'rgb(255,0,0)'; break;
+				case 'G': color = 'rgb(0,0,0)'; break;
+				case 'C': color = 'rgb(0,0,248)'; break;
+				default: color = 'rgb(255,255,255)'; break;
+			}
+
+			ctx.fillStyle=color;
+			ctx.fillRect(j, bheigh, 1, 50);
+			
+			if(j == c.offsetWidth-5)
+			{
+				ctx.fillStyle="black";
+				ctx.fillText(i+1, j-(String(i).length*5), theigh);
+				console.log(i);
+				bheigh = bheigh + 80;
+				theigh = theigh + 80;
+				j = 0;
+				ctx.fillText(i+2, 0, theigh);
+			}
+			else
+			{
+				j+=2;
+			}
+			
+		}
+		ctx.fillStyle="black";
+		ctx.fillText(sequence.length, j-(String(sequence.length).length*5), theigh);
+	}	
+	
+	drawBarcode('barcode-canvas', sequence);
+	
+</script>
 @endsection

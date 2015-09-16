@@ -34,8 +34,8 @@
 				</div>	
 				<div class="row" style="background:#036">
 					<div class="col-lg-10 col-lg-offset-1">
-						<div class="col-lg-9 col-lg-offset-3">
-							<nav class="navbar navbar-default" style="margin-bottom:0px;border:0px;">
+						<div class="col-lg-12 col-md-12">
+							<nav class="navbar navbar-default" id="main-menu" style="margin-bottom:0px;border:0px;">
 							  <div class="container-fluid" style="padding:0px;">
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding:0px;">
 								  <ul class="nav navbar-nav">
@@ -69,13 +69,40 @@
 										<li><a href="#">ILLUSTRATIVE BARCODE</a></li>
 									  </ul>
 									</li>
+									
 									<li class="dropdown">
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SUBMIT <span class="caret"></span></a>
 									  <ul class="dropdown-menu" style="border:0px;">
 										<li><a href="/contact">FORM</a></li>
 									  </ul>
 									</li>
-									<li><a href="/login">LOGIN</a></li>
+									
+									@if (Auth::check() && Auth::user()->role==3)
+									<li class="dropdown">
+										<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hệ thống <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="/error">Lịch sử lỗi</a></li>
+										</ul>
+									</li>
+									<li class="dropdown">
+										<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quản lý danh mục <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="/user">Tài khoản</a></li>
+											<li><a href="/city">Danh mục địa phương</a></li>
+											<li><a href="/class">Danh mục phân lớp</a></li>
+											<li><a href="/order">Danh mục phân bộ</a></li>
+											<li><a href="/family">Danh mục phân họ</a></li>
+											<li><a href="/genus">Danh mục phân chi</a></li>
+											<li><a href="/species">Danh mục phân loài</a></li>
+										</ul>
+									</li>
+									<li class=""><a href="/barcode">Barcode</a></li>
+									@endif
+									@if (Auth::check())
+									<li class=""><a href="/logout">Logout</a></li>
+									@else
+									<li class=""><a href="/login">Login</a></li>
+									@endif
 								  </ul>								  								 
 								</div><!-- /.navbar-collapse -->
 							  </div><!-- /.container-fluid -->

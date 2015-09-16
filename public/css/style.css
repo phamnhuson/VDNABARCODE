@@ -871,3 +871,6 @@ div.roundBox{
 	font-size:14px!important;
 	padding-bottom: 15px;
 }
+#main-menu li {
+	text-transform:uppercase;
+}
