@@ -65,7 +65,7 @@
 		<table width="100%" cellspacing="0" cellpadding="0">
 			<tr>
 				<td>
-					<h1 id="title">THÔNG TIN BARCODE</h1>
+					<h1 id="title">MẪU BẢN GHI TRÊN VNBIOBARCODE</h1>
 				</td>
 			</tr>
 		</table>
