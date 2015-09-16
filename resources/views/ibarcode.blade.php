@@ -144,7 +144,7 @@
 									<tr>
 										<th colspan="4">TAXONOMY</th>								
 									</tr>
-									<tr>
+									<!--<tr>
 										<td style="width:200px;">Phylum:</td>
 										<td>{!! Form::text('phylum', @$data['barcode'][0]['phylum'], array('style'=>'width:100%')) !!}</td>										
 										<td style="width:200px;">Class:</td>
@@ -161,10 +161,10 @@
 										<td>{!! Form::text('subfamily', @$data['barcode'][0]['subfamily'], array('style'=>'width:100%')) !!}</td>
 										<td>Genus:</td>
 										<td>{!! Form::text('genus', @$data['barcode'][0]['genus'], array('style'=>'width:100%')) !!}</td>										
-									</tr>
+									</tr>-->
 									<tr>
 										<td>Species:</td>
-										<td>{!! Form::text('species', @$data['barcode'][0]['species'], array('style'=>'width:100%')) !!}</td>
+										<td>{!! Form::select('species', @$data['arr_species'],@$data['barcode'][0]['species'], array('style'=>'width:100%')) !!}</td>
 										<td>Common Name:</td>
 										<td>{!! Form::text('common_name', @$data['barcode'][0]['common_name'], array('style'=>'width:100%')) !!}</td>
 									</tr>
@@ -199,7 +199,7 @@
 									</tr>
 									<tr>
 										<td>Tissue Descriptor:</td>
-										<td>{!! Form::text('tissue_descriptor', @$data['barcode'][0]['tissue_descriptor'], array('style'=>'width:100%')) !!}</td>
+										<td>{!! Form::text('tissue_type', @$data['barcode'][0]['tissue_type'], array('style'=>'width:100%')) !!}</td>
 										<td>Sex:</td>
 										<td>{!! Form::text('sex', @$data['barcode'][0]['sex'], array('style'=>'width:100%')) !!}</td>										
 									</tr>

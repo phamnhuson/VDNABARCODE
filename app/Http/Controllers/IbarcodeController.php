@@ -102,12 +102,7 @@ class IbarcodeController extends Controller {
 	{		
 		$user = Session::get('user');
 		
-		$validator = Validator::make($request->all(), [
-			'phylum'			=>	'required',
-			'class'				=>	'required',
-			'order'				=>	'required',
-			'family'			=>	'required',
-			'genus'				=>	'required',
+		$validator = Validator::make($request->all(), [			
 			'species'			=>	'required',
 			'gene'				=>	'required',
 			'seq_size'			=>	'required',
@@ -124,7 +119,7 @@ class IbarcodeController extends Controller {
 
 			$barcode = DB::table('barcode');
 			
-			$inputData = $request->only('sample_id','museum_id','field_id','collection_code','deposited_in','phylum','class','order','family','subfamily','genus','species','common_name','scientific_name','vietnamese_name','bin','voucher_status','reproduction','tissue_descriptor','sex','brief_note','taxon_id','life_stage','organelle','lineage','detailed_notes','sequence_id','gene','genbank_accession','genome','locus','quality','seq_size','sequence','pep_size','peptide');			
+			$inputData = $request->only('sample_id','museum_id','field_id','collection_code','deposited_in','species','common_name','scientific_name','vietnamese_name','bin','voucher_status','reproduction','tissue_type','sex','brief_note','taxon_id','life_stage','organelle','lineage','detailed_notes','sequence_id','gene','genbank_accession','genome','locus','quality','seq_size','sequence','pep_size','peptide');			
 			
 			$inputData['stop']= $this->stopCodonDetect($request['sequence']);
 			
@@ -290,11 +285,11 @@ class IbarcodeController extends Controller {
 		$user = Session::get('user');
 		
 		$validator = Validator::make($request->all(), [
-			'phylum'			=>	'required',
+			/*'phylum'			=>	'required',
 			'class'				=>	'required',
 			'order'				=>	'required',
 			'family'			=>	'required',
-			'genus'				=>	'required',
+			'genus'				=>	'required',*/
 			'species'			=>	'required',
 			'gene'				=>	'required',
 			'seq_size'			=>	'required',
@@ -309,7 +304,7 @@ class IbarcodeController extends Controller {
 
 			$barcodeId = $request->get('barcode_id');
 						
-			$inputData = $request->only('sample_id','museum_id','field_id','collection_code','deposited_in','phylum','class','order','family','subfamily','genus','species','common_name','scientific_name','vietnamese_name','bin','voucher_status','reproduction','tissue_descriptor','sex','brief_note','taxon_id','life_stage','organelle','lineage','detailed_notes','sequence_id','gene','genbank_accession','genome','locus','quality','seq_size','sequence','pep_size','peptide');			
+			$inputData = $request->only('sample_id','museum_id','field_id','collection_code','deposited_in','species','common_name','scientific_name','vietnamese_name','bin','voucher_status','reproduction','tissue_type','sex','brief_note','taxon_id','life_stage','organelle','lineage','detailed_notes','sequence_id','gene','genbank_accession','genome','locus','quality','seq_size','sequence','pep_size','peptide');			
 			
 			$inputData['stop']= $this->stopCodonDetect($request['sequence']);
 			

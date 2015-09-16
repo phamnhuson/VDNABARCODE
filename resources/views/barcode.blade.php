@@ -77,7 +77,7 @@
 						<td><?php echo $bc['sequence_id']; ?></td>
 						<td><?php echo $bc['genbank_accession']; ?></td>
 						<td><?php echo $bc['taxon_id']; ?></td>
-						<td><?php echo $bc['species']; ?></td>
+						<td><?php echo $bc['species_name']; ?></td>
 						<td align="center">
 							<a href="ibarcode?action=edit&id={{ $bc['barcode_id'] }}" class="btn btn-default btn-xs" title="Sửa"><span class="glyphicon glyphicon-edit"></span> sửa</a>&nbsp;
 							<a href="?action=delete&id={{ $bc['barcode_id'] }}" onClick="return confirm('Bạn có chắc muốn xóa?');" title="Xóa" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> xóa</a>

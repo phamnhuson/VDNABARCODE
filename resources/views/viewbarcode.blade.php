@@ -106,38 +106,33 @@
 					</tr>
 					<tr>
 						<td style="width:200px;">Phylum:</td>
-						<td><?php echo $data['barcode']['phylum'] ?></td>										
+						<td><?php echo $data['barcode']['phylum_name'] ?></td>										
 						<td style="width:200px;">Class:</td>
-						<td><?php echo $data['barcode']['class'] ?></td>
+						<td><?php echo $data['barcode']['class_name'] ?></td>
 					</tr>
 					<tr>
 						<td>Order:</td>
-						<td><?php echo $data['barcode']['order'] ?></td>
+						<td><?php echo $data['barcode']['order_name'] ?></td>
 						<td>Family:</td>
-						<td><?php echo $data['barcode']['family'] ?></td>										
+						<td><?php echo $data['barcode']['family_name'] ?></td>										
 					</tr>
 					<tr>
-						<td>Subfamily:</td>
-						<td><?php echo $data['barcode']['subfamily'] ?></td>
 						<td>Genus:</td>
-						<td><?php echo $data['barcode']['genus'] ?></td>										
-					</tr>
-					<tr>
+						<td><?php echo $data['barcode']['genus_name'] ?></td>
 						<td>Species:</td>
-						<td><?php echo $data['barcode']['species'] ?></td>
+						<td><?php echo $data['barcode']['species_name'] ?></td>	
+					</tr>
+					<tr>						
 						<td>Common Name:</td>
 						<td><?php echo $data['barcode']['common_name'] ?></td>
-					</tr>
-					<tr>
 						<td>Scientific Name:</td>
 						<td><?php echo $data['barcode']['scientific_name'] ?></td>
+					</tr>
+					<tr>						
 						<td>Vietnamese Name:</td>
 						<td><?php echo $data['barcode']['vietnamese_name'] ?></td>
-					</tr>
-					<tr>
 						<td>BIN (Cluster ID):</td>
 						<td><?php echo $data['barcode']['bin'] ?></td>
-						<td colspan="2"></td>
 					</tr>
 					<tr>
 						<td colspan="4"><i>* Barcode Index Numbers(BIN): cluster barcode sequence to create OTUs that closely reflect species groupings</i></td>										
@@ -158,8 +153,8 @@
 						<td><?php echo $data['barcode']['reproduction'] ?></td>
 					</tr>
 					<tr>
-						<td>Tissue Descriptor:</td>
-						<td><?php echo $data['barcode']['tissue_descriptor'] ?></td>
+						<td>Tissue Type:</td>
+						<td><?php echo $data['barcode']['tissue_type'] ?></td>
 						<td>Sex:</td>
 						<td><?php echo $data['barcode']['sex'] ?></td>										
 					</tr>
