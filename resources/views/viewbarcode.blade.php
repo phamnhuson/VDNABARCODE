@@ -228,11 +228,6 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="4">
-							<?php echo $data['barcode']['peptide'] ?>											
-						</td>
-					</tr>
-					<tr>
 						<td colspan="4" class="bold">Illustrative Barcode:</td>
 					</tr>
 					<tr>
