@@ -56,6 +56,9 @@
 	.tbl th{
 		background:#F5F5F5;
 	}
+	.bold{
+		    font-size: large;
+	}
 }
 </style>
 <!--<script src="{{ asset('public/js/google_map.js') }}"></script>-->
@@ -80,19 +83,19 @@
 						<th colspan="4">IDENTIFIERS</th>								
 					</tr>
 					<tr>
-						<td style="width:20%;">Barcode ID:</td>
+						<td style="width:20%;" class="bold">Barcode ID:</td>
 						<td style="width:30%;"><?php echo $data['barcode']['barcode_id'] ?></td>
-						<td style="width:20%;">Field ID:</td>
+						<td style="width:20%;" class="bold">Field ID:</td>
 						<td style="width:30%;"><?php echo $data['barcode']['field_id'] ?></td>
 					</tr>
 					<tr>
-						<td>Museun ID:</td>
+						<td class="bold">Museun ID:</td>
 						<td><?php echo $data['barcode']['museum_id'] ?></td>										
-						<td>Collection Code:</td>
+						<td class="bold">Collection Code:</td>
 						<td><?php echo $data['barcode']['collection_code'] ?></td>
 					</tr>
 					<tr>
-						<td>Deposited In:</td>
+						<td class="bold">Deposited In:</td>
 						<td colspan="3"><?php echo $data['barcode']['deposited_in'] ?></td>
 					</tr>
 				</table>
@@ -105,33 +108,33 @@
 						<th colspan="4">TAXONOMY</th>								
 					</tr>
 					<tr>
-						<td style="width:20%;">Phylum:</td>
-						<td style="width:30%;"><?php echo $data['barcode']['phylum_name'] ?></td>										
-						<td style="width:20%;">Class:</td>
+						<td style="width:20%;" class="bold">Phylum:</td>
+						<td style="width:30%;"><?php echo $data['barcode']['phylum_name'] ?></td>			
+						<td style="width:20%;" class="bold">Class:</td>
 						<td style="width:30%;"><?php echo $data['barcode']['class_name'] ?></td>
 					</tr>
 					<tr>
-						<td>Order:</td>
+						<td class="bold">Order:</td>
 						<td><?php echo $data['barcode']['order_name'] ?></td>
-						<td>Family:</td>
+						<td class="bold">Family:</td>
 						<td><?php echo $data['barcode']['family_name'] ?></td>										
 					</tr>
 					<tr>
-						<td>Genus:</td>
+						<td class="bold">Genus:</td>
 						<td><?php echo $data['barcode']['genus_name'] ?></td>
-						<td>Species:</td>
+						<td class="bold">Species:</td>
 						<td><?php echo $data['barcode']['species_name'] ?></td>	
 					</tr>
 					<tr>						
-						<td>Common Name:</td>
+						<td class="bold">Common Name:</td>
 						<td><?php echo $data['barcode']['common_name'] ?></td>
-						<td>Scientific Name:</td>
+						<td class="bold">Scientific Name:</td>
 						<td><?php echo $data['barcode']['scientific_name'] ?></td>
 					</tr>
 					<tr>						
-						<td>Vietnamese Name:</td>
+						<td class="bold">Vietnamese Name:</td>
 						<td><?php echo $data['barcode']['vietnamese_name'] ?></td>
-						<td>BIN (Cluster ID):</td>
+						<td class="bold">BIN (Cluster ID):</td>
 						<td><?php echo $data['barcode']['bin'] ?></td>
 					</tr>
 					<tr>
@@ -147,35 +150,35 @@
 						<th colspan="4">SPECIMEN DETAILS</th>								
 					</tr>
 					<tr>
-						<td style="width:20%;">Voucher Status:</td>
+						<td style="width:20%;" class="bold">Voucher Status:</td>
 						<td style="width:30%;"><?php echo $data['barcode']['voucher_status'] ?></td>										
-						<td style="width:20%;">Reproduction:</td>
+						<td style="width:20%;" class="bold">Reproduction:</td>
 						<td style="width:30%;"><?php echo $data['barcode']['reproduction'] ?></td>
 					</tr>
 					<tr>
-						<td>Tissue Type:</td>
+						<td class="bold">Tissue Type:</td>
 						<td><?php echo $data['barcode']['tissue_type'] ?></td>
-						<td>Sex:</td>
+						<td class="bold">Sex:</td>
 						<td><?php echo $data['barcode']['sex'] ?></td>										
 					</tr>
 					<tr>
-						<td>Brief Note:</td>
+						<td class="bold">Brief Note:</td>
 						<td><?php echo $data['barcode']['brief_note'] ?></td>
-						<td>Taxon Id:</td>
+						<td class="bold">Taxon Id:</td>
 						<td><?php echo $data['barcode']['taxon_id'] ?></td>										
 					</tr>
 					<tr>
-						<td>Life Stage:</td>
+						<td class="bold">Life Stage:</td>
 						<td><?php echo $data['barcode']['life_stage'] ?></td>
-						<td>Organelle:</td>
+						<td class="bold">Organelle:</td>
 						<td><?php echo $data['barcode']['organelle'] ?></td>
 					</tr>
 					<tr>
-						<td>Lineage:</td>
+						<td class="bold">Lineage:</td>
 						<td><td colspan="2"></td>
 					</tr>
 					<tr>
-						<td>Detailed Notes:</td>
+						<td class="bold">Detailed Notes:</td>
 						<td colspan="3"><?php echo $data['barcode']['detailed_notes'] ?></td>
 					</tr>
 				</table>
@@ -188,32 +191,32 @@
 						<th colspan="4">SEQUENCE</th>								
 					</tr>
 					<tr>
-						<td style="width:20%;">Sequence Id:</td>
+						<td style="width:20%;" class="bold">Sequence Id:</td>
 						<td style="width:30%;"><?php echo $data['barcode']['sequence_id'] ?></td>										
-						<td style="width:20%;">Gene:</td>
+						<td style="width:20%;" class="bold">Gene:</td>
 						<td style="width:30%;"><?php echo $data['barcode']['gene'] ?></td>
 					</tr>
 					<tr>
-						<td>GenBank Accession:</td>
+						<td class="bold">GenBank Accession:</td>
 						<td><?php echo $data['barcode']['genbank_accession'] ?></td>
-						<td>Genome:</td>
+						<td class="bold">Genome:</td>
 						<td><?php echo $data['barcode']['genome'] ?></td>										
 					</tr>
 					<tr>
-						<td>Locus:</td>
+						<td class="bold">Locus:</td>
 						<td><?php echo $data['barcode']['locus'] ?></td>
-						<td>Quality:</td>
+						<td class="bold">Quality:</td>
 						<td><?php echo $data['barcode']['quality'] ?></td>							
 					</tr>
 					<tr>
-						<td>Nucleotides:</td>
+						<td class="bold">Nucleotides:</td>
 						<td colspan="3"><?php echo $data['barcode']['seq_size'] ?></td>
 					</tr>
 					<tr>
 						<td colspan="4"><?php echo $data['barcode']['sequence'] ?></td>
 					</tr>
 					<tr>
-						<td>Amino Acids:</td>
+						<td class="bold">Amino Acids:</td>
 						<td colspan="3"><?php echo $data['barcode']['pep_size'] ?></td>
 					</tr>
 					<tr>
@@ -227,7 +230,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="4">Illustrative Barcode:</td>
+						<td colspan="4" class="bold">Illustrative Barcode:</td>
 					</tr>
 					<tr>
 						<td colspan="4"><canvas id="barcode-canvas"></canvas></td>
