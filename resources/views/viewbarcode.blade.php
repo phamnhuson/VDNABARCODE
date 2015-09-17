@@ -68,7 +68,10 @@
 		<table width="100%" cellspacing="0" cellpadding="0">
 			<tr>
 				<td>
-					<h1 id="title">MẪU BẢN GHI TRÊN VNBIOBARCODE</h1>
+					<h1 id="title">MẪU BẢN GHI TRÊN VNBIOBARCODE
+						<a href="{{ url('download_data?id='.$data['barcode']['barcode_id'].'&type=json') }}" target="_blank" class="btn btn-danger btn-xs pull-right" style="margin-left:5px;">JSON <span class="glyphicon glyphicon-save"></span></a>
+								<a href="{{ url('download_data?id='.$data['barcode']['barcode_id'].'&type=tsv') }}" target="_blank" class="btn btn-success btn-xs pull-right">TSV <span class="glyphicon glyphicon-save"></span></a>
+					</h1>
 				</td>
 			</tr>
 		</table>
