@@ -40,7 +40,7 @@
 	}
 	#thongke td{
 		border-top:0px;
-		padding:3px;
+		padding:2px;
 	}
 	#tbl td{
 		border-top:0px;
@@ -63,7 +63,7 @@
 					
 				<td class="col-lg-9" style="padding:0px 0px 0px 8px;">
 					<div class="row">
-						<img style="width:100%; height:350px;" src="{{ asset('public/img/banner.jpg') }}" />
+						<img style="width:100%; height:400px;" src="{{ asset('public/img/banner.jpg') }}" />
 					</div>
 					<div class="row" style="background: #447639;">
 						<div class="col-lg-12">
@@ -79,22 +79,22 @@
 									<td colspan="2" style="font-size: 14pt;color: #95E2FE;text-align:center;">Species coverage (formally describle)</td>
 								</tr>
 								<tr>
-									<td>All Sequence:</td>
-									<td>5,027,226</td>
-									<td>Plants:</td>
-									<td>62,569</td>
+									<td style="padding-left: 40px;">All Sequence:</td>
+									<td style="text-align:center;"><?php echo $data['barcode'] ?></td>
+									<td style="padding-left: 60px;">Plants:</td>
+									<td style="text-align:center;"><?php echo $data['species'] ?></td>
 								</tr>
 								<tr>
-									<td>Barcode Sequence:</td>
-									<td>4,400,932</td>
-									<td>Animals:</td>
-									<td>163,811</td>
+									<td style="padding-left: 40px;">Barcode Sequence:</td>
+									<td style="text-align:center;"><?php echo $data['barcode'] ?></td>
+									<td style="padding-left: 60px;">Animals:</td>
+									<td style="text-align:center;">0</td>
 								</tr>
 								<tr>
 									<td></td>
 									<td></td>
-									<td>Fungi & Other Life</td>
-									<td>20,159</td>
+									<td style="padding-left: 60px;">Fungi & Other Life</td>
+									<td style="text-align:center;">0</td>
 								</tr>
 							</table>
 						</div>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Http\Controllers\Controller;
 use Auth;
 
@@ -13,8 +13,11 @@ class HomeController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function index()
+    public function index()	
     {
-        return view('pages.home');
+		$count=array();
+		$count['barcode']=DB::table('barcode')->count();
+		$count['species']=DB::table('species')->count();
+        return view('pages.home')->with('data',$count);;
     }
 }
