@@ -13,6 +13,9 @@
 
 Route::get('/', 'HomeController@index');
 
+Route::get('/introduction', function(){
+	return view('introduction');
+});
 
 Route::get('login', ['uses' => 'Auth\AuthController@login', 'middleware' => ['guest']]);
 
@@ -128,7 +131,7 @@ Route::post('/inew', ['uses' => 'InewController@create', 'middleware' => ['auth'
 
 Route::put('/inew', ['uses' => 'InewController@update', 'middleware' => ['auth', 'role:3']]);
 
-Route::get('/news', ['uses' => 'NewsController@index']);
+Route::get('/publication', ['uses' => 'NewsController@index']);
 
 Route::post('/news', ['uses' => 'NewsController@comment']);
 

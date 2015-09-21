@@ -40,13 +40,13 @@
 								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding:0px;">
 								  <ul class="nav navbar-nav">
 									<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
-									<li><a href="#">INTRODUCTION</a></li>
+									<li><a href="/introduction">INTRODUCTION</a></li>
 									<li class="dropdown">
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DATABASES <span class="caret"></span></a>
 									  <ul class="dropdown-menu" style="border:0px;">
 										<li><a href="#">DNA BARCODE</a></li>
 										<li><a href="#">PRINMERS</a></li>
-										<li><a href="#">PUBLICATIONS</a></li>
+										<li><a href="/publication">PUBLICATIONS</a></li>
 										<!--<li role="separator" class="divider"></li>
 										<li><a href="#">Separated link</a></li>
 										<li role="separator" class="divider"></li>
@@ -81,7 +81,8 @@
 									<li class="dropdown">
 										<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hệ thống <span class="caret"></span></a>
 										<ul class="dropdown-menu">
-											<li><a href="/error">Lịch sử lỗi</a></li>
+											<li><a href="/inew">Posts</a></li>
+											<li><a href="/error">Error Logs</a></li>
 										</ul>
 									</li>
 									<li class="dropdown">
