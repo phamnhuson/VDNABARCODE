@@ -17,6 +17,18 @@ Route::get('/introduction', function(){
 	return view('introduction');
 });
 
+Route::get('/service', function(){
+	return view('service');
+});
+
+Route::get('/illustrativebarcode', function(){
+	return view('generatebarcode');
+});
+
+Route::get('/help', function(){
+	return view('help');
+});
+
 Route::get('login', ['uses' => 'Auth\AuthController@login', 'middleware' => ['guest']]);
 
 Route::post('login', ['uses' => 'Auth\AuthController@authenticate', 'middleware' => ['guest']]);

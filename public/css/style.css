@@ -874,3 +874,9 @@ div.roundBox{
 #main-menu li {
 	text-transform:uppercase;
 }
+#table-contents.affix {
+	top: 20px;
+}
+.center {
+	text-align:center;
+}

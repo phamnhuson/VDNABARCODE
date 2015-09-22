@@ -53,10 +53,10 @@
 				<td class="col-lg-3" style="background:#036;padding:0px;">
 					<div >
 						<ul class="left_menu" style="padding-left:0px;">
-							<li><a href="#"><span class="glyphicon glyphicon-list"></span> SERVICE</a></li>
+							<li><a href="/service"><span class="glyphicon glyphicon-list"></span> SERVICE</a></li>
 							<li><a href="#"><span class="glyphicon glyphicon-user"></span> MEMBER</a></li>
 							<li><a href="#"><span class="glyphicon glyphicon-link"></span> LINK</a></li>
-							<li><a href="#"><span class="glyphicon glyphicon-bell"></span> HELP</a></li>
+							<li><a href="/help"><span class="glyphicon glyphicon-book"></span> HELP</a></li>
 						</ul>
 					</div>
 				</td>

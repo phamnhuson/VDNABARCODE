@@ -66,7 +66,7 @@
 									  <ul class="dropdown-menu" style="border:0px;">
 										<li><a href="/blast">BLAST</a></li>
 										<li><a href="/treeview">TREE</a></li>
-										<li><a href="#">ILLUSTRATIVE BARCODE</a></li>
+										<li><a href="/illustrativebarcode">ILLUSTRATIVE BARCODE</a></li>
 									  </ul>
 									</li>
 									
