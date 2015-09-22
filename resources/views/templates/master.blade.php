@@ -44,7 +44,7 @@
 									<li class="dropdown">
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DATABASES <span class="caret"></span></a>
 									  <ul class="dropdown-menu" style="border:0px;">
-										<li><a href="#">DNA BARCODE</a></li>
+										<li><a href="/list">DNA BARCODE</a></li>
 										<li><a href="#">PRINMERS</a></li>
 										<li><a href="/publication">PUBLICATIONS</a></li>
 										<!--<li role="separator" class="divider"></li>

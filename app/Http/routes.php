@@ -77,6 +77,12 @@ Route::post('/species', ['uses' => 'SpeciesController@create', 'middleware' => [
 
 Route::put('/species', ['uses' => 'SpeciesController@update', 'middleware' => ['auth', 'role:3']]);
 
+Route::get('/kingdom', ['uses' => 'KingdomController@index', 'middleware' => ['auth', 'role:3']]);
+
+Route::post('/kingdom', ['uses' => 'KingdomController@create', 'middleware' => ['auth', 'role:3']]);
+
+Route::put('/kingdom', ['uses' => 'KingdomController@update', 'middleware' => ['auth', 'role:3']]);
+
 Route::get('/phylum', ['uses' => 'PhylumController@index', 'middleware' => ['auth', 'role:3']]);
 
 Route::post('/phylum', ['uses' => 'PhylumController@create', 'middleware' => ['auth', 'role:3']]);
@@ -146,6 +152,8 @@ Route::put('/inew', ['uses' => 'InewController@update', 'middleware' => ['auth',
 Route::get('/publication', ['uses' => 'NewsController@index']);
 
 Route::post('/news', ['uses' => 'NewsController@comment']);
+
+Route::get('/list', ['uses' => 'ListController@index', 'middleware' => ['auth', 'role:3']]);
 
 /*Route::controller([
 	'city'	=> 'System\CityController',

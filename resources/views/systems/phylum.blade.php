@@ -48,7 +48,16 @@
 				{!! Form::open(array('method' => (isset($data['phylum'])) ? 'PUT' : 'POST' )) !!}
 					@if (isset($data['phylum']))
 						<input type="hidden" name="phylum_id" value="{{ @$data['phylum'][0]['phylum_id'] }}" />
-					@endif				
+					@endif
+					<div class="form-group">
+						<label class="control-label">Giới:</label>					
+						<select name="kingdom_id" class="form-control">
+							<option>Chọn giới</option>
+							<?php foreach($data['list_kingdom'] as $kd){ ?>
+								<option value="<?php echo $kd['kingdom_id'] ?>" <?php echo (isset($data['phylum']) && $kd['kingdom_id']==$data['phylum'][0]['kingdom_id'])?'selected':'' ?>><?php echo $kd['kingdom_name'] ?></option>
+							<?php } ?>
+						</select>
+					</div>	
 					<div class="form-group">
 						<label class="control-label">Tên ngành:</label>
 						{!! Form::text('phylum_name', @$data['phylum'][0]['phylum_name'], array('class'=>'form-control')) !!}

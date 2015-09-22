@@ -46,7 +46,6 @@ class OrderController extends Controller {
 		$validator = Validator::make($request->all(), [
 			'class_id'		=>	'required',
 			'order_name' 	=>	'required|unique:order',
-			'description' 	=>	'required',
 		]);
 		
 		if ($validator->fails()) {
@@ -81,7 +80,6 @@ class OrderController extends Controller {
 		$validator = Validator::make($request->all(), [
 			'class_id'		=>	'required',
 			'order_name' 	=>	'required',
-			'description' 	=>	'required',
 		]);
 		
 		if ($validator->fails()) {

@@ -46,7 +46,6 @@ class FamilyController extends Controller {
 		$validator = Validator::make($request->all(), [
 			'order_id'		=>	'required',
 			'family_name' 	=>	'required|unique:family',
-			'description' 	=>	'required',
 		]);
 		
 		if ($validator->fails()) {
@@ -81,7 +80,6 @@ class FamilyController extends Controller {
 		$validator = Validator::make($request->all(), [
 			'order_id'		=>	'required',
 			'family_name' 	=>	'required',
-			'description' 	=>	'required',
 		]);
 		
 		if ($validator->fails()) {

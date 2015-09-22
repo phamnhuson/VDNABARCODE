@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index()	
     {
 		$count=array();
-		$count['barcode']=DB::table('barcode')->count();
+		$count['barcode']=DB::table('barcode')->where('status','1')->count();
 		$count['species']=DB::table('species')->count();
         return view('pages.home')->with('data',$count);;
     }

@@ -45,7 +45,6 @@ class ClassController extends Controller {
 		$validator = Validator::make($request->all(), [
 			'phylum_id'		=>	'required',
 			'class_name' 	=>	'required|unique:class',
-			'description' 	=>	'required',
 		]);
 		
 		if ($validator->fails()) {
@@ -80,7 +79,6 @@ class ClassController extends Controller {
 		$validator = Validator::make($request->all(), [
 			'phylum_id'		=>	'required',
 			'class_name' 	=>	'required',
-			'description' 	=>	'required',
 		]);
 		
 		if ($validator->fails()) {

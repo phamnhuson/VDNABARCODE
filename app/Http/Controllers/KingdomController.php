@@ -7,44 +7,38 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 
-class PhylumController extends Controller {
+class KingdomController extends Controller {
 	
 	public function index(Request $request)
 	{	
 		
-		$phylumId = $request->get('id');
+		$kingdomId = $request->get('id');
 		
 		$action = $request->get('action');
 		
 		if($action=='delete')
 		{
-			return $this->delete($phylumId);
+			return $this->delete($kingdomId);
 		}
 		
-		if ($phylumId)
+		if ($kingdomId)
 		{						
-			$phylum = DB::table('phylum')->where('phylum_id', $phylumId)->get();
-			$viewData['phylum'] = $phylum;				
+			$kingdom = DB::table('kingdom')->where('kingdom_id', $kingdomId)->get();
+			$viewData['kingdom'] = $kingdom;				
 		}
-		
-		$list_kingdom = DB::table('kingdom')->get();
-		
-		$viewData['list_kingdom']=$list_kingdom;	
 				
-		$list_phylum = DB::table('phylum')->paginate(10);
+		$list_kingdom = DB::table('kingdom')->paginate(10);
 		
-		$viewData['list_phylum']=$list_phylum;
+		$viewData['list_kingdom']=$list_kingdom;
 
-		return view('systems.phylum')->with('data',$viewData);
+		return view('systems.kingdom')->with('data',$viewData);
 
 	}
 	
 	public function create(Request $request)
 	{
-		
 		$validator = Validator::make($request->all(), [
-			'kingdom_id'	=>	'required',
-			'phylum_name' 	=>	'required|unique:phylum',
+			'kingdom_name' 	=>	'required|unique:kingdom',
 		]);
 		
 		if ($validator->fails()) {
@@ -55,11 +49,11 @@ class PhylumController extends Controller {
 						
         } else {
 
-			$phylum = DB::table('phylum');
+			$kingdom = DB::table('kingdom');
 			
-			$inputData = $request->only('phylum_name', 'description','kingdom_id');			
+			$inputData = $request->only('kingdom_name', 'description');			
 			
-			if ($phylum->insert($inputData)) {
+			if ($kingdom->insert($inputData)) {
 		
 				return \Redirect::back()->with('responseData', array('statusCode' => 1, 'message' => 'Thêm mới thành công'));
 			
@@ -77,8 +71,7 @@ class PhylumController extends Controller {
 	{	
 		
 		$validator = Validator::make($request->all(), [
-			'kingdom_id'	=>	'required',
-			'phylum_name' 	=>	'required',
+			'kingdom_name' 	=>	'required',
 		]);
 		
 		if ($validator->fails()) {
@@ -88,13 +81,13 @@ class PhylumController extends Controller {
                         ->withInput();
 						
         } else {
-			$phylumId = $request->get('phylum_id');
+			$kingdomId = $request->get('kingdom_id');
 				
-			$inputData = $request->only('phylum_name', 'description','kingdom_id');			
+			$inputData = $request->only('kingdom_name', 'description');			
 
-			if (DB::table('phylum')->where('phylum_id', $phylumId)->update($inputData)) {
+			if (DB::table('kingdom')->where('kingdom_id', $kingdomId)->update($inputData)) {
 				
-				return redirect('phylum')->with('responseData', array('statusCode' => 1, 'message' => 'Cập nhật thành công'));
+				return redirect('kingdom')->with('responseData', array('statusCode' => 1, 'message' => 'Cập nhật thành công'));
 				
 			} else {
 			
@@ -104,15 +97,15 @@ class PhylumController extends Controller {
 		}
 	}
 	
-	function delete($phylumId)
+	function delete($kingdomId)
 	{
-		if (DB::table('phylum')->where('phylum_id', $phylumId)->delete()) {
+		if (DB::table('kingdom')->where('kingdom_id', $kingdomId)->delete()) {
 			
-			return \Redirect('phylum')->with('responseData', array('statusCode' => 1, 'message' => 'Đã xóa thành công'));
+			return \Redirect('kingdom')->with('responseData', array('statusCode' => 1, 'message' => 'Đã xóa thành công'));
 			
 		} else {
 		
-			return \Redirect('phylum')->with('responseData', array('statusCode' => 2, 'message' => 'Chưa xóa được, vui lòng thử lại'));
+			return \Redirect('kingdom')->with('responseData', array('statusCode' => 2, 'message' => 'Chưa xóa được, vui lòng thử lại'));
 		
 		}
 	}

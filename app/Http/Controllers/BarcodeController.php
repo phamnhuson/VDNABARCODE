@@ -12,7 +12,8 @@ class BarcodeController extends Controller {
 	
 	public function index(Request $request)
 	{	
-
+		$user = Session::get('user');
+		
 		$speciesId = $request->get('id');
 		
 		$user = Session::get('user');
@@ -23,13 +24,24 @@ class BarcodeController extends Controller {
 		{
 			return $this->delete($speciesId);
 		}
-
-		$list_barcode = DB::table('barcode')
-								->join('species','barcode.species','=','species.species_id')
-								->select('barcode_id','barcode.gene','barcode.sequence_id','barcode.genbank_accession','species.species_name','barcode.taxon_id')
-								->where('created_by',$user['id'])->paginate(20);
 		
-		$viewData['list_barcode']=$list_barcode;		
+		if($action=='accept')
+		{
+			return $this->accept($speciesId);
+		}
+		
+		if($user['role']==3){
+			$list_barcode = DB::table('barcode')
+								->join('species','barcode.species','=','species.species_id')								
+								->paginate(20);
+		}else{
+			$list_barcode = DB::table('barcode')
+								->join('species','barcode.species','=','species.species_id')
+								->where('created_by',$user['id'])->paginate(20);
+		}
+
+		$viewData['list_barcode']=$list_barcode;
+		$viewData['role']=$user['role'];
 		return view('barcode')->with('data',$viewData);
 
 	}
@@ -54,5 +66,15 @@ class BarcodeController extends Controller {
 		
 		}
 	}	
-
+	
+	function accept($barcodeId)
+	{
+		$update=array();
+		$update['status']=1;
+		if(DB::table('barcode')->where('barcode_id', $barcodeId)->update($update)){
+			return \Redirect('barcode')->with('responseData', array('statusCode' => 1, 'message' => 'Đã duyệt thành công'));	
+		}else{
+			return \Redirect('barcode')->with('responseData', array('statusCode' => 2, 'message' => 'Chưa duyệt được, vui lòng thử lại'));
+		}
+	}
 }

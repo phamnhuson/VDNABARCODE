@@ -65,9 +65,9 @@
 					<th style="width:13%">Gene</th>
 					<th style="width:20%">Sequence ID</th>
 					<th style="width:15%">GenBank Accession</th>		
-					<th style="width:15%">Taxon ID</th>
-					<th style="width:20%">Species</th>
-					<th style="width:12%;"></th>
+					<!--<th style="width:15%">Taxon ID</th>-->
+					<th style="width:30%">Species</th>
+					<th style="width:17%;"></th>
 				</tr>
 				<?php $i=1; ?>
 				<?php foreach($data['list_barcode'] as $bc){ ?>
@@ -76,11 +76,16 @@
 						<td><?php echo $bc['gene']; ?></td>
 						<td><?php echo $bc['sequence_id']; ?></td>
 						<td><?php echo $bc['genbank_accession']; ?></td>
-						<td><?php echo $bc['taxon_id']; ?></td>
+						<!--<td><?php echo $bc['taxon_id']; ?></td>-->
 						<td><?php echo $bc['species_name']; ?></td>
 						<td align="center">
-							<a href="ibarcode?action=edit&id={{ $bc['barcode_id'] }}" class="btn btn-default btn-xs" title="Sửa"><span class="glyphicon glyphicon-edit"></span> sửa</a>&nbsp;
+							<?php if($data['role']=='3' && $bc['status']=='0'){ ?>
+							<a href="?action=accept&id={{ $bc['barcode_id'] }}" title="Duyệt" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok-sign"></span> Duyệt</a>
+							<?php } ?>
+							<?php if($bc['status']=='0'){ ?>
+							<a href="ibarcode?action=edit&id={{ $bc['barcode_id'] }}" class="btn btn-default btn-xs" title="Sửa"><span class="glyphicon glyphicon-edit"></span> sửa</a>
 							<a href="?action=delete&id={{ $bc['barcode_id'] }}" onClick="return confirm('Bạn có chắc muốn xóa?');" title="Xóa" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> xóa</a>
+							<?php } ?>
 						</td>
 					</tr>
 				<?php $i+=1; ?>

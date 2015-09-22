@@ -46,7 +46,6 @@ class GenusController extends Controller {
 		$validator = Validator::make($request->all(), [
 			'family_id'		=>	'required',
 			'genus_name' 	=>	'required|unique:genus',
-			'description' 	=>	'required',
 		]);
 		
 		if ($validator->fails()) {
@@ -81,7 +80,6 @@ class GenusController extends Controller {
 		$validator = Validator::make($request->all(), [
 			'family_id'		=>	'required',
 			'genus_name' 	=>	'required',
-			'description' 	=>	'required',
 		]);
 		
 		if ($validator->fails()) {
