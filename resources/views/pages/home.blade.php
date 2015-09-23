@@ -82,13 +82,13 @@
 									<td style="padding-left: 40px;">All Sequence:</td>
 									<td style="text-align:center;"><?php echo $data['barcode'] ?></td>
 									<td style="padding-left: 60px;">Plants:</td>
-									<td style="text-align:center;"><?php echo $data['species'] ?></td>
+									<td style="text-align:center;"><?php echo $data['plantae'] ?></td>
 								</tr>
 								<tr>
 									<td style="padding-left: 40px;">Barcode Sequence:</td>
 									<td style="text-align:center;"><?php echo $data['barcode'] ?></td>
 									<td style="padding-left: 60px;">Animals:</td>
-									<td style="text-align:center;">0</td>
+									<td style="text-align:center;"><?php echo $data['Animalia'] ?></td>
 								</tr>
 								<tr>
 									<td></td>

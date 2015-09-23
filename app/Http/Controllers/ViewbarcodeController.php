@@ -22,6 +22,7 @@ class ViewbarcodeController extends Controller {
 							->join('order','family.order_id','=','order.order_id')
 							->join('class','order.class_id','=','class.class_id')
 							->join('phylum','class.phylum_id','=','phylum.phylum_id')
+							->join('kingdom','phylum.kingdom_id','=','kingdom.kingdom_id')
 							->where('barcode.barcode_id', $barcodeId)->get();
 		
 		$file_img = DB::table('file_img')->where('file_img.barcode_id',$barcodeId)->get();
