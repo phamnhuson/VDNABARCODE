@@ -30,6 +30,11 @@ class UserController extends Controller
 			return $this->delete($userId);
 		}
 		
+		if($action=='accept')
+		{
+			return $this->accept($userId);
+		}
+		
 		if ($userId) {
 			
 			$user = User::find($userId);
@@ -126,4 +131,14 @@ class UserController extends Controller
 		}
 	}
 	
+	function accept($userId)
+	{
+		$update=array();
+		$update['role']=1;
+		if(DB::table('users')->where('id', $userId)->update($update)){
+			return \Redirect::back()->with('responseData', array('statusCode' => 1, 'message' => 'Đã duyệt thành công'));	
+		}else{
+			return \Redirect::back()->with('responseData', array('statusCode' => 2, 'message' => 'Chưa duyệt được, vui lòng thử lại'));
+		}
+	}
 }

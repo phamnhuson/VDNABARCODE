@@ -97,9 +97,14 @@
 											<li><a href="/species">Danh mục phân loài</a></li>
 										</ul>
 									</li>
-									<li class=""><a href="/barcode">Barcode</a></li>
+									<li class=""><a href="/barcode">Barcode</a></li>									
+									@endif
+									@if (Auth::check() && Auth::user()->role==1)
+										<li class=""><a href="/barcode">Barcode</a></li>
+										<li class=""><a href="/register?action=edit">Account</a></li>
 									@endif
 									@if (Auth::check())
+									
 									<li class=""><a href="/logout">Logout</a></li>
 									@else
 									<li class=""><a href="/login">Login</a></li>

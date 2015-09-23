@@ -115,25 +115,25 @@ Route::post('/order', ['uses' => 'OrderController@create', 'middleware' => ['aut
 
 Route::put('/order', ['uses' => 'OrderController@update', 'middleware' => ['auth', 'role:3']]);
 
-Route::get('/ibarcode', ['uses' => 'IbarcodeController@index', 'middleware' => ['auth', 'role:3']]);
+Route::get('/ibarcode', ['uses' => 'IbarcodeController@index', 'middleware' => ['auth', 'role:1']]);
 
-Route::post('/ibarcode', ['uses' => 'IbarcodeController@create', 'middleware' => ['auth', 'role:3']]);
+Route::post('/ibarcode', ['uses' => 'IbarcodeController@create', 'middleware' => ['auth', 'role:1']]);
 
-Route::get('/delete_img', ['uses' => 'IbarcodeController@delete_img', 'middleware' => ['auth', 'role:3']]);
+Route::get('/delete_img', ['uses' => 'IbarcodeController@delete_img', 'middleware' => ['auth', 'role:1']]);
 
-Route::get('/delete_file', ['uses' => 'IbarcodeController@delete_file', 'middleware' => ['auth', 'role:3']]);
+Route::get('/delete_file', ['uses' => 'IbarcodeController@delete_file', 'middleware' => ['auth', 'role:1']]);
 
-Route::get('/delete_loca', ['uses' => 'IbarcodeController@delete_loca', 'middleware' => ['auth', 'role:3']]);
+Route::get('/delete_loca', ['uses' => 'IbarcodeController@delete_loca', 'middleware' => ['auth', 'role:1']]);
 
-Route::get('/delete_city', ['uses' => 'IbarcodeController@delete_city', 'middleware' => ['auth', 'role:3']]);
+Route::get('/delete_city', ['uses' => 'IbarcodeController@delete_city', 'middleware' => ['auth', 'role:1']]);
 
-Route::put('/ibarcode', ['uses' => 'IbarcodeController@update', 'middleware' => ['auth', 'role:3']]);
+Route::put('/ibarcode', ['uses' => 'IbarcodeController@update', 'middleware' => ['auth', 'role:1']]);
 
-Route::post('/ibarcode/import', ['uses' => 'IbarcodeController@importFromFile', 'middleware' => ['auth', 'role:3']]);
+Route::post('/ibarcode/import', ['uses' => 'IbarcodeController@importFromFile', 'middleware' => ['auth', 'role:1']]);
 
 Route::get('/download_data', ['uses' => 'IbarcodeController@exportFile']);
 
-Route::get('/barcode', ['uses' => 'BarcodeController@index', 'middleware' => ['auth', 'role:3']]);
+Route::get('/barcode', ['uses' => 'BarcodeController@index', 'middleware' => ['auth', 'role:1']]);
 
 Route::get('/viewbarcode', 'ViewbarcodeController@index');
 
@@ -156,6 +156,12 @@ Route::get('/publication', ['uses' => 'NewsController@index']);
 Route::post('/news', ['uses' => 'NewsController@comment']);
 
 Route::get('/dnabarcode', ['uses' => 'ListController@index']);
+
+Route::get('/register', ['uses' => 'RegisterController@index',]);
+
+Route::post('/register', ['uses' => 'RegisterController@create',]);
+
+Route::put('/register', ['uses' => 'RegisterController@update',]);
 
 /*Route::controller([
 	'city'	=> 'System\CityController',

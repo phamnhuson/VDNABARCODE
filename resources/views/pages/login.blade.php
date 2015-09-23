@@ -51,6 +51,7 @@
 						<br/>
 						<p>
 							<input id="loginButton" type="submit" value="Đăng nhập" name='login' class="btn btn-primary">
+							<a href="/register" class="btn btn-success">Đăng ký</a>
 							<input type="hidden" name="destination" value="">
 							<input type="hidden" name="loginType" value="">
 						</p>
