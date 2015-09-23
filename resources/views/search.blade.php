@@ -7,14 +7,16 @@
 			<div id="search">
 				<div style="margin:auto;margin-top: 5px;">
 
-					{!! Form::open(array('method'=>'POST', 'action'=>array('SearchController@search'))) !!}
+					
 						@if ($searchType == 'sequence')
+							{!! Form::open(array('method'=>'POST', 'action'=>array('SearchController@search'))) !!}
 							<label class="control-label">Search by Sequence</label>
 							<input type="hidden" name="search_type" value="sequence" />
 							{!! Form::textarea('search_content', @$searchContent, array('class' => 'form-control', 'rows' => '5')) !!}
 							<br/>
 							<input type="submit" name="search" value="Search" class="search-button pull-right" />
 						@else
+							{!! Form::open(array('method'=>'GET', 'action'=>array('SearchController@search'))) !!}
 									<table>
 										<tbody>
 											<tr>

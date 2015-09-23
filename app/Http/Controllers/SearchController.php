@@ -25,8 +25,20 @@
 	
 		function search(Request $request)
 		{
-			$this->searchType = $request->input('search_type');
-			$this->searchContent = $request->input('search_content');
+			
+			
+			if($request->get('search_type'))
+			{
+			
+				$this->searchType = $request->get('search_type');
+				$this->searchContent = $request->get('search_content');
+				
+			} else {
+			
+				$this->searchType = $request->input('search_type');
+				$this->searchContent = $request->input('search_content');
+				
+			}
 			
 			$this->searchProccess();
 			

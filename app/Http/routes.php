@@ -37,6 +37,8 @@ Route::get('logout', ['uses' => 'Auth\AuthController@logout', 'middleware' => ['
 
 Route::get('/search/{searchType}', 'SearchController@index');
 
+Route::get('/search', 'SearchController@search');
+
 Route::post('/search', 'SearchController@search');
 
 Route::get('/home', 'HomeController@index');
@@ -153,7 +155,7 @@ Route::get('/publication', ['uses' => 'NewsController@index']);
 
 Route::post('/news', ['uses' => 'NewsController@comment']);
 
-Route::get('/list', ['uses' => 'ListController@index', 'middleware' => ['auth', 'role:3']]);
+Route::get('/dnabarcode', ['uses' => 'ListController@index']);
 
 /*Route::controller([
 	'city'	=> 'System\CityController',
