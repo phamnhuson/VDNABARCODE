@@ -69,9 +69,10 @@ class InewController extends Controller {
 			
 			if(DB::table('news')->insert($inputData))
 			{
+				$id_new = DB::getPdo()->lastInsertId();
+				
 				if($request['images']!='')
-				{
-					$id_new = DB::getPdo()->lastInsertId();
+				{					
 					
 					$move=$request['images']->move(		
 				
@@ -83,6 +84,26 @@ class InewController extends Controller {
 					{
 						$error=1;
 					};
+				}
+				
+				if($request['file']!='')
+				{					
+						
+					$mime=$request['file']->getClientOriginalName();
+					
+					$ext = pathinfo($mime, PATHINFO_EXTENSION);
+				
+					$move=$request['file']->move(		
+				
+					base_path() . '/public/uploads/file/news/', 'new_'.$id_new.'.'.$ext
+					
+					);
+					
+					if(!$move){
+						
+						$error=1;
+						
+					}
 				}
 					
 			}else{
@@ -143,6 +164,26 @@ class InewController extends Controller {
 					{
 						$error=1;
 					};
+				}
+				
+				if($request['file']!='')
+				{					
+						
+					$mime=$request['file']->getClientOriginalName();
+					
+					$ext = pathinfo($mime, PATHINFO_EXTENSION);
+				
+					$move=$request['file']->move(		
+				
+					base_path() . '/public/uploads/file/news/', 'new_'.$id_new.'.'.$ext
+					
+					);
+					
+					if(!$move){
+						
+						$error=1;
+						
+					}
 				}
 					
 			}else{

@@ -75,7 +75,12 @@
 				</div>
 				</br>
 				<div class="row">
-					<input type="submit" name="submit" class="btn btn-primary" value="@if (isset($data['new'])) Cập nhật bài viết @else Thêm bài viết @endif" />
+					<div class="col-lg-4" style="padding:0px;">
+						<input type="submit" name="submit" class="btn btn-primary" value="@if (isset($data['new'])) Cập nhật bài viết @else Thêm bài viết @endif" />
+					</div>
+					<div class="col-lg-8" style="padding:0px;">
+					{!! Form::file('file', array('class'=>'form-control')) !!}
+					</div>
 					@if (isset($data['new']))
 						<input type="hidden" class="form-control" name="id" value="{{$data['new'][0]['new_id']}}" />
 					@endif

@@ -75,6 +75,14 @@
 							<label class="control-label">Số điện thoại:</label>
 							{!! Form::text('phone', @$data['user'][0]['phone'], array('class'=>'form-control')) !!}
 						</div>
+						<div class="form-group">
+							<label class="control-label">Nơi công tác:</label>
+							{!! Form::text('work_place', @$data['user'][0]['work_place'], array('class'=>'form-control')) !!}
+						</div>
+						<div class="form-group">
+							<label class="control-label">Lĩnh vực nghiên cứu:</label>
+							{!! Form::text('research', @$data['user'][0]['research'], array('class'=>'form-control')) !!}
+						</div>
 						<?php if(isset($data['user'])){ ?>
 							<div class="form-group">
 								<label class="control-label">Mật khẩu cũ:</label>

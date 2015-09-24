@@ -36,6 +36,8 @@ class RegisterController extends Controller {
 			'phone' 	=>	'required',
 			'email' 	=>	'required|unique:users',
 			'password' 	=>	'required',
+			'work_place'=>	'required',
+			'research'=>	'required',	
 		]);
 		
 		if ($validator->fails()) {
@@ -48,7 +50,7 @@ class RegisterController extends Controller {
 
 			$users = DB::table('users');
 			
-			$inputData = $request->only('fullname', 'email','phone');
+			$inputData = $request->only('fullname', 'email','phone','work_place','research');
 			
 			$inputData['password'] = Hash::make($request['password']);
 			
@@ -79,8 +81,7 @@ class RegisterController extends Controller {
 					
 			} else {
 			
-				return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại'));
-			
+				return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại'));			
 			}
 
 		}
@@ -90,10 +91,13 @@ class RegisterController extends Controller {
 	public function update(Request $request)
 	{	
 
+		$error=0;
+		
 		$validator = Validator::make($request->all(), [
 			'fullname' 	=>	'required',
 			'phone' 	=>	'required',
-			'password' 	=>	'required',
+			'work_place'=>	'required',
+			'research'=>	'required',			
 		]);
 		
 		if ($validator->fails()) {
@@ -110,35 +114,35 @@ class RegisterController extends Controller {
 		
 			if(Hash::check($request['password_old'], $data_user[0]['password'])){
 				
-				$inputData = $request->only('fullname','phone');
-			
-				$inputData['password'] = Hash::make($request['password']);
-
-				if (DB::table('users')->where('id', $userId)->update($inputData)) {
-					
-					if(isset($request['avata'])){
-					
-						$move=$request['avata']->move(		
-								
-						base_path() . '/public/uploads/img/', 'avata_'.$userId.'.jpg'
-						
-						);
-						
-						if($move)
-						{
-							return \Redirect::back()->with('responseData', array('statusCode' => 1, 'message' => 'Cập nhật thành công'));
-						}else{
-							return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại nha'));
-						};
-					}
-					
-					return \Redirect::back()->with('responseData', array('statusCode' => 1, 'message' => 'Cập nhật thành công'));
-					
-				} else {
+				$inputData = $request->only('fullname','phone','work_place','research');
 				
-					return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại'));
-				
+				if($request['password']!=''){
+					$inputData['password'] = Hash::make($request['password']);
 				}
+				
+				DB::table('users')->where('id', $userId)->update($inputData);									
+				
+				if(isset($request['avata'])){
+				
+					$move=$request['avata']->move(		
+							
+					base_path() . '/public/uploads/img/', 'avata_'.$userId.'.jpg'
+					
+					);
+					
+					if(!$move)
+					{
+						$error=1;
+					}			
+				}
+				
+				if($error==0)
+				{
+					return \Redirect::back()->with('responseData', array('statusCode' => 1, 'message' => 'Cập nhật thành công'));
+				}else{
+					return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại nha'));
+				}
+				
 			}else{
 				return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Mật khẩu cũ không đúng'));
 			}
