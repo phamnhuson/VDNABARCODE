@@ -93,12 +93,12 @@
 				->where('barcode.common_name', 'LIKE', "%".$this->searchContent."%")
 				->orwhere('barcode.vietnamese_name', 'LIKE', "%".$this->searchContent."%")
 				->orwhere('barcode.scientific_name', 'LIKE', "%".$this->searchContent."%")
-				->orwhere('species.species_name', 'LIKE', "%".$this->searchContent."%");
-				->orwhere('genus.genus_name', 'LIKE', "%".$this->searchContent."%");
-				->orwhere('family.family_name', 'LIKE', "%".$this->searchContent."%");
-				->orwhere('order.order_name', 'LIKE', "%".$this->searchContent."%");
-				->orwhere('class.class_name', 'LIKE', "%".$this->searchContent."%");
-				->orwhere('phylum.phylum_name', 'LIKE', "%".$this->searchContent."%");
+				->orwhere('species.species_name', 'LIKE', "%".$this->searchContent."%")
+				->orwhere('genus.genus_name', 'LIKE', "%".$this->searchContent."%")
+				->orwhere('family.family_name', 'LIKE', "%".$this->searchContent."%")
+				->orwhere('order.order_name', 'LIKE', "%".$this->searchContent."%")
+				->orwhere('class.class_name', 'LIKE', "%".$this->searchContent."%")
+				->orwhere('phylum.phylum_name', 'LIKE', "%".$this->searchContent."%")
 				->orwhere('kingdom.kingdom_name', 'LIKE', "%".$this->searchContent."%");
 		}
 	
