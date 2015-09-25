@@ -44,7 +44,7 @@
 									<li class="dropdown">
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DATABASES <span class="caret"></span></a>
 									  <ul class="dropdown-menu" style="border:0px;">
-										<li><a href="/list">DNA BARCODE</a></li>
+										<li><a href="/dnabarcode">DNA BARCODE</a></li>
 										<li><a href="#">PRINMERS</a></li>
 										<li><a href="/publication">PUBLICATIONS</a></li>
 										<!--<li role="separator" class="divider"></li>
@@ -69,13 +69,15 @@
 										<li><a href="/illustrativebarcode">ILLUSTRATIVE BARCODE</a></li>
 									  </ul>
 									</li>
-									
+									@if (Auth::check())
 									<li class="dropdown">
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SUBMIT <span class="caret"></span></a>
 									  <ul class="dropdown-menu" style="border:0px;">
 										<li><a href="/contact">FORM</a></li>
+										<li class=""><a href="/barcode">Barcode</a></li>
 									  </ul>
 									</li>
+									@endif
 									
 									@if (Auth::check() && Auth::user()->role==3)
 									<li class="dropdown">
@@ -90,6 +92,8 @@
 										<ul class="dropdown-menu">
 											<li><a href="/user">Tài khoản</a></li>
 											<li><a href="/city">Danh mục địa phương</a></li>
+											<li><a href="/kingdom">Danh mục phân giới</a></li>
+											<li><a href="/phylum">Danh mục phân ngành</a></li>
 											<li><a href="/class">Danh mục phân lớp</a></li>
 											<li><a href="/order">Danh mục phân bộ</a></li>
 											<li><a href="/family">Danh mục phân họ</a></li>
@@ -97,7 +101,7 @@
 											<li><a href="/species">Danh mục phân loài</a></li>
 										</ul>
 									</li>
-									<li class=""><a href="/barcode">Barcode</a></li>									
+																		
 									@endif
 									@if (Auth::check() && Auth::user()->role==1)
 										<li class=""><a href="/barcode">Barcode</a></li>

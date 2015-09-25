@@ -50,7 +50,7 @@ class RegisterController extends Controller {
 
 			$users = DB::table('users');
 			
-			$inputData = $request->only('fullname', 'email','phone','work_place','research');
+			$inputData = $request->only('fullname', 'email','phone','work_place','research', 'degree');
 			
 			$inputData['password'] = Hash::make($request['password']);
 			
@@ -114,7 +114,7 @@ class RegisterController extends Controller {
 		
 			if(Hash::check($request['password_old'], $data_user[0]['password'])){
 				
-				$inputData = $request->only('fullname','phone','work_place','research');
+				$inputData = $request->only('fullname','phone','work_place','research', 'degree');
 				
 				if($request['password']!=''){
 					$inputData['password'] = Hash::make($request['password']);

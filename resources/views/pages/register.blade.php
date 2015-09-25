@@ -57,8 +57,12 @@
 				<tr>
 					<td class="col-lg-8" style="padding-top:15px;padding-left:0px;">
 						<div class="form-group">
-							<label class="control-label">Tên người dùng:</label>
+							<label class="control-label">Họ và tên:</label>
 							{!! Form::text('fullname', @$data['user'][0]['fullname'], array('class'=>'form-control')) !!}
+						</div>
+						<div class="form-group">
+							<label class="control-label">Học hàm học vị:</label>
+							{!! Form::text('degree', @$data['user'][0]['degree'], array('class'=>'form-control')) !!}
 						</div>
 						<?php if(isset($data['user'])){ ?>
 						<div class="form-group">
@@ -83,6 +87,7 @@
 							<label class="control-label">Lĩnh vực nghiên cứu:</label>
 							{!! Form::text('research', @$data['user'][0]['research'], array('class'=>'form-control')) !!}
 						</div>
+						
 						<?php if(isset($data['user'])){ ?>
 							<div class="form-group">
 								<label class="control-label">Mật khẩu cũ:</label>
@@ -102,7 +107,7 @@
 							<div id="upanh">
 								<a> 
 									<img class='col-md-12' style="padding:6px;border:2px dashed #0087F7;height:200px;width:150" id="img" 
-								    <?php if(isset($data['user'])){ ?> src="{{asset('public/uploads/img/avata_'.$data['user'][0]['id'].'.jpg')}}" <?php }else{ ?> src="{{asset('public/img/add.png')}}"<?php } ?> alt="Chọn ảnh" />
+								    src="<?=(file_exists(PUBLIC_PATH().'/uploads/img/user_pictures/avata_'.$data['user'][0]['id'].'.jpg'))? asset('public/uploads/img/user_pictures/avata_'.$data['user'][0]['id'].'.jpg') : asset('public/img/add.png');?>" alt="Chọn ảnh" />
 									
 								</a>									
 							</div>			

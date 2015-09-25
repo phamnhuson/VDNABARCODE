@@ -163,6 +163,8 @@ Route::post('/register', ['uses' => 'RegisterController@create',]);
 
 Route::put('/register', ['uses' => 'RegisterController@update',]);
 
+Route::get('/member', ['uses' => 'MemberController@index']);
+
 /*Route::controller([
 	'city'	=> 'System\CityController',
 ]);*/

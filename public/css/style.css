@@ -880,3 +880,7 @@ div.roundBox{
 .center {
 	text-align:center;
 }
+.member-info {
+	padding-left: 20px;
+	float: left;
+}
