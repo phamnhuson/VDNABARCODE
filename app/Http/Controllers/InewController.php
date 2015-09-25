@@ -99,10 +99,16 @@ class InewController extends Controller {
 					
 					);
 					
-					if(!$move){
+					if($move){
 						
+						$inputData['file']='new_'.$id_new.'.'.$ext;
+			
+						if(!DB::table('news')->where('new_id', $id_new)->update($inputData)){
+							$error=1;
+						}
+						
+					}else{
 						$error=1;
-						
 					}
 				}
 					
@@ -179,10 +185,16 @@ class InewController extends Controller {
 					
 					);
 					
-					if(!$move){
+					if($move){
 						
+						$inputData['file']='new_'.$id_new.'.'.$ext;
+			
+						if(!DB::table('news')->where('new_id', $id_new)->update($inputData)){
+							$error=1;
+						}
+						
+					}else{
 						$error=1;
-						
 					}
 				}
 					
