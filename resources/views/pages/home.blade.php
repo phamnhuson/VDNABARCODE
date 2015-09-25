@@ -67,7 +67,7 @@
 					</div>
 					<div class="row" style="background: #447639;">
 						<div class="col-lg-12">
-							<table class="table" id="thongke" style="color:#fff;margin-bottom:0px;background: #447639;">
+							<table class="table" id="thongke" style="color:#fff;margin-bottom:0px;background: #447639;margin:5px;">
 								<tr>
 									<td class="col-lg-3"></td>
 									<td class="col-lg-3"></td>
@@ -76,7 +76,7 @@
 								</tr>
 								<tr>
 									<td colspan="2" style="font-size: 14pt;color: #95E2FE;padding-left:90px;">Sequence statics</td>
-									<td colspan="2" style="font-size: 14pt;color: #95E2FE;text-align:center;">Species coverage (formally describle)</td>
+									<td colspan="2" style="font-size: 14pt;color: #95E2FE;padding-left:20px;">Species coverage (formally describle)</td>
 								</tr>
 								<tr>
 									<td style="padding-left: 40px;">All Sequence:</td>
