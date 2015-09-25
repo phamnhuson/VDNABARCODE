@@ -12,7 +12,8 @@
 			<div class="col-md-12">
 				{!! Form::open(array('action' => array('TreeviewController@create'))) !!}
 					<label class="control-label">Sequences in Fasta format</label>
-					{!! Form::textarea('sequence', @$sequence, array('class' => 'form-control', 'rows' => '5')) !!}
+					{!! Form::textarea('sequence', @$sequence, array('class' => 'form-control validate-control validate-fasta', 'rows' => '5')) !!}
+					<p class="text-danger text-error"></p>
 					<br/>
 					{!! Form::submit('Generate', array('class' => 'btn btn-primary pull-right')) !!}
 					<br/><br/>

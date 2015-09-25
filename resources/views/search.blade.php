@@ -12,7 +12,7 @@
 							{!! Form::open(array('method'=>'POST', 'action'=>array('SearchController@search'))) !!}
 							<label class="control-label">Search by Sequence</label>
 							<input type="hidden" name="search_type" value="sequence" />
-							{!! Form::textarea('search_content', @$searchContent, array('class' => 'form-control', 'rows' => '5')) !!}
+							{!! Form::textarea('search_content', @$searchContent, array('class' => 'form-control sequence-input', 'rows' => '5')) !!}
 							<br/>
 							<input type="submit" name="search" value="Search" class="search-button pull-right" />
 						@else

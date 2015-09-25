@@ -42,7 +42,8 @@
 				
 				<div class="form-group">
 					<label class="control-label">Trình tự</label>
-					{!! Form::textarea('sequence', null, array('class' => 'form-control', 'rows' => 5)) !!}
+					{!! Form::textarea('sequence', null, array('class' => 'form-control sequence-input validate-control validate-nu-sequence', 'rows' => 5)) !!}
+					<p class="text-danger text-error"></p>
 				</div>
 				{!! Form::submit('Tìm kiếm', array('class' => 'btn btn-primary')) !!}
 			{!! Form::close() !!}
@@ -64,9 +65,9 @@
 				@if (isset($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'][0]))
 					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
 						{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
-						{{-- */ $itemId = explode('_', $item['Hit_def']); $itemId = substr($itemId[0], 2); /* --}}
+						{{-- */ $itemId = explode('_', $item['Hit_def']); $itemId = substr($itemId[0], 3); /* --}}
 						<tr>
-							<td><a href="{{ url('viewbarcode?id='.$itemId) }}">{{ $item['Hit_def'] }}</a></td>
+							<td><a href="{{ url('viewbarcode?id='.$itemId) }}">ID{{ $itemId }}</a></td>
 							<td>{{ $topHsp['Hsp_bit-score'] }}</td>
 							<td>{{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }}</td>
 							<td>{{ ($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100 }}%</td>
@@ -76,9 +77,9 @@
 				@else
 					{{-- */ $item = $blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] /* --}}
 					{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
-					{{-- */ $itemId = explode('_', $item['Hit_def']); $itemId = substr($itemId[0], 2); /* --}}
+					{{-- */ $itemId = explode('_', $item['Hit_def']); $itemId = substr($itemId[0], 3); /* --}}
 					<tr>
-						<td><a href="{{ url('viewbarcode?id='.$itemId) }}">{{ $item['Hit_def'] }}</a></td>
+						<td><a href="{{ url('viewbarcode?id='.$itemId) }}">ID{{ $itemId }}</a></td>
 						<td>{{ $topHsp['Hsp_bit-score'] }}</td>
 						<td>{{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }}</td>
 						<td>{{ ($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100 }}%</td>

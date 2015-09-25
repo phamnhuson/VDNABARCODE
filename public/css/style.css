@@ -884,3 +884,6 @@ div.roundBox{
 	padding-left: 20px;
 	float: left;
 }
+.text-error {
+	display: none;
+}

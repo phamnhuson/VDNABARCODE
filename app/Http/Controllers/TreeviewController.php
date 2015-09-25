@@ -31,8 +31,9 @@
 				exec("ete build -a ete2-2.3.6/treeview/$jobId/inputsequence.fa -o ete2-2.3.6/treeview/$jobId  -w standard_fasttree --noimg --tools-dir /home/juhuvn/.etetoolkit/ext_apps-latest", $output, $retval);
 				if(isset($retval))
 					return \Redirect("treeview/job/$jobId");
+			} else {
+				return \Redirect("treeview");
 			}
-			
 		}
 		
 	}

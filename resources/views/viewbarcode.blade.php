@@ -387,11 +387,11 @@
 			ctx.fillStyle=color;
 			ctx.fillRect(j, bheigh, 1, 50);
 			
-			if(j == c.offsetWidth-5)
+			if(j == c.offsetWidth-6)
 			{
 				ctx.fillStyle="black";
-				ctx.fillText(i+1, j-(String(i).length*5), theigh);
-				console.log(i);
+				ctx.fillText(i+1, j-(String(i).length*6), theigh);
+				// console.log(i);
 				bheigh = bheigh + 80;
 				theigh = theigh + 80;
 				j = 0;
@@ -404,7 +404,7 @@
 			
 		}
 		ctx.fillStyle="black";
-		ctx.fillText(sequence.length, j-(String(sequence.length).length*5), theigh);
+		ctx.fillText(sequence.length, j-(String(sequence.length).length*6), theigh);
 	}	
 	
 	drawBarcode('barcode-canvas', sequence);
