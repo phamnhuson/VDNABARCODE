@@ -49,6 +49,7 @@
 			</div>
 		</div>
 	</div>
+	<!--
 	<div class="row">
 		<div class="col-lg-10 col-lg-offset-1" style="padding:0px;">
 			
@@ -92,8 +93,9 @@
 					<?php } ?>
 				</div>
 			</div>
+			
 		</div>
-	</div>
+	</div>-->
 </div>
 
 <script type="text/javascript">

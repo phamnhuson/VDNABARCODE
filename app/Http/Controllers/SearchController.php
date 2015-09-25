@@ -58,6 +58,12 @@
 			$this->barcode
 				 ->select('barcode.*')
 				 ->leftjoin('species', 'species.species_id', '=', 'barcode.species')
+				 ->leftjoin('genus', 'species.genus_id', '=', 'genus.genus_id')
+				 ->leftjoin('family', 'genus.family_id', '=', 'family.family_id')
+				 ->leftjoin('order', 'family.order_id', '=', 'order.order_id')
+				 ->leftjoin('class', 'order.class_id', '=', 'class.class_id')
+				 ->leftjoin('phylum', 'class.phylum_id', '=', 'phylum.phylum_id')
+				 ->leftjoin('kingdom', 'phylum.kingdom_id', '=', 'kingdom.kingdom_id')
 				 ->leftjoin('barcode2city', 'barcode2city.barcode_id', '=', 'barcode.barcode_id')
 				 ->leftjoin('city', 'city.city_id', '=', 'barcode2city.city_id');
 		

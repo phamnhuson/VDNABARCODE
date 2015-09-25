@@ -217,7 +217,7 @@ class InewController extends Controller {
 	function delete($newId)
 	{
 
-		if (DB::table('news')->where('id', $newId)->delete()) {			
+		if (DB::table('news')->where('new_id', $newId)->delete()) {			
 			
 			$nuRepo = new NucleotideRepository;
 			$nuRepo->delete(array('id' => $newId));
