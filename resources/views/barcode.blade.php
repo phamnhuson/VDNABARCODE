@@ -80,7 +80,7 @@
 						<td><?php echo $bc['species_name']; ?></td>
 						<td align="center">
 							<?php if($data['role']=='3' && $bc['status']=='0'){ ?>
-							<a href="?action=accept&id={{ $bc['barcode_id'] }}" title="Duyệt" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok-sign"></span> Duyệt</a>
+							<a href="accept?id={{ $bc['barcode_id'] }}" title="Duyệt" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok-sign"></span> Duyệt</a>
 							<?php } ?>
 							<?php if($data['role']=='3' || $bc['status']=='0'){ ?>
 							<a href="ibarcode?action=edit&id={{ $bc['barcode_id'] }}" class="btn btn-default btn-xs" title="Sửa"><span class="glyphicon glyphicon-edit"></span> sửa</a>

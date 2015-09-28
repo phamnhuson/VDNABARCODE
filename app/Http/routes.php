@@ -135,6 +135,8 @@ Route::get('/download_data', ['uses' => 'IbarcodeController@exportFile']);
 
 Route::get('/barcode', ['uses' => 'BarcodeController@index', 'middleware' => ['auth', 'role:1,3']]);
 
+Route::get('/accept', ['uses' => 'BarcodeController@accept', 'middleware' => ['auth', 'role:3']]);
+
 Route::get('/viewbarcode', 'ViewbarcodeController@index');
 
 Route::get('/phylogenetictree', 'PhylogeneticController@index');

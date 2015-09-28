@@ -25,10 +25,10 @@ class BarcodeController extends Controller {
 			return $this->delete($speciesId);
 		}
 		
-		if($action=='accept')
+		/*if($action=='accept')
 		{
 			return $this->accept($speciesId);
-		}
+		}*/
 		
 		if($user['role']==3){
 			$list_barcode = DB::table('barcode')
@@ -67,8 +67,9 @@ class BarcodeController extends Controller {
 		}
 	}	
 	
-	function accept($barcodeId)
+	function accept(Request $request)
 	{
+		$barcodeId=$request->get('id');
 		$update=array();
 		$update['status']=1;
 		if(DB::table('barcode')->where('barcode_id', $barcodeId)->update($update)){
