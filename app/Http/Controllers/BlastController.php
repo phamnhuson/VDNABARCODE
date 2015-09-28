@@ -16,7 +16,7 @@
 		function blast(Request $request)
 		{
 			$validator = Validator::make($request->all(), [
-				'sequence'	=>	'required|Regex:/^([ATGC\n]+)$/'
+				'sequence'	=>	'required|Regex:/^([ATGCatgc\-\n]+)$/'
 			]);
 			
 			if ($validator->fails()) {
