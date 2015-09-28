@@ -29,6 +29,7 @@
 				$viewData = array();
 			
 				$viewData['blastResult'] = $this->blastProccess($request->all());
+				$viewData['oldInput'] = $request->all();
 				
 				return view('blast', $viewData);
 				
