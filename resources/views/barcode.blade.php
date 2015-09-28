@@ -83,10 +83,10 @@
 							<a href="accept?id={{ $bc['barcode_id'] }}" title="Duyệt" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok-sign"></span> Duyệt</a>
 							<?php } ?>
 							<?php if($data['role']=='3' || $bc['status']=='0'){ ?>
-							<a href="ibarcode?action=edit&id={{ $bc['barcode_id'] }}" class="btn btn-default btn-xs" title="Sửa"><span class="glyphicon glyphicon-edit"></span> sửa</a>
+							<a href="ibarcode?action=edit&id={{ $bc['barcode_id'] }}" class="btn btn-default btn-xs" title="Sửa"><span class="glyphicon glyphicon-edit"></span> Sửa</a>
 							<?php } ?>
-							<?php if($data['role']=='3'){ ?>
-							<a href="?action=delete&id={{ $bc['barcode_id'] }}" onClick="return confirm('Bạn có chắc muốn xóa?');" title="Xóa" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> xóa</a>
+							<?php if($data['role']=='3' || ($data['role']!='3' && $bc['status']=='0')){ ?>
+							<a href="?action=delete&id={{ $bc['barcode_id'] }}" onClick="return confirm('Bạn có chắc muốn xóa?');" title="Xóa" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
 							<?php } ?>
 						</td>
 					</tr>
