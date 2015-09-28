@@ -65,7 +65,7 @@
 				@if (isset($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'][0]))
 					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
 						{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
-						{{-- */ $itemId = explode('_', $item['Hit_def']); $itemId = substr($itemId[0], 3); /* --}}
+						{{-- */ $itemId = explode('_', $item['Hit_def']); $itemId = substr($itemId[0], 2); /* --}}
 						<tr>
 							<td><a href="{{ url('viewbarcode?id='.$itemId) }}">ID{{ $itemId }}</a></td>
 							<td>{{ $topHsp['Hsp_bit-score'] }}</td>
@@ -77,7 +77,7 @@
 				@else
 					{{-- */ $item = $blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] /* --}}
 					{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
-					{{-- */ $itemId = explode('_', $item['Hit_def']); $itemId = substr($itemId[0], 3); /* --}}
+					{{-- */ $itemId = explode('_', $item['Hit_def']); $itemId = substr($itemId[0], 2); /* --}}
 					<tr>
 						<td><a href="{{ url('viewbarcode?id='.$itemId) }}">ID{{ $itemId }}</a></td>
 						<td>{{ $topHsp['Hsp_bit-score'] }}</td>
