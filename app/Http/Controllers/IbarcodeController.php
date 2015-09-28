@@ -21,8 +21,7 @@ class IbarcodeController extends Controller {
 	}
 	
 	public function index(Request $request)
-	{	
-				
+	{			
 		
 		$barcodeId = $request->get('id');
 		
@@ -100,22 +99,19 @@ class IbarcodeController extends Controller {
 	}
 	
 	public function create(Request $request)
-	{		
+	{	
 		$user = Session::get('user');
 		
 		$validator = Validator::make($request->all(), [			
 			'species'			=>	'required',
-			'gene'				=>	'required',
-			'seq_size'			=>	'required',
 			'sequence'			=>	'required',
 		]);
 		
 		$error=0;
 		
 		if ($validator->fails()) {			
-		
-            return \Redirect::back()->with('errors',$validator->errors()->toArray());
-						
+            //return \Redirect::back()->with('errors',$validator->errors()->toArray());
+			 return \Redirect::back()->withErrors($validator);
         } else {
 
 			$barcode = DB::table('barcode');
@@ -295,20 +291,13 @@ class IbarcodeController extends Controller {
 		$user = Session::get('user');
 		
 		$validator = Validator::make($request->all(), [
-			/*'phylum'			=>	'required',
-			'class'				=>	'required',
-			'order'				=>	'required',
-			'family'			=>	'required',
-			'genus'				=>	'required',*/
 			'species'			=>	'required',
-			'gene'				=>	'required',
-			'seq_size'			=>	'required',
 			'sequence'			=>	'required',
 		]);
 		
 		if ($validator->fails()) {
 			
-            return \Redirect::back()->with('errors',$validator->errors()->toArray());
+            return \Redirect::back()->withErrors($validator);
 						
         } else {
 

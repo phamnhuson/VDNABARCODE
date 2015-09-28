@@ -47,6 +47,9 @@
 	.tbl th{
 		background:#F5F5F5;
 	}
+	td{
+		font-size:10pt;
+	}
 }
 </style>
 <!--<script src="{{ asset('public/js/google_map.js') }}"></script>-->
@@ -74,14 +77,14 @@
 		@endif
 	
 		@if (count($errors) > 0)
-			<div class="alert alert-danger">
-				<ul>
-					@foreach ($errors as $error)
-						<li>{{ $error[0] }}</li>
-					@endforeach
-				</ul>
-			</div>
-		@endif
+				<div class="alert alert-danger">
+					<ul>
+						@foreach ($errors->all() as $error)
+							<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
+			@endif
 		</br>
 		<div class="row">
 			<div class="col-md-12" style="padding:0px">
@@ -117,8 +120,8 @@
 							<td>
 								<table width="100%" class="table table-bordered tbl">
 									<tr>
-										<th colspan="3">TITLE</th>
-										<th style="width:80%;">{!! Form::text('title', @$data['barcode'][0]['title'], array('style'=>'width:100%')) !!}</th>
+										<td colspan="3">TITLE</td>
+										<td style="width:80%;">{!! Form::text('title', @$data['barcode'][0]['title'], array('style'=>'width:100%')) !!}</td>
 									</tr>
 								</table>
 							</td>
@@ -129,12 +132,6 @@
 									<tr>
 										<th colspan="4">IDENTIFIERS</th>								
 									</tr>
-									<!--<tr>
-										<td style="width:200px;">Sample ID:</td>
-										<td>{!! Form::text('sample_id', @$data['barcode'][0]['sample_id'], array('style'=>'width:100%')) !!}</td>
-										<td>Field ID:</td>
-										<td>{!! Form::text('field_id', @$data['barcode'][0]['field_id'], array('style'=>'width:100%')) !!}</td>
-									</tr>-->
 									<tr>
 										<td style="width:20%;">Museum ID:</td>
 										<td style="width:30%;">{!! Form::text('museun_id', @$data['barcode'][0]['museum_id'], array('style'=>'width:100%')) !!}</td>										
@@ -154,24 +151,6 @@
 									<tr>
 										<th colspan="4">TAXONOMY</th>								
 									</tr>
-									<!--<tr>
-										<td style="width:200px;">Phylum:</td>
-										<td>{!! Form::text('phylum', @$data['barcode'][0]['phylum'], array('style'=>'width:100%')) !!}</td>										
-										<td style="width:200px;">Class:</td>
-										<td>{!! Form::text('class', @$data['barcode'][0]['class'], array('style'=>'width:100%')) !!}</td>
-									</tr>
-									<tr>
-										<td>Order:</td>
-										<td>{!! Form::text('order', @$data['barcode'][0]['order'], array('style'=>'width:100%')) !!}</td>
-										<td>Family:</td>
-										<td>{!! Form::text('family', @$data['barcode'][0]['family'], array('style'=>'width:100%')) !!}</td>										
-									</tr>
-									<tr>
-										<td>Subfamily:</td>
-										<td>{!! Form::text('subfamily', @$data['barcode'][0]['subfamily'], array('style'=>'width:100%')) !!}</td>
-										<td>Genus:</td>
-										<td>{!! Form::text('genus', @$data['barcode'][0]['genus'], array('style'=>'width:100%')) !!}</td>										
-									</tr>-->
 									<tr>
 										<td style="width:20%;">Species:</td>
 										<td style="width:30%;">{!! Form::select('species', @$data['arr_species'],@$data['barcode'][0]['species'], array('style'=>'width:100%')) !!}</td>
@@ -297,7 +276,7 @@
 									</tr>
 									<tr>
 										<td colspan="4">
-										{!!Form::textarea('sequence',@$data['barcode'][0]['sequence'],array('style'=>'width:100%','rows'=>'10','cols'=>'1')) !!}
+										{!!Form::textarea('sequence',@$data['barcode'][0]['sequence'],array('id'=>'sequence','style'=>'width:100%','rows'=>'10','cols'=>'1')) !!}
 										</td>
 									</tr>
 									<tr>
@@ -508,7 +487,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<input type="submit" name="submit" class="btn btn-primary" value="@if (isset($data['barcode'])) Cập nhật @else Thêm mới @endif" />
+				<input type="submit" name="submit" id="submit" class="btn btn-primary" value="@if (isset($data['barcode'])) Cập nhật @else Thêm mới @endif" />
 			</div>
 		{!! Form::close() !!}
 	</div>
@@ -736,6 +715,14 @@ $(document).ready(function(){
 		  })(marker, i));
 		}
 	});
+	
+	$(document).on('click','#submit',function(){
+		$sequence=$('#sequence').val();
+		if($sequence==''){
+			alert("The sequence field is required.")
+			return false;
+		}
+	})
 });
 </script>
 @endsection
