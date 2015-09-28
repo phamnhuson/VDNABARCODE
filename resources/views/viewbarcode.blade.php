@@ -360,7 +360,7 @@
 	
 	function drawBarcode(element, sequence){
 		var c=document.getElementById(element); 
-		
+		sequence = sequence.trim().replace(/(\s|\r\n|\n|\r)/gm,"").toUpperCase();
 		var ctx=c.getContext("2d"); 
 		ctx.canvas.height = (Math.floor(sequence.length/c.offsetWidth)+1)*80;
 		ctx.canvas.width  = c.parentNode.offsetWidth;
