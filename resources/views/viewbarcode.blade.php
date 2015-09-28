@@ -57,7 +57,10 @@
 		background:#F5F5F5;
 	}
 	.bold{
-		    font-size: large;
+		    text-decoration:underline;
+	}
+	td{
+		font-size:10pt;
 	}
 }
 </style>
@@ -79,6 +82,32 @@
 </div>
 <div class="box">
 	<table class="col-lg-12">
+		<tr>
+			<td>
+				<table width="100%" class="table table-bordered tbl">
+					<tr>
+						<td class="bold">Title:</td>
+						<td colspan="3"><?php echo $data['barcode']['title'] ?></td>
+					</tr>
+					<tr>
+						<td class="bold">Authors:</td>
+						<td colspan="3"><?php echo $data['barcode']['fullname'] ?></td>
+					</tr>
+					<tr>
+						<td style="width:20%;" class="bold">Address:</td>
+						<td style="width:30%;"><?php echo $data['barcode']['work_place'] ?></td>
+						<td style="width:20%;" class="bold">Phone:</td>
+						<td style="width:30%;"><?php echo $data['barcode']['phone'] ?></td>
+					</tr>
+					<tr>
+						<td class="bold">Email:</td>
+						<td><?php echo $data['barcode']['email'] ?></td>										
+						<td class="bold">Submitted date:</td>
+						<td><?php echo $data['barcode']['created'] ?></td>
+					</tr>					
+				</table>
+			</td>
+		</tr>
 		<tr>
 			<td>
 				<table width="100%" class="table table-bordered tbl">
@@ -184,6 +213,27 @@
 						<td class="bold">Detailed Notes:</td>
 						<td colspan="3"><?php echo $data['barcode']['detailed_notes'] ?></td>
 					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table width="100%" class="table table-bordered tbl">
+					<tr>
+						<th colspan="4">PRIMERS</th>								
+					</tr>
+					<tr>
+						<td style="width:20%;" class="bold">Forward Primer Name:</td>
+						<td style="width:30%;"><?php echo $data['barcode']['fprimername'] ?></td>										
+						<td style="width:20%;" class="bold">Sequence (5'-3'):</td>
+						<td style="width:30%;"><?php echo $data['barcode']['fprimer'] ?></td>
+					</tr>
+					<tr>
+						<td class="bold">Reverse Primer Name:</td>
+						<td><?php echo $data['barcode']['rprimername'] ?></td>
+						<td class="bold">Sequence (5'-3'):</td>
+						<td><?php echo $data['barcode']['rprimer'] ?></td>										
+					</tr>					
 				</table>
 			</td>
 		</tr>

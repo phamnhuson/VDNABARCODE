@@ -117,6 +117,16 @@
 							<td>
 								<table width="100%" class="table table-bordered tbl">
 									<tr>
+										<th colspan="3">TITLE</th>
+										<th style="width:80%;">{!! Form::text('title', @$data['barcode'][0]['title'], array('style'=>'width:100%')) !!}</th>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table width="100%" class="table table-bordered tbl">
+									<tr>
 										<th colspan="4">IDENTIFIERS</th>								
 									</tr>
 									<!--<tr>
@@ -126,7 +136,7 @@
 										<td>{!! Form::text('field_id', @$data['barcode'][0]['field_id'], array('style'=>'width:100%')) !!}</td>
 									</tr>-->
 									<tr>
-										<td style="width:20%;">Museun ID:</td>
+										<td style="width:20%;">Museum ID:</td>
 										<td style="width:30%;">{!! Form::text('museun_id', @$data['barcode'][0]['museum_id'], array('style'=>'width:100%')) !!}</td>										
 										<td style="width:20%;">Collection Code:</td>
 										<td style="width:30%;">{!! Form::text('collection_code', @$data['barcode'][0]['collection_code'], array('style'=>'width:100%')) !!}</td>
@@ -227,6 +237,27 @@
 										<td colspan="3">
 										{!! Form::textarea('detailed_notes', @$data['barcode'][0]['detailed_notes'], array('style'=>'width:100%','rows'=>'4','cols'=>'1')) !!}
 										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table width="100%" class="table table-bordered tbl">
+									<tr>
+										<th colspan="4">PRIMERS</th>								
+									</tr>
+									<tr>
+										<td style="width:20%;">Forward Primer name:</td>
+										<td style="width:30%;">{!! Form::text('fprimername', @$data['barcode'][0]['fprimername'], array('style'=>'width:100%')) !!}</td>										
+										<td style="width:20%;">Sequence(5’-3’):</td>
+										<td style="width:30%;">{!! Form::text('fprimer', @$data['barcode'][0]['fprimer'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+									<tr>
+										<td style="width:20%;">Reverse Primer name:</td>
+										<td style="width:30%;">{!! Form::text('rprimername', @$data['barcode'][0]['rprimername'], array('style'=>'width:100%')) !!}</td>										
+										<td style="width:20%;">Sequence(5’-3’):</td>
+										<td style="width:30%;">{!! Form::text('rprimer', @$data['barcode'][0]['rprimer'], array('style'=>'width:100%')) !!}</td>
 									</tr>
 								</table>
 							</td>
