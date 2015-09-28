@@ -48,14 +48,21 @@ class BarcodeController extends Controller {
 	
 	function delete($barcodeId)
 	{
+	
+		$barcode = DB::table('barcode')->where('barcode_id', $barcodeId)->get();
+	
 		if (DB::table('barcode')->where('barcode_id', $barcodeId)->delete()) {
 			
 			DB::table('file_img')->where('barcode_id', $barcodeId)->delete();
 			
 			DB::table('file_trace')->where('barcode_id', $barcodeId)->delete();
 			
-			$nuRepo = new NucleotideRepository;
-			$nuRepo->delete(array('id' => $barcodeId));
+			if ($barcode[0]['status'] == 1) {
+			
+				$nuRepo = new NucleotideRepository;
+				$nuRepo->delete(array('id' => $barcodeId));
+				
+			}	
 			
 			return \Redirect('barcode')->with('responseData', array('statusCode' => 1, 'message' => 'Đã xóa thành công'));		
 						
@@ -73,6 +80,11 @@ class BarcodeController extends Controller {
 		$update=array();
 		$update['status']=1;
 		if(DB::table('barcode')->where('barcode_id', $barcodeId)->update($update)){
+		
+			$barcode = DB::table('barcode')->where('barcode_id', $barcodeId)->get();
+			$nuRepo = new NucleotideRepository;
+			$nuRepo->create(array('id' => $barcode[0]['barcode_id'], 'sequence' => $barcode[0]['sequence'], 'name' => $barcode[0]['scientific_name']));
+		
 			return \Redirect('barcode')->with('responseData', array('statusCode' => 1, 'message' => 'Đã duyệt thành công'));	
 		}else{
 			return \Redirect('barcode')->with('responseData', array('statusCode' => 2, 'message' => 'Chưa duyệt được, vui lòng thử lại'));

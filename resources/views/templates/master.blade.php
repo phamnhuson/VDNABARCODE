@@ -73,7 +73,7 @@
 									<li class="dropdown">
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SUBMIT <span class="caret"></span></a>
 									  <ul class="dropdown-menu" style="border:0px;">
-										<li><a href="/contact">FORM</a></li>
+										<li><a href="/ibarcode">FORM</a></li>
 										<li class=""><a href="/barcode">Barcode</a></li>
 									  </ul>
 									</li>
@@ -103,12 +103,9 @@
 									</li>
 																		
 									@endif
-									@if (Auth::check() && Auth::user()->role==1)
-										<li class=""><a href="/barcode">Barcode</a></li>
-										<li class=""><a href="/register?action=edit">Account</a></li>
-									@endif
-									@if (Auth::check())
 									
+									@if (Auth::check())
+									<li class=""><a href="/register?action=edit">Account</a></li>
 									<li class=""><a href="/logout">Logout</a></li>
 									@else
 									<li class=""><a href="/login">Login</a></li>

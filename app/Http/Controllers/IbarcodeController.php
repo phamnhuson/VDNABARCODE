@@ -9,6 +9,7 @@ use Illuminate\Http\Response;
 use File;
 use App\Repositories\Fastas\NucleotideRepository;
 use Parser;
+use Auth;
 
 class IbarcodeController extends Controller {
 	
@@ -133,11 +134,20 @@ class IbarcodeController extends Controller {
 			
 			$inputData['created_by']=$user['id'];
 			
+			if(Auth::user()->role == 3)
+			{
+				$inputData['status'] = 1;
+			}
+			
 			if ($barcode->insert($inputData)) {
 				
 				$id	=	DB::getPdo()->lastInsertId();
 				
-				$this->nuRepo->create(array('id' => $id, 'sequence' => $inputData['sequence'], 'name' => $inputData['scientific_name']));
+				if(isset($inputData['status']) && $inputData['status'] == 1) {
+				
+					$this->nuRepo->create(array('id' => $id, 'sequence' => $inputData['sequence'], 'name' => $inputData['scientific_name']));
+					
+				}
 				
 				$cityData=array();
 				
@@ -320,7 +330,13 @@ class IbarcodeController extends Controller {
 
 			DB::table('barcode')->where('barcode_id', $barcodeId)->update($inputData);
 			
-			$this->nuRepo->update(array('id' => $barcodeId, 'sequence' => $inputData['sequence'], 'name' => $inputData['scientific_name']));
+			$barcode = DB::table('barcode')->where('barcode_id', $barcodeId)->get();
+			
+			if (!empty($barcode) && $barcode[0]['status'] == 1) {
+			
+				$this->nuRepo->update(array('id' => $barcodeId, 'sequence' => $inputData['sequence'], 'name' => $inputData['scientific_name']));
+				
+			}	
 			
 			$cityData=array();
 				
@@ -455,6 +471,8 @@ class IbarcodeController extends Controller {
 	
 	function stopCodonDetect($sequence)
 	{
+	 
+		$sequence = preg_replace( "/\r|\n/", "", $sequence);
 	 
 		$stopCodon = array("TAG", "TAA", "TGA");
 		  
@@ -673,9 +691,20 @@ class IbarcodeController extends Controller {
 				// 'quality'	=>
 			);			
 
+			if(Auth::user()->role == 3)
+			{
+				$inputData['status'] = 1;
+			}
+			
 			if ($barcode->insert($inputData)) {
 				
 				$id	= DB::getPdo()->lastInsertId();
+				
+				if(isset($inputData['status']) && $inputData['status'] == 1) {
+				
+					$this->nuRepo->create(array('id' => $id, 'sequence' => $inputData['sequence'], 'name' => $inputData['scientific_name']));
+					
+				}
 				
 				$this->nuRepo->create(array('id' => $id, 'sequence' => $inputData['sequence'], 'name' => ''));
 			
