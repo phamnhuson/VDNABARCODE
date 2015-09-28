@@ -144,7 +144,7 @@ $(document).ready(function(){
 			ctx.fillStyle=color;
 			ctx.fillRect(j, bheigh, 1, 50);
 			// console.log(j);
-			if(j == c.offsetWidth-6)
+			if(j >= c.offsetWidth-6)
 			{
 				ctx.fillStyle="black";
 				ctx.fillText(i+1, j-(String(i).length*6), theigh);
