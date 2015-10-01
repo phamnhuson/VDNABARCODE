@@ -45,7 +45,8 @@
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DATABASES <span class="caret"></span></a>
 									  <ul class="dropdown-menu" style="border:0px;">
 										<li><a href="/dnabarcode">DNA BARCODE</a></li>
-										<li><a href="#">PRINMERS</a></li>
+										<li><a href="#">GEN</a></li>
+										<li><a href="#">GENOME</a></li>
 										<li><a href="/publication">PUBLICATIONS</a></li>
 										<!--<li role="separator" class="divider"></li>
 										<li><a href="#">Separated link</a></li>
@@ -69,15 +70,15 @@
 										<li><a href="/illustrativebarcode">ILLUSTRATIVE BARCODE</a></li>
 									  </ul>
 									</li>
-									@if (Auth::check())
+									
 									<li class="dropdown">
 									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SUBMIT <span class="caret"></span></a>
 									  <ul class="dropdown-menu" style="border:0px;">
-										<li><a href="/ibarcode">FORM</a></li>
-										<li class=""><a href="/barcode">Barcode</a></li>
+										<li><a href="@if (Auth::check()) /ibarcode @else /login @endif">FORM</a></li>
+										@if (Auth::check())<li class=""><a href="/barcode">Barcode</a></li>@endif
 									  </ul>
 									</li>
-									@endif
+									
 									
 									@if (Auth::check() && Auth::user()->role==3)
 									<li class="dropdown">
