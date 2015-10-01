@@ -49,7 +49,18 @@
 			$inputFile = storage_path().'/linux/blast.input';
 			file_put_contents($inputFile, $sequence);
 			
-			$command = "$blastTool -query $inputFile -db ".storage_path()."/linux/fasta/nucleotide_db -outfmt 5";
+			$blastDb = '/linux/fasta/nucleotide_db';
+			if ($request['allowmore']) {
+				$tmpName = md5(uniqid());
+				file_put_contents($tmpName, $sequence);
+				$blastDb = '/linux/fasta-blast/'.$tmpName;
+				// Call make database function
+				chdir(storage_path().'/linux/fasta-blast/');
+				system(storage_path().config('app.blast_tool_path')." -in ".$tmpName." -input_type fasta -dbtype nucl -out ".$tmpName, $retVal);
+			}
+			
+			
+			$command = "$blastTool -query $inputFile -db ".storage_path().$blastDb." -outfmt 5";
 			
 			if ($threadsHold) {
 				$command .= " -num-threads $threadsHold";

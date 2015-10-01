@@ -887,3 +887,12 @@ div.roundBox{
 .text-error {
 	display: none;
 }
+.borderless td, .borderless th {
+    border: none!important;
+}
+.pdl-0 {
+	padding-left: 0!important;
+}
+.pdr-0 {
+	padding-right: 0!important;
+}

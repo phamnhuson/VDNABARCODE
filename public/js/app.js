@@ -11,7 +11,7 @@ $(document).ready(function(){
 	});
 
 	$('form').submit(function(){
-		doValidate($(this));
+		return doValidate($(this));
 	});
 	
 	// $('.jsubmit').click(function(){
