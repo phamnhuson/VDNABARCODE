@@ -50,13 +50,14 @@
 			file_put_contents($inputFile, $sequence);
 			
 			$blastDb = '/linux/fasta/nucleotide_db';
-			if ($request['allowmore']) {
+			if (isset($request['allowmore'])) {
 				$tmpName = md5(uniqid());
-				file_put_contents($tmpName, $sequence);
 				$blastDb = '/linux/fasta-blast/'.$tmpName;
+				file_put_contents(storage_path().$blastDb, $request['moresequence']);
+				
 				// Call make database function
 				chdir(storage_path().'/linux/fasta-blast/');
-				system(storage_path().config('app.blast_tool_path')." -in ".$tmpName." -input_type fasta -dbtype nucl -out ".$tmpName, $retVal);
+				exec(storage_path().config('app.blast_tool_path')." -in ".$tmpName." -input_type fasta -dbtype nucl -out ".$tmpName);
 			}
 			
 			

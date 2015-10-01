@@ -91,7 +91,7 @@
 					@endforeach
 					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
 						{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
-						{{-- */ if($oldInput['allowmore']) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = substr($itemId[0], 2); } /* --}}
+						{{-- */ if(isset($oldInput['allowmore'])) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = substr($itemId[0], 2); } /* --}}
 						<tr>
 							<td><a href="#blast{{ $itemId }}">{{ $itemTitle }}</a></td>
 							<td>{{ $topHsp['Hsp_bit-score'] }}</td>
@@ -99,13 +99,13 @@
 							<td>{{ round((strlen($topHsp['Hsp_qseq'])/$topHsp['Hsp_align-len'])*100, 2) }}%</td>
 							<td>{{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }} ({{ round(($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100, 2) }}%)</td>
 							<td>{{ $topHsp['Hsp_evalue'] }}</td>
-							<td><a href="{{ url('viewbarcode?id='.$itemId) }}">ID{{ $itemId }}</a></td>
+							<td><a href="{{ (isset($oldInput['allowmore']))?'#':url('viewbarcode?id='.$itemId) }}">ID{{ $itemId }}</a></td>
 						</tr>
 					@endforeach
 				@else
 					{{-- */ $item = $blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] /* --}}
 					{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
-					{{-- */ if($oldInput['allowmore']) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = substr($itemId[0], 2); } /* --}}
+					{{-- */ if(isset($oldInput['allowmore'])) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = substr($itemId[0], 2); } /* --}}
 					<tr>
 						<td><a href="#blast{{ $itemId }}">{{ $itemTitle }}</a></td>
 							<td>{{ $topHsp['Hsp_bit-score'] }}</td>
@@ -113,7 +113,7 @@
 							<td>{{ round((strlen($topHsp['Hsp_qseq'])/$topHsp['Hsp_align-len'])*100, 2) }}%</td>
 							<td>{{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }} ({{ round(($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100, 2) }}%)</td>
 							<td>{{ $topHsp['Hsp_evalue'] }}</td>
-							<td><a href="{{ url('viewbarcode?id='.$itemId) }}">ID{{ $itemId }}</a></td>
+							<td><a href="{{ (isset($oldInput['allowmore']))?'#':url('viewbarcode?id='.$itemId) }}">ID{{ $itemId }}</a></td>
 					</tr>
 				@endif
 			</table>
@@ -123,7 +123,7 @@
 				@if (isset($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'][0]))
 					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
 						{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
-						{{-- */ if($oldInput['allowmore']) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = substr($itemId[0], 2); } /* --}}
+						{{-- */ if(isset($oldInput['allowmore'])) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = substr($itemId[0], 2); } /* --}}
 						{{-- */ 	$alignTop =  str_split($topHsp['Hsp_qseq'], 60); /* --}}
 						{{-- */ 	$alignMiddle =  str_split($topHsp['Hsp_midline'], 60); /* --}}
 						{{-- */ 	$alignBottom =  str_split($topHsp['Hsp_hseq'], 60); /* --}}
@@ -136,7 +136,7 @@
 						{{-- */ 	$totalLine = ceil($alignLength/60); /* --}}
 						
 						<p>
-						<a href="{{ url('viewbarcode?id='.$itemId) }}" id="blast{{ $itemId }}">ID{{ $itemId }} - {{ $itemTitle }}</a><br/>
+						<a href="{{ (isset($oldInput['allowmore']))?'#':url('viewbarcode?id='.$itemId) }}" id="blast{{ $itemId }}">ID{{ $itemId }} - {{ $itemTitle }}</a><br/>
 						<b>Length:</b> {{ $item['Hit_len'] }},
 						<b>Score:</b> {{ $topHsp['Hsp_bit-score'] }} bits({{ $topHsp['Hsp_score'] }}),
 						<b>Identities:</b> {{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }} ({{ round(($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100, 2) }}%),
@@ -148,7 +148,7 @@
 				@else
 					{{-- */ $item = $blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] /* --}}
 					{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
-					{{-- */ if($oldInput['allowmore']) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = substr($itemId[0], 2); } /* --}}
+					{{-- */ if(isset($oldInput['allowmore'])) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = substr($itemId[0], 2); } /* --}}
 					{{-- */		$alignTop =  str_split($topHsp['Hsp_qseq'], 60); /* --}}
 					{{-- */		$alignMiddle =  str_split($topHsp['Hsp_midline'], 60); /* --}}
 					{{-- */		$alignBottom =  str_split($topHsp['Hsp_hseq'], 60); /* --}}
@@ -161,7 +161,7 @@
 					{{-- */		$totalLine = ceil($alignLength/60); /* --}}
 						
 						<p>
-						<a href="{{ url('viewbarcode?id='.$itemId) }}" id="blast{{ $itemId }}">ID{{ $itemId }} - {{ $itemTitle }}</a><br/>
+						<a href="{{ (isset($oldInput['allowmore']))?'#':url('viewbarcode?id='.$itemId) }}" id="blast{{ $itemId }}">ID{{ $itemId }} - {{ $itemTitle }}</a><br/>
 						<b>Length:</b> {{ $item['Hit_len'] }},
 						<b>Score:</b> {{ $topHsp['Hsp_bit-score'] }} bits({{ $topHsp['Hsp_score'] }}),
 						<b>Identities:</b> {{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }} ({{ round(($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100, 2) }}%),
