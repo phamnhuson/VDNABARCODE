@@ -23,7 +23,7 @@ $(document).ready(function(){
 		var t = form;
 		if(t.find('.validate-control').length > 0)
 		{
-			t.find('.validate-control:visible').each(function(){
+			t.find('.validate-control:enabled').each(function(){
 				if ($(this).hasClass('validate-fasta')) {
 					if (!validateFasta($(this).val())) {
 						$(this).siblings('.text-error').text('Fasta Invalid').show();
