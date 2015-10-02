@@ -73,47 +73,47 @@ Route::post('/city', ['uses' => 'CityController@create', 'middleware' => ['auth'
 
 Route::put('/city', ['uses' => 'CityController@update', 'middleware' => ['auth', 'role:3']]);
 
-Route::get('/species', ['uses' => 'SpeciesController@index', 'middleware' => ['auth', 'role:3']]);
+Route::get('/species', ['uses' => 'SpeciesController@index', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::post('/species', ['uses' => 'SpeciesController@create', 'middleware' => ['auth', 'role:3']]);
+Route::post('/species', ['uses' => 'SpeciesController@create', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::put('/species', ['uses' => 'SpeciesController@update', 'middleware' => ['auth', 'role:3']]);
+Route::put('/species', ['uses' => 'SpeciesController@update', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::get('/kingdom', ['uses' => 'KingdomController@index', 'middleware' => ['auth', 'role:3']]);
+Route::get('/kingdom', ['uses' => 'KingdomController@index', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::post('/kingdom', ['uses' => 'KingdomController@create', 'middleware' => ['auth', 'role:3']]);
+Route::post('/kingdom', ['uses' => 'KingdomController@create', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::put('/kingdom', ['uses' => 'KingdomController@update', 'middleware' => ['auth', 'role:3']]);
+Route::put('/kingdom', ['uses' => 'KingdomController@update', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::get('/phylum', ['uses' => 'PhylumController@index', 'middleware' => ['auth', 'role:3']]);
+Route::get('/phylum', ['uses' => 'PhylumController@index', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::post('/phylum', ['uses' => 'PhylumController@create', 'middleware' => ['auth', 'role:3']]);
+Route::post('/phylum', ['uses' => 'PhylumController@create', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::put('/phylum', ['uses' => 'PhylumController@update', 'middleware' => ['auth', 'role:3']]);
+Route::put('/phylum', ['uses' => 'PhylumController@update', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::get('/class', ['uses' => 'ClassController@index', 'middleware' => ['auth', 'role:3']]);
+Route::get('/class', ['uses' => 'ClassController@index', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::post('/class', ['uses' => 'ClassController@create', 'middleware' => ['auth', 'role:3']]);
+Route::post('/class', ['uses' => 'ClassController@create', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::put('/class', ['uses' => 'ClassController@update', 'middleware' => ['auth', 'role:3']]);
+Route::put('/class', ['uses' => 'ClassController@update', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::get('/genus', ['uses' => 'GenusController@index', 'middleware' => ['auth', 'role:3']]);
+Route::get('/genus', ['uses' => 'GenusController@index', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::post('/genus', ['uses' => 'GenusController@create', 'middleware' => ['auth', 'role:3']]);
+Route::post('/genus', ['uses' => 'GenusController@create', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::put('/genus', ['uses' => 'GenusController@update', 'middleware' => ['auth', 'role:3']]);
+Route::put('/genus', ['uses' => 'GenusController@update', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::get('/family', ['uses' => 'FamilyController@index', 'middleware' => ['auth', 'role:3']]);
+Route::get('/family', ['uses' => 'FamilyController@index', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::post('/family', ['uses' => 'FamilyController@create', 'middleware' => ['auth', 'role:3']]);
+Route::post('/family', ['uses' => 'FamilyController@create', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::put('/family', ['uses' => 'FamilyController@update', 'middleware' => ['auth', 'role:3']]);
+Route::put('/family', ['uses' => 'FamilyController@update', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::get('/order', ['uses' => 'OrderController@index', 'middleware' => ['auth', 'role:3']]);
+Route::get('/order', ['uses' => 'OrderController@index', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::post('/order', ['uses' => 'OrderController@create', 'middleware' => ['auth', 'role:3']]);
+Route::post('/order', ['uses' => 'OrderController@create', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::put('/order', ['uses' => 'OrderController@update', 'middleware' => ['auth', 'role:3']]);
+Route::put('/order', ['uses' => 'OrderController@update', 'middleware' => ['auth', 'role:1,3']]);
 
 Route::get('/ibarcode', ['uses' => 'IbarcodeController@index', 'middleware' => ['auth', 'role:1,3']]);
 
@@ -166,6 +166,20 @@ Route::post('/register', ['uses' => 'RegisterController@create',]);
 Route::put('/register', ['uses' => 'RegisterController@update',]);
 
 Route::get('/member', ['uses' => 'MemberController@index']);
+
+Route::get('/get_phylum', ['uses' => 'ClassController@get_phylum', 'middleware' => ['auth', 'role:1,3']]);
+
+Route::get('/get_class', ['uses' => 'ClassController@get_class', 'middleware' => ['auth', 'role:1,3']]);
+
+Route::get('/get_order', ['uses' => 'OrderController@get_order', 'middleware' => ['auth', 'role:1,3']]);
+
+Route::get('/get_family', ['uses' => 'FamilyController@get_family', 'middleware' => ['auth', 'role:1,3']]);
+
+Route::get('/get_genus', ['uses' => 'GenusController@get_genus', 'middleware' => ['auth', 'role:1,3']]);
+
+Route::get('/get_species', ['uses' => 'SpeciesController@get_species', 'middleware' => ['auth', 'role:1,3']]);
+
+Route::get('/viewspecies', ['uses' => 'SpeciesController@viewspecies']);
 
 /*Route::controller([
 	'city'	=> 'System\CityController',
