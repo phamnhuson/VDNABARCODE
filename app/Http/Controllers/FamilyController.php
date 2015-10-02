@@ -117,4 +117,10 @@ class FamilyController extends Controller {
 		
 		}
 	}
+	
+	public function get_family(Request $request){
+		$order_id = $request['id'];
+		$family = DB::table('family')->where('order_id', $order_id)->get();
+		echo json_encode($family);
+	}
 }

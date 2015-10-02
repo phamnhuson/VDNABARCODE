@@ -71,7 +71,7 @@
 		<table width="100%" cellspacing="0" cellpadding="0">
 			<tr>
 				<td>
-					<h1 id="title">MẪU BẢN GHI TRÊN VNBIOBARCODE
+					<h1 id="title">MẪU BẢN GHI DNA BARCODE
 						<a href="{{ url('download_data?id='.$data['barcode']['barcode_id'].'&type=json') }}" target="_blank" class="btn btn-danger btn-xs pull-right" style="margin-left:5px;">JSON <span class="glyphicon glyphicon-save"></span></a>
 								<a href="{{ url('download_data?id='.$data['barcode']['barcode_id'].'&type=tsv') }}" target="_blank" class="btn btn-success btn-xs pull-right">TSV <span class="glyphicon glyphicon-save"></span></a>
 					</h1>
@@ -81,267 +81,300 @@
 	</div>
 </div>
 <div class="box">
-	<table class="col-lg-12">
+	<table>
 		<tr>
-			<td>
-				<table width="100%" class="table table-bordered tbl">
+			<td style="width:75%">
+				<table>
 					<tr>
-						<td class="bold">Title:</td>
-						<td colspan="3"><?php echo $data['barcode']['title'] ?></td>
-					</tr>
-					<tr>
-						<td class="bold">Authors:</td>
-						<td colspan="3"><?php echo $data['barcode']['fullname'] ?></td>
-					</tr>
-					<tr>
-						<td style="width:20%;" class="bold">Address:</td>
-						<td style="width:30%;"><?php echo $data['barcode']['work_place'] ?></td>
-						<td style="width:20%;" class="bold">Phone:</td>
-						<td style="width:30%;"><?php echo $data['barcode']['phone'] ?></td>
-					</tr>
-					<tr>
-						<td class="bold">Email:</td>
-						<td><?php echo $data['barcode']['email'] ?></td>										
-						<td class="bold">Submitted date:</td>
-						<td><?php echo $data['barcode']['created'] ?></td>
-					</tr>					
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<table width="100%" class="table table-bordered tbl">
-					<tr>
-						<th colspan="4">IDENTIFIERS</th>								
-					</tr>
-					<tr>
-						<td style="width:20%;" class="bold">Barcode ID:</td>
-						<td style="width:30%;"><?php echo $data['barcode']['barcode_id'] ?></td>
-						<td style="width:20%;" class="bold">Field ID:</td>
-						<td style="width:30%;"><?php echo $data['barcode']['field_id'] ?></td>
-					</tr>
-					<tr>
-						<td class="bold">Museun ID:</td>
-						<td><?php echo $data['barcode']['museum_id'] ?></td>										
-						<td class="bold">Collection Code:</td>
-						<td><?php echo $data['barcode']['collection_code'] ?></td>
-					</tr>
-					<tr>
-						<td class="bold">Deposited In:</td>
-						<td colspan="3"><?php echo $data['barcode']['deposited_in'] ?></td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<table width="100%" class="table table-bordered tbl">
-					<tr>
-						<th colspan="4">TAXONOMY</th>								
-					</tr>
-					<tr>
-						<td style="width:20%;" class="bold">Phylum:</td>
-						<td style="width:30%;"><?php echo $data['barcode']['phylum_name'] ?></td>			
-						<td style="width:20%;" class="bold">Class:</td>
-						<td style="width:30%;"><?php echo $data['barcode']['class_name'] ?></td>
-					</tr>
-					<tr>
-						<td class="bold">Order:</td>
-						<td><?php echo $data['barcode']['order_name'] ?></td>
-						<td class="bold">Family:</td>
-						<td><?php echo $data['barcode']['family_name'] ?></td>										
-					</tr>
-					<tr>
-						<td class="bold">Genus:</td>
-						<td><?php echo $data['barcode']['genus_name'] ?></td>
-						<td class="bold">Species:</td>
-						<td><?php echo $data['barcode']['species_name'] ?></td>	
-					</tr>
-					<tr>						
-						<td class="bold">Common Name:</td>
-						<td><?php echo $data['barcode']['common_name'] ?></td>
-						<td class="bold">Scientific Name:</td>
-						<td><?php echo $data['barcode']['scientific_name'] ?></td>
-					</tr>
-					<tr>						
-						<td class="bold">Vietnamese Name:</td>
-						<td><?php echo $data['barcode']['vietnamese_name'] ?></td>
-						<td class="bold">BIN (Cluster ID):</td>
-						<td><?php echo $data['barcode']['bin'] ?></td>
-					</tr>
-					<tr>
-						<td colspan="4"><i>* Barcode Index Numbers(BIN): cluster barcode sequence to create OTUs that closely reflect species groupings</i></td>										
-					</tr>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<table width="100%" class="table table-bordered tbl">
-					<tr>
-						<th colspan="4">SPECIMEN DETAILS</th>								
-					</tr>
-					<tr>
-						<td style="width:20%;" class="bold">Voucher Status:</td>
-						<td style="width:30%;"><?php echo $data['barcode']['voucher_status'] ?></td>										
-						<td style="width:20%;" class="bold">Reproduction:</td>
-						<td style="width:30%;"><?php echo $data['barcode']['reproduction'] ?></td>
-					</tr>
-					<tr>
-						<td class="bold">Tissue Type:</td>
-						<td><?php echo $data['barcode']['tissue_type'] ?></td>
-						<td class="bold">Sex:</td>
-						<td><?php echo $data['barcode']['sex'] ?></td>										
-					</tr>
-					<tr>
-						<td class="bold">Brief Note:</td>
-						<td><?php echo $data['barcode']['brief_note'] ?></td>
-						<td class="bold">Taxon Id:</td>
-						<td><?php echo $data['barcode']['taxon_id'] ?></td>										
-					</tr>
-					<tr>
-						<td class="bold">Life Stage:</td>
-						<td><?php echo $data['barcode']['life_stage'] ?></td>
-						<td class="bold">Organelle:</td>
-						<td><?php echo $data['barcode']['organelle'] ?></td>
-					</tr>
-					<tr>
-						<td class="bold">Lineage:</td>
-						<td><td colspan="2"></td>
-					</tr>
-					<tr>
-						<td class="bold">Detailed Notes:</td>
-						<td colspan="3"><?php echo $data['barcode']['detailed_notes'] ?></td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<table width="100%" class="table table-bordered tbl">
-					<tr>
-						<th colspan="4">PRIMERS</th>								
-					</tr>
-					<tr>
-						<td style="width:20%;" class="bold">Forward Primer Name:</td>
-						<td style="width:30%;"><?php echo $data['barcode']['fprimername'] ?></td>										
-						<td style="width:20%;" class="bold">Sequence (5'-3'):</td>
-						<td style="width:30%;"><?php echo $data['barcode']['fprimer'] ?></td>
-					</tr>
-					<tr>
-						<td class="bold">Reverse Primer Name:</td>
-						<td><?php echo $data['barcode']['rprimername'] ?></td>
-						<td class="bold">Sequence (5'-3'):</td>
-						<td><?php echo $data['barcode']['rprimer'] ?></td>										
-					</tr>					
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<table width="100%" class="table table-bordered tbl">
-					<tr>
-						<th colspan="4">SEQUENCE</th>								
-					</tr>
-					<tr>
-						<td style="width:20%;" class="bold">Sequence Id:</td>
-						<td style="width:30%;"><?php echo $data['barcode']['sequence_id'] ?></td>										
-						<td style="width:20%;" class="bold">Gene:</td>
-						<td style="width:30%;"><?php echo $data['barcode']['gene'] ?></td>
-					</tr>
-					<tr>
-						<td class="bold">GenBank Accession:</td>
-						<td><?php echo $data['barcode']['genbank_accession'] ?></td>
-						<td class="bold">Genome:</td>
-						<td><?php echo $data['barcode']['genome'] ?></td>										
-					</tr>
-					<tr>
-						<td class="bold">Locus:</td>
-						<td><?php echo $data['barcode']['locus'] ?></td>
-						<td class="bold">Quality:</td>
-						<td><?php echo $data['barcode']['quality'] ?></td>							
-					</tr>
-					<tr>
-						<td class="bold">Nucleotides:</td>
-						<td colspan="3"><?php echo $data['barcode']['seq_size'] ?></td>
-					</tr>
-					<tr>
-						<td colspan="4"><?php echo $data['barcode']['sequence'] ?></td>
-					</tr>
-					<tr>
-						<td class="bold">Amino Acids:</td>
-						<td colspan="3"><?php echo $data['barcode']['pep_size'] ?></td>
-					</tr>
-					<tr>
-						<td colspan="4">
-							<?php echo $data['barcode']['peptide'] ?>											
-						</td>
-					</tr>
-					<tr>
-						<td colspan="4" class="bold">Illustrative Barcode:</td>
-					</tr>
-					<tr>
-						<td colspan="4"><canvas id="barcode-canvas"></canvas></td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<table width="100%" class="table table-bordered tbl">
-					<tr>
-						<th colspan="4">IMAGES</th>								
-					</tr>
-					<tr>
-						<td colspan="4">
-							<?php foreach($data['file_img'] as $ds){ ?>
-								<div class="col-lg-3">
-									<div class="form-group">
-										<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
-											<img style="height:160px;width:240" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="...">
-										</a>					
-									</div>								
-								</div>
-							<?php } ?>
-						</td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<table width="100%" class="table table-bordered tbl">
-					<tr>
-						<th colspan="2">LOCATION</th>								
-					</tr>
-					<tr>
-						<td style="width:40%">
-							<div id="map" style="width:100%; height: 350px;"></div>
-						</td>
-						<td style="width:60%">
-							<table width="100%" class="table table-bordered">
+						<td>
+							<table width="100%" class="table table-bordered tbl">
 								<tr>
-									<th style="background:#fff;"></th>
-									<th style="background:#fff;">Sector</th>
-									<th style="background:#fff;">Longitude</th>
-									<th style="background:#fff;">Latitude</th>
+									<td class="bold">Title:</td>
+									<td colspan="3"><?php echo $data['barcode']['title'] ?></td>
 								</tr>
-								<?php $i=1; ?>
-								<?php foreach($data['location'] as $lc){ ?>								
 								<tr>
-									<td style="text-align:center;width:10%"><?php echo $i++ ?></td>
-									<td style="width:50%"><?php echo $lc['sector'] ?></td>
-									<td style="width:20%"><?php echo $lc['longitude'] ?></td>
-									<td style="width:20%"><?php echo $lc['latitude'] ?></td>
+									<td class="bold">Authors:</td>
+									<td colspan="3"><?php echo $data['barcode']['authors'] ?></td>
 								</tr>
-								<?php } ?>
+								<tr>
+									<td style="width:20%;" class="bold">Address:</td>
+									<td style="width:30%;"><?php echo $data['barcode']['address'] ?></td>
+									<td style="width:20%;" class="bold">Phone:</td>
+									<td style="width:30%;"><?php echo $data['barcode']['phone'] ?></td>
+								</tr>
+								<tr>																			
+									<td class="bold">Submitted date:</td>
+									<td><?php echo $data['barcode']['submitted_date'] ?></td>
+									<td class="bold">Email:</td>
+									<td><?php echo $data['barcode']['email'] ?></td>
+								</tr>					
 							</table>
 						</td>
 					</tr>
+					<tr>
+						<td>
+							<table width="100%" class="table table-bordered tbl">
+								<tr>
+									<th colspan="4">IDENTIFIERS</th>								
+								</tr>
+								<tr>
+									<td style="width:20%;" class="bold">Sample ID:</td>
+									<td style="width:30%;"><?php echo $data['barcode']['sample_id'] ?></td>
+									<td style="width:20%;" class="bold">Museun ID:</td>
+									<td style="width:30%;"><?php echo $data['barcode']['museum_id'] ?></td>
+								</tr>
+								<tr>
+									<td class="bold">Field ID:</td>
+									<td><?php echo $data['barcode']['field_id'] ?></td>																			
+									<td class="bold">Collection Code:</td>
+									<td><?php echo $data['barcode']['collection_code'] ?></td>
+								</tr>
+								<tr>
+									<td class="bold">Deposited In:</td>
+									<td colspan="3"><?php echo $data['barcode']['deposited_in'] ?></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<table width="100%" class="table table-bordered tbl">
+								<tr>
+									<th colspan="4">TAXONOMY</th>								
+								</tr>
+								<tr>
+									<td style="width:20%;" class="bold">Phylum:</td>
+									<td style="width:30%;"><?php echo $data['barcode']['phylum_name'] ?></td>			
+									<td style="width:20%;" class="bold">Subfamily:</td>
+									<td style="width:30%;"><?php echo $data['barcode']['subfamily'] ?></td>
+								</tr>
+								<tr>
+									<td class="bold">Class:</td>
+									<td><?php echo $data['barcode']['class_name'] ?></td>
+									<td class="bold">Genus:</td>
+									<td><?php echo $data['barcode']['genus_name'] ?></td>																			
+								</tr>
+								<tr>
+									<td class="bold">Order:</td>
+									<td><?php echo $data['barcode']['order_name'] ?></td>									
+									<td class="bold">Species:</td>
+									<td><?php echo $data['barcode']['species_name'] ?></td>	
+								</tr>
+								<tr>	
+									<td class="bold">Family:</td>
+									<td><?php echo $data['barcode']['family_name'] ?></td>
+									<td class="bold">BIN (Cluster ID):</td>
+									<td><?php echo $data['barcode']['bin'] ?></td>
+								</tr>
+								<tr>
+									<td colspan="4"><i>* Barcode Index Numbers(BIN): cluster barcode sequence to create OTUs that closely reflect species groupings</i></td>										
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<table width="100%" class="table table-bordered tbl">
+								<tr>
+									<th colspan="4">SPECIMEN DETAILS</th>								
+								</tr>
+								<tr>
+									<td style="width:20%;" class="bold">Voucher Status:</td>
+									<td style="width:30%;"><?php echo $data['barcode']['voucher_status'] ?></td>										
+									<td style="width:20%;" class="bold">Reproduction:</td>
+									<td style="width:30%;"><?php echo $data['barcode']['reproduction'] ?></td>
+								</tr>
+								<tr>
+									<td class="bold">Tissue Type:</td>
+									<td><?php echo $data['barcode']['tissue_type'] ?></td>
+									<td class="bold">Sex:</td>
+									<td><?php echo $data['barcode']['sex'] ?></td>										
+								</tr>
+								<tr>
+									<td class="bold">Brief Note:</td>
+									<td><?php echo $data['barcode']['brief_note'] ?></td>
+									<td class="bold">Taxon Id:</td>
+									<td><?php echo $data['barcode']['taxon_id'] ?></td>										
+								</tr>
+								<tr>
+									<td class="bold">Life Stage:</td>
+									<td><?php echo $data['barcode']['life_stage'] ?></td>
+									<td class="bold">Organelle:</td>
+									<td><?php echo $data['barcode']['organelle'] ?></td>
+								</tr>
+								<tr>
+									<td class="bold">Lineage:</td>
+									<td><td colspan="2"></td>
+								</tr>
+								<tr>
+									<td class="bold">Detailed Notes:</td>
+									<td colspan="3"><?php echo $data['barcode']['detailed_notes'] ?></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<table width="100%" class="table table-bordered tbl">
+								<tr>
+									<th colspan="4">COLLECTION DATA</th>								
+								</tr>
+								<tr>
+									<td style="width:20%;" class="bold">Country:</td>
+									<td style="width:30%;"><?php echo $data['barcode']['country'] ?></td>										
+									<td style="width:20%;" class="bold">Date Collected:</td>
+									<td style="width:30%;"><?php echo $data['barcode']['date_collected'] ?></td>
+								</tr>
+								<tr>
+									<td class="bold">Province State:</td>
+									<td><?php echo $data['barcode']['province_state'] ?></td>
+									<td class="bold">Collectors:</td>
+									<td><?php echo $data['barcode']['collectors'] ?></td>										
+								</tr>
+								<tr>
+									<td class="bold">Region/Country:</td>
+									<td colspan="3"><?php echo $data['barcode']['region_country'] ?></td>								
+								</tr>
+								<tr>
+									<td class="bold">Sector:</td>
+									<td colspan="3"><?php echo $data['barcode']['sector'] ?></td>
+								</tr>
+								<tr>
+									<td class="bold">Exact Site:</td>
+									<td colspan="3"><?php echo $data['barcode']['exact_site'] ?></td>
+								</tr>
+								<tr>
+									<td class="bold">Latitude:</td>
+									<td><?php echo $data['barcode']['latitude'] ?></td>
+									<td class="bold">Elevation:</td>
+									<td><?php echo $data['barcode']['elevation'] ?></td>	
+								</tr>
+								<tr>
+									<td class="bold">Longitude:</td>
+									<td><?php echo $data['barcode']['longitude'] ?></td>
+									<td class="bold">Elv.Accuracy:</td>
+									<td><?php echo $data['barcode']['elv_accuracy'] ?></td>	
+								</tr>
+								<tr>
+									<td class="bold">Coord.Source:</td>
+									<td><?php echo $data['barcode']['coord_source'] ?></td>
+									<td class="bold">Depth:</td>
+									<td><?php echo $data['barcode']['depth'] ?></td>	
+								</tr>
+								<tr>
+									<td class="bold">Coord.Accuracy:</td>
+									<td><?php echo $data['barcode']['coord_source'] ?></td>
+									<td class="bold">Depth Accuracy:</td>
+									<td><?php echo $data['barcode']['depth_accuracy'] ?></td>	
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<table width="100%" class="table table-bordered tbl">
+								<tr>
+									<th colspan="4">PRIMERS</th>								
+								</tr>
+								<tr>
+									<td style="width:20%;" class="bold">Forward Primer Name:</td>
+									<td style="width:15%;"><?php echo $data['barcode']['fprimername'] ?></td>										
+									<td style="width:20%;" class="bold">Sequence (5'-3'):</td>
+									<td style="width:45%;"><?php echo $data['barcode']['fprimer'] ?></td>
+								</tr>
+								<tr>
+									<td class="bold">Reverse Primer Name:</td>
+									<td><?php echo $data['barcode']['rprimername'] ?></td>
+									<td class="bold">Sequence (5'-3'):</td>
+									<td><?php echo $data['barcode']['rprimer'] ?></td>										
+								</tr>					
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<table width="100%" class="table table-bordered tbl">
+								<tr>
+									<th colspan="1">SEQUENCE</th>
+									<th colspan="3"><?php echo $data['barcode']['gene'] ?></th>
+								</tr>
+								<tr>
+									<td style="width:20%;" class="bold">Barcode Id:</td>
+									<td style="width:30%;"><?php echo $data['barcode']['barcode_id'] ?></td>										
+									<td style="width:20%;" class="bold">GenBank Accession:</td>
+									<td style="width:30%;"><?php echo $data['barcode']['genbank_accession'] ?></td>
+								</tr>
+								<tr>
+									<td class="bold">Last Updated:</td>
+									<td><?php echo $data['barcode']['last_updated'] ?></td>
+									<td class="bold">Genome:</td>
+									<td><?php echo $data['barcode']['genome'] ?></td>										
+								</tr>
+								<tr>
+									<td class="bold">Locus:</td>
+									<td><?php echo $data['barcode']['locus'] ?></td>
+									<td class="bold">Quality:</td>
+									<td><?php echo $data['barcode']['quality'] ?></td>							
+								</tr>
+								<tr>
+									<td class="bold">Nucleotides:</td>
+									<td colspan="3"><?php echo $data['barcode']['seq_size'] ?></td>
+								</tr>
+								<tr>
+									<td colspan="4"><?php echo $data['barcode']['sequence'] ?></td>
+								</tr>
+								<tr>
+									<td class="bold">Amino Acids:</td>
+									<td colspan="3"><?php echo $data['barcode']['pep_size'] ?></td>
+								</tr>
+								<tr>
+									<td colspan="4">
+										<?php echo $data['barcode']['peptide'] ?>											
+									</td>
+								</tr>
+								<tr>
+									<td colspan="4" class="bold">Illustrative Barcode:</td>
+								</tr>
+								<tr>
+									<td colspan="4"><canvas id="barcode-canvas"></canvas></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					
+				</table>
+			</td>
+			<td style="width:25%;padding-left:10px;">
+				<table style="width:100%">
+					<tr>
+						<td>
+							<table width="100%" class="table table-bordered tbl">
+								<tr>
+									<th colspan="4">IMAGES</th>								
+								</tr>
+								<tr>
+									<td colspan="4">
+										<?php foreach($data['file_img'] as $ds){ ?>
+												<div class="form-group">
+													<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
+														<img style="height:160px;width:240" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="...">
+													</a>					
+												</div>								
+										<?php } ?>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="/viewspecies?id=<?php echo $data['barcode']['species'] ?>" target="_blank">Thông tin về loài (species information)</a>
+						</td>
+					</tr>
 				</table>
 			</td>
 		</tr>
-	</table>		
+	</table>
 </div>
 <div id="lightbox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog" style='margin-top:100px;'>

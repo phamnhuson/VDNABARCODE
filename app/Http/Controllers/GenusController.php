@@ -117,4 +117,10 @@ class GenusController extends Controller {
 		
 		}
 	}
+	
+	public function get_genus(Request $request){
+		$family_id = $request['id'];
+		$genus = DB::table('genus')->where('family_id', $family_id)->get();
+		echo json_encode($genus);
+	}
 }

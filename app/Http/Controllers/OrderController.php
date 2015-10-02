@@ -117,4 +117,10 @@ class OrderController extends Controller {
 		
 		}
 	}
+	
+	public function get_order(Request $request){
+		$class_id = $request['id'];
+		$order = DB::table('order')->where('class_id', $class_id)->get();
+		echo json_encode($order);
+	}
 }

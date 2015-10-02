@@ -116,4 +116,10 @@ class PhylumController extends Controller {
 		
 		}
 	}
+	
+	public function get_phylum(Request $request){
+		$kingdom_id = $request['id'];
+		$phylum = DB::table('phylum')->where('kingdom_id', $kingdom_id)->get();
+		echo json_encode($phylum);
+	}
 }

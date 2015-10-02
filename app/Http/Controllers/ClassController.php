@@ -116,4 +116,10 @@ class ClassController extends Controller {
 		
 		}
 	}
+	
+	public function get_class(Request $request){
+		$phylum_id = $request['id'];
+		$class = DB::table('class')->where('phylum_id', $phylum_id)->get();
+		echo json_encode($class);
+	}
 }
