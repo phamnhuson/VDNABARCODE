@@ -1,6 +1,6 @@
 @extends('templates.master')
 
-@section('title', 'Kingdom')
+@section('title', 'Register')
 
 @section('content')
 <style type="text/css">
@@ -99,6 +99,11 @@
 							{!! Form::text('password', null, array('class'=>'form-control')) !!}
 						</div>
 						<div class="form-group">
+							<label class="control-label">Lý lịch</label>&nbsp;(yêu cầu định dạng file pdf):&nbsp;<span style="color:#00D41C"><?php echo (isset($data['user']) && $data['user'][0]['file']==1)?'đã có':'chưa có' ?></span>
+							{!! Form::file('file', array('class'=>'form-control','id'=>'file')) !!}	
+														
+						</div>
+						<div class="form-group">
 							<input type="submit" name="submit" class="btn btn-primary"  value="@if (isset($data['user'])) Cập nhật tài khoản @else Tạo tài khoản @endif" />
 						</div>
 					</td>
@@ -107,12 +112,11 @@
 							<div id="upanh">
 								<a> 
 									<img class='col-md-12' style="padding:6px;border:2px dashed #0087F7;height:200px;width:150" id="img" 
-								    src="<?=(file_exists(PUBLIC_PATH().'/uploads/img/user_pictures/avata_'.$data['user'][0]['id'].'.jpg'))? asset('public/uploads/img/user_pictures/avata_'.$data['user'][0]['id'].'.jpg') : asset('public/img/add.png');?>" alt="Chọn ảnh" />
-									
+								    src="<?=(file_exists(PUBLIC_PATH().'/uploads/img/user_pictures/avata_'.$data['user'][0]['id'].'.jpg'))? asset('public/uploads/img/user_pictures/avata_'.$data['user'][0]['id'].'.jpg') : asset('public/img/add.png');?>" alt="Chọn ảnh" />									
 								</a>									
 							</div>			
 							{!! Form::file('avata', array('class'=>'form-control','style'=>'display:none;','id'=>'imgInp')) !!}
-						</div>
+						</div>						
 					</td>
 				</tr>
 				</table>

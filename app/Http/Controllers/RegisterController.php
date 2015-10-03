@@ -33,11 +33,8 @@ class RegisterController extends Controller {
 
 		$validator = Validator::make($request->all(), [			
 			'fullname' 	=>	'required',
-			'phone' 	=>	'required',
 			'email' 	=>	'required|unique:users',
 			'password' 	=>	'required',
-			'work_place'=>	'required',
-			'research'=>	'required',	
 		]);
 		
 		if ($validator->fails()) {
@@ -47,38 +44,53 @@ class RegisterController extends Controller {
                         ->withInput();
 						
         } else {
-
+			
 			$users = DB::table('users');
 			
 			$inputData = $request->only('fullname', 'email','phone','work_place','research', 'degree');
 			
 			$inputData['password'] = Hash::make($request['password']);
 			
+			if(isset($request['file'])){
+				
+				$inputData['file']=1;
+				
+			}else{
+				$inputData['file']=0;
+			}
+			
 			$inputData['role']	= 0;
 			
 			if ($users->insert($inputData)) {
 				
-				if(isset($request['avata'])){
+				$id	=	DB::getPdo()->lastInsertId();
 				
-					$id	=	DB::getPdo()->lastInsertId();
+				if(isset($request['avata'])){									
 					
 					$move=$request['avata']->move(		
 							
-					base_path() . '/public/uploads/img/', 'avata_'.$id.'.jpg'
+					base_path() . '/public/uploads/img/user_pictures/', 'avata_'.$id.'.jpg'
 					
 					);
 					
-					if($move)
-					{
-						return \Redirect::back()->with('responseData', array('statusCode' => 1, 'message' => 'Tạo mới thành công'));
-					}else{
-						return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại'));
-					};
-					
 				}
+				
+				if(isset($request['file']))
+				{
+					$mime=$request['file']->getClientOriginalName();
+							
+					$ext = pathinfo($mime, PATHINFO_EXTENSION);
 					
-					return \Redirect::back()->with('responseData', array('statusCode' => 1, 'message' => 'Tạo mới thành công'));
-					
+					if($ext=='pdf')
+					{
+						$move=$request['file']->move(base_path() . '/public/uploads/file/user_cv', 'cv_'.$id.'.'.$ext);
+					}else{
+						return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'lý lịch yêu cầu định dạng file pdf'));
+					}
+				}
+				
+				return \Redirect::back()->with('responseData', array('statusCode' => 1, 'message' => 'Tạo mới thành công'));
+				
 			} else {
 			
 				return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại'));			
@@ -94,10 +106,7 @@ class RegisterController extends Controller {
 		$error=0;
 		
 		$validator = Validator::make($request->all(), [
-			'fullname' 	=>	'required',
-			'phone' 	=>	'required',
-			'work_place'=>	'required',
-			'research'=>	'required',			
+			'fullname' 	=>	'required',	
 		]);
 		
 		if ($validator->fails()) {
@@ -120,27 +129,45 @@ class RegisterController extends Controller {
 					$inputData['password'] = Hash::make($request['password']);
 				}
 				
+				if(isset($request['file'])){
+
+				$inputData['file']=1;
+				
+				}else{
+
+					$inputData['file']=0;
+				}
+				
 				DB::table('users')->where('id', $userId)->update($inputData);									
 				
 				if(isset($request['avata'])){
 				
 					$move=$request['avata']->move(		
 							
-					base_path() . '/public/uploads/img/', 'avata_'.$userId.'.jpg'
+					base_path() . '/public/uploads/img/user_pictures/', 'avata_'.$userId.'.jpg'
 					
-					);
+					);		
+				}
+				
+				if(isset($request['file']))
+				{
+					$mime=$request['file']->getClientOriginalName();
+							
+					$ext = pathinfo($mime, PATHINFO_EXTENSION);
 					
-					if(!$move)
+					if($ext=='pdf')
 					{
+						$move=$request['file']->move(base_path() . '/public/uploads/file/user_cv', 'cv_'.$userId.'.'.$ext);
+					}else{
 						$error=1;
-					}			
+					}
 				}
 				
 				if($error==0)
 				{
 					return \Redirect::back()->with('responseData', array('statusCode' => 1, 'message' => 'Cập nhật thành công'));
 				}else{
-					return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại nha'));
+					return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Lý lịch yêu cầu định dạng file pdf'));
 				}
 				
 			}else{

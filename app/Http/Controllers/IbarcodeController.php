@@ -291,7 +291,7 @@ class IbarcodeController extends Controller {
 						
 							$move=$file->move(		
 						
-							base_path() . '/public/uploads/file/', 'file_'.$id_file.'.'.$ext
+							base_path() . '/public/uploads/file/barcode/', 'file_'.$id_file.'.'.$ext
 							
 							);
 							
@@ -474,7 +474,7 @@ class IbarcodeController extends Controller {
 					
 						$move=$file->move(		
 					
-							base_path() . '/public/uploads/file/', 'file_'.$id_file.'.'.$ext
+							base_path() . '/public/uploads/file/barcode/', 'file_'.$id_file.'.'.$ext
 						
 						);
 						

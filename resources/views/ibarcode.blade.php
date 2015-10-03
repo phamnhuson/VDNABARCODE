@@ -410,7 +410,7 @@
 										<td>file_<?php echo $dsf['file_id']; ?></td>
 										<td style="text-align:center;">
 											<button type="button" class="btn btn-danger delete_file" data_id="<?php echo $dsf['file_id'] ?>"><span class="glyphicon glyphicon-trash"></span></button>
-											<a href="{{asset('public/uploads/file/'.$dsf['file_name'])}}"><button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-download"></span></button></a>
+											<a href="{{asset('public/uploads/file/barcode/'.$dsf['file_name'])}}"><button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-download"></span></button></a>
 										</td>
 									</tr>
 								<?php } ?>
