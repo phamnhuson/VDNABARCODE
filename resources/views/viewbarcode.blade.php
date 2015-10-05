@@ -59,8 +59,12 @@
 	.bold{
 		    text-decoration:underline;
 	}
+	table {
+		table-layout: fixed;
+	}
 	td{
 		font-size:10pt;
+		word-wrap: break-word;
 	}
 }
 </style>
@@ -81,7 +85,7 @@
 	</div>
 </div>
 <div class="box">
-	<table>
+	<table width="100%">
 		<tr>
 			<td style="width:75%">
 				<table>
@@ -336,7 +340,7 @@
 									<td colspan="4" class="bold">Illustrative Barcode:</td>
 								</tr>
 								<tr>
-									<td colspan="4"><canvas id="barcode-canvas"></canvas></td>
+									<td colspan="4"><div><canvas id="barcode-canvas"></canvas></div></td>
 								</tr>
 							</table>
 						</td>
