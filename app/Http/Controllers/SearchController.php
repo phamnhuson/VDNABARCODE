@@ -90,9 +90,9 @@
 		function searchByKeyword()
 		{
 			$this->barcode
-				->where('barcode.common_name', 'LIKE', "%".$this->searchContent."%")
-				->orwhere('barcode.vietnamese_name', 'LIKE', "%".$this->searchContent."%")
-				->orwhere('barcode.scientific_name', 'LIKE', "%".$this->searchContent."%")
+				->where('species.other_name', 'LIKE', "%".$this->searchContent."%")
+				->orwhere('species.vietnamese_name', 'LIKE', "%".$this->searchContent."%")
+				// ->orwhere('barcode.scientific_name', 'LIKE', "%".$this->searchContent."%")
 				->orwhere('species.species_name', 'LIKE', "%".$this->searchContent."%")
 				->orwhere('genus.genus_name', 'LIKE', "%".$this->searchContent."%")
 				->orwhere('family.family_name', 'LIKE', "%".$this->searchContent."%")
