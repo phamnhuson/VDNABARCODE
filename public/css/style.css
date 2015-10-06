@@ -902,3 +902,6 @@ div.roundBox{
 .search-result-item {
 	margin-bottom: 10px;
 }
+#main-menu .dropdown-menu li a {
+	text-transform: capitalize;
+}
