@@ -56,7 +56,7 @@
 		{
 		
 			$this->barcode
-				 ->select('barcode.*')
+				 ->select('barcode.*', 'species.species_name', 'genus.genus_name', 'family.family_name', 'order.order_name', 'class.class_name', 'phylum.phylum_name')
 				 ->leftjoin('species', 'species.species_id', '=', 'barcode.species')
 				 ->leftjoin('genus', 'species.genus_id', '=', 'genus.genus_id')
 				 ->leftjoin('family', 'genus.family_id', '=', 'family.family_id')
