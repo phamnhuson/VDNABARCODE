@@ -94,7 +94,7 @@ class SpeciesController extends Controller {
 
 			$species = DB::table('species');
 			
-			$inputData = $request->only('species_name','vietnamese_name','other_name','rank','distribution','function','conserve','other', 'description','genus_id');			
+			$inputData = $request->only('species_name','vietnamese_name','other_name','rank','distribution','function','conserve','other', 'species_description','genus_id');			
 			
 			if ($species->insert($inputData)) {
 				
@@ -160,7 +160,7 @@ class SpeciesController extends Controller {
 			
 			$speciesId = $request->get('species_id');
 				
-			$inputData = $request->only('species_name','vietnamese_name','other_name','rank','distribution','function','conserve','other', 'description','genus_id');			
+			$inputData = $request->only('species_name','vietnamese_name','other_name','rank','distribution','function','conserve','other', 'species_description','genus_id');			
 
 			if (!DB::table('species')->where('species_id', $speciesId)->update($inputData)) {
 				

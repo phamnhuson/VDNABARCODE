@@ -51,9 +51,7 @@ class BarcodeController extends Controller {
 	
 		$barcode = DB::table('barcode')->where('barcode_id', $barcodeId)->get();
 	
-		if (DB::table('barcode')->where('barcode_id', $barcodeId)->delete()) {
-			
-			DB::table('file_img')->where('barcode_id', $barcodeId)->delete();
+		if (DB::table('barcode')->where('barcode_id', $barcodeId)->delete()) {		
 			
 			DB::table('file_trace')->where('barcode_id', $barcodeId)->delete();
 			

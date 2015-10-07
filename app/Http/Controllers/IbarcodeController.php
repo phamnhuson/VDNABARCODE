@@ -45,12 +45,13 @@ class IbarcodeController extends Controller {
 								->join('order','order.order_id','=','family.order_id')
 								->join('class','class.class_id','=','order.class_id')
 								->join('phylum','phylum.phylum_id','=','class.phylum_id')
+								->join('kingdom','kingdom.kingdom_id','=','phylum.kingdom_id')
 								->where('species.species_id',$barcode[0]['species'])
 								->get();
 								
 			$viewData['plantae'] = $plantae;
 			
-			//$file_img = DB::table('file_img')->where('file_img.barcode_id',$barcodeId)->get();
+			$file_img = DB::table('file_img')->where('file_img.species_id',$barcode[0]['species'])->get();
 			
 			$file_trace = DB::table('file_trace')->Where('file_trace.barcode_id',$barcodeId)->paginate(10);
 			
@@ -76,9 +77,22 @@ class IbarcodeController extends Controller {
 						
 			$viewData['barcode'] = $barcode;
 			
-			//$viewData['file_img'] = $file_img;
+			$viewData['file_img'] = $file_img;
 			
+		}
+		
+		$list_kingdom = DB::table('kingdom')->get();
+						
+		$arr_kingdom=array();
+		
+		$arr_kingdom[0] = "Chọn giới";
+		
+		foreach($list_kingdom as $kd)
+		{
+			$arr_kingdom[$kd['kingdom_id']]=$kd['kingdom_name'];
 		}		
+		
+		$viewData['arr_kingdom']=$arr_kingdom;
 		
 		$list_phylum = DB::table('phylum')->get();
 						
@@ -178,6 +192,7 @@ class IbarcodeController extends Controller {
 	
 	public function create(Request $request)
 	{	
+	
 		$user = Session::get('user');
 		
 		$validator = Validator::make($request->all(), [
@@ -191,10 +206,111 @@ class IbarcodeController extends Controller {
             //return \Redirect::back()->with('errors',$validator->errors()->toArray());
 			 return \Redirect::back()->withErrors($validator);
         } else {
+			
+			if($request['add_class']!='')
+			{
+								
+				$data_class['class_name'] = $request['add_class'];
+				
+				$data_class['phylum_id'] = $request['phylum'];
+				
+				DB::table('class')->insert($data_class);
+				
+				$class_id = DB::getPdo()->lastInsertId();
+				
+			}else{
+				$class_id = $request['class'];
+			}
+			
+			if($request['add_order']!='')
+			{
+								
+				$data_order['order_name'] = $request['add_order'];
+				
+				$data_order['class_id'] = $class_id;
+				
+				DB::table('order')->insert($data_order);
+				
+				$order_id = DB::getPdo()->lastInsertId();
+				
+			}else{
+				$order_id = $request['order'];
+			}
+			
+			if($request['add_family']!='')
+			{
+								
+				$data_family['family_name'] = $request['add_family'];
+				
+				$data_family['order_id'] = $order_id;
+				
+				DB::table('family')->insert($data_family);
+				
+				$family_id = DB::getPdo()->lastInsertId();
+				
+			}else{
+				$family_id = $request['family'];
+			}
+			
+			if($request['add_genus']!='')
+			{
+								
+				$data_genus['genus_name'] = $request['add_genus'];
+				
+				$data_genus['family_id'] = $family_id;
+				
+				DB::table('genus')->insert($data_genus);
+				
+				$genus_id = DB::getPdo()->lastInsertId();
+				
+			}else{
+				$genus_id = $request['genus'];
+			}
+			
+			$species = DB::table('species');
+			
+			$data_species = $request->only('vietnamese_name','other_name','rank','distribution','function','conserve','other', 'species_description');
+			
+			$data_species['species_name'] = $request['species'];
+			
+			$data_species['genus_id'] = $genus_id;
+			
+			$species->insert($data_species);
+			
+			$id_species	=	DB::getPdo()->lastInsertId();
+			
+			$data_img=array();								
+				
+			foreach($request['images'] as $img)
+			{
+				if($img!='')
+				{
+					$data_img['species_id'] = $id_species;
+				
+					if(DB::table('file_img')->insert($data_img))
+					{
+						$id_img = DB::getPdo()->lastInsertId();							
+					
+						$move=$img->move(		
+					
+						base_path() . '/public/uploads/img/', $id_img.'.jpg'
+						
+						);
+						
+						if(!$move)
+						{
+							$error=1;
+						};
+						
+					}else{
+						$error=1;
+					}
+				}					
+			};
 
 			$barcode = DB::table('barcode');
 			
-			$inputData = $request->only('sample_id','museum_id','field_id','collection_code','deposited_in','species','bin','voucher_status','reproduction','tissue_type','sex','brief_note','taxon_id','life_stage','organelle','lineage','detailed_notes','sequence_id','gene','genbank_accession','genome','locus','quality','seq_size','sequence','pep_size','peptide','title','authors','address','submitted_date','phone','email','subfamily','country','date_collected','province_state','collectors','region_country','sector','exact_site','latitude','longitude','elevation','elv_accuracy','coord_source','depth','coord_accuracy','depth_accuracy','last_updated','fprimername','fprimer','rprimername','rprimer');			
+			$inputData = $request->only('sample_id','museum_id','field_id','collection_code','deposited_in','bin','voucher_status','reproduction','tissue_type','sex','brief_note','taxon_id','life_stage','organelle','lineage','detailed_notes','sequence_id','gene','genbank_accession','genome','locus','quality','seq_size','sequence','pep_size','peptide','title','authors','address','submitted_date','phone','email','subfamily','country','date_collected','province_state','collectors','region_country','sector','exact_site','latitude','longitude','elevation','elv_accuracy','coord_source','depth','coord_accuracy','depth_accuracy','last_updated','fprimername','fprimer','rprimername','rprimer');			
 			
 			$inputData['stop']= $this->stopCodonDetect($request['sequence']);
 			
@@ -203,6 +319,8 @@ class IbarcodeController extends Controller {
 			}else{
 				$inputData['quality']='';
 			}
+			
+			$inputData['species']=$id_species;
 			
 			$inputData['created']=date('Y-m-d');
 			
@@ -219,9 +337,9 @@ class IbarcodeController extends Controller {
 				
 				if(isset($inputData['status']) && $inputData['status'] == 1) {
 					
-					$species = DB::table('species')->where('species.species_id', $request['species'])->get();										
+					//$species = DB::table('species')->where('species.species_id', $request['species'])->get();										
 				
-					$this->nuRepo->create(array('id' => $id, 'sequence' => $inputData['sequence'], 'name' => $species[0]['species_name']));
+					$this->nuRepo->create(array('id' => $id, 'sequence' => $inputData['sequence'], 'name' => $request['species']));
 					
 				}
 				
@@ -366,6 +484,7 @@ class IbarcodeController extends Controller {
 	
 	public function update(Request $request)
 	{	
+			
 		$error=0;
 		
 		$user = Session::get('user');
@@ -380,10 +499,109 @@ class IbarcodeController extends Controller {
             return \Redirect::back()->withErrors($validator);
 						
         } else {
+			
+			if($request['add_class']!='')
+			{
+								
+				$data_class['class_name'] = $request['add_class'];
+				
+				$data_class['phylum_id'] = $request['phylum_id'];
+				
+				DB::table('class')->insert($data_class);
+				
+				$class_id = DB::getPdo()->lastInsertId();
+				
+			}else{
+				$class_id = $request['class'];
+			}
+			
+			if($request['add_order']!='')
+			{
+								
+				$data_order['order_name'] = $request['add_order'];
+				
+				$data_order['class_id'] = $class_id;
+				
+				DB::table('order')->insert($data_order);
+				
+				$order_id = DB::getPdo()->lastInsertId();
+				
+			}else{
+				$order_id = $request['order'];
+			}
+			
+			if($request['add_family']!='')
+			{
+								
+				$data_family['family_name'] = $request['add_family'];
+				
+				$data_family['order_id'] = $order_id;
+				
+				DB::table('family')->insert($data_family);
+				
+				$family_id = DB::getPdo()->lastInsertId();
+				
+			}else{
+				$family_id = $request['family'];
+			}
+			
+			if($request['add_genus']!='')
+			{
+								
+				$data_genus['order_genus'] = $request['add_genus'];
+				
+				$data_genus['family_id'] = $family_id;
+				
+				DB::table('genus')->insert($data_genus);
+				
+				$genus_id = DB::getPdo()->lastInsertId();
+				
+			}else{
+				$genus_id = $request['genus'];
+			}
+			
+			$id_species	=	$request->get('species_id');
+			
+			$data_species = $request->only('vietnamese_name','other_name','rank','distribution','function','conserve','other', 'species_description');
 
+			$data_species['species_name'] = $request['species'];
+			
+			$data_species['genus_id'] = $genus_id;
+
+			DB::table('species')->where('species_id', $id_species)->update($data_species);
+			
+			$data_img=array();								
+				
+			foreach($request['images'] as $img)
+			{
+				if($img!='')
+				{
+					$data_img['species_id'] = $id_species;
+				
+					if(DB::table('file_img')->insert($data_img))
+					{
+						$id_img = DB::getPdo()->lastInsertId();							
+					
+						$move=$img->move(		
+					
+						base_path() . '/public/uploads/img/', $id_img.'.jpg'
+						
+						);
+						
+						if(!$move)
+						{
+							$error=1;
+						};
+						
+					}else{
+						$error=1;
+					}
+				}					
+			};
+			
 			$barcodeId = $request->get('barcode_id');
 						
-			$inputData = $request->only('sample_id','museum_id','field_id','collection_code','deposited_in','species','bin','voucher_status','reproduction','tissue_type','sex','brief_note','taxon_id','life_stage','organelle','lineage','detailed_notes','sequence_id','gene','genbank_accession','genome','locus','quality','seq_size','sequence','pep_size','peptide','title','authors','address','submitted_date','phone','email','subfamily','country','date_collected','province_state','collectors','region_country','sector','exact_site','latitude','longitude','elevation','elv_accuracy','coord_source','depth','coord_accuracy','depth_accuracy','last_updated','fprimername','fprimer','rprimername','rprimer');			
+			$inputData = $request->only('sample_id','museum_id','field_id','collection_code','deposited_in','bin','voucher_status','reproduction','tissue_type','sex','brief_note','taxon_id','life_stage','organelle','lineage','detailed_notes','sequence_id','gene','genbank_accession','genome','locus','quality','seq_size','sequence','pep_size','peptide','title','authors','address','submitted_date','phone','email','subfamily','country','date_collected','province_state','collectors','region_country','sector','exact_site','latitude','longitude','elevation','elv_accuracy','coord_source','depth','coord_accuracy','depth_accuracy','last_updated','fprimername','fprimer','rprimername','rprimer');			
 			
 			$inputData['stop']= $this->stopCodonDetect($request['sequence']);
 			
@@ -403,9 +621,9 @@ class IbarcodeController extends Controller {
 			
 			if (!empty($barcode) && $barcode[0]['status'] == 1) {
 				
-				$species = DB::table('species')->where('species.species_id', $request['species'])->get();														
+				//$species = DB::table('species')->where('species.species_id', $request['species'])->get();														
 				
-				$this->nuRepo->update(array('id' => $barcodeId, 'sequence' => $inputData['sequence'], 'name' => $species[0]['species_name']));
+				$this->nuRepo->update(array('id' => $barcodeId, 'sequence' => $inputData['sequence'], 'name' => $request['species']));
 				
 			}
 			

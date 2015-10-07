@@ -53,15 +53,28 @@
 		padding:5px;
 		border-bottom: 1px solid #eee;
 	}
+	.tbl{
+		margin-bottom:0px;
+		border:0px !important;
+	}
 	.tbl th{
-		background:#F5F5F5;
+		background:#90A1CA;
+		border:0px !important;
+	}
+	.tbl td{
+		border:0px !important;
+		
 	}
 	.bold{
-		    text-decoration:underline;
+		text-decoration:underline;
+	}
+	table {
+		table-layout: fixed;
 	}
 	td{
 		font-size:10pt;
-	}
+		padding:2px !important;
+	}	
 }
 </style>
 <!--<script src="{{ asset('public/js/google_map.js') }}"></script>-->
@@ -81,16 +94,20 @@
 	</div>
 </div>
 <div class="box">
-	<table>
+	<table width="100%">
 		<tr>
 			<td style="width:75%">
 				<table>
 					<tr>
 						<td>
-							<table width="100%" class="table table-bordered tbl">
+							<table width="100%" class="table table-bordered tbl2" style="margin-bottom:0px">
 								<tr>
 									<td class="bold">Title:</td>
 									<td colspan="3"><?php echo $data['barcode']['title'] ?></td>
+								</tr>
+								<tr>
+									<td class="bold">Barcode Id:</td>
+									<td colspan="3"><?php echo $data['barcode']['barcode_id'] ?></td>
 								</tr>
 								<tr>
 									<td class="bold">Authors:</td>
@@ -115,7 +132,7 @@
 						<td>
 							<table width="100%" class="table table-bordered tbl">
 								<tr>
-									<th colspan="4">IDENTIFIERS</th>								
+									<th colspan="4">IDENTIFIERS:</th>								
 								</tr>
 								<tr>
 									<td style="width:20%;" class="bold">Sample ID:</td>
@@ -140,7 +157,7 @@
 						<td>
 							<table width="100%" class="table table-bordered tbl">
 								<tr>
-									<th colspan="4">TAXONOMY</th>								
+									<th colspan="4">TAXONOMY:</th>								
 								</tr>
 								<tr>
 									<td style="width:20%;" class="bold">Phylum:</td>
@@ -176,7 +193,7 @@
 						<td>
 							<table width="100%" class="table table-bordered tbl">
 								<tr>
-									<th colspan="4">SPECIMEN DETAILS</th>								
+									<th colspan="4">SPECIMEN DETAILS:</th>								
 								</tr>
 								<tr>
 									<td style="width:20%;" class="bold">Voucher Status:</td>
@@ -193,19 +210,21 @@
 								<tr>
 									<td class="bold">Brief Note:</td>
 									<td><?php echo $data['barcode']['brief_note'] ?></td>
-									<td class="bold">Taxon Id:</td>
-									<td><?php echo $data['barcode']['taxon_id'] ?></td>										
-								</tr>
-								<tr>
 									<td class="bold">Life Stage:</td>
 									<td><?php echo $data['barcode']['life_stage'] ?></td>
-									<td class="bold">Organelle:</td>
-									<td><?php echo $data['barcode']['organelle'] ?></td>
+									<!--<td class="bold">Taxon Id:</td>
+									<td><?php // echo $data['barcode']['taxon_id'] ?></td>-->								
 								</tr>
-								<tr>
+								<!--<tr>
+									<td class="bold">Life Stage:</td>
+									<td><?php // echo $data['barcode']['life_stage'] ?></td>
+									<td class="bold">Organelle:</td>
+									<td><?php // echo $data['barcode']['organelle'] ?></td>
+								</tr>-->
+								<!--<tr>
 									<td class="bold">Lineage:</td>
 									<td><td colspan="2"></td>
-								</tr>
+								</tr>-->
 								<tr>
 									<td class="bold">Detailed Notes:</td>
 									<td colspan="3"><?php echo $data['barcode']['detailed_notes'] ?></td>
@@ -217,7 +236,7 @@
 						<td>
 							<table width="100%" class="table table-bordered tbl">
 								<tr>
-									<th colspan="4">COLLECTION DATA</th>								
+									<th colspan="4">COLLECTION DATA:</th>								
 								</tr>
 								<tr>
 									<td style="width:20%;" class="bold">Country:</td>
@@ -274,7 +293,7 @@
 						<td>
 							<table width="100%" class="table table-bordered tbl">
 								<tr>
-									<th colspan="4">PRIMERS</th>								
+									<th colspan="4">PRIMERS:</th>								
 								</tr>
 								<tr>
 									<td style="width:20%;" class="bold">Forward Primer Name:</td>
@@ -295,12 +314,12 @@
 						<td>
 							<table width="100%" class="table table-bordered tbl">
 								<tr>
-									<th colspan="1">SEQUENCE</th>
+									<th colspan="1">SEQUENCE:</th>
 									<th colspan="3"><?php echo $data['barcode']['gene'] ?></th>
 								</tr>
 								<tr>
-									<td style="width:20%;" class="bold">Barcode Id:</td>
-									<td style="width:30%;"><?php echo $data['barcode']['barcode_id'] ?></td>										
+									<td style="width:20%;" class="bold">Sequence Id:</td>
+									<td style="width:30%;"><?php echo $data['barcode']['sequence_id'] ?></td>										
 									<td style="width:20%;" class="bold">GenBank Accession:</td>
 									<td style="width:30%;"><?php echo $data['barcode']['genbank_accession'] ?></td>
 								</tr>
@@ -336,7 +355,7 @@
 									<td colspan="4" class="bold">Illustrative Barcode:</td>
 								</tr>
 								<tr>
-									<td colspan="4"><canvas id="barcode-canvas"></canvas></td>
+									<td colspan="4"><div><canvas id="barcode-canvas"></canvas></div></td>
 								</tr>
 							</table>
 						</td>
@@ -345,7 +364,12 @@
 				</table>
 			</td>
 			<td style="width:25%;padding-left:10px;">
-				<table style="width:100%">
+				<table style="width:100%">					
+					<tr>
+						<td>
+							<a href="/viewspecies?id=<?php echo $data['barcode']['species'] ?>" target="_blank">Thông tin về loài (species information)</a>
+						</td>
+					</tr>
 					<tr>
 						<td>
 							<table width="100%" class="table table-bordered tbl">
@@ -364,11 +388,6 @@
 									</td>
 								</tr>
 							</table>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="/viewspecies?id=<?php echo $data['barcode']['species'] ?>" target="_blank">Thông tin về loài (species information)</a>
 						</td>
 					</tr>
 				</table>

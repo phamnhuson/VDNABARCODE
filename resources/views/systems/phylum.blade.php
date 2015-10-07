@@ -26,7 +26,7 @@
 <div class="box">
 	<table style="width:100%" class="form-table">
 		<tr>
-			<td class="col-lg-4" style="padding-left:0px;">
+			<td>
 				@if (Session::has('responseData'))
 					@if (Session::get('responseData')['statusCode'] == 1)
 						<div class="alert alert-success">{{ Session::get('responseData')['message'] }}</div>
@@ -44,60 +44,85 @@
 						</ul>
 					</div>
 				@endif
-
-				{!! Form::open(array('method' => (isset($data['phylum'])) ? 'PUT' : 'POST' )) !!}
-					@if (isset($data['phylum']))
-						<input type="hidden" name="phylum_id" value="{{ @$data['phylum'][0]['phylum_id'] }}" />
-					@endif
-					<div class="form-group">
-						<label class="control-label">Giới:</label>					
-						<select name="kingdom_id" class="form-control">
-							<option>Chọn giới</option>
-							<?php foreach($data['list_kingdom'] as $kd){ ?>
-								<option value="<?php echo $kd['kingdom_id'] ?>" <?php echo (isset($data['phylum']) && $kd['kingdom_id']==$data['phylum'][0]['kingdom_id'])?'selected':'' ?>><?php echo $kd['kingdom_name'] ?></option>
-							<?php } ?>
-						</select>
-					</div>	
-					<div class="form-group">
-						<label class="control-label">Tên ngành:</label>
-						{!! Form::text('phylum_name', @$data['phylum'][0]['phylum_name'], array('class'=>'form-control')) !!}
-					</div>
-					<div class="form-group">
-						<label class="control-label">mô tả:</label>
-						{!! Form::text('description', @$data['phylum'][0]['description'], array('class'=>'form-control')) !!}
-					</div>				
-					<div class="form-group">
-						<input type="submit" name="submit" class="btn btn-primary" value="@if (isset($data['phylum'])) Cập nhật @else Thêm @endif" />
-						@if (isset($data['phylum']))
-							<a href="{{ url('phylum') }}" class="btn btn-success">Thêm mới</a>
-						@endif
-					</div>
-				{!! Form::close() !!}
-			</td>		
-			<td class="col-lg-8" style="padding-right:0px;">
-				<table class="table table-striped table-bordered">
-					<tr>
-						<th style="text-align:center !important;width:5%">STT</th>
-						<th style="width:30%">Phylum Name</th>
-						<th style="width:50%">Mô tả</th>
-						<th style="width:15%;"></th>
-					</tr>
-					<?php $i=1; ?>
-					<?php foreach($data['list_phylum'] as $pltt){ ?>
-						<tr>
-							<td style="text-align:center;"><?php echo $i; ?></td>						
-							<td><?php echo $pltt['phylum_name']; ?></td>
-							<td><?php echo $pltt['description']; ?></td>
-							<td style="text-align:center;">
-								<a href="{{ asset('phylum?action=edit&id=').$pltt['phylum_id'] }}"><button type="button" title="sửa" name="sua" class="btn btn-warning"><span class='glyphicon glyphicon-pencil'></span></button></a>
-								<a href="{{ asset('phylum?action=delete&id=').$pltt['phylum_id'] }}" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" title="xóa" name="xoa" class="btn btn-danger"><span class='glyphicon glyphicon-trash'></span></button></a>
-							</td>
-						</tr>
-					<?php $i+=1; ?>
-					<?php } ?>
-				</table>
-				<?php echo $data['list_phylum']->render(); ?>
 			</td>
+		<tr>
+		<tr>
+			<td>				
+				<div class="row">
+					<div class="col-md-12" style="padding:0px">
+						<div class="nav-tabs-custom" style="margin-bottom: 0px; box-shadow:none;">
+							<ul class="nav nav-tabs">
+								<li class='active'>
+									<a href="#tab1" data-toggle='tab' id='page1'>Cập nhật thông tin ngành</a>
+								</li>
+								<li>
+									<a href="#tab2" data-toggle='tab' id='page1'>Danh sách ngành</a>
+								</li>								
+							</ul>
+						</div>
+					</div>				
+				</div>
+			</td>
+		</tr>		
+		<tr>
+			<td class="col-lg-12" style="padding-left:0px;">
+				<div class="tab-content col-md-12" style="padding:0px;">
+					<div class="tab-pane active" id="tab1">
+						{!! Form::open(array('method' => (isset($data['phylum'])) ? 'PUT' : 'POST' )) !!}
+							@if (isset($data['phylum']))
+								<input type="hidden" name="phylum_id" value="{{ @$data['phylum'][0]['phylum_id'] }}" />
+							@endif
+							<div class="form-group">
+								<label class="control-label">Giới:</label>					
+								<select name="kingdom_id" class="form-control">
+									<option>Chọn giới</option>
+									<?php foreach($data['list_kingdom'] as $kd){ ?>
+										<option value="<?php echo $kd['kingdom_id'] ?>" <?php echo (isset($data['phylum']) && $kd['kingdom_id']==$data['phylum'][0]['kingdom_id'])?'selected':'' ?>><?php echo $kd['kingdom_name'] ?></option>
+									<?php } ?>
+								</select>
+							</div>	
+							<div class="form-group">
+								<label class="control-label">Tên ngành:</label>
+								{!! Form::text('phylum_name', @$data['phylum'][0]['phylum_name'], array('class'=>'form-control')) !!}
+							</div>
+							<div class="form-group">
+								<label class="control-label">mô tả:</label>
+								{!! Form::text('description', @$data['phylum'][0]['description'], array('class'=>'form-control')) !!}
+							</div>				
+							<div class="form-group">
+								<input type="submit" name="submit" class="btn btn-primary" value="@if (isset($data['phylum'])) Cập nhật @else Thêm @endif" />
+								@if (isset($data['phylum']))
+									<a href="{{ url('phylum') }}" class="btn btn-success">Thêm mới</a>
+								@endif
+							</div>
+						{!! Form::close() !!}
+					</div>
+					<div class="tab-pane" id="tab2">
+						<table class="table table-striped table-bordered">
+							<tr>
+								<th style="text-align:center !important;width:5%">STT</th>
+								<th style="width:30%">Phylum Name</th>
+								<th style="width:50%">Mô tả</th>
+								<th style="width:15%;"></th>
+							</tr>
+							<?php $i=1; ?>
+							<?php foreach($data['list_phylum'] as $pltt){ ?>
+								<tr>
+									<td style="text-align:center;"><?php echo $i; ?></td>						
+									<td><?php echo $pltt['phylum_name']; ?></td>
+									<td><?php echo $pltt['description']; ?></td>
+									<td style="text-align:center;">
+										<a href="{{ asset('phylum?action=edit&id=').$pltt['phylum_id'] }}"><button type="button" title="sửa" name="sua" class="btn btn-warning"><span class='glyphicon glyphicon-pencil'></span></button></a>
+										<a href="{{ asset('phylum?action=delete&id=').$pltt['phylum_id'] }}" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" title="xóa" name="xoa" class="btn btn-danger"><span class='glyphicon glyphicon-trash'></span></button></a>
+									</td>
+								</tr>
+							<?php $i+=1; ?>
+							<?php } ?>
+						</table>
+						<?php echo $data['list_phylum']->render(); ?>
+					</div>
+				</div>
+			</td>		
 		</tr>
 	</table>
 </div>

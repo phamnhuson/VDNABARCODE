@@ -50,10 +50,19 @@
 	td{
 		font-size:10pt;
 	}
+	.form-control2{		
+		height:28px !important;
+		border:1px solid #aaa;
+		border-radius:4px;
+		padding:4px;
+	}
+
 }
 </style>
 <!--<script src="{{ asset('public/js/google_map.js') }}"></script>-->
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 <div id="subheader" style='height:49px;'>
 	<div class="box">
 		<table width="100%" cellspacing="0" cellpadding="0">
@@ -93,18 +102,15 @@
 						<li class='active'>
 							<a href="#tab1" data-toggle='tab' id='page1'>Thông tin</a>
 						</li>
-						<!--<li>
+						<li>
 							<a href="#tab2" data-toggle='tab' id='page2'>Dữ liệu ảnh</a>
-						</li>-->
+						</li>						
+						<li>
+							<a href="#tab4" data-toggle='tab' id='page4'>Thông tin về loài</a>
+						</li>
 						<li>
 							<a href="#tab3" data-toggle='tab' id='page3'>File</a>
 						</li>
-						<!--<li>
-							<a href="#tab5" data-toggle='tab' id='page5'>Địa Phương</a>
-						</li>
-						<li>
-							<a href="#tab4" data-toggle='tab' id='page4'>Vị trí</a>
-						</li>-->
 					</ul>
 				</div>
 			</div>				
@@ -115,29 +121,30 @@
 			<div class="tab-content col-md-12" style="padding:0px;">
 				<div class="tab-pane active" id="tab1">
 					<input type="hidden" name="barcode_id" value="{{ @$data['barcode'][0]['barcode_id'] }}" />
+					<input type="hidden" name="species_id" value="{{ @$data['plantae'][0]['species_id'] }}" />
 					<table class="col-lg-12">
 						<tr>
 							<td>
 								<table width="100%" class="table table-bordered tbl">
 									<tr>
 										<td >TITLE</td>
-										<td colspan="3" style="width:80%;">{!! Form::text('title', @$data['barcode'][0]['title'], array('style'=>'width:100%')) !!}</td>
+										<td colspan="3" style="width:80%;">{!! Form::text('title', @$data['barcode'][0]['title'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td >Authors</td>
-										<td colspan="3" style="width:80%;">{!! Form::text('authors', @$data['barcode'][0]['authors'], array('style'=>'width:100%')) !!}</td>
+										<td colspan="3" style="width:80%;">{!! Form::text('authors', @$data['barcode'][0]['authors'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td style="width:20%;">Address:</td>
-										<td style="width:30%;">{!! Form::text('address', @$data['barcode'][0]['address'], array('style'=>'width:100%')) !!}</td>										
+										<td style="width:30%;">{!! Form::text('address', @$data['barcode'][0]['address'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 										<td style="width:20%;">Phone:</td>
-										<td style="width:30%;">{!! Form::text('phone', @$data['barcode'][0]['phone'], array('style'=>'width:100%')) !!}</td>
+										<td style="width:30%;">{!! Form::text('phone', @$data['barcode'][0]['phone'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td style="width:20%;">Submitted date:</td>
-										<td style="width:30%;">{!! Form::text('submitted_date', @$data['barcode'][0]['submitted_date'], array('style'=>'width:100%')) !!}</td>										
+										<td style="width:30%;">{!! Form::text('submitted_date', @$data['barcode'][0]['submitted_date'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 										<td style="width:20%;">Email:</td>
-										<td style="width:30%;">{!! Form::text('email', @$data['barcode'][0]['email'], array('style'=>'width:100%')) !!}</td>
+										<td style="width:30%;">{!! Form::text('email', @$data['barcode'][0]['email'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 								</table>
 							</td>
@@ -150,19 +157,19 @@
 									</tr>
 									<tr>
 										<td style="width:20%;">Sample ID:</td>
-										<td style="width:30%;">{!! Form::text('sample_id', @$data['barcode'][0]['sample_id'], array('style'=>'width:100%')) !!}</td>
+										<td style="width:30%;">{!! Form::text('sample_id', @$data['barcode'][0]['sample_id'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 										<td style="width:20%;">Museum ID:</td>
-										<td style="width:30%;">{!! Form::text('museum_id', @$data['barcode'][0]['museum_id'], array('style'=>'width:100%')) !!}</td>
+										<td style="width:30%;">{!! Form::text('museum_id', @$data['barcode'][0]['museum_id'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>Field ID:</td>
-										<td>{!! Form::text('field_id', @$data['barcode'][0]['field_id'], array('style'=>'width:100%')) !!}</td>										
+										<td>{!! Form::text('field_id', @$data['barcode'][0]['field_id'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 										<td>Collection Code:</td>
-										<td>{!! Form::text('collection_code', @$data['barcode'][0]['collection_code'], array('style'=>'width:100%')) !!}</td>
+										<td>{!! Form::text('collection_code', @$data['barcode'][0]['collection_code'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>Deposited In:</td>
-										<td colspan="3">{!! Form::text('deposited_in', @$data['barcode'][0]['deposited_in'], array('style'=>'width:100%')) !!}</td>
+										<td colspan="3">{!! Form::text('deposited_in', @$data['barcode'][0]['deposited_in'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 								</table>
 							</td>
@@ -174,29 +181,49 @@
 										<th colspan="4">TAXONOMY</th>								
 									</tr>
 									<tr>
+										<td style="width:20%;">Kingdom:</td>
+										<td style="width:30%;">{!! Form::select('kingdom', @$data['arr_kingdom'],@$data['plantae'][0]['kingdom_id'], array('id'=>'kingdom','class'=>'form-control2','style'=>'width:100%')) !!}</td>
+										<td>Family:</td>
+										<td id="td_family">{!! Form::select('family', @$data['arr_family'],@$data['plantae'][0]['family_id'], array('id'=>'family','class'=>'form-control2','style'=>'width:85%')) !!}									
+										<button type="button" class="btn btn-success" id="btn_afamily"><span class="glyphicon glyphicon-plus"></span></button>
+										{!! Form::text('add_family',@$data['plantae'][0]['family_id'], array('id'=>'add_family','class'=>'form-control2','style'=>'width:100%','hidden')) !!}
+										</td>
+									</tr>
+									<tr>
 										<td style="width:20%;">Phylum:</td>
-										<td style="width:30%;">{!! Form::select('phylum', @$data['arr_phylum'],@$data['plantae'][0]['phylum_id'], array('id'=>'phylum','style'=>'width:100%')) !!}</td>
+										<td style="width:30%;">{!! Form::select('phylum', @$data['arr_phylum'],@$data['plantae'][0]['phylum_id'], array('id'=>'phylum','class'=>'form-control2','style'=>'width:100%')) !!}</td>	
 										<td style="width:20%;">Subfamily:</td>
-										<td style="width:30%;">{!! Form::text('subfamily', @$data['barcode'][0]['subfamily'], array('id'=>'subfamily','style'=>'width:100%')) !!}</td>
+										<td style="width:30%;">{!! Form::text('subfamily', @$data['barcode'][0]['subfamily'], array('id'=>'subfamily','class'=>'form-control2','style'=>'width:100%')) !!}</td>											
 									</tr>
 									<tr>
 										<td>Class:</td>
-										<td>{!! Form::select('class', @$data['arr_class'],@$data['plantae'][0]['class_id'], array('id'=>'class','style'=>'width:100%')) !!}</td>
+										<td id="td_class">
+										{!! Form::select('class', @$data['arr_class'],@$data['plantae'][0]['class_id'], array('id'=>'class','class'=>'form-control2','style'=>'width:85%')) !!}
+										<button type="button" class="btn btn-success" id="btn_aclass"><span class="glyphicon glyphicon-plus"></span></button>
+										{!! Form::text('add_class',@$data['plantae'][0]['class_id'], array('id'=>'add_class','class'=>'form-control2','style'=>'width:100%','hidden')) !!}
+										</td>
 										<td>Genus:</td>
-										<td>{!! Form::select('genus', @$data['arr_genus'],@$data['plantae'][0]['genus_id'], array('id'=>'genus','style'=>'width:100%')) !!}</td>
+										<td id="td_genus">{!! Form::select('genus', @$data['arr_genus'],@$data['plantae'][0]['genus_id'], array('id'=>'genus','class'=>'form-control2','style'=>'width:85%')) !!}
+										<button type="button" class="btn btn-success" id="btn_agenus"><span class="glyphicon glyphicon-plus"></span></button>
+										{!! Form::text('add_genus',@$data['plantae'][0]['genus_id'], array('id'=>'add_genus','class'=>'form-control2','style'=>'width:100%','hidden')) !!}
+										</td>										
 									</tr>
 									<tr>
 										<td>Order:</td>
-										<td>{!! Form::select('order', @$data['arr_order'],@$data['plantae'][0]['order_id'], array('id'=>'order','style'=>'width:100%')) !!}</td>
+										<td id="td_order">
+										{!! Form::select('order', @$data['arr_order'],@$data['plantae'][0]['order_id'], array('id'=>'order','class'=>'form-control2','style'=>'width:85%')) !!}
+										<button type="button" class="btn btn-success" id="btn_aorder"><span class="glyphicon glyphicon-plus"></span></button>
+										{!! Form::text('add_order',@$data['plantae'][0]['order_id'], array('id'=>'add_order','class'=>'form-control2','style'=>'width:100%','hidden')) !!}
+										</td>
 										<td>Species:</td>
-										<td>{!! Form::select('species', @$data['arr_species'],@$data['plantae'][0]['species_id'], array('id'=>'species','style'=>'width:100%')) !!}</td>
+										<td>{!! Form::text('species',@$data['plantae'][0]['species_name'], array('id'=>'species','class'=>'form-control2','style'=>'width:100%')) !!}</td>											
 									</tr>
 									<tr>
-										<td>Family:</td>
-										<td>{!! Form::select('family', @$data['arr_family'],@$data['plantae'][0]['family_id'], array('id'=>'family','style'=>'width:100%')) !!}</td>
 										<td>BIN (Cluster ID):</td>
-										<td>{!! Form::text('bin', @$data['barcode'][0]['bin'], array('style'=>'width:100%')) !!}</td>
-									</tr>
+										<td>{!! Form::text('bin', @$data['barcode'][0]['bin'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
+										<td></td>
+										<td></td>
+									</tr>									
 									<tr>
 										<td colspan="4"><i>* Barcode Index Numbers(BIN): cluster barcode sequence to create OTUs that closely reflect species groupings</i></td>										
 									</tr>
@@ -211,34 +238,21 @@
 									</tr>
 									<tr>
 										<td style="width:20%;">Voucher Status:</td>
-										<td style="width:30%;">{!! Form::text('voucher_status', @$data['barcode'][0]['voucher_status'], array('style'=>'width:100%')) !!}</td>										
+										<td style="width:30%;">{!! Form::text('voucher_status', @$data['barcode'][0]['voucher_status'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 										<td style="width:20%;">Reproduction:</td>
-										<td style="width:30%;">{!! Form::text('reproduction', @$data['barcode'][0]['reproduction'], array('style'=>'width:100%')) !!}</td>
+										<td style="width:30%;">{!! Form::text('reproduction', @$data['barcode'][0]['reproduction'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>Tissue Descriptor:</td>
-										<td>{!! Form::text('tissue_type', @$data['barcode'][0]['tissue_type'], array('style'=>'width:100%')) !!}</td>
+										<td>{!! Form::text('tissue_type', @$data['barcode'][0]['tissue_type'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 										<td>Sex:</td>
-										<td>{!! Form::text('sex', @$data['barcode'][0]['sex'], array('style'=>'width:100%')) !!}</td>										
+										<td>{!! Form::text('sex', @$data['barcode'][0]['sex'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 									</tr>
 									<tr>
 										<td>Brief Note:</td>
-										<td>{!! Form::text('brief_note', @$data['barcode'][0]['brief_note'], array('style'=>'width:100%')) !!}</td>
-										<td>Taxon Id:</td>
-										<td>{!! Form::text('taxon_id', @$data['barcode'][0]['taxon_id'], array('style'=>'width:100%')) !!}</td>										
-									</tr>
-									<tr>
+										<td>{!! Form::text('brief_note', @$data['barcode'][0]['brief_note'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 										<td>Life Stage:</td>
-										<td>{!! Form::text('life_stage', @$data['barcode'][0]['life_stage'], array('style'=>'width:100%')) !!}</td>
-										<td>Organelle:</td>
-										<td>
-										{!! Form::text('organelle', @$data['barcode'][0]['organelle'], array('style'=>'width:100%')) !!}
-										</td>
-									</tr>
-									<tr>
-										<td>Lineage:</td>
-										<td>{!! Form::text('lineage', @$data['barcode'][0]['lineage'], array('style'=>'width:100%')) !!}</td>
-										<td colspan="2"></td>
+										<td>{!! Form::text('life_stage', @$data['barcode'][0]['life_stage'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>									
 									</tr>
 									<tr>
 										<td>Detailed Notes:</td>
@@ -257,57 +271,57 @@
 									</tr>
 									<tr>
 										<td style="width:20%;">Country:</td>
-										<td style="width:30%;">{!! Form::text('country', @$data['barcode'][0]['country'], array('style'=>'width:100%')) !!}</td>										
+										<td style="width:30%;">{!! Form::text('country', @$data['barcode'][0]['country'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 										<td style="width:20%;">Date Collected:</td>
-										<td style="width:30%;">{!! Form::text('date_collected', @$data['barcode'][0]['date_collected'], array('style'=>'width:100%')) !!}</td>
+										<td style="width:30%;">{!! Form::text('date_collected', @$data['barcode'][0]['date_collected'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>Province/State:</td>
-										<td>{!! Form::text('province_state', @$data['barcode'][0]['province_state'], array('style'=>'width:100%')) !!}</td>										
+										<td>{!! Form::text('province_state', @$data['barcode'][0]['province_state'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 										<td>Collectors:</td>
-										<td>{!! Form::text('collectors', @$data['barcode'][0]['collectors'], array('style'=>'width:100%')) !!}</td>
+										<td>{!! Form::text('collectors', @$data['barcode'][0]['collectors'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>Region/Country</td>
 										<td colspan="3">
-											{!! Form::text('region_country', @$data['barcode'][0]['region_country'], array('style'=>'width:100%')) !!}
+											{!! Form::text('region_country', @$data['barcode'][0]['region_country'], array('class'=>'form-control2','style'=>'width:100%')) !!}
 										</td>
 									</tr>
 									<tr>
 										<td>Sector</td>
 										<td colspan="3">
-											{!! Form::text('sector', @$data['barcode'][0]['sector'], array('style'=>'width:100%')) !!}
+											{!! Form::text('sector', @$data['barcode'][0]['sector'], array('class'=>'form-control2','style'=>'width:100%')) !!}
 										</td>
 									</tr>
 									<tr>
 										<td>Exact Site</td>
 										<td colspan="3">
-											{!! Form::text('exact_site', @$data['barcode'][0]['exact_site'], array('style'=>'width:100%')) !!}
+											{!! Form::text('exact_site', @$data['barcode'][0]['exact_site'], array('class'=>'form-control2','style'=>'width:100%')) !!}
 										</td>
 									</tr>
 									<tr>
 										<td>Latitude:</td>
-										<td>{!! Form::text('latitude', @$data['barcode'][0]['latitude'], array('style'=>'width:100%')) !!}</td>										
+										<td>{!! Form::text('latitude', @$data['barcode'][0]['latitude'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 										<td>Elevation:</td>
-										<td>{!! Form::text('elevation', @$data['barcode'][0]['elevation'], array('style'=>'width:100%')) !!}</td>
+										<td>{!! Form::text('elevation', @$data['barcode'][0]['elevation'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>Longitude:</td>
-										<td>{!! Form::text('longitude', @$data['barcode'][0]['longitude'], array('style'=>'width:100%')) !!}</td>										
+										<td>{!! Form::text('longitude', @$data['barcode'][0]['longitude'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 										<td>Elv.Accuracy:</td>
-										<td>{!! Form::text('elv_accuracy', @$data['barcode'][0]['elv_accuracy'], array('style'=>'width:100%')) !!}</td>
+										<td>{!! Form::text('elv_accuracy', @$data['barcode'][0]['elv_accuracy'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>Coord. Source:</td>
-										<td>{!! Form::text('coord_source', @$data['barcode'][0]['coord_source'], array('style'=>'width:100%')) !!}</td>										
+										<td>{!! Form::text('coord_source', @$data['barcode'][0]['coord_source'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 										<td>Depth:</td>
-										<td>{!! Form::text('depth', @$data['barcode'][0]['depth'], array('style'=>'width:100%')) !!}</td>
+										<td>{!! Form::text('depth', @$data['barcode'][0]['depth'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>Coord. Accuracy:</td>
-										<td>{!! Form::text('coord_accuracy', @$data['barcode'][0]['coord_accuracy'], array('style'=>'width:100%')) !!}</td>										
+										<td>{!! Form::text('coord_accuracy', @$data['barcode'][0]['coord_accuracy'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 										<td>Depth Accuracy:</td>
-										<td>{!! Form::text('depth_accuracy', @$data['barcode'][0]['depth_accuracy'], array('style'=>'width:100%')) !!}</td>
+										<td>{!! Form::text('depth_accuracy', @$data['barcode'][0]['depth_accuracy'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 								</table>
 							</td>
@@ -320,15 +334,15 @@
 									</tr>
 									<tr>
 										<td style="width:20%;">Forward Primer Name:</td>
-										<td style="width:15%;">{!! Form::text('fprimername', @$data['barcode'][0]['fprimername'], array('style'=>'width:100%')) !!}</td>										
+										<td style="width:15%;">{!! Form::text('fprimername', @$data['barcode'][0]['fprimername'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 										<td style="width:20%;">Sequence(5’-3’):</td>
-										<td style="width:45%;">{!! Form::text('fprimer', @$data['barcode'][0]['fprimer'], array('style'=>'width:100%')) !!}</td>
+										<td style="width:45%;">{!! Form::text('fprimer', @$data['barcode'][0]['fprimer'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>Reverse Primer Name:</td>
-										<td>{!! Form::text('rprimername', @$data['barcode'][0]['rprimername'], array('style'=>'width:100%')) !!}</td>										
+										<td>{!! Form::text('rprimername', @$data['barcode'][0]['rprimername'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 										<td>Sequence(5’-3’):</td>
-										<td>{!! Form::text('rprimer', @$data['barcode'][0]['rprimer'], array('style'=>'width:100%')) !!}</td>
+										<td>{!! Form::text('rprimer', @$data['barcode'][0]['rprimer'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 								</table>
 							</td>
@@ -339,32 +353,30 @@
 									<tr>
 										<th colspan="4">SEQUENCE</th>								
 									</tr>
-									<tr>								
+									<tr>
+										<td style="width:20%;">Sequence id:</td>
+										<td style="width:30%;">{!! Form::text('sequence_id', @$data['barcode'][0]['sequence_id'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 										<td style="width:20%;">Gene:</td>
-										<td style="width:30%;">{!! Form::text('gene', @$data['barcode'][0]['gene'], array('style'=>'width:100%')) !!}</td>
-										<td style="width:20%;">GenBank Accession:</td>
-										<td style="width:30%;">{!! Form::text('genbank_accession', @$data['barcode'][0]['genbank_accession'], array('style'=>'width:100%')) !!}</td>
+										<td style="width:30%;">{!! Form::text('gene', @$data['barcode'][0]['gene'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
 									</tr>
 									<tr>
 										<td>Last Updated:</td>
-										<td>{!! Form::text('last_updated', @$data['barcode'][0]['last_updated'], array('style'=>'width:100%')) !!}</td>
-										<td>Genome:</td>
-										<td>{!! Form::text('genome', @$data['barcode'][0]['genome'], array('style'=>'width:100%')) !!}</td>										
+										<td>{!! Form::text('last_updated', @$data['barcode'][0]['last_updated'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
+										<td style="width:20%;">GenBank Accession:</td>
+										<td style="width:30%;">{!! Form::text('genbank_accession', @$data['barcode'][0]['genbank_accession'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>																				
 									</tr>
 									<tr>
 										<td>Locus:</td>
 										<td>
-										{!! Form::text('locus', @$data['barcode'][0]['locus'], array('style'=>'width:100%')) !!}
+										{!! Form::text('locus', @$data['barcode'][0]['locus'], array('class'=>'form-control2','style'=>'width:100%')) !!}
 										</td>
-										<td>Quality:</td>
-										<td>
-										{!! Form::text('quality', @$data['barcode'][0]['quality'], array('style'=>'width:100%')) !!}
-										</td>							
+										<td>Genome:</td>
+										<td>{!! Form::text('genome', @$data['barcode'][0]['genome'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>						
 									</tr>
 									<tr>
 										<td>Nucleotides:</td>
 										<td colspan="3">
-										{!! Form::text('seq_size', @$data['barcode'][0]['seq_size'], array('style'=>'width:100%','placeholder'=>'Độ dài nucleotides')) !!}</td>
+										{!! Form::text('seq_size', @$data['barcode'][0]['seq_size'], array('class'=>'form-control2','style'=>'width:100%','placeholder'=>'Độ dài nucleotides')) !!}</td>
 									</tr>
 									<tr>
 										<td colspan="4">
@@ -373,7 +385,7 @@
 									</tr>
 									<tr>
 										<td>Amino Acids:</td>
-										<td colspan="3">{!! Form::text('pep_size',@$data['barcode'][0]['pep_size'],array('style'=>'width:100%','placeholder'=>'Độ dài amino acids')) !!}</td>
+										<td colspan="3">{!! Form::text('pep_size',@$data['barcode'][0]['pep_size'],array('class'=>'form-control2','style'=>'width:100%','placeholder'=>'Độ dài amino acids')) !!}</td>
 									</tr>
 									<tr>
 										<td colspan="4">
@@ -384,6 +396,49 @@
 							</td>
 						</tr>
 					</table>					
+				</div>
+				<div class="tab-pane" id="tab2">
+					<div class="row">
+						<div class="panel panel-default">
+							<div class="panel-heading"><h4 style="color:#f0ad4e;">Chọn ảnh mẫu vật</h4></div>
+							<div class="panel-body" id="app">
+								<div class="col-md-2" id="cot_1">
+									<div class="form-group" >
+										<div class="upanh" id="upanh_1" data_id="1">
+											<a> 
+												<img class='col-md-12' style="padding:6px;margin-top:10px;margin-bottom:10px;border:2px dashed #0087F7;height:130px;width:140" id="img_1" src="{{asset('public/img/add.png')}}" alt="Chọn mẫu vật" />										
+											</a>									
+										</div>
+										<div id="btx_1">
+										</div>				
+										{!! Form::file('images[]', array('class'=>'form-control2 imgInp','style'=>'display:none;','id'=>'imgInp_1','data_id'=>'1')) !!}
+									</div>
+								</div>
+							</div>
+						</div>						
+					</div>
+					<?php if(isset($data['file_img'])){ ?>					
+					<div class="row">						
+						<hr style="border-top: 1px solid #ddd;"/>						
+					</div>
+					<div class="row">
+						<div class="panel panel-default">
+							<div class="panel-heading"><h4 style="color:#f0ad4e;">Dữ liệu ảnh</h4></div>
+							<div class="panel-body">
+								<?php foreach($data['file_img'] as $ds){ ?>
+									<div class="col-md-2" id="group_img_<?php echo $ds['file_id']; ?>">
+										<div class="form-group">
+											<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
+												<img style="height:130px;width:140" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="...">
+											</a>
+											<button type="button" class="btn btn-danger delete" data_id="<?php echo $ds['file_id']; ?>" style="width:146px;"><span class='glyphicon glyphicon-trash'></span></button>
+										</div>								
+									</div>
+								<?php } ?>
+							</div>
+						</div>						
+					</div>
+					<?php } ?>
 				</div>
 				<div class="tab-pane" id="tab3">
 					<table width="100%" class="form-table">
@@ -422,7 +477,57 @@
 							</td>							
 					</table>
 				</div>
-				
+				<div class="tab-pane" id="tab4">
+					<table class="col-lg-12">
+						<tr>
+							<td>
+								<table width="100%" class="table table-bordered tbl">
+									<tr>
+										<td style="width:20%;">Tên Việt Nam:</td>
+										<td style="width:30%;">{!! Form::text('vietnamese_name', @$data['plantae'][0]['vietnamese_name'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>										
+										<td style="width:20%;">Tên khác:</td>
+										<td style="width:30%;">{!! Form::text('other_name', @$data['plantae'][0]['other_name'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
+									</tr>
+									<tr>
+										<td >Phân hạng:</td>
+										<td>{!! Form::text('rank', @$data['plantae'][0]['rank'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
+										<td colspan="2"></td>
+									</tr>
+									<tr>
+										<td colspan="4">Mô tả chung:</td>
+									</tr>
+									<tr>										
+										<td colspan="4">{!! Form::textarea('species_description', @$data['plantae'][0]['species_description'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+									<tr>
+										<td colspan="4">Đặc điểm phân bố:</td>
+									</tr>
+									<tr>										
+										<td colspan="4">{!! Form::textarea('distribution', @$data['plantae'][0]['distribution'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+									<tr>
+										<td colspan="4">Công dụng:</td>
+									</tr>
+									<tr>										
+										<td colspan="4">{!! Form::textarea('function', @$data['plantae'][0]['function'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+									<tr>
+										<td colspan="4">Khả năng kinh doanh, bảo tồn:</td>
+									</tr>
+									<tr>										
+										<td colspan="4">{!! Form::textarea('conserve', @$data['plantae'][0]['conserve'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+									<tr>
+										<td colspan="4">Khác:</td>
+									</tr>
+									<tr>										
+										<td colspan="4">{!! Form::textarea('other', @$data['plantae'][0]['other'], array('style'=>'width:100%')) !!}</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</div>
 				<!--<div class="tab-pane" id="tab4">
 					<div class="row">
 						<div id="map" style="width: 100%; height: 700px;"></div>
@@ -461,19 +566,19 @@
 									<tr>
 										<td colspan="2" class="col-md-12" style="padding:0px">
 											<div class="form-group">
-												{!! Form::text('sector[]', @$data['barcode'][0]['sector'], array('class'=>'form-control','placeholder'=>'Khu vực')) !!}
+												{!! Form::text('sector[]', @$data['barcode'][0]['sector'], array('class'=>'form-control2','placeholder'=>'Khu vực')) !!}
 											</div>										
 										</td>
 									</tr>
 									<tr>
 										<td class="col-md-6" style="padding:0px 5px 0px 0px;">
 											<div class="form-group">
-												{!! Form::text('longitude[]', @$data['barcode'][0]['longitude'], array('class'=>'form-control','placeholder'=>'Kinh độ')) !!}
+												{!! Form::text('longitude[]', @$data['barcode'][0]['longitude'], array('class'=>'form-control2','placeholder'=>'Kinh độ')) !!}
 											</div>										
 										</td>
 										<td class="col-md-6" style="padding:0px 0px 0px 5px;">
 											<div class="form-group">
-												{!! Form::text('latitude[]', @$data['barcode'][0]['latitude'], array('class'=>'form-control','placeholder'=>'Vĩ độ')) !!}
+												{!! Form::text('latitude[]', @$data['barcode'][0]['latitude'], array('class'=>'form-control2','placeholder'=>'Vĩ độ')) !!}
 											</div>
 										</td>
 									</tr>
@@ -492,7 +597,7 @@
 						<td class="col-md-5" style="padding:0px 5px 0px 0px;">
 							<div class="row" id="addtp">
 								<div class="form-group">
-									<select class="form-control" name="cities[]">
+									<select class="form-control2" name="cities[]">
 										<option value=''>Chọn tỉnh thành</option>
 										<?php foreach($data['list_city'] as $ct){ ?>
 											<option value="<?php echo $ct['city_id']; ?>"><?php echo $ct['city_name']; ?></option>
@@ -551,8 +656,13 @@
     </div>
 </div>
 <script type="text/javascript">
-
 $(document).ready(function(){
+	$('#kingdom').select2();
+	$('#phylum').select2();
+	$('#class').select2();
+	$('#order').select2();
+	$('#family').select2();
+	$('#genus').select2();
 	var locations= <?php echo $data['loca']; ?>;
 	function readURL(input, bien) {
         if (input.files && input.files[0]) {
@@ -579,11 +689,11 @@ $(document).ready(function(){
 		$option +=			"<div id='btx_"+$id+"'>";
 		$option +=			"</div>"
 		//$option	+=			"<button type='button' class='btn btn-primary xoa' style='width:140px;' data_id='" +$id+"'><span class='glyphicon glyphicon-trash'></span></button>"
-		$option +=			"<input type='file' name='images[]' style='display:none' class='form-control imgInp' id='imgInp_"+ $id +"' data_id='"+$id+"'/>";
+		$option +=			"<input type='file' name='images[]' style='display:none' class='form-control2 imgInp' id='imgInp_"+ $id +"' data_id='"+$id+"'/>";
 		$option += 		"</div>";
 		$option += "</div>";
 		$("#app").append($option);
-		$(this).attr('class','form-control imgch');
+		$(this).attr('class','form-control2 imgch');
 		$('#upanh_'+$data_id).attr('class','change');
 		$option2 ="";
 		$option2 += "<button type='button' class='btn btn-warning xoa' style='width:140px;' data_id='" + $data_id + "'><span class='glyphicon glyphicon-trash'></span></button>";
@@ -642,7 +752,7 @@ $(document).ready(function(){
 		$('#afile_'+$data_id).remove();
 		$option = "";
 		$option += "<div class='form-group'>";
-		$option += "<input type='file' name='files[]' class='form-control file' id='file_"+ $id +"' data_id='"+$id+"'/>";
+		$option += "<input type='file' name='files[]' class='form-control2 file' id='file_"+ $id +"' data_id='"+$id+"'/>";
 		$option += "</br>";
 		$option += "<button type='button' class='btn btn-success afile' id='afile_" + $id +"' data_id='" + $id + "'> <span class='glyphicon glyphicon-plus'></span></button>";
 		$option += "</div>";
@@ -652,7 +762,7 @@ $(document).ready(function(){
 	$(document).on('click','#addcity',function(){
 		$option = "";
 		$option += 		"<div class='form-grounp'>";
-		$option +=			"<select class='form-control' name='cities[]'>";
+		$option +=			"<select class='form-control2' name='cities[]'>";
 		$option += 				"<option value=''>Chọn tỉnh thành</option>";
 		$option +=				"<?php foreach($data['list_city'] as $ct){ ?>";
 		$option +=					"<option value='<?php echo $ct['city_id'] ?>'><?php echo $ct['city_name'] ?></option>";
@@ -667,19 +777,19 @@ $(document).ready(function(){
 		$option += "<tr>";
 		$option += 		"<td colspan='2' class='col-md-12' style='padding:0px'>";
 		$option +=			"<div class='form-group'>";
-		$option +=				"<input type='text' class='form-control' name='sector[]' placeholder='Khu vực'/>";
+		$option +=				"<input type='text' class='form-control2' name='sector[]' placeholder='Khu vực'/>";
 		$option +=			"</div>";
 		$option +=		"</td>";
 		$option	+= "</tr>"
 		$option += "<tr style='height:49px;'>";
 		$option += 		"<td class='col-md-6' style='padding:0px 5px 0px 0px;'>";
 		$option +=			"<div class='form-grounp'>";
-		$option +=				"<input type='text' class='form-control' name='longitude[]' placeholder='Kinh độ'/>";
+		$option +=				"<input type='text' class='form-control2' name='longitude[]' placeholder='Kinh độ'/>";
 		$option +=			"</div>";
 		$option +=		"</td>";
 		$option += 		"<td class='col-md-6' style='padding:0px 0px 0px 5px;'>";
 		$option +=			"<div class='form-grounp'>";
-		$option +=				"<input type='text' class='form-control' name='latitude[]' placeholder='Vĩ độ'/>";
+		$option +=				"<input type='text' class='form-control2' name='latitude[]' placeholder='Vĩ độ'/>";
 		$option +=			"</div>";
 		$option +=		"</td>";
 		$option += "</tr>";
@@ -853,7 +963,7 @@ $(document).ready(function(){
 		});
 	});
 	
-	$(document).on('change','#genus',function(){
+	/*$(document).on('change','#genus',function(){
 		id = $(this).val();
 		$.ajax({
 			type: "GET",
@@ -870,8 +980,31 @@ $(document).ready(function(){
 				$("#species").html(options);
 			}
 		});
+	});*/
+	
+	$(document).on('click','#btn_aclass',function(){
+		$('#td_class span').attr('class','hide');
+		$('#btn_aclass').attr('class','hide');
+		$('#add_class').show();
 	});
-
+	
+	$(document).on('click','#btn_aorder',function(){
+		$('#td_order span').attr('class','hide');
+		$('#btn_aorder').attr('class','hide');
+		$('#add_order').show();
+	});
+	
+	$(document).on('click','#btn_afamily',function(){
+		$('#td_family span').attr('class','hide');
+		$('#btn_afamily').attr('class','hide');
+		$('#add_family').show();
+	});
+	
+	$(document).on('click','#btn_agenus',function(){
+		$('#td_genus span').attr('class','hide');
+		$('#btn_agenus').attr('class','hide');
+		$('#add_genus').show();
+	});
 });
 </script>
 @endsection
