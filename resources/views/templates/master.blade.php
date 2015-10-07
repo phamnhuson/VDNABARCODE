@@ -19,10 +19,10 @@
 					<div class="row">
 						<div class="col-lg-12 col-md-12 top-header">
 							<div class="row">
-								<div id="logo" class="col-lg-3">
+								<div id="logo" class="col-lg-3 col-md-3">
 									<a href="/"><img src="{{ asset('public/img/medLogo.png') }}" /></a>	
 								</div>
-								<div class="col-lg-7">
+								<div class="col-lg-7 col-md-7">
 									<div class="header-title">
 										<span><b>CƠ SỞ DỮ LIỆU MÃ VẠCH SINH VẬT VIỆT NAM</b></span><br/>
 										<span>VIET NAM BIOBARCODE DATABASE (VNBD)</span>
@@ -33,88 +33,93 @@
 					</div>				
 				</div>	
 				<div class="row" style="background:#036">
-					<div class="col-lg-10 col-lg-offset-1">
-						<div class="col-lg-12 col-md-12">
-							<nav class="navbar navbar-default" id="main-menu" style="margin-bottom:0px;border:0px;">
-							  <div class="container-fluid" style="padding:0px;">
-								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding:0px;">
-								  <ul class="nav navbar-nav">
-									<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
-									<li><a href="/introduction">INTRODUCTION</a></li>
-									<li class="dropdown">
-									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DATABASES <span class="caret"></span></a>
-									  <ul class="dropdown-menu" style="border:0px;">
-										<li><a href="/dnabarcode">DNA BARCODE</a></li>
-										<li><a href="#">GEN</a></li>
-										<li><a href="#">GENOME</a></li>
-										<li><a href="/publication">PUBLICATIONS</a></li>
-										<!--<li role="separator" class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-										<li role="separator" class="divider"></li>
-										<li><a href="#">One more separated link</a></li>-->
-									  </ul>
-									</li>									
-									<li class="dropdown">
-									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SEARCH <span class="caret"></span></a>
-									  <ul class="dropdown-menu" style="border:0px;">
-										<li><a href="/search/keyword">KEY WORD</a></li>
-										<li><a href="/search/id">SAMPLE ID</a></li>
-										<li><a href="/search/sequence">SEQUENCES</a></li>
-									  </ul>
-									</li>
-									<li class="dropdown">
-									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">TOOLS <span class="caret"></span></a>
-									  <ul class="dropdown-menu" style="border:0px;">
-										<li><a href="/blast">BLAST</a></li>
-										<li><a href="/treeview">TREE</a></li>
-										<li><a href="/illustrativebarcode">ILLUSTRATIVE BARCODE</a></li>
-									  </ul>
-									</li>
-									
-									<li class="dropdown">
-									  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SUBMIT <span class="caret"></span></a>
-									  <ul class="dropdown-menu" style="border:0px;">
-										<li><a href="@if (Auth::check()) /ibarcode @else /login @endif">FORM</a></li>
-										@if (Auth::check())<li class=""><a href="/barcode">Barcode</a></li>@endif
-									  </ul>
-									</li>
-									
-									
-									@if (Auth::check() && Auth::user()->role==3)
-									<li class="dropdown">
-										<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hệ thống <span class="caret"></span></a>
-										<ul class="dropdown-menu">
-											<li><a href="/inew">Posts</a></li>
-											<li><a href="/error">Error Logs</a></li>
-										</ul>
-									</li>
-									<li class="dropdown">
-										<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">danh mục <span class="caret"></span></a>
-										<ul class="dropdown-menu">
-											<li><a href="/user">Tài khoản</a></li>
-											<li><a href="/city">Danh mục địa phương</a></li>
-											<li><a href="/kingdom">Danh mục phân giới</a></li>
-											<li><a href="/phylum">Danh mục phân ngành</a></li>
-											<li><a href="/class">Danh mục phân lớp</a></li>
-											<li><a href="/order">Danh mục phân bộ</a></li>
-											<li><a href="/family">Danh mục phân họ</a></li>
-											<li><a href="/genus">Danh mục phân chi</a></li>
-											<li><a href="/species">Danh mục phân loài</a></li>
-										</ul>
-									</li>
-																		
-									@endif
-									
-									@if (Auth::check())
-									<li class=""><a href="/register?action=edit">Account</a></li>
-									<li class=""><a href="/logout">Logout</a></li>
-									@else
-									<li class=""><a href="/login">Login</a></li>
-									@endif
-								  </ul>								  								 
-								</div><!-- /.navbar-collapse -->
-							  </div><!-- /.container-fluid -->
-							</nav>
+					<div class="col-lg-12 col-md-12">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12 col-lg-12">
+									<nav class="navbar navbar-default" id="main-menu" style="margin-bottom:0px;border:0px;">
+									  <div class="container-fluid">
+										<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding:0px;">
+										  <ul class="nav navbar-nav">
+											<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
+											<li><a href="/introduction">INTRODUCTION</a></li>
+											<li class="dropdown">
+											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DATABASES <span class="caret"></span></a>
+											  <ul class="dropdown-menu" style="border:0px;">
+												<li><a href="/dnabarcode">Dna Barcode</a></li>
+												<li><a href="#">Gene</a></li>
+												<li><a href="#">Genome</a></li>
+												<li><a href="/publication">Publications</a></li>
+												<!--<li role="separator" class="divider"></li>
+												<li><a href="#">Separated link</a></li>
+												<li role="separator" class="divider"></li>
+												<li><a href="#">One more separated link</a></li>-->
+											  </ul>
+											</li>									
+											<li class="dropdown">
+											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SEARCH <span class="caret"></span></a>
+											  <ul class="dropdown-menu" style="border:0px;">
+												<li><a href="/search/keyword">Keyword</a></li>
+												<li><a href="/search/id">Barcode Id</a></li>
+												<li><a href="/search/sequence">Sequences</a></li>
+											  </ul>
+											</li>
+											<li class="dropdown">
+											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">TOOLS <span class="caret"></span></a>
+											  <ul class="dropdown-menu" style="border:0px;">
+												<li><a href="/blast">Blast</a></li>
+												<li><a href="/treeview">Tree</a></li>
+												<li><a href="/illustrativebarcode">Illustrative Barcode</a></li>
+												<li><a href="javascript:void(0);">DNA Analysis</a></li>
+											  </ul>
+											</li>
+											
+											<li class="dropdown">
+											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SUBMIT <span class="caret"></span></a>
+											  <ul class="dropdown-menu" style="border:0px;">
+												<li><a href="@if (Auth::check()) /ibarcode @else /login @endif">Form</a></li>
+												@if (Auth::check())<li class=""><a href="/barcode">Barcode</a></li>@endif
+											  </ul>
+											</li>
+											
+											
+											@if (Auth::check() && Auth::user()->role==3)
+											<li class="dropdown">
+												<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">System <span class="caret"></span></a>
+												<ul class="dropdown-menu">
+													<li><a href="/inew">Posts</a></li>
+													<li><a href="/error">Error Logs</a></li>
+												</ul>
+											</li>
+											<li class="dropdown">
+												<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catalog <span class="caret"></span></a>
+												<ul class="dropdown-menu">
+													<li><a href="/user">Tài khoản</a></li>
+													<li><a href="/city">Danh mục địa phương</a></li>
+													<li><a href="/kingdom">Danh mục phân giới</a></li>
+													<li><a href="/phylum">Danh mục phân ngành</a></li>
+													<li><a href="/class">Danh mục phân lớp</a></li>
+													<li><a href="/order">Danh mục phân bộ</a></li>
+													<li><a href="/family">Danh mục phân họ</a></li>
+													<li><a href="/genus">Danh mục phân chi</a></li>
+													<li><a href="/species">Danh mục phân loài</a></li>
+												</ul>
+											</li>
+																				
+											@endif
+											
+											@if (Auth::check())
+											<li class=""><a href="/register?action=edit">Account</a></li>
+											<li class=""><a href="/logout">Logout</a></li>
+											@else
+											<li class=""><a href="/login">Login</a></li>
+											@endif
+										  </ul>								  								 
+										</div><!-- /.navbar-collapse -->
+									  </div><!-- /.container-fluid -->
+									</nav>
+								</div>	
+							</div>	
 						</div>
 					</div>
 				</div>

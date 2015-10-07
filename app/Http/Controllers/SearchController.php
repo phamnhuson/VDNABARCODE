@@ -56,7 +56,7 @@
 		{
 		
 			$this->barcode
-				 ->select('barcode.*')
+				 ->select('barcode.*', 'species.species_name', 'genus.genus_name', 'family.family_name', 'order.order_name', 'class.class_name', 'phylum.phylum_name')
 				 ->leftjoin('species', 'species.species_id', '=', 'barcode.species')
 				 ->leftjoin('genus', 'species.genus_id', '=', 'genus.genus_id')
 				 ->leftjoin('family', 'genus.family_id', '=', 'family.family_id')
@@ -90,9 +90,9 @@
 		function searchByKeyword()
 		{
 			$this->barcode
-				->where('barcode.common_name', 'LIKE', "%".$this->searchContent."%")
-				->orwhere('barcode.vietnamese_name', 'LIKE', "%".$this->searchContent."%")
-				->orwhere('barcode.scientific_name', 'LIKE', "%".$this->searchContent."%")
+				->where('species.other_name', 'LIKE', "%".$this->searchContent."%")
+				->orwhere('species.vietnamese_name', 'LIKE', "%".$this->searchContent."%")
+				// ->orwhere('barcode.scientific_name', 'LIKE', "%".$this->searchContent."%")
 				->orwhere('species.species_name', 'LIKE', "%".$this->searchContent."%")
 				->orwhere('genus.genus_name', 'LIKE', "%".$this->searchContent."%")
 				->orwhere('family.family_name', 'LIKE', "%".$this->searchContent."%")

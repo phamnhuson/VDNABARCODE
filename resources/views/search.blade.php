@@ -45,8 +45,11 @@
 				<div class="search-result-container">
 					<ol>
 					@foreach ($searchResult AS $item)
-						<li>
-							<a href="viewbarcode?id={{ $item['barcode_id'] }}">{{ @$item['vietnamese_name'] }}</a> ({{ @$item['common_name'] }} - {{ @$item['scientific_name'] }})
+						<li class="search-result-item">
+							<p><b><a href="viewbarcode?id={{ $item['barcode_id'] }}">ID{{ $item['barcode_id'] }}</a> - {{ @$item['species_name'] }} [{{ @$item['gene'] }}:{{ @$item['seq_size'] }}]</b></p>
+							<p><u>Taxonomy</u>: {{ @$item['phylum_name'] }}, {{ @$item['class_name'] }}, {{ @$item['order_name'] }}, {{ @$item['family_name'] }}, {{ @$item['genus_name'] }}</p>
+							<p><u>Identifiers</u>: {{ @$item['genbank_accession'] }}</p>
+							<p><u>Depository</u>: {{ @$item['deposited_in'] }}</p>
 						</li>
 					@endforeach
 					</ol>
@@ -54,6 +57,7 @@
 			@else
 				<p>Không tìm thấy dữ liệu phù hợp</p>
 			@endif
+			<br/>
 		</div>
 		@endif
 	</div>

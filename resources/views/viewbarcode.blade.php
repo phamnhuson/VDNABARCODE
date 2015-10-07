@@ -71,10 +71,18 @@
 	table {
 		table-layout: fixed;
 	}
+	table {
+		table-layout: fixed;
+	}
 	td{
 		font-size:10pt;
+<<<<<<< HEAD
 		padding:2px !important;
 	}	
+=======
+		word-wrap: break-word;
+	}
+>>>>>>> origin/master
 }
 </style>
 <!--<script src="{{ asset('public/js/google_map.js') }}"></script>-->
