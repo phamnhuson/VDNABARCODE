@@ -186,7 +186,7 @@
 										<td>Family:</td>
 										<td id="td_family">{!! Form::select('family', @$data['arr_family'],@$data['plantae'][0]['family_id'], array('id'=>'family','class'=>'form-control2','style'=>'width:85%')) !!}									
 										<button type="button" class="btn btn-success" id="btn_afamily"><span class="glyphicon glyphicon-plus"></span></button>
-										{!! Form::text('add_family',@$data['plantae'][0]['family_id'], array('id'=>'add_family','class'=>'form-control2','style'=>'width:100%','hidden')) !!}
+										{!! Form::text('add_family',null, array('id'=>'add_family','class'=>'form-control2','style'=>'width:100%','hidden')) !!}
 										</td>
 									</tr>
 									<tr>
@@ -200,12 +200,12 @@
 										<td id="td_class">
 										{!! Form::select('class', @$data['arr_class'],@$data['plantae'][0]['class_id'], array('id'=>'class','class'=>'form-control2','style'=>'width:85%')) !!}
 										<button type="button" class="btn btn-success" id="btn_aclass"><span class="glyphicon glyphicon-plus"></span></button>
-										{!! Form::text('add_class',@$data['plantae'][0]['class_id'], array('id'=>'add_class','class'=>'form-control2','style'=>'width:100%','hidden')) !!}
+										{!! Form::text('add_class',null, array('id'=>'add_class','class'=>'form-control2','style'=>'width:100%','hidden')) !!}
 										</td>
 										<td>Genus:</td>
 										<td id="td_genus">{!! Form::select('genus', @$data['arr_genus'],@$data['plantae'][0]['genus_id'], array('id'=>'genus','class'=>'form-control2','style'=>'width:85%')) !!}
 										<button type="button" class="btn btn-success" id="btn_agenus"><span class="glyphicon glyphicon-plus"></span></button>
-										{!! Form::text('add_genus',@$data['plantae'][0]['genus_id'], array('id'=>'add_genus','class'=>'form-control2','style'=>'width:100%','hidden')) !!}
+										{!! Form::text('add_genus',null, array('id'=>'add_genus','class'=>'form-control2','style'=>'width:100%','hidden')) !!}
 										</td>										
 									</tr>
 									<tr>
@@ -213,7 +213,7 @@
 										<td id="td_order">
 										{!! Form::select('order', @$data['arr_order'],@$data['plantae'][0]['order_id'], array('id'=>'order','class'=>'form-control2','style'=>'width:85%')) !!}
 										<button type="button" class="btn btn-success" id="btn_aorder"><span class="glyphicon glyphicon-plus"></span></button>
-										{!! Form::text('add_order',@$data['plantae'][0]['order_id'], array('id'=>'add_order','class'=>'form-control2','style'=>'width:100%','hidden')) !!}
+										{!! Form::text('add_order',null, array('id'=>'add_order','class'=>'form-control2','style'=>'width:100%','hidden')) !!}
 										</td>
 										<td>Species:</td>
 										<td>{!! Form::text('species',@$data['plantae'][0]['species_name'], array('id'=>'species','class'=>'form-control2','style'=>'width:100%')) !!}</td>											
