@@ -53,8 +53,9 @@
 				<td class="col-lg-3" style="background:#036;padding:0px;">
 					<div >
 						<ul class="left_menu" style="padding-left:0px;">
-							<li><a href="/service"><span class="glyphicon glyphicon-list"></span> &nbsp;SERVICE</a></li>
 							<li><a href="/member"><span class="glyphicon glyphicon-user"></span> &nbsp;MEMBER</a></li>
+							<li><a href="/service"><span class="glyphicon glyphicon-list"></span> &nbsp;SERVICE</a></li>
+							
 							<li><a href="#"><span class="glyphicon glyphicon-earphone"></span> &nbsp;CONTACT</a></li>
 							<li><a href="/help"><span class="glyphicon glyphicon-book"></span> &nbsp;HELP</a></li>
 						</ul>
