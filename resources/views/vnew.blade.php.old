@@ -42,6 +42,7 @@
 				<h3><?php echo $data['new'][0]['subject'] ?></h3>
 				<hr style="border-top: 1px solid #C3BCBC;margin-bottom:10px;" />
 				<span>Được đăng: Ngày <?php echo $data['date'][2]; ?> Tháng <?php echo $data['date'][1]; ?> Năm <?php echo $data['date'][0]; ?> <?php echo $data['time'][0]; ?>:<?php echo $data['date'][1]; ?> | Viết bởi <?php echo $data['new'][0]['fullname']; ?> |</span>
+				<a style="float:left">Download Full text</a>
 				<hr style="border-top: 1px solid #C3BCBC;margin-top:10px;"/>
 				<h4 style="margin:20px 0px 20px 0px;"><i><?php echo $data['new'][0]['summary'] ?></i></h4>
 				<p><?php echo $data['new'][0]['content'] ?></p>

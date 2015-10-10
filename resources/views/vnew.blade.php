@@ -41,7 +41,10 @@
 			<div class="form-group">
 				<h3><?php echo $data['new'][0]['subject'] ?></h3>
 				<hr style="border-top: 1px solid #C3BCBC;margin-bottom:10px;" />
-				<span>Được đăng: Ngày <?php echo $data['date'][2]; ?> Tháng <?php echo $data['date'][1]; ?> Năm <?php echo $data['date'][0]; ?> <?php echo $data['time'][0]; ?>:<?php echo $data['date'][1]; ?> | Viết bởi <?php echo $data['new'][0]['fullname']; ?> |</span>
+				<span>Được đăng: Ngày <?php echo $data['date'][2]; ?> Tháng <?php echo $data['date'][1]; ?> Năm <?php echo $data['date'][0]; ?> <?php echo $data['time'][0]; ?>:<?php echo $data['date'][1]; ?> | Viết bởi <?php echo $data['new'][0]['fullname']; ?> | </span>
+				<?php if($data['new'][0]['new_file']!=null){ ?>
+				<a href="/public/uploads/file/news/{{ $data['new'][0]['new_file'] }}" target="_blank" style="float:right;">Download Full text</a>
+				<?php } ?>
 				<hr style="border-top: 1px solid #C3BCBC;margin-top:10px;"/>
 				<h4 style="margin:20px 0px 20px 0px;"><i><?php echo $data['new'][0]['summary'] ?></i></h4>
 				<p><?php echo $data['new'][0]['content'] ?></p>

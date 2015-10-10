@@ -101,7 +101,7 @@ class InewController extends Controller {
 					
 					if($move){
 						
-						$inputData['file']='new_'.$id_new.'.'.$ext;
+						$inputData['new_file']='new_'.$id_new.'.'.$ext;
 			
 						if(!DB::table('news')->where('new_id', $id_new)->update($inputData)){
 							$error=1;
@@ -187,7 +187,7 @@ class InewController extends Controller {
 					
 					if($move){
 						
-						$inputData['file']='new_'.$id_new.'.'.$ext;
+						$inputData['new_file']='new_'.$id_new.'.'.$ext;
 			
 						if(!DB::table('news')->where('new_id', $id_new)->update($inputData)){
 							$error=1;

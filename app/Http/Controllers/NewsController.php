@@ -23,7 +23,7 @@ class NewsController extends Controller {
 							->where('news.new_id', $newId)->get();
 			
 			$viewData['new']=$new;
-			
+
 			$list_comment = DB::table('comments')->where('comments.new', $newId)->get();
 			
 			$viewData['list_comment']=$list_comment;
