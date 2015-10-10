@@ -46,7 +46,7 @@
 											<li class="dropdown">
 											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DATABASES <span class="caret"></span></a>
 											  <ul class="dropdown-menu" style="border:0px;">
-												<li><a href="/dnabarcode">Dna Barcode</a></li>
+												<li><a href="/dnabarcode">DNA Barcode</a></li>
 												<li><a href="#">Gene</a></li>
 												<li><a href="#">Genome</a></li>
 												<li><a href="/publication">Publications</a></li>
@@ -60,7 +60,7 @@
 											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SEARCH <span class="caret"></span></a>
 											  <ul class="dropdown-menu" style="border:0px;">
 												<li><a href="/search/keyword">Keyword</a></li>
-												<li><a href="/search/id">Barcode Id</a></li>
+												<li><a href="/search/id">Barcode ID</a></li>
 												<li><a href="/search/sequence">Sequences</a></li>
 											  </ul>
 											</li>
