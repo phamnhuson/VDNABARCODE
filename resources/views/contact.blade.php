@@ -26,15 +26,23 @@
 			
 			{!! Form::open(array('method'=>'POST', 'action'=>array('ContactController@store'))) !!}
 				<div class="form-group">
-					<label class="control-label">Tiêu đề</label>
-					{!! Form::text('subject', null, array('class' => 'form-control')) !!}
+					<label class="control-label">Họ tên:</label>
+					{!! Form::text('name', null, array('class' => 'form-control')) !!}
 				</div>
 				<div class="form-group">
-					<label class="control-label">Email</label>
+					<label class="control-label">Địa chỉ:</label>
+					{!! Form::text('address', null, array('class' => 'form-control')) !!}
+				</div>
+				<div class="form-group">
+					<label class="control-label">Email:</label>
 					{!! Form::text('email', null, array('class' => 'form-control')) !!}
 				</div>
 				<div class="form-group">
-					<label class="control-label">Nội dung</label>
+					<label class="control-label">Điện thoại:</label>
+					{!! Form::text('phone', null, array('class' => 'form-control')) !!}
+				</div>
+				<div class="form-group">
+					<label class="control-label">Nội dung:</label>
 					{!! Form::textarea('content', null, array('class' => 'form-control', 'rows' => 5)) !!}
 				</div>
 				{!! Form::submit('Gửi', array('class' => 'btn btn-primary')) !!}

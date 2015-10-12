@@ -26,7 +26,9 @@ class ContactController extends Controller
 	public function store(Request $request)
 	{
 		$validator = Validator::make($request->all(), [
-			'subject'	=>	'required',
+			'name'		=>	'required',
+			'address'	=>	'required',
+			'phone'		=>	'required',
 			'content'	=>	'required',
 			'email'		=>	'required|email'
 		]);
@@ -39,7 +41,7 @@ class ContactController extends Controller
 					
 		} else {
 		
-			$messageData = $request->only('email', 'subject', 'content');
+			$messageData = $request->only('name','address','email','phone', 'content');
 			$messageData['date'] = Carbon::now();
 			
 			if ($this->message->create($messageData)) {
