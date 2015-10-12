@@ -65,9 +65,9 @@
 		border:0px !important;
 		
 	}
-	.bold{
+	/*.bold{
 		text-decoration:underline;
-	}
+	}*/
 	table {
 		table-layout: fixed;
 	}
@@ -374,7 +374,12 @@
 				<table style="width:100%">					
 					<tr>
 						<td>
-							<a href="/viewspecies?id=<?php echo $data['barcode']['species'] ?>" target="_blank">Thông tin về loài (species information)</a>
+							<a href="/viewspecies?id=<?php echo $data['barcode']['species'] ?>" target="_blank" style="font-size:15px;">Thông tin về loài (species information)</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<br/>
 						</td>
 					</tr>
 					<tr>

@@ -59,9 +59,14 @@
 											<li class="dropdown">
 											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SEARCH <span class="caret"></span></a>
 											  <ul class="dropdown-menu" style="border:0px;">
-												<li><a href="/search/keyword">Keyword</a></li>
+												<!--<li><a href="/search/keyword">Keyword</a></li>
 												<li><a href="/search/id">Barcode ID</a></li>
-												<li><a href="/search/sequence">Sequences</a></li>
+												<li><a href="/search/sequence">Sequences</a></li>-->
+												<li><a href="#">DNA Barcode</a></li>
+												<li><a href="#">Gene Data</a></li>
+												<li><a href="#">Genome Data</a></li>
+												<li><a href="#">Public Data</a></li>
+												<li><a href="#">Members</a></li>
 											  </ul>
 											</li>
 											<li class="dropdown">
@@ -77,8 +82,12 @@
 											<li class="dropdown">
 											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SUBMIT <span class="caret"></span></a>
 											  <ul class="dropdown-menu" style="border:0px;">
-												<li><a href="@if (Auth::check()) /ibarcode @else /login @endif">Form</a></li>
-												@if (Auth::check())<li class=""><a href="/barcode">Barcode</a></li>@endif
+												<li><a href="@if (Auth::check()) /barcode @else /login @endif">Form for DNA Barcode</a></li>
+												@if (Auth::check())
+													<li class=""><a href="/inew">Form for Publication</a></li>
+													<li class=""><a href="#">Form for Gene</a></li>
+													<li class=""><a href="#">Form for Genome</a></li>
+												@endif
 											  </ul>
 											</li>
 											

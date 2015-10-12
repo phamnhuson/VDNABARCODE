@@ -120,8 +120,8 @@
 									<td style="text-align:center;"><?php echo $i++ ?></td>
 									<td><?php echo $ln['subject'] ?></td>
 									<td style="text-align:center;">
-										<?php if($ln['file']!=null){ ?>
-										<a href="/public/uploads/file/news/<?php echo $ln['file']?>/" target="_blank">tải file</a>
+										<?php if($ln['new_file']!=null){ ?>
+										<a href="/public/uploads/file/news/<?php echo $ln['new_file']?>/" target="_blank">tải file</a>
 										<?php } ?>
 									</td>
 									<td align="center">
