@@ -19,13 +19,17 @@
 					<div class="row">
 						<div class="col-lg-12 col-md-12 top-header">
 							<div class="row">
-								<div id="logo" class="col-lg-3 col-md-3">
-									<a href="/"><img src="{{ asset('public/img/medLogo.png') }}" /></a>	
+								<div id="logo" style="text-align: right;" class="col-lg-2 col-md-2">
+									<a href="/"><img style="width:100px;margin:10px 0;" src="{{ asset('public/img/logo.jpg') }}" /></a>	
 								</div>
 								<div class="col-lg-7 col-md-7">
-									<div class="header-title">
+									<!--<div class="header-title">
 										<span><b>CƠ SỞ DỮ LIỆU MÃ VẠCH SINH VẬT VIỆT NAM</b></span><br/>
 										<span>VIET NAM BIOBARCODE DATABASE (VNBD)</span>
+									</div>	-->
+									<div class="header-title" style="font-size: 18px;margin-top: 10px;">
+										<span><b>VIET NAM  DNA DATABASE BANK (VNDNAbank)</b></span><br/>
+										<span><b>Ngân hàng Cơ sở dữ liệu ADN Việt Nam</b></span>
 									</div>	
 								</div>
 							</div>
