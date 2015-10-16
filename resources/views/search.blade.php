@@ -21,7 +21,7 @@
 										<tbody>
 											<tr>
 												<td>
-													{!! Form::select('search_type', array('keyword' => 'Từ khóa', 'id' => 'Barcode ID'), @$searchType, array('style' => 'vertical-align: middle;', 'class' => 'selectMenu')) !!}
+													{!! Form::select('search_type', array('keyword' => 'Từ khóa', 'id' => 'Barcode ID', 'sequence' => 'Sequence'), @$searchType, array('style' => 'vertical-align: middle;', 'class' => 'selectMenu', 'id' => 'search-type')) !!}
 												</td>
 												<td>
 													<div id="search-control-container">

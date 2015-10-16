@@ -1,14 +1,14 @@
 <html>
     <head>
         <title>@yield('title')</title>
-		<link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
+		<link rel="stylesheet" href="{{ asset('public/css/style.css?v=1.1') }}">
 		<link rel="stylesheet" href="{{ asset('public/css/bootstrap.css') }}">
 		<link rel="stylesheet" href="{{ asset('public/css/jquery.dataTables.min.css') }}">
 		
 		<script src="{{ asset('public/js/jquery.min.js') }}"></script>
 		<script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('public/js/jquery.dataTables.min.js') }}"></script>
-		<script src="{{ asset('public/js/app.js') }}"></script>
+		<script src="{{ asset('public/js/app.js?v=1.1') }}"></script>
 		<script src="{{ asset('public/ckeditor/ckeditor.js') }}"></script>
 		<script src="{{ asset('public/ckfinder/ckfinder.js') }}"></script>
     </head>
@@ -19,17 +19,17 @@
 					<div class="row">
 						<div class="col-lg-12 col-md-12 top-header">
 							<div class="row">
-								<div id="logo" style="text-align: right;" class="col-lg-2 col-md-2">
+								<div id="logo" style="" class="col-lg-2 col-md-2">
 									<a href="/"><img style="width:100px;margin:10px 0;" src="{{ asset('public/img/logo.jpg') }}" /></a>	
 								</div>
-								<div class="col-lg-7 col-md-7">
+								<div class="col-lg-10 col-md-10">
 									<!--<div class="header-title">
 										<span><b>CƠ SỞ DỮ LIỆU MÃ VẠCH SINH VẬT VIỆT NAM</b></span><br/>
 										<span>VIET NAM BIOBARCODE DATABASE (VNBD)</span>
 									</div>	-->
-									<div class="header-title" style="font-size: 18px;margin-top: 10px;">
-										<span><b>VIET NAM  DNA DATABASE BANK (VNDNAbank)</b></span><br/>
-										<span><b>Ngân hàng Cơ sở dữ liệu ADN Việt Nam</b></span>
+									<div class="header-title" style="font-size: 18px;padding:0;">
+										<p class="center" style="font-size:38px;margin-bottom: 0;margin-top: 5px;">Vietnam DNA Data Bank</p>
+										<p class="right" style="color: #D41D1D;"><b>Ngân hàng dữ liệu DNA Việt Nam</b></p>
 									</div>	
 								</div>
 							</div>
@@ -66,7 +66,7 @@
 												<!--<li><a href="/search/keyword">Keyword</a></li>
 												<li><a href="/search/id">Barcode ID</a></li>
 												<li><a href="/search/sequence">Sequences</a></li>-->
-												<li><a href="#">DNA Barcode</a></li>
+												<li><a href="/search">DNA Barcode</a></li>
 												<li><a href="#">Gene Data</a></li>
 												<li><a href="#">Genome Data</a></li>
 												<li><a href="#">Public Data</a></li>
@@ -148,7 +148,9 @@
 				</div>
 			</div>	
 			<div id="footer">
-				Copyright © 2015 VNBiobarcode. All rights reserved. 
+				Dự án được tài trợ bởi Chương trình CNSH Nông nghiệp – Bộ Nông nghiệp và PTNT
+				<br/>
+				Cơ quan chủ trì: Trường Đại học lâm nghiệp Việt Nam
 			</div>
 		<!--</div>-->
     </body>

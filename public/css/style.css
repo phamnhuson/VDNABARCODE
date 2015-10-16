@@ -635,11 +635,12 @@ input{
 #footer{
     background:#036;/*repeat-x*/
     color:#fff;
-	height:40px;
+	/*height:40px;*/
 	position:absolute;
+	padding: 10px 0;
 	left:0;
-	bottom:-40px;
-	line-height:40px;
+	bottom:-70px;
+	/*line-height:40px;*/
 	text-align:center;
 }
 

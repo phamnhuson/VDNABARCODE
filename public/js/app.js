@@ -167,4 +167,10 @@ $(document).ready(function(){
 		
 	}
 	
+	$('#search-type').change(function(){
+		if ($(this).val()=='sequence'){
+			window.location.href = '/search/sequence';
+		}
+	});
+	
 });
