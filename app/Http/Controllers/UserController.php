@@ -134,7 +134,7 @@ class UserController extends Controller
 	function accept($userId)
 	{
 		$update=array();
-		$update['role']=1;
+		$update['status']=1;
 		if(DB::table('users')->where('id', $userId)->update($update)){
 			return \Redirect::back()->with('responseData', array('statusCode' => 1, 'message' => 'Đã duyệt thành công'));	
 		}else{

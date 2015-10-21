@@ -95,7 +95,7 @@
 						<td>{{ $user['email'] }}</td>
 						<td>{{ $user['phone'] }}</td>
 						<td align="center">
-						<?php if($user['role']!=3 && $user['role']!=1){ ?>
+						<?php if($user['status']!=3 && $user['status']!=1){ ?>
 						<a href="?action=accept&id={{ $user['id'] }}" class="btn btn-success btn-xs" title="Duyệt"><span class="glyphicon glyphicon-ok-sign"></span> duyệt</a>
 						<?php } ?>
 						<a href="?action=edit&id={{ $user['id'] }}" class="btn btn-default btn-xs" title="Sửa"><span class="glyphicon glyphicon-edit"></span> sửa</a>						
