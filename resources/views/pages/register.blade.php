@@ -88,21 +88,30 @@
 							{!! Form::text('research', @$data['user'][0]['research'], array('class'=>'form-control')) !!}
 						</div>
 						
-						<?php if(isset($data['user'])){ ?>
-							<div class="form-group">
-								<label class="control-label">Mật khẩu cũ:</label>
-								{!! Form::text('password_old', null, array('class'=>'form-control')) !!}
-							</div>
-						<?php } ?>
-						<div class="form-group">
-							<label class="control-label">Mật khẩu:</label>
-							{!! Form::text('password', null, array('class'=>'form-control')) !!}
-						</div>
+						
 						<div class="form-group">
 							<label class="control-label">Lý lịch</label>&nbsp;(yêu cầu định dạng file pdf):&nbsp;<span style="color:#00D41C"><?php echo (isset($data['user']) && $data['user'][0]['file']==1)?'đã có':'chưa có' ?></span>
 							{!! Form::file('file', array('class'=>'form-control','id'=>'file')) !!}	
 														
 						</div>
+						<?php if(isset($data['user'])){ ?>
+							<div class="form-group">
+								<label class="control-label">Mật khẩu hiện tại:</label>
+								{!! Form::password('password_old', array('class'=>'form-control')) !!}
+							</div>
+						<?php } ?>
+						<hr/>
+						<p>Thay đổi mật khẩu (không bắt buộc)</p>
+						<br/>
+						<div class="form-group">
+							<label class="control-label">Mật khẩu mới:</label>
+							{!! Form::password('password', array('class'=>'form-control')) !!}
+						</div>
+						<div class="form-group">
+							<label class="control-label">Gõ lại mật khẩu mới:</label>
+							{!! Form::password('repassword', array('class'=>'form-control')) !!}
+						</div>
+						
 						<div class="form-group">
 							<input type="submit" name="submit" class="btn btn-primary"  value="@if (isset($data['user'])) Cập nhật tài khoản @else Tạo tài khoản @endif" />
 						</div>

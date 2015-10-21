@@ -106,7 +106,10 @@ class RegisterController extends Controller {
 		$error=0;
 		
 		$validator = Validator::make($request->all(), [
-			'fullname' 	=>	'required',	
+			'fullname' 	=>	'required',
+			'password'	=>	'same:repassword'
+		], [
+			'password.same' => 'Gõ lại mật khẩu mới chưa đúng'
 		]);
 		
 		if ($validator->fails()) {

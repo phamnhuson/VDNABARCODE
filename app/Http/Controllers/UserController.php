@@ -63,7 +63,7 @@ class UserController extends Controller
 						
         } else {
 			
-			$inputData = $request->only('email', 'password', 'fullname', 'phone', 'role');
+			$inputData = $request->only('email', 'password', 'fullname', 'phone', 'role', 'priority');
 			$inputData['password'] = Hash::make($inputData['password']);
 				
 			if (User::insert($inputData)) {
@@ -93,7 +93,7 @@ class UserController extends Controller
 		
 		$userId = $request->get('id');
 			
-		$inputData = $request->only('email', 'password', 'fullname', 'phone', 'role');
+		$inputData = $request->only('email', 'password', 'fullname', 'phone', 'role', 'priority');
 		
 		if ($inputData['password']) {
 		

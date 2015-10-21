@@ -7,7 +7,7 @@
 	
 		function index()
 		{
-			$users = DB::table('users')->where('status', 1)->orderBy('role', 'DESC')->paginate(20);;
+			$users = DB::table('users')->where('status', 1)->orderBy('priority', 'ASC')->orderBy('created_at', 'ASC')->paginate(20);;
 			return view('member', compact('users'));
 		}
 	

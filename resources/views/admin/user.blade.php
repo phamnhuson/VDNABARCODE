@@ -68,6 +68,10 @@
 					{!! Form::select('role', $roles, @$user['role'], array('class'=>'form-control')) !!}
 				</div>
 				<div class="form-group">
+					<label class="control-label">Thứ tự ưu tiên</label>
+					{!! Form::text('priority', @$user['priority'], array('class'=>'form-control')) !!}
+				</div>
+				<div class="form-group">
 					<input type="submit" name="submit" class="btn btn-primary" value="@if (isset($user)) Cập nhật @else Thêm @endif" />
 					@if (isset($user))
 						<a href="{{ url('user') }}" class="btn btn-link">Thêm mới</a>
