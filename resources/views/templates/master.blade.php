@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>@yield('title')</title>
-		<link rel="stylesheet" href="{{ asset('public/css/style.css?v=1.1') }}">
+		<link rel="stylesheet" href="{{ asset('public/css/style.css?v=1.2') }}">
 		<link rel="stylesheet" href="{{ asset('public/css/bootstrap.css') }}">
 		<link rel="stylesheet" href="{{ asset('public/css/jquery.dataTables.min.css') }}">
 		
@@ -39,7 +39,7 @@
 				<div class="row" style="background:#036">
 					<div class="col-lg-12 col-md-12">
 						<div class="container">
-							<div class="row">
+							<div class="row" style="margin-bottom:0;">
 								<div class="col-md-12 col-lg-12">
 									<nav class="navbar navbar-default" id="main-menu" style="margin-bottom:0px;border:0px;">
 									  <div class="container-fluid">
@@ -148,9 +148,8 @@
 				</div>
 			</div>	
 			<div id="footer">
-				Dự án được tài trợ bởi Chương trình CNSH Nông nghiệp – Bộ Nông nghiệp và PTNT
-				<br/>
-				Cơ quan chủ trì: Trường Đại học lâm nghiệp Việt Nam
+				Viện Công nghệ sinh học Lâm nghiệp – Trường Đại học Lâm nghiệp
+				<br/>DC: Xuân Mai, Chương Mỹ, Hà Nội - ĐT. 01223441300 (Hà Văn Huân) - E.mail: hvhuanbiotech@gmail.com
 			</div>
 		<!--</div>-->
     </body>

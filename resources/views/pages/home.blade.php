@@ -60,11 +60,18 @@
 							<li><a href="/help"><span class="glyphicon glyphicon-book"></span> &nbsp;HELP</a></li>
 						</ul>
 					</div>
+					<div class="home-left-info">
+						<p>
+						The project is supported by the Agricultural Biotechnology Program of the Ministry of Agricultural and Rural Development, Vietnam.
+						</p>
+						<p><b>Institution of project management:</b> Vietnam Forestry University (VFU)</p>
+						<p><b>Principal investigator:</b> PhD. Ha Van Huan</p>
+					</div>
 				</td>
 					
 				<td class="col-lg-9" style="padding:0px 0px 0px 8px;">
 					<div class="row">
-						<img style="width:100%; height:400px;" src="{{ asset('public/img/banner.jpg') }}" />
+						<img style="width:100%; height:400px;" src="{{ asset('public/img/banner3.jpg') }}" />
 					</div>
 					<div class="row" style="background: #447639;">
 						<div class="col-lg-12">
