@@ -929,3 +929,18 @@ div.roundBox{
 #main-menu .dropdown-menu li a {
 	text-transform: capitalize;
 }
+.search-box {
+	position: absolute;
+    top: 100%;
+    width: 100%;
+    background: #fff;
+    border: solid 1px #036;
+    z-index: 100;
+   padding: 14px 15px 0;
+    border-top: 0;
+	    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+   display:none;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}

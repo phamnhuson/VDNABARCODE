@@ -55,76 +55,89 @@
 		function searchProccess()
 		{
 		
-			$this->barcode
-				 ->select('barcode.*', 'species.species_name', 'genus.genus_name', 'family.family_name', 'order.order_name', 'class.class_name', 'phylum.phylum_name')
-				 ->leftjoin('species', 'species.species_id', '=', 'barcode.species')
-				 ->leftjoin('genus', 'species.genus_id', '=', 'genus.genus_id')
-				 ->leftjoin('family', 'genus.family_id', '=', 'family.family_id')
-				 ->leftjoin('order', 'family.order_id', '=', 'order.order_id')
-				 ->leftjoin('class', 'order.class_id', '=', 'class.class_id')
-				 ->leftjoin('phylum', 'class.phylum_id', '=', 'phylum.phylum_id')
-				 ->leftjoin('kingdom', 'phylum.kingdom_id', '=', 'kingdom.kingdom_id')
-				 ->leftjoin('barcode2city', 'barcode2city.barcode_id', '=', 'barcode.barcode_id')
-				 ->leftjoin('city', 'city.city_id', '=', 'barcode2city.city_id');
+			
 		
 			switch ($this->searchType) {
-				case 'keyword':
-					$this->searchByKeyword();
+				case 'barcode':
+					$this->searchBarcode();
 					break;
-				case 'sequence':
-					$this->searchBySequence();
+				case 'member':
+					$this->searchMember();
 					break;
-				case 'id':
-					$this->searchById();
+				case 'public':
+					$this->searchPublic();
 					break;
-				// case 'time':
-					// $this->searchByTime();
-					// break;
+				case 'gene':
+					$this->searchGene();
+					break;	
 				default: return false;	
 			}
 			
-			$this->searchResult = $this->barcode->get();
+			
 			
 		}
 		
-		function searchByKeyword()
-		{
+		function searchBarcode() {
+			
 			$this->barcode
-				->where('species.other_name', 'LIKE', "%".$this->searchContent."%")
-				->orwhere('species.vietnamese_name', 'LIKE', "%".$this->searchContent."%")
-				// ->orwhere('barcode.scientific_name', 'LIKE', "%".$this->searchContent."%")
-				->orwhere('species.species_name', 'LIKE', "%".$this->searchContent."%")
-				->orwhere('genus.genus_name', 'LIKE', "%".$this->searchContent."%")
-				->orwhere('family.family_name', 'LIKE', "%".$this->searchContent."%")
-				->orwhere('order.order_name', 'LIKE', "%".$this->searchContent."%")
-				->orwhere('class.class_name', 'LIKE', "%".$this->searchContent."%")
-				->orwhere('phylum.phylum_name', 'LIKE', "%".$this->searchContent."%")
-				->orwhere('kingdom.kingdom_name', 'LIKE', "%".$this->searchContent."%");
+					->select('barcode.*', 'species.species_name', 'genus.genus_name', 'family.family_name', 'order.order_name', 'class.class_name', 'phylum.phylum_name')
+					->leftjoin('species', 'species.species_id', '=', 'barcode.species')
+					->leftjoin('genus', 'species.genus_id', '=', 'genus.genus_id')
+					->leftjoin('family', 'genus.family_id', '=', 'family.family_id')
+					->leftjoin('order', 'family.order_id', '=', 'order.order_id')
+					->leftjoin('class', 'order.class_id', '=', 'class.class_id')
+					->leftjoin('phylum', 'class.phylum_id', '=', 'phylum.phylum_id')
+					->leftjoin('kingdom', 'phylum.kingdom_id', '=', 'kingdom.kingdom_id')
+					->leftjoin('barcode2city', 'barcode2city.barcode_id', '=', 'barcode.barcode_id')
+					->leftjoin('city', 'city.city_id', '=', 'barcode2city.city_id')
+					->where('barcode.status', '=', 1)
+					->where(function($query){
+						$query->orwhere('species.other_name', 'LIKE', "%".$this->searchContent."%")
+								->orwhere('species.vietnamese_name', 'LIKE', "%".$this->searchContent."%")
+								->orwhere('species.species_name', 'LIKE', "%".$this->searchContent."%")
+								->orwhere('genus.genus_name', 'LIKE', "%".$this->searchContent."%")
+								->orwhere('family.family_name', 'LIKE', "%".$this->searchContent."%")
+								->orwhere('order.order_name', 'LIKE', "%".$this->searchContent."%")
+								->orwhere('class.class_name', 'LIKE', "%".$this->searchContent."%")
+								->orwhere('phylum.phylum_name', 'LIKE', "%".$this->searchContent."%")
+								->orwhere('kingdom.kingdom_name', 'LIKE', "%".$this->searchContent."%")
+								->orwhere('barcode.sequence', 'LIKE', "%{$this->searchContent}%")
+								->orwhere('barcode.peptide', 'LIKE', "%{$this->searchContent}%")
+								->orwhere('barcode.barcode_id', '=', $this->searchContent);
+					});
+					
+				 
+			$this->searchResult = $this->barcode->paginate(10);
 		}
 	
-		function searchBySequence()
-		{
-			$this->barcode
-				 ->where('barcode.sequence', 'LIKE', "%{$this->searchContent}%")
-				 ->orwhere('barcode.peptide', 'LIKE', "%{$this->searchContent}%");
+		function searchPublic() {
+			$news = DB::table('news');
+			$news->select('*')
+					->where('status', '=', 1)
+					->where('category', '=', 0)
+					->where('subject', 'LIKE', "%".$this->searchContent."%");
+			$this->searchResult = $news->paginate(10);
 		}
-	
-		function searchByLocation()
-		{
-			$this->barcode
-				 ->where('city.city_name', 'LIKE', "%{$this->searchContent}%");
+		
+		function searchGene() {
+			$gene = DB::table('gene');
+			$gene->select('*')
+				->where('status', '=', 1)
+				->where(function($query){
+					$query->orwhere('gene_name', 'LIKE', "%{$this->searchContent}%")
+							->orwhere('title', 'LIKE', "%{$this->searchContent}%");
+				});
+				
+				
+			$this->searchResult = $gene->paginate(10);
 		}
-	
-		function searchById()
-		{
-			$this->barcode
-				 ->where('barcode.barcode_id', '=', $this->searchContent);
-		}
-	
-		function searchByTime()
-		{
-			$this->barcode
-				 ->where('barcode.collected_date', '=', $this->searchContent);
+		
+		function searchMember() {
+			$member = DB::table('users');
+			$member->select('*')
+				->where('status', '=', 1)
+				->where('fullname', 'LIKE', "%".$this->searchContent."%");
+			$this->searchResult = $member->paginate(10);		
 		}
 	
 	}

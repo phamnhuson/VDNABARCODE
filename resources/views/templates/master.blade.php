@@ -43,7 +43,7 @@
 								<div class="col-md-12 col-lg-12">
 									<nav class="navbar navbar-default" id="main-menu" style="margin-bottom:0px;border:0px;">
 									  <div class="container-fluid">
-										<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding:0px;">
+										<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding:0px;position: relative;">
 										  <ul class="nav navbar-nav">
 											<li class="active"><a href="/">HOME <span class="sr-only">(current)</span></a></li>
 											<li><a href="/introduction">INTRODUCTION</a></li>
@@ -60,18 +60,8 @@
 												<li><a href="#">One more separated link</a></li>-->
 											  </ul>
 											</li>									
-											<li class="dropdown">
-											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SEARCH <span class="caret"></span></a>
-											  <ul class="dropdown-menu" style="border:0px;">
-												<!--<li><a href="/search/keyword">Keyword</a></li>
-												<li><a href="/search/id">Barcode ID</a></li>
-												<li><a href="/search/sequence">Sequences</a></li>-->
-												<li><a href="/search">DNA Barcode</a></li>
-												<li><a href="#">Gene Data</a></li>
-												<li><a href="#">Genome Data</a></li>
-												<li><a href="#">Public Data</a></li>
-												<li><a href="#">Members</a></li>
-											  </ul>
+											<li id="search-dropdown">
+											  <a href="javascript:void(0);">SEARCH <span class="caret"></span></a>
 											</li>
 											<li class="dropdown">
 											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">TOOLS <span class="caret"></span></a>
@@ -127,8 +117,30 @@
 											@else
 											<li class=""><a href="/login">Login</a></li>
 											@endif
-										  </ul>								  								 
+										  </ul>	
+
+										  <div class="search-box" id="menu-search-box">
+											{!! Form::open(array('method'=>'GET', 'action'=>array('SearchController@search'))) !!}
+														<table>
+															<tbody>
+																<tr>
+																	<td>
+																		{!! Form::select('search_type', array('barcode' => 'DNA Barcode', 'gen' => 'Gene Data', 'genome' => 'Genome Data', 'public' => 'Public Data', 'member' => 'Member'), @$searchType, array('style' => 'vertical-align: middle;', 'class' => 'selectMenu')) !!}
+																	</td>
+																	<td>
+																		<div id="search-control-container">
+																			{!! Form::text('search_content', @$searchContent, array('style'	=>	'width:620px;height: 30px;border: 0;font-size: 15px;padding-left: 10px;', 'placeholder' => 'Tìm kiếm theo ID, từ khóa...', 'class' => '')) !!}
+																			<input type="submit" value="Tìm kiếm" class="search-button" />
+																		</div>	
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+										  {!! Form::close() !!}
+										  </div>
+										  
 										</div><!-- /.navbar-collapse -->
+										
 									  </div><!-- /.container-fluid -->
 									</nav>
 								</div>	
@@ -152,5 +164,19 @@
 				<br/>DC: Xuân Mai, Chương Mỹ, Hà Nội - ĐT. 01223441300 (Hà Văn Huân) - E.mail: hvhuanbiotech@gmail.com
 			</div>
 		<!--</div>-->
+		<script>
+			// $('.search-dropdown').on('click', function (event) {
+				// $(this).parent('ul.dropdown-menu').toggleClass('open');
+				// $(this).parents('li.dropdown').toggleClass('open');
+			// });
+			// $('body').on('click', function (e) {
+				// if (!$('li.search-dropdown').is(e.target) && $('li.search-dropdown').has(e.target).length === 0 && $('.open').has(e.target).length === 0) {
+					// $('li.search-dropdown').removeClass('open');
+				// }
+			// });
+			$('#search-dropdown').click(function(){
+				$(this).find('.dropdown-menu').toggleClass('open');
+			});
+		</script>
     </body>
 </html>
