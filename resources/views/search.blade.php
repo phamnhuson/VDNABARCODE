@@ -1,5 +1,5 @@
 @extends('templates.master')
-
+@section('title', 'Search: '.$searchContent)
 @section('content')
 <div class="box">
 	<div class="row">
