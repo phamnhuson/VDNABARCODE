@@ -28,8 +28,8 @@
 										<span>VIET NAM BIOBARCODE DATABASE (VNBD)</span>
 									</div>	-->
 									<div class="header-title" style="font-size: 18px;padding:0;">
-										<p class="center" style="font-size:38px;margin-bottom: 0;margin-top: 5px;">Vietnam DNA Data Bank</p>
-										<p class="right" style="color: #D41D1D;"><b>Ngân hàng dữ liệu DNA Việt Nam</b></p>
+										<p class="center" style="font-size:38px;margin-bottom: 0;margin-top: 5px;margin-right:20%;">Vietnam DNA Data Bank</p>
+										<p class="right" style="color: #D41D1D;margin-right:20%;"><b>Ngân hàng dữ liệu DNA Việt Nam</b></p>
 									</div>	
 								</div>
 							</div>
@@ -88,8 +88,10 @@
 											  <ul class="dropdown-menu" style="border:0px;">
 												<li><a href="@if (Auth::check()) /barcode @else /login @endif">Form for DNA Barcode</a></li>
 												@if (Auth::check())
-													<li class=""><a href="/inew">Form for Publication</a></li>
-													<li class=""><a href="#">Form for Gene</a></li>
+													<li class=""><a href="/ipublication">Form for Publication</a></li>
+													<li class="dropdown">
+														<a href="/gene">Form for Gene</a>
+													</li>
 													<li class=""><a href="#">Form for Genome</a></li>
 												@endif
 											  </ul>

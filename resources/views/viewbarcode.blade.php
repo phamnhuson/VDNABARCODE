@@ -91,7 +91,7 @@
 		<table width="100%" cellspacing="0" cellpadding="0">
 			<tr>
 				<td>
-					<h1 id="title">MẪU BẢN GHI DNA BARCODE
+					<h1 id="title">DNA BARCODE
 						<a href="{{ url('download_data?id='.$data['barcode']['barcode_id'].'&type=json') }}" target="_blank" class="btn btn-danger btn-xs pull-right" style="margin-left:5px;">JSON <span class="glyphicon glyphicon-save"></span></a>
 								<a href="{{ url('download_data?id='.$data['barcode']['barcode_id'].'&type=tsv') }}" target="_blank" class="btn btn-success btn-xs pull-right">TSV <span class="glyphicon glyphicon-save"></span></a>
 					</h1>
@@ -107,13 +107,13 @@
 				<table>
 					<tr>
 						<td>
-							<table width="100%" class="table table-bordered tbl2" style="margin-bottom:0px">
+							<table width="100%" class="table table-bordered tbl" style="margin-bottom:0px">
 								<tr>
 									<td class="bold">Title:</td>
-									<td colspan="3"><?php echo $data['barcode']['title'] ?></td>
+									<td colspan="3"><b><?php echo $data['barcode']['title'] ?></b></td>
 								</tr>
 								<tr>
-									<td class="bold">Barcode Id:</td>
+									<td class="bold">Barcode ID:</td>
 									<td colspan="3"><?php echo $data['barcode']['barcode_id'] ?></td>
 								</tr>
 								<tr>
@@ -121,14 +121,18 @@
 									<td colspan="3"><?php echo $data['barcode']['authors'] ?></td>
 								</tr>
 								<tr>
-									<td style="width:20%;" class="bold">Address:</td>
-									<td style="width:30%;"><?php echo $data['barcode']['address'] ?></td>
+									<td class="bold">Address:</td>
+									<td colspan="3"><?php echo $data['barcode']['address'] ?></td>
+								</tr>
+								<tr>
+									<td style="width:20%;" class="bold">Submitted date::</td>
+									<td style="width:30%;"><?php echo $data['barcode']['submitted_date'] ?></td>
 									<td style="width:20%;" class="bold">Phone:</td>
 									<td style="width:30%;"><?php echo $data['barcode']['phone'] ?></td>
 								</tr>
 								<tr>																			
-									<td class="bold">Submitted date:</td>
-									<td><?php echo $data['barcode']['submitted_date'] ?></td>
+									<td class="bold"></td>
+									<td></td>
 									<td class="bold">Email:</td>
 									<td><?php echo $data['barcode']['email'] ?></td>
 								</tr>					

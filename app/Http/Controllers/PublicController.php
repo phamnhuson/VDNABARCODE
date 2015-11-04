@@ -10,7 +10,7 @@ use Mail;
 use Auth;
 use File;
 
-class InewController extends Controller {
+class PublicController extends Controller {
 	
 	public function index(Request $request)
 	{
@@ -20,16 +20,11 @@ class InewController extends Controller {
 		
 		$action = $request->get('action');
 		
-		$viewData['role'] = $user['role'];
+		$viewData = array();
 		
 		if($action=='delete')
 		{
 			return $this->delete($newId);
-		}
-		
-		if($action=='accept')
-		{
-			return $this->accept($newId);
 		}
 		
 		if($newId)
@@ -39,11 +34,11 @@ class InewController extends Controller {
 			$viewData['new']=$new;
 		}
 		
-		$list_new = DB::table('news')->where('created_by',$user['id'])->paginate(20);
+		$list_new = DB::table('news')->where('created_by',$user['id'])->where('category','0')->paginate(10);
 		
 		$viewData['list_new'] = $list_new;
 		
-		return view('inew')->with('data',$viewData);
+		return view('ipublication')->with('data',$viewData);
 	}
 	
 	public function create(Request $request)
@@ -56,7 +51,7 @@ class InewController extends Controller {
 		$validator = Validator::make($request->all(), [
 			'subject'			=>	'required',
 			'summary' 			=>	'required',
-			'content'			=>	'required',
+			'keyword'			=>	'required',
 		]);
 		
 		if ($validator->fails()) {
@@ -66,15 +61,11 @@ class InewController extends Controller {
 						
         } else {			
 			
-			$inputData = $request->only('subject','summary','content','category');
+			$inputData = $request->only('subject','summary','keyword');
 			
 			$inputData['created'] = date('Y-m-d H:i:s');
 			
 			$inputData['created_by']=$user['id'];
-			
-			if($request['category']==2){
-				$inputData['status']=1;
-			}
 			
 			if(DB::table('news')->insert($inputData))
 			{
@@ -112,11 +103,11 @@ class InewController extends Controller {
 			
 			if($error==0){
 				
-				return \Redirect('inew')->with('responseData', array('statusCode' => 1, 'message' => 'Thêm mới thành công'));
+				return \Redirect('ipublication')->with('responseData', array('statusCode' => 1, 'message' => 'Thêm mới thành công'));
 				
 			}else{
 				
-				return \Redirect('inew')->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại'));
+				return \Redirect('ipublication')->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại'));
 				
 			};
 		}
@@ -127,7 +118,7 @@ class InewController extends Controller {
 		$validator = Validator::make($request->all(), [
 			'subject'			=>	'required',
 			'summary' 			=>	'required',
-			'content'			=>	'required',
+			'keyword'			=>	'required',
 		]);
 		
 		if ($validator->fails()) {
@@ -143,7 +134,7 @@ class InewController extends Controller {
 			
 			$id_new=$request['id'];
 			
-			$inputData = $request->only('subject','summary','content','category');
+			$inputData = $request->only('subject','summary','keyword');
 			
 			$inputData['updated'] = date('Y-m-d H:i:s');
 			
@@ -151,7 +142,7 @@ class InewController extends Controller {
 			
 			if(DB::table('news')->where('new_id', $id_new)->update($inputData))
 			{
-				
+
 				if($request['file']!='')
 				{					
 						
@@ -184,11 +175,11 @@ class InewController extends Controller {
 			
 			if($error==0){
 				
-				return \Redirect('inew')->with('responseData', array('statusCode' => 1, 'message' => 'Cập nhật thành công'));
+				return \Redirect('ipublication')->with('responseData', array('statusCode' => 1, 'message' => 'Cập nhật thành công'));
 				
 			}else{
 				
-				return \Redirect('inew')->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại'));
+				return \Redirect('ipublication')->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại'));
 				
 			};
 		}
@@ -202,22 +193,11 @@ class InewController extends Controller {
 			$nuRepo = new NucleotideRepository;
 			$nuRepo->delete(array('id' => $newId));
 
-			return \Redirect('inew')->with('responseData', array('statusCode' => 1, 'message' => 'Đã xóa thành công'));
+			return \Redirect('ipublication')->with('responseData', array('statusCode' => 1, 'message' => 'Đã xóa thành công'));
 		} else {
 		
-			return \Redirect('inew')->with('responseData', array('statusCode' => 2, 'message' => 'Chưa xóa được, vui lòng thử lại'));
+			return \Redirect('ipublication')->with('responseData', array('statusCode' => 2, 'message' => 'Chưa xóa được, vui lòng thử lại'));
 
-		}
-	}
-	
-	function accept($newId)
-	{
-		$update=array();
-		$update['status']=1;
-		if(DB::table('news')->where('new_id', $newId)->update($update)){				
-			return \Redirect('inew')->with('responseData', array('statusCode' => 1, 'message' => 'Đã duyệt thành công'));	
-		}else{
-			return \Redirect('inew')->with('responseData', array('statusCode' => 2, 'message' => 'Chưa duyệt được, vui lòng thử lại'));
 		}
 	}
 }

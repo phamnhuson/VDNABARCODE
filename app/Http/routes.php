@@ -117,8 +117,6 @@ Route::put('/order', ['uses' => 'OrderController@update', 'middleware' => ['auth
 
 Route::get('/ibarcode', ['uses' => 'IbarcodeController@index', 'middleware' => ['auth', 'role:1,3']]);
 
-Route::post('/ibarcode', ['uses' => 'IbarcodeController@create', 'middleware' => ['auth', 'role:1,3']]);
-
 Route::get('/delete_img', ['uses' => 'IbarcodeController@delete_img', 'middleware' => ['auth', 'role:1,3']]);
 
 Route::get('/delete_file', ['uses' => 'IbarcodeController@delete_file', 'middleware' => ['auth', 'role:1,3']]);
@@ -126,6 +124,8 @@ Route::get('/delete_file', ['uses' => 'IbarcodeController@delete_file', 'middlew
 Route::get('/delete_loca', ['uses' => 'IbarcodeController@delete_loca', 'middleware' => ['auth', 'role:1,3']]);
 
 Route::get('/delete_city', ['uses' => 'IbarcodeController@delete_city', 'middleware' => ['auth', 'role:1,3']]);
+
+Route::post('/ibarcode', ['uses' => 'IbarcodeController@create', 'middleware' => ['auth', 'role:1,3']]);
 
 Route::put('/ibarcode', ['uses' => 'IbarcodeController@update', 'middleware' => ['auth', 'role:1,3']]);
 
@@ -180,6 +180,20 @@ Route::get('/get_genus', ['uses' => 'GenusController@get_genus', 'middleware' =>
 Route::get('/get_species', ['uses' => 'SpeciesController@get_species', 'middleware' => ['auth', 'role:1,3']]);
 
 Route::get('/viewspecies', ['uses' => 'SpeciesController@viewspecies']);
+
+Route::get('/ipublication', ['uses' => 'PublicController@index', 'middleware' => ['auth', 'role:3']]);
+
+Route::post('/ipublication', ['uses' => 'PublicController@create', 'middleware' => ['auth', 'role:3']]);
+
+Route::put('/ipublication', ['uses' => 'PublicController@update', 'middleware' => ['auth', 'role:3']]);
+
+Route::get('/igene', ['uses' => 'IgeneController@index', 'middleware' => ['auth', 'role:1,3']]);
+
+Route::post('/igene', ['uses' => 'IgeneController@create', 'middleware' => ['auth', 'role:1,3']]);
+
+Route::put('/igene', ['uses' => 'IgeneController@update', 'middleware' => ['auth', 'role:1,3']]);
+
+Route::get('/gene', ['uses' => 'GeneController@index', 'middleware' => ['auth', 'role:1,3']]);
 
 /*Route::controller([
 	'city'	=> 'System\CityController',
