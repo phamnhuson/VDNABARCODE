@@ -10,20 +10,7 @@
 	#header {
 		margin-bottom:0;
 	}
-	#search {
-	  background: #012345;
-	  padding: 5px 0;
-	}
-	#search-control-container {
-		background-color: #fff;
-		height: 30px;
-		margin-left: 10px;
-		border-radius: 4px;
-		overflow: hidden;
-	}
-	#searchForm {
-		margin-bottom: 5px;
-	}
+	
 	#stats table td {color: #eee;}
 	.left_menu li{
 		list-style:none;

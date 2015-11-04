@@ -173,4 +173,18 @@ $(document).ready(function(){
 		}
 	});
 	
+	
+	
+	$('#search-dropdown').click(function(){
+		$('#menu-search-box').toggle();
+	});
+	
+	$('html').click(function() {
+		$('#menu-search-box').hide();
+	});
+
+	$('#menu-search-box,#search-dropdown').click(function(event){
+		event.stopPropagation();
+	});
+	
 });
