@@ -17,25 +17,13 @@ class HomeController extends Controller
     {
 		$count=array();
 		$count['barcode']=DB::table('barcode')->where('status','1')->count();
-		$count['plantae']=DB::table('kingdom')
-								->join('phylum','phylum.kingdom_id','=','kingdom.kingdom_id')
-								->join('class','class.phylum_id','=','phylum.phylum_id')
-								->join('order','order.class_id','=','class.class_id')
-								->join('family','family.order_id','=','order.order_id')
-								->join('genus','genus.family_id','=','family.family_id')
-								->join('species','species.genus_id','=','genus.genus_id')
-								->where('kingdom.kingdom_id','1')
-								->count();
+
+		$count['gene']=DB::table('gene')->where('status','1')->count();
+		
+		$count['publication']=DB::table('news')->where('category','0')->where('status','1')->count();
 								
-		$count['Animalia']=DB::table('kingdom')
-								->join('phylum','phylum.kingdom_id','=','kingdom.kingdom_id')
-								->join('class','class.phylum_id','=','phylum.phylum_id')
-								->join('order','order.class_id','=','class.class_id')
-								->join('family','family.order_id','=','order.order_id')
-								->join('genus','genus.family_id','=','family.family_id')
-								->join('species','species.genus_id','=','genus.genus_id')
-								->where('kingdom.kingdom_id','3')
-								->count();
+		$count['news']=DB::table('news')->where('category','1')->orderBy('new_id', 'desc')->limit(5)->get();
+		
         return view('pages.home')->with('data',$count);;
     }
 }

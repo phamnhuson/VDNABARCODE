@@ -46,7 +46,7 @@ class NewsController extends Controller {
 			
 		}else{
 			
-			$list_new = DB::table('news')->join('users','news.created_by','=','users.id')->where('news.status', '=', 1)->paginate(10);
+			$list_new = DB::table('news')->join('users','news.created_by','=','users.id')->where('news.category', '=', 0)->where('news.status', '=', 1)->paginate(10);
 			
 			$viewData['list_new'] = $list_new;
 

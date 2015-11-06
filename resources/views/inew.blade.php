@@ -71,7 +71,7 @@
 									<select name="category" class="form-control">
 										<option value="0" <?php if(isset($data['new']) && $data['new'][0]['category']==0){echo 'selected';} ?>>Publication</option>
 										<option value="1" <?php if(isset($data['new']) && $data['new'][0]['category']==1){echo 'selected';} ?>>News</option>
-										<option value="2" <?php if(isset($data['new']) && $data['new'][0]['category']==2){echo 'selected';} ?>>Introduction</option>
+										<option value="2" <?php if(isset($data['new']) && $data['new'][0]['category']==2){echo 'selected';} ?>>Static pages</option>
 									</select>
 									</br>
 								</td>

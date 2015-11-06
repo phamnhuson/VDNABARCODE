@@ -56,7 +56,7 @@
 					</div>
 				</td>
 					
-				<td class="col-lg-10" style="padding:0px 0px 0px 8px;">
+				<td class="col-lg-8" style="padding:0px 0px 0px 8px;">
 					<div class="row">
 						<img style="width:100%; height:400px;" src="{{ asset('public/img/banner3.jpg') }}" />
 					</div>
@@ -64,36 +64,39 @@
 						<div class="col-lg-12">
 							<table class="table" id="thongke" style="color:#fff;margin-bottom:0px;background: #447639;margin:5px;">
 								<tr>
-									<td class="col-lg-3"></td>
-									<td class="col-lg-3"></td>
-									<td class="col-lg-3"></td>
-									<td class="col-lg-3"></td>
+									<td rowspan="4">All sequence:<?php echo ($data['barcode']+$data['gene']) ?></td>
+									<td>Barcode sequence:<?php echo $data['barcode'] ?></td>
 								</tr>
 								<tr>
-									<td colspan="2" style="font-size: 14pt;color: #95E2FE;padding-left:90px;">Sequence statics</td>
-									<td colspan="2" style="font-size: 14pt;color: #95E2FE;padding-left:20px;">Species coverage (formally describle)</td>
+									<td>Gene sequence:<?php echo $data['gene'] ?></td>
 								</tr>
 								<tr>
-									<td style="padding-left: 40px;">All Sequence:</td>
-									<td style="text-align:center;"><?php echo $data['barcode'] ?></td>
-									<td style="padding-left: 60px;">Plants:</td>
-									<td style="text-align:center;"><?php echo $data['plantae'] ?></td>
+									<td>Genome:</td>
 								</tr>
 								<tr>
-									<td style="padding-left: 40px;">Barcode Sequence:</td>
-									<td style="text-align:center;"><?php echo $data['barcode'] ?></td>
-									<td style="padding-left: 60px;">Animals:</td>
-									<td style="text-align:center;"><?php echo $data['Animalia'] ?></td>
-								</tr>
-								<tr>
-									<td></td>
-									<td></td>
-									<td style="padding-left: 60px;">Fungi & Other Life</td>
-									<td style="text-align:center;">0</td>
+									<td>Publications:<?php echo $data['publication'] ?></td>
 								</tr>
 							</table>
 						</div>
 					</div>
+				</td>
+				<td class="col-lg-2" style="padding:0px 8px 0px 8px;background-color:#969696">
+					<table>
+						<tr>
+							<td style="padding-top:10px;">
+								<span style="color:#FF0000" class="glyphicon glyphicon-star"></span>&nbsp;<span style="color:#fff">Tin tức</span>
+								<hr style="border-top: 2px solid #eee;margin:10px 0px 10px 0px">
+							</td>
+						</tr>
+						<?php foreach($data['news'] as $value){ ?>
+						<tr>
+							<td>
+							<span style="color:#fff;" class="glyphicon glyphicon-share-alt"></span>&nbsp;<a href="publication?id=<?php echo $value['new_id'] ?>" target="_blank" style="color:#fff;font-size:10pt;text-decoration:none;"><?php echo $value['subject']; ?></a>
+							</br></br>							
+							</td>
+						</tr>
+						<?php } ?>
+					</table>
 				</td>
 			</tr>		
 		</table>
