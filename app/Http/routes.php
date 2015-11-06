@@ -13,13 +13,18 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/introduction', function(){
-	return view('introduction');
-});
+Route::get('/introduction', array('as' => 'introduction', function(){
+	return App::make('App\Http\Controllers\PageController')->index(22);
+}));
 
-Route::get('/service', function(){
-	return view('service');
-});
+Route::get('/service', array('as' => 'introduction', function(){
+	return App::make('App\Http\Controllers\PageController')->index(24);
+}));
+
+Route::get('/help', array('as' => 'introduction', function(){
+	return App::make('App\Http\Controllers\PageController')->index(23);
+}));
+
 
 Route::get('/illustrativebarcode', function(){
 	return view('generatebarcode');
@@ -28,6 +33,7 @@ Route::get('/illustrativebarcode', function(){
 Route::get('/help', function(){
 	return view('help');
 });
+
 
 Route::get('login', ['uses' => 'Auth\AuthController@login', 'middleware' => ['guest']]);
 
