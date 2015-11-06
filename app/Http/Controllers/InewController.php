@@ -39,7 +39,7 @@ class InewController extends Controller {
 			$viewData['new']=$new;
 		}
 		
-		$list_new = DB::table('news')->where('created_by',$user['id'])->paginate(20);
+		$list_new = DB::table('news')->where('category','!=',0)->where('created_by',$user['id'])->paginate(20);
 		
 		$viewData['list_new'] = $list_new;
 		
