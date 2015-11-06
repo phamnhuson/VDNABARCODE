@@ -29,7 +29,7 @@
 	<div class="col-md-12">
 		<table class="table" id="tbl" style="border-top:0px;">
 			<tr>
-				<td class="col-lg-2 col-md-2" style="background:#036;padding:0px;">
+				<td class="col-lg-2 col-md-3" style="background:#036;padding:0px;">
 					<div >
 						<ul class="left_menu" style="padding-left:0px;">
 							<li><a href="/member"><span class="glyphicon glyphicon-user"></span> &nbsp;MEMBER</a></li>
@@ -48,7 +48,7 @@
 					</div>
 				</td>
 					
-				<td class="col-lg-10 col-md-10" style="padding: 0 20px">
+				<td class="col-lg-10 col-md-9 static-page-content" style="padding: 0 20px">
 					<h1>{{ $page['subject'] }}</h1>
 					<hr/>
 					{!! $page['content'] !!}
