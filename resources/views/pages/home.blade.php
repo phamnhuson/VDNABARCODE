@@ -81,7 +81,7 @@
 					</div>
 				</td>
 				<td class="col-lg-2" style="padding:0px 8px 0px 8px;background-color:#969696">
-					<table>
+					<table style="width: 100%;">
 						<tr>
 							<td style="padding-top:10px;">
 								<span style="color:#FF0000" class="glyphicon glyphicon-star"></span>&nbsp;<span style="color:#fff">Tin tức</span>
