@@ -75,7 +75,7 @@
 				<ul>
 					<?php foreach($data['list_family'] as $fml){ ?>
 						<?php if($kd['kingdom_id']==$fml['kingdom_id']){ ?>
-						<li style="color:#2a6496;"><a href="{{ url('search?search_type=keyword&search_content='.$fml['family_name']) }}"><?php echo $fml['family_name']; ?></a></li>
+						<li style="color:#2a6496;"><a href="{{ url('search?search_type=barcode&search_content='.$fml['family_name']) }}"><?php echo $fml['family_name']; ?></a></li>
 						<?php } ?>
 					<?php } ?>
 				</ul>
