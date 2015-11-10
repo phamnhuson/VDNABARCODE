@@ -51,7 +51,7 @@
 											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DATABASES <span class="caret"></span></a>
 											  <ul class="dropdown-menu" style="border:0px;">
 												<li><a href="/dnabarcode">DNA Barcode</a></li>
-												<li><a href="#">Gene</a></li>
+												<li><a href="listgene">Gene</a></li>
 												<li><a href="#">Genome</a></li>
 												<li><a href="/publication">Publications</a></li>
 												<!--<li role="separator" class="divider"></li>

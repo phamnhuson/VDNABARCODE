@@ -140,6 +140,8 @@ Route::get('/accept', ['uses' => 'BarcodeController@accept', 'middleware' => ['a
 
 Route::get('/viewbarcode', 'ViewbarcodeController@index');
 
+Route::get('/viewgene', 'ViewgeneController@index');
+
 Route::get('/phylogenetictree', 'PhylogeneticController@index');
 
 Route::get('/phylogenetictree/update', 'PhylogeneticController@update');
@@ -159,6 +161,8 @@ Route::get('/publication', ['uses' => 'NewsController@index']);
 Route::post('/news', ['uses' => 'NewsController@comment']);
 
 Route::get('/dnabarcode', ['uses' => 'ListController@index']);
+
+Route::get('/listgene', ['uses' => 'ListgeneController@index']);
 
 Route::get('/register', ['uses' => 'RegisterController@index',]);
 

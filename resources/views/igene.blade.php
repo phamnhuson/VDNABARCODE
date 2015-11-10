@@ -105,27 +105,27 @@
 								<table width="100%" class="table table-bordered tbl">
 									<tr>
 										<td >Title:</td>
-										<td colspan="7" style="width:85%;">{!! Form::text('title', @$data['gene'][0]['title'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
+										<td colspan="6" style="width:85%;">{!! Form::text('title', @$data['gene'][0]['title'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td >Sequence ID:</td>
 										<?php if((isset($data['gene']))){ ?>
-										<td colspan="7">{!! Form::text('sequence_id', @$data['gene'][0]['sequence_id'], array('class'=>'form-control2','style'=>'width:100%','disable')) !!}</td>
+										<td colspan="6">{!! Form::text('sequence_id', @$data['gene'][0]['sequence_id'], array('class'=>'form-control2','style'=>'width:100%','disable')) !!}</td>
 										<?php }else{ ?>
-											<td colspan="7">{!! Form::text('sequence_id', @$data['gene'][0]['sequence_id'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
+											<td colspan="6">{!! Form::text('sequence_id', @$data['gene'][0]['sequence_id'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 										<?php } ?>
 									</tr>
 									<tr>
 										<td >Source organism:</td>
-										<td colspan="7">{!! Form::text('source_organism', @$data['gene'][0]['source_organism'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
+										<td colspan="6">{!! Form::text('source_organism', @$data['gene'][0]['source_organism'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td >Author(s):</td>
-										<td colspan="7">{!! Form::text('author', @$data['gene'][0]['author'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
+										<td colspan="6">{!! Form::text('author', @$data['gene'][0]['author'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td >Address:</td>
-										<td colspan="7">{!! Form::text('address', @$data['gene'][0]['address'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
+										<td colspan="6">{!! Form::text('address', @$data['gene'][0]['address'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td style="width:20%;">Project name:</td>
@@ -135,7 +135,7 @@
 									</tr>
 									<tr>
 										<td>Published:</td>
-										<td colspan="7">{!! Form::text('published', @$data['gene'][0]['published'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
+										<td colspan="6">{!! Form::text('published', @$data['gene'][0]['published'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>
 									<tr>
 										<td>Gene name(or DNA fragment)</td>
@@ -180,7 +180,7 @@
 									<tr>
 										<td>Codon start:</td>
 										<td colspan="4">
-											{!! Form::text('condon', @$data['gene'][0]['codon_start'], 		array('class'=>'form-control2','style'=>'width:100%')) !!}
+											{!! Form::text('codon_start', @$data['gene'][0]['codon_start'], 		array('class'=>'form-control2','style'=>'width:100%')) !!}
 										</td>
 									</tr>
 									<tr>
@@ -191,7 +191,7 @@
 									</tr>
 									<tr>
 										<td>Function/Feature:</td>
-										<td colspan="7">{!! Form::text('function_feature', @$data['gene'][0]['function_feature'], array('class'=>'form-control2','style'=>'width:100%')) !!}
+										<td colspan="6">{!! Form::text('function_feature', @$data['gene'][0]['function_feature'], array('class'=>'form-control2','style'=>'width:100%')) !!}
 										</td>
 									</tr>
 									<tr>
@@ -212,8 +212,7 @@
 									</tr>
 								</table>
 							</td>
-						</tr>
-						
+						</tr>						
 					</table>					
 				</div>
 				

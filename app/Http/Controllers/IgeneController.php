@@ -59,20 +59,27 @@ class IgeneController extends Controller {
             //return \Redirect::back()->with('errors',$validator->errors()->toArray());
 			 return \Redirect::back()->withErrors($validator);
         } else {
-			$gene = DB::table('gene');
 			
-			$inputData = $request->only('title','sequence_id','source_organism','author','address','project_name','level','published','gene_name','size','mol_type','cds','cds_size','codon_start','product','function_feature','nucleotide_sequence','amino_acid_sequence');
+			$hasgene = DB::table('gene')->where('gene.sequence_id', $request['sequence_id'])->get();
 			
-			$inputData['created_by'] = $user['id'];
+			if(!$hasgene)
+			{
+				$gene = DB::table('gene');
+			
+				$inputData = $request->only('title','sequence_id','source_organism','author','address','project_name','level','published','gene_name','size','mol_type','cds','cds_size','codon_start','product','function_feature','nucleotide_sequence','amino_acid_sequence');
+				
+				$inputData['created_by'] = $user['id'];
 
-			if ($gene->insert($inputData)) {
-				return \Redirect('gene')->with('responseData', array('statusCode' => 1, 'message' => 'Thêm mới thành công'));
+				if ($gene->insert($inputData)) {
+					return \Redirect('gene')->with('responseData', array('statusCode' => 1, 'message' => 'Thêm mới thành công'));
+				}else{
+					
+					return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại'));
+					
+				}
 			}else{
-				
-				return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại'));
-				
+				return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Sequence ID đã tồn tại'));
 			}
-
 		}
 		
 	}
