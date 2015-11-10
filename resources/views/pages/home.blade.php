@@ -58,7 +58,7 @@
 					
 				<td class="col-lg-8" style="padding:0px 0px 0px 8px;">
 					<div class="row">
-						<img style="width:100%; height:400px;" src="{{ asset('public/img/banner3.jpg') }}" />
+						<img style="width:100%; height:400px;" src="{{ asset('public/img/banner4.jpg') }}" />
 					</div>
 					<div class="row" style="background: #447639;">
 						<div class="col-lg-12">
