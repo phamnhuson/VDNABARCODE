@@ -77,13 +77,11 @@
 											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SUBMIT <span class="caret"></span></a>
 											  <ul class="dropdown-menu" style="border:0px;">
 												<li><a href="@if (Auth::check()) /barcode @else /login @endif">Form for DNA Barcode</a></li>
-												@if (Auth::check())
 													<li class=""><a href="/ipublication">Form for Publication</a></li>
 													<li class="dropdown">
 														<a href="/gene">Form for Gene</a>
 													</li>
 													<li class=""><a href="#">Form for Genome</a></li>
-												@endif
 											  </ul>
 											</li>
 											
