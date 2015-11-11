@@ -53,12 +53,12 @@
 		<div class="col-md-6">
 			<div class="form-group">
 				<label class="control-label">Sequences</label>
-				{!! Form::textarea('sequence', @$oldInput['sequence'], array('class' => 'form-control sequence-input validate-control validate-nu-sequence', 'rows' => 4, 'required' => 'true')) !!}
+				{!! Form::textarea('sequence', @$oldInput['sequence'], array('class' => 'form-control sequence-input validate-control validate-nu-sequence', 'rows' => 4, 'required' => 'true', 'id' => 'onesequence')) !!}
 				<p class="text-danger text-error"></p>
 			</div>
 		</div>	
 		<div class="col-md-6">		
-			<label class="control-label"><input type="checkbox" name="allowmore" onChange="document.getElementById('moresequence').disabled = !this.checked;" /> Align two or more sequences</label>
+			<label class="control-label"><input type="checkbox" name="allowmore" onChange="document.getElementById('moresequence').disabled = !this.checked;document.getElementById('onesequence').disabled = this.checked;" /> Align two or more sequences</label>
 			{!! Form::textarea('moresequence', @$oldInput['moresequence'], array('class' => 'form-control validate-control validate-fasta', 'rows' => 4, 'placeholder' => 'Fasta format', 'id' => 'moresequence', 'disabled' => 'true')) !!}
 			<p class="text-danger text-error"></p>
 		</div>
