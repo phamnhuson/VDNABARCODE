@@ -50,7 +50,7 @@
 				@endif
 						<table style="width:100%" class="form-table">
 							<tr>
-								<td>
+								<td width="400">
 									<table>
 										<tr>
 											<td class="col-lg-10" style="padding:0px;">
