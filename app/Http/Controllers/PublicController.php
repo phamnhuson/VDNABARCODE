@@ -34,7 +34,13 @@ class PublicController extends Controller {
 			$viewData['new']=$new;
 		}
 		
-		$list_new = DB::table('news')->where('created_by',$user['id'])->where('category','0')->paginate(10);
+		$list_new = DB::table('news');
+		
+		if ($user['role'] != 3) {
+			$list_new->where('created_by',$user['id']);
+		}
+		
+		$list_new->where('category','0')->paginate(10);
 		
 		$viewData['list_new'] = $list_new;
 		
