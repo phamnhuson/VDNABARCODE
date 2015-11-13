@@ -92,6 +92,7 @@
 												<ul class="dropdown-menu">
 													<li><a href="/inew">Posts</a></li>
 													<li><a href="/error">Error Logs</a></li>
+													<li><a href="/backup">Backup</a></li>
 												</ul>
 											</li>
 											<li class="dropdown">
