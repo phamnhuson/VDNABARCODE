@@ -46,6 +46,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('contact', 'ContactController');
 
+
 Route::get('blast', 'BlastController@index');
 
 Route::post('blast', 'BlastController@blast');
@@ -63,6 +64,10 @@ Route::get('/error', ['as' => 'error', 'uses' => 'ErrorController@index', 'middl
 Route::post('/error', ['as' => 'error', 'uses' => 'ErrorController@clear', 'middleware' => ['auth', 'role:3']]);
 
 Route::get('/user', ['as' => 'user', 'uses' => 'UserController@index', 'middleware' => ['auth', 'role:3']]);
+
+Route::get('/backup', ['as' => 'backup', 'uses' => 'BackupController@index', 'middleware' => ['auth', 'role:3']]);
+
+Route::get('/backup/download/{file}', ['as' => 'backup_download', 'uses' => 'BackupController@getDownload', 'middleware' => ['auth', 'role:3']]);
 
 Route::post('/user', ['uses' => 'UserController@create', 'middleware' => ['auth', 'role:3']]);
 
