@@ -331,9 +331,11 @@ class IbarcodeController extends Controller {
 				$inputData['status'] = 1;
 			}
 			
+			$inputData['barcode_id'] = $this->makeUniqueId($family_id, $genus_id, $id_species);
+
 			if ($barcode->insert($inputData)) {
 				
-				$id	=	DB::getPdo()->lastInsertId();
+				$id	= DB::getPdo()->lastInsertId();
 				
 				if(isset($inputData['status']) && $inputData['status'] == 1) {
 					
@@ -755,6 +757,27 @@ class IbarcodeController extends Controller {
 				
 			}
 
+		}
+	}
+	
+	function makeUniqueId($family, $genus, $species)
+	{
+
+		$family = DB::table('family')->where('family_id', $family)->get();
+		$family = $family[0]['family_name'];
+		
+		$genus = DB::table('genus')->where('genus_id', $genus)->get();
+		$genus = $genus[0]['genus_name'];
+		
+		$species = DB::table('species')->where('species_id', $species)->get();
+		$species = $species[0]['species_name'];
+		
+		$prefix = substr($family, 0, 1).substr($genus, 0, 1).substr($species, 0, 1);
+		$result = DB::table('barcode')->select(DB::raw('MAX(SUBSTR(barcode_id FROM 4))+1 AS id'))->whereRaw("barcode_id LIKE '$prefix%'")->get();
+		if ( $result[0]['id'] ) {
+			return $prefix.$result[0]['id'];
+		} else {
+			return $prefix.'0001';
 		}
 	}
 	

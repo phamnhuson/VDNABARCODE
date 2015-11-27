@@ -76,7 +76,7 @@
 	}
 	td{
 		font-size:10pt;
-		padding:2px !important;
+		
 	}	
 	table{
 		word-wrap: break-word;
@@ -101,28 +101,25 @@
 	<table width="100%" class="table table-striped table-bordered">
 		<tr>
 			<td style="width:200px;">Title:</td>
-			<td><b><?php echo $data['gene'][0]['title'] ?></b></td>
-			<td></td>
+			<td colspan="2"><b><?php echo $data['gene'][0]['title'] ?></b></td>
 		</tr>
 		<tr>
 			<td>Sequence ID:</td>
 			<td><?php echo $data['gene'][0]['sequence_id'] ?></td>
-			<td></td>
+			<td><a href="http://www.ncbi.nlm.nih.gov/gquery/?term=<?=$data['gene'][0]['sequence_id'];?>" target="_blank">Genbank Accession</a></td>
 		</tr>
 		<tr>
 			<td>Source organism:</td>
-			<td><?php echo $data['gene'][0]['source_organism'] ?></td>
-			<td></td>
+			<td colspan="2"><?php echo $data['gene'][0]['source_organism'] ?></td>
+			
 		</tr>
 		<tr>
 			<td >Author(s):</td>
-			<td><?php echo $data['gene'][0]['author'] ?></td>
-			<td></td>
+			<td colspan="2"><?php echo $data['gene'][0]['author'] ?></td>
 		</tr>
 		<tr>
 			<td >Address:</td>
-			<td><?php echo $data['gene'][0]['address'] ?></td>
-			<td></td>
+			<td colspan="2"><?php echo $data['gene'][0]['address'] ?></td>
 		</tr>
 		<tr>
 			<td>Project name:</td>
@@ -131,8 +128,7 @@
 		</tr>
 		<tr>
 			<td>Published:</td>
-			<td><?php echo $data['gene'][0]['published'] ?></td>
-			<td></td>
+			<td colspan="2"><?php echo $data['gene'][0]['published'] ?></td>
 		</tr>
 		<tr>
 			<td>Gene name(or DNA fragment)</td>
@@ -152,8 +148,7 @@
 		</tr>
 		<tr>
 			<td>Function/Feature:</td>
-			<td ><?php echo $data['gene'][0]['function_feature'] ?></td>
-			<td></td>
+			<td colspan="2"><?php echo $data['gene'][0]['function_feature'] ?></td>
 		</tr>
 		<tr>
 			<td colspan="3">Nucleotide sequence</td>

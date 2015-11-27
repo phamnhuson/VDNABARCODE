@@ -80,18 +80,18 @@
 						</div>
 					</div>
 				</td>
-				<td class="col-lg-2" style="padding:0px 8px 0px 8px;background-color:#969696">
+				<td class="col-lg-2" style="padding:0px 8px 0px 8px;">
 					<table style="width: 100%;">
 						<tr>
 							<td style="padding-top:10px;">
-								<span style="color:#FF0000" class="glyphicon glyphicon-star"></span>&nbsp;<span style="color:#fff">Tin tức</span>
+								<span style="color:#FF0000" class="glyphicon glyphicon-star"></span>&nbsp;<span style="color:#036">News</span>
 								<hr style="border-top: 2px solid #eee;margin:10px 0px 10px 0px">
 							</td>
 						</tr>
-						<?php foreach($data['news'] as $value){ ?>
+						<?php foreach($data['news'] as $i=>$value){ ?>
 						<tr>
 							<td>
-							<span style="color:#fff;" class="glyphicon glyphicon-share-alt"></span>&nbsp;<a href="publication?id=<?php echo $value['new_id'] ?>" target="_blank" style="color:#fff;font-size:10pt;text-decoration:none;"><?php echo $value['subject']; ?></a>
+							<a href="publication?id=<?php echo $value['new_id'] ?>" target="_blank" style="color:#036;font-size:10pt;text-decoration:none;"><?=$i+1;?>.<?php echo $value['subject']; ?></a>
 							</br></br>							
 							</td>
 						</tr>

@@ -18,7 +18,8 @@
 							<table style="width:100%">
 								<tr>
 									<td style="width:100px;">
-										<img width="90" height="120" class="pull-left" src="<?=(file_exists(PUBLIC_PATH().'/uploads/img/user_pictures/avata_'.$user['id'].'.jpg'))? asset('public/uploads/img/user_pictures/avata_'.$user['id'].'.jpg') : asset('public/uploads/img/user_pictures/no-avatar.jpg');?>" />
+										<div class="avatar-container-hover" style="background:url(<?=(file_exists(PUBLIC_PATH().'/uploads/img/user_pictures/avata_'.$user['id'].'.jpg'))? asset('public/uploads/img/user_pictures/avata_'.$user['id'].'.jpg') : asset('public/uploads/img/user_pictures/no-avatar.jpg');?>)">
+										</div>
 									</td>
 									<td>
 										<div class="member-info" style="width:100%">

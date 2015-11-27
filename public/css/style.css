@@ -948,3 +948,15 @@ div.roundBox{
 .static-page-content img {
 	max-width:80% !important;
 }
+.avatar-container-hover {
+	width: 90px;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%!important;
+	background-position: center center!important;
+	transition: all .5s ease;
+}
+.avatar-container-hover:hover {
+    cursor: pointer;
+    background-size: 120% 120%!important;
+}

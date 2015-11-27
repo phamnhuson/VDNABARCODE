@@ -62,8 +62,8 @@
 			<table class="table table-striped table-bordered">
 				<tr>
 					<th style="text-align:center !important;width:5%">STT</th>								
+					<th style="width:20%">Barcode ID</th>
 					<th style="width:13%">Gene</th>
-					<th style="width:20%">Sequence ID</th>
 					<th style="width:15%">GenBank Accession</th>		
 					<!--<th style="width:15%">Taxon ID</th>-->
 					<th style="width:30%">Species</th>
@@ -73,8 +73,8 @@
 				<?php foreach($data['list_barcode'] as $bc){ ?>
 					<tr>
 						<td style="text-align:center;"><?php echo $i; ?></td>								
+						<td><?php echo $bc['barcode_id']; ?></td>
 						<td><?php echo $bc['gene']; ?></td>
-						<td><?php echo $bc['sequence_id']; ?></td>
 						<td><?php echo $bc['genbank_accession']; ?></td>
 						<!--<td><?php echo $bc['taxon_id']; ?></td>-->
 						<td><?php echo $bc['species_name']; ?></td>

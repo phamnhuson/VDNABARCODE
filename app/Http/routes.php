@@ -191,7 +191,7 @@ Route::get('/get_species', ['uses' => 'SpeciesController@get_species', 'middlewa
 
 Route::get('/viewspecies', ['uses' => 'SpeciesController@viewspecies']);
 
-Route::get('/ipublication', ['uses' => 'PublicController@index', 'middleware' => ['auth', 'role:3']]);
+Route::get('/ipublication', ['uses' => 'PublicController@index', 'middleware' => ['auth']]);
 
 Route::post('/ipublication', ['uses' => 'PublicController@create', 'middleware' => ['auth', 'role:3']]);
 

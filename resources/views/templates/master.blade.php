@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>@yield('title')</title>
-		<link rel="stylesheet" href="{{ asset('public/css/style.css?v=1.4') }}">
+		<link rel="stylesheet" href="{{ asset('public/css/style.css?v=1.5') }}">
 		<link rel="stylesheet" href="{{ asset('public/css/bootstrap.css') }}">
 		<link rel="stylesheet" href="{{ asset('public/css/jquery.dataTables.min.css') }}">
 		
@@ -76,12 +76,10 @@
 											<li class="dropdown">
 											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SUBMIT <span class="caret"></span></a>
 											  <ul class="dropdown-menu" style="border:0px;">
-												<li><a href="@if (Auth::check()) /barcode @else /login @endif">Form for DNA Barcode</a></li>
-													<li class=""><a href="/ipublication">Form for Publication</a></li>
-													<li class="dropdown">
-														<a href="/gene">Form for Gene</a>
-													</li>
-													<li class=""><a href="#">Form for Genome</a></li>
+												<li><a href="/barcode">Form for DNA Barcode</a></li>
+												<li><a href="/ipublication">Form for Publication</a></li>
+												<li><a href="/gene">Form for Gene</a></li>
+												<li class=""><a href="#">Form for Genome</a></li>
 											  </ul>
 											</li>
 											
@@ -93,6 +91,7 @@
 													<li><a href="/inew">Posts</a></li>
 													<li><a href="/error">Error Logs</a></li>
 													<li><a href="/backup">Backup</a></li>
+													<li><a href="/report">Report</a></li>
 												</ul>
 											</li>
 											<li class="dropdown">
