@@ -428,11 +428,12 @@
 								<?php foreach($data['file_img'] as $ds){ ?>
 									<div class="col-md-2" id="group_img_<?php echo $ds['file_id']; ?>">
 										<div class="form-group">
-											<a href="#" class="thumbnail" style="margin-bottom:10px;" data-toggle="modal" data-target="#lightbox"> 
-												<img style="height:130px;width:140" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="...">
-											</a>
-											<p class="text-muted">{{ $ds['caption'] }}</p>
-											<button type="button" class="btn btn-danger delete" data_id="<?php echo $ds['file_id']; ?>" style="width:146px;"><span class='glyphicon glyphicon-trash'></span></button>
+											<div class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
+												<img style="height:130px;width:100%" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="...">
+												<div class="caption">{{ $ds['caption'] }}</div>
+												<button type="button" class="btn btn-danger delete" data_id="<?php echo $ds['file_id']; ?>" style="width:100%;"><span class='glyphicon glyphicon-trash'></span></button>
+											</div>
+											
 										</div>								
 									</div>
 								<?php } ?>
