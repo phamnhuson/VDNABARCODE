@@ -397,8 +397,10 @@
 										<?php foreach($data['file_img'] as $ds){ ?>
 												<div class="form-group">
 													<div class="thumbnail" style="margin-bottom:10px;" data-toggle="modal" data-target="#lightbox"> 
-														<img style="width:100%" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="...">
+														<img style="width:100%" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="@if ($ds['caption']) {{ $ds['caption'] }} @endif">
+														@if ($ds['caption'])
 														<div class="caption">{{ $ds['caption'] }}</div>
+														@endif
 													</div>
 													
 												</div>								
