@@ -396,9 +396,10 @@
 									<td colspan="4">
 										<?php foreach($data['file_img'] as $ds){ ?>
 												<div class="form-group">
-													<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
+													<a href="#" class="thumbnail" style="margin-bottom:10px;" data-toggle="modal" data-target="#lightbox"> 
 														<img style="height:160px;width:240" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="...">
-													</a>					
+													</a>
+													<p class="text-muted">{{ $ds['caption'] }}</p>
 												</div>								
 										<?php } ?>
 									</td>

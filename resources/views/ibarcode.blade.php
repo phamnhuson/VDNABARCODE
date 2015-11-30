@@ -12,9 +12,9 @@
 		margin-bottom:5px;
 	}
 	#lightbox .modal-content {
-    display: inline-block;
-    text-align: center;   
-}
+		display: inline-block;
+		text-align: center;   
+	}
 
 	#lightbox .close {
 		opacity: 1;
@@ -428,9 +428,10 @@
 								<?php foreach($data['file_img'] as $ds){ ?>
 									<div class="col-md-2" id="group_img_<?php echo $ds['file_id']; ?>">
 										<div class="form-group">
-											<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
+											<a href="#" class="thumbnail" style="margin-bottom:10px;" data-toggle="modal" data-target="#lightbox"> 
 												<img style="height:130px;width:140" src="{{asset('public/uploads/img/'.$ds['file_id'].'.jpg')}}" alt="...">
 											</a>
+											<p class="text-muted">{{ $ds['caption'] }}</p>
 											<button type="button" class="btn btn-danger delete" data_id="<?php echo $ds['file_id']; ?>" style="width:146px;"><span class='glyphicon glyphicon-trash'></span></button>
 										</div>								
 									</div>
@@ -696,7 +697,7 @@ $(document).ready(function(){
 		$(this).attr('class','form-control2 imgch');
 		$('#upanh_'+$data_id).attr('class','change');
 		$option2 ="";
-		$option2 += "<button type='button' class='btn btn-warning xoa' style='width:140px;' data_id='" + $data_id + "'><span class='glyphicon glyphicon-trash'></span></button>";
+		$option2 += "<input type='text' class='form-control' placeholder='Caption' name='image_captions[]' /><button type='button' class='btn btn-warning xoa fw' style='width: 100%;margin-top:10px;' data_id='" + $data_id + "'><span class='glyphicon glyphicon-trash'></span></button>";
 		$("#btx_"+$data_id).append($option2);
     });
 	

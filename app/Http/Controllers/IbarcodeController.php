@@ -281,11 +281,12 @@ class IbarcodeController extends Controller {
 			
 			$data_img=array();								
 				
-			foreach($request['images'] as $img)
+			foreach($request['images'] as $imageIndex => $img)
 			{
 				if($img!='')
 				{
 					$data_img['species_id'] = $id_species;
+					$data_img['caption'] = $request['image_captions'][$imageIndex];
 				
 					if(DB::table('file_img')->insert($data_img))
 					{
@@ -574,11 +575,12 @@ class IbarcodeController extends Controller {
 			
 			$data_img=array();								
 				
-			foreach($request['images'] as $img)
+			foreach($request['images'] as $imageIndex => $img)
 			{
 				if($img!='')
 				{
 					$data_img['species_id'] = $id_species;
+					$data_img['caption'] = $request['image_captions'][$imageIndex];
 				
 					if(DB::table('file_img')->insert($data_img))
 					{
