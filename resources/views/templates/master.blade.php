@@ -51,8 +51,8 @@
 											  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">DATABASES <span class="caret"></span></a>
 											  <ul class="dropdown-menu" style="border:0px;">
 												<li><a href="/dnabarcode">DNA Barcode</a></li>
-												<li><a href="listgene">Gene</a></li>
-												<li><a href="#">Genome</a></li>
+												<li><a href="/listgene">Gene</a></li>
+												<li><a href="/genome">Genome</a></li>
 												<li><a href="/publication">Publications</a></li>
 												<!--<li role="separator" class="divider"></li>
 												<li><a href="#">Separated link</a></li>
@@ -79,7 +79,9 @@
 												<li><a href="/barcode">Form for DNA Barcode</a></li>
 												<li><a href="/ipublication">Form for Publication</a></li>
 												<li><a href="/gene">Form for Gene</a></li>
-												<li class=""><a href="#">Form for Genome</a></li>
+												@if (Auth::check() && Auth::user()->role==3)
+												<li class=""><a href="/igenome">Form for Genome</a></li>
+												@endif
 											  </ul>
 											</li>
 											

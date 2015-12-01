@@ -66,7 +66,7 @@ class IgeneController extends Controller {
 			{
 				$gene = DB::table('gene');
 			
-				$inputData = $request->only('title','sequence_id','source_organism','author','address','project_name','level','published','gene_name','size','mol_type','cds','cds_size','codon_start','product','function_feature','nucleotide_sequence','amino_acid_sequence');
+				$inputData = $request->only('title','sequence_id','source_organism','author','address','project_name','level','published','gene_name','size','mol_type','cds','cds_size','codon_start','product','function_feature','nucleotide_sequence','amino_acid_sequence','genbank_accession');
 				
 				$inputData['created_by'] = $user['id'];
 
@@ -101,7 +101,7 @@ class IgeneController extends Controller {
 
 			$sequence_id = $request->get('sequence_id');
 						
-			$inputData = $request->only('title','source_organism','author','address','project_name','level','published','gene_name','size','mol_type','cds','cds_size','codon_start','product','function_feature','nucleotide_sequence','amino_acid_sequence');
+			$inputData = $request->only('title','source_organism','author','address','project_name','level','published','gene_name','size','mol_type','cds','cds_size','codon_start','product','function_feature','nucleotide_sequence','amino_acid_sequence','genbank_accession');
 
 			if(DB::table('gene')->where('sequence_id', $sequence_id)->update($inputData)){
 				

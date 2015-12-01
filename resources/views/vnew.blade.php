@@ -46,7 +46,7 @@
 				<a href="/public/uploads/file/news/{{ $data['new'][0]['new_file'] }}" target="_blank" style="float:right;">Download Full text</a>
 				<?php } ?>
 				<hr style="border-top: 1px solid #C3BCBC;margin-top:10px;"/>
-				<h4 style="margin:20px 0px 20px 0px;"><i><?php echo $data['new'][0]['summary'] ?></i></h4>
+				<p style="text-align:justify;font-weight:bold;"><?php echo $data['new'][0]['summary'] ?></p>
 				<p><?php echo $data['new'][0]['content'] ?></p>
 				
 			</div>

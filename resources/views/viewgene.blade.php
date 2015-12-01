@@ -106,7 +106,7 @@
 		<tr>
 			<td>Sequence ID:</td>
 			<td><?php echo $data['gene'][0]['sequence_id'] ?></td>
-			<td><a href="http://www.ncbi.nlm.nih.gov/gquery/?term=<?=$data['gene'][0]['sequence_id'];?>" target="_blank">Genbank Accession</a></td>
+			<td><a href="http://www.ncbi.nlm.nih.gov/gquery/?term=<?=$data['gene'][0]['genbank_accession'];?>" target="_blank">Genbank Accession</a></td>
 		</tr>
 		<tr>
 			<td>Source organism:</td>

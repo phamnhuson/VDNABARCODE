@@ -116,6 +116,14 @@
 										<?php } ?>
 									</tr>
 									<tr>
+										<td >Genbank Accession:</td>
+										<?php if((isset($data['genbank_accession']))){ ?>
+										<td colspan="6">{!! Form::text('genbank_accession', @$data['gene'][0]['genbank_accession'], array('class'=>'form-control2','style'=>'width:100%','disable')) !!}</td>
+										<?php }else{ ?>
+											<td colspan="6">{!! Form::text('genbank_accession', @$data['gene'][0]['genbank_accession'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
+										<?php } ?>
+									</tr>
+									<tr>
 										<td >Source organism:</td>
 										<td colspan="6">{!! Form::text('source_organism', @$data['gene'][0]['source_organism'], array('class'=>'form-control2','style'=>'width:100%')) !!}</td>
 									</tr>

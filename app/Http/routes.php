@@ -205,6 +205,12 @@ Route::put('/igene', ['uses' => 'IgeneController@update', 'middleware' => ['auth
 
 Route::get('/gene', ['uses' => 'GeneController@index', 'middleware' => ['auth', 'role:1,3']]);
 
+Route::get('/igenome', ['uses' => 'GenomeController@index', 'middleware' => ['auth', 'role:3']]);
+
+Route::get('/genome', ['uses' => 'GenomeController@showList']);
+
+Route::put('/igenome', ['uses' => 'GenomeController@update', 'middleware' => ['auth', 'role:3']]);
+
 /*Route::controller([
 	'city'	=> 'System\CityController',
 ]);*/
