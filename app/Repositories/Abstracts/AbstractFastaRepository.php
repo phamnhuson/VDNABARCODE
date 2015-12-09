@@ -55,7 +55,11 @@
 				$cursor = 0;
 				
 				if (isset($data['sequence'])) {
-					$newline = ">ID".$data['id']."_".$data['name']."\n".$data['sequence'];
+					if (isset($data['new_id'])) {
+						$newline = ">".$data['new_id']."_".$data['name']."\n".$data['sequence'];
+					} else {	
+						$newline = ">".$data['id']."_".$data['name']."\n".$data['sequence'];
+					}	
 				}
 				
 			
@@ -75,7 +79,7 @@
 							
 						}
 						
-						if (strpos($line, '>ID'.$data['id']."_")===0) {
+						if (strpos($line, '>'.$data['id']."_")===0) {
 							$cursor = 1;
 							if ($action == 'update') {
 							

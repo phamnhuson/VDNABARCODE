@@ -336,7 +336,7 @@ class IbarcodeController extends Controller {
 
 			if ($barcode->insert($inputData)) {
 				
-				$id	= DB::getPdo()->lastInsertId();
+				$id	= $inputData['barcode_id'];
 				
 				if(isset($inputData['status']) && $inputData['status'] == 1) {
 					
@@ -619,7 +619,22 @@ class IbarcodeController extends Controller {
 			
 			$inputData['updated_by']=$user['id'];
 
+			$tmpBarcodeId = $this->makeUniqueId($family_id, $genus_id, $id_species);
+			
+			if (substr($tmpBarcodeId, 0, 3) != substr($barcodeId, 0, 3)) {
+			
+				$inputData['barcode_id'] = $tmpBarcodeId;
+			
+			}
+			
 			DB::table('barcode')->where('barcode_id', $barcodeId)->update($inputData);
+
+			if (isset($inputData['barcode_id'])) {
+			
+				$oldId = $barcodeId;
+				$barcodeId = $inputData['barcode_id'];
+				
+			}	
 			
 			$barcode = DB::table('barcode')->where('barcode_id', $barcodeId)->get();
 			
@@ -627,7 +642,14 @@ class IbarcodeController extends Controller {
 				
 				//$species = DB::table('species')->where('species.species_id', $request['species'])->get();														
 				
-				$this->nuRepo->update(array('id' => $barcodeId, 'sequence' => $inputData['sequence'], 'name' => $request['species']));
+				$nuclData = array('id' => $barcodeId, 'sequence' => $inputData['sequence'], 'name' => $request['species']);
+				
+				if (isset($inputData['barcode_id'])) {
+					$nuclData['new_id'] = $inputData['barcode_id'];
+					$nuclData['id'] = $oldId;
+				}
+				
+				$this->nuRepo->update($nuclData);
 				
 			}
 			
@@ -680,6 +702,8 @@ class IbarcodeController extends Controller {
 					}
 				}					
 			};*/
+			
+			DB::table('file_trace')->where('barcode_id', $oldId)->update(array('barcode_id' => $barcodeId));
 			
 			foreach($request['files'] as $file)
 			{
@@ -751,11 +775,11 @@ class IbarcodeController extends Controller {
 
 			if($error==0){
 				
-				return \Redirect::back()->with('responseData', array('statusCode' => 1, 'message' => 'Cập nhật thành công'));
+				return \Redirect('ibarcode?action=edit&id='.$barcodeId)->with('responseData', array('statusCode' => 1, 'message' => 'Cập nhật thành công'));
 				
 			}else{
 				
-				return \Redirect::back()->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại'));
+				return \Redirect('ibarcode?action=edit&id='.$barcodeId)->withInput()->with('responseData', array('statusCode' => 2, 'message' => 'Có lỗi xảy ra, vui lòng thử lại'));
 				
 			}
 
