@@ -703,7 +703,9 @@ class IbarcodeController extends Controller {
 				}					
 			};*/
 			
-			DB::table('file_trace')->where('barcode_id', $oldId)->update(array('barcode_id' => $barcodeId));
+			if (isset($oldId)) {
+				DB::table('file_trace')->where('barcode_id', $oldId)->update(array('barcode_id' => $barcodeId));
+			}	
 			
 			foreach($request['files'] as $file)
 			{
