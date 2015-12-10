@@ -799,8 +799,9 @@ class IbarcodeController extends Controller {
 		
 		$species = DB::table('species')->where('species_id', $species)->get();
 		$species = $species[0]['species_name'];
+		$species = trim(str_replace(strtolower($genus), "", strtolower($species)));
 		
-		$prefix = substr($family, 0, 1).substr($genus, 0, 1).substr($species, 0, 1);
+		$prefix = strtoupper(strtolower(substr($family, 0, 1).substr($genus, 0, 1).substr($species, 0, 1)));
 		$result = DB::table('barcode')->select(DB::raw('MAX(SUBSTR(barcode_id FROM 4))+1 AS id'))->whereRaw("barcode_id LIKE '$prefix%'")->get();
 		if ( $result[0]['id'] ) {
 			return $prefix.str_pad($result[0]['id'], 4, '0', STR_PAD_LEFT);
