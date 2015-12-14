@@ -5,7 +5,6 @@ use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
-use App\Repositories\Fastas\NucleotideRepository;
 use Mail;
 use Auth;
 use File;
@@ -25,6 +24,8 @@ class PublicController extends Controller {
 		if($action=='delete')
 		{
 			return $this->delete($newId);
+		} else if($action=='active') {
+			return $this->active($newId);
 		}
 		
 		if($newId)
@@ -197,17 +198,25 @@ class PublicController extends Controller {
 	
 	function delete($newId)
 	{
-
-		if (DB::table('news')->where('new_id', $newId)->delete()) {			
-			
-			$nuRepo = new NucleotideRepository;
-			$nuRepo->delete(array('id' => $newId));
-
-			return \Redirect('ipublication')->with('responseData', array('statusCode' => 1, 'message' => 'Đã xóa thành công'));
-		} else {
+		$user=Auth::user()->toArray();
+		$news = DB::table('news')->where('new_id', $newId)->get();
 		
+		if (($user['role'] == 3 || ($news[0]['created_by'] == $user['id'])) && DB::table('news')->where('new_id', $newId)->delete()) {			
+			return \Redirect('ipublication')->with('responseData', array('statusCode' => 1, 'message' => 'Đã xóa thành công'));
+		} else {		
 			return \Redirect('ipublication')->with('responseData', array('statusCode' => 2, 'message' => 'Chưa xóa được, vui lòng thử lại'));
+		}
+	}
+	
+	function active($newId)
+	{
+		$user=Auth::user()->toArray();
+		if ($user['role'] == 3 && DB::table('news')->where('new_id', $newId)->update(array('status' => 1))) {			
+			return \Redirect('ipublication')->with('responseData', array('statusCode' => 1, 'message' => 'Đã duyệt thành công'));
+		} else {		
+			return \Redirect('ipublication')->with('responseData', array('statusCode' => 2, 'message' => 'Chưa duyệt được, vui lòng thử lại'));
 
 		}
 	}
+	
 }

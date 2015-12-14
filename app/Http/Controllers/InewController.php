@@ -196,13 +196,11 @@ class InewController extends Controller {
 	
 	function delete($newId)
 	{
-
-		if (DB::table('news')->where('new_id', $newId)->delete()) {			
-			
-			$nuRepo = new NucleotideRepository;
-			$nuRepo->delete(array('id' => $newId));
-
+		$user=Auth::user()->toArray();
+		if ($user['role'] == 3 && DB::table('news')->where('new_id', $newId)->delete()) {			
+		
 			return \Redirect('inew')->with('responseData', array('statusCode' => 1, 'message' => 'Đã xóa thành công'));
+			
 		} else {
 		
 			return \Redirect('inew')->with('responseData', array('statusCode' => 2, 'message' => 'Chưa xóa được, vui lòng thử lại'));
@@ -214,7 +212,9 @@ class InewController extends Controller {
 	{
 		$update=array();
 		$update['status']=1;
-		if(DB::table('news')->where('new_id', $newId)->update($update)){				
+		$user=Auth::user()->toArray();
+		
+		if($user['role'] == 3 && DB::table('news')->where('new_id', $newId)->update($update)){				
 			return \Redirect('inew')->with('responseData', array('statusCode' => 1, 'message' => 'Đã duyệt thành công'));	
 		}else{
 			return \Redirect('inew')->with('responseData', array('statusCode' => 2, 'message' => 'Chưa duyệt được, vui lòng thử lại'));

@@ -100,8 +100,11 @@
 													<?php } ?>
 												</td>
 												<td align="center">
-													<a href="ipublication?action=edit&id={{ $ln['new_id'] }}" class="btn btn-default btn-xs" title="Sửa"><span class="glyphicon glyphicon-edit"></span> sửa</a>&nbsp;
-													<a href="ipublication?action=delete&id={{ $ln['new_id'] }}" onClick="return confirm('Bạn có chắc muốn xóa?');" title="Xóa" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> xóa</a>
+													@if (Auth::check() && Auth::user()->role==3 && $ln['status']==0)
+													<a href="ipublication?action=active&id={{ $ln['new_id'] }}" class="btn btn-success btn-xs" title="Duyệt">&nbsp;<span class="glyphicon glyphicon-ok"></span>&nbsp;</a>&nbsp;
+													@endif
+													<a href="ipublication?action=edit&id={{ $ln['new_id'] }}" class="btn btn-default btn-xs" title="Sửa">&nbsp;<span class="glyphicon glyphicon-edit"></span>&nbsp;</a>&nbsp;
+													<a href="ipublication?action=delete&id={{ $ln['new_id'] }}" onClick="return confirm('Bạn có chắc muốn xóa?');" title="Xóa" class="btn btn-danger btn-xs">&nbsp;<span class="glyphicon glyphicon-trash"></span>&nbsp;</a>
 												</td>
 											</tr>
 										<?php } ?>
