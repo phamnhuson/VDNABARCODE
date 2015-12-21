@@ -60,22 +60,36 @@
 		<table width="100%" cellspacing="0" cellpadding="0">
 			<tr>
 				<td>
-					<h1 id="title">GENOME</h1>
+					<ol class="breadcrumb">
+						@foreach ($breadcrumbs AS $k=>$item)
+							@if ($k != count($breadcrumbs)-1)
+								<li><a href="{{ @$item['url'] }}">{{ $item['name'] }}</a></li>	
+							@else
+								<li class="active">{{ $item['name'] }}</li>
+							@endif
+						@endforeach
+					</ol>
 				</td>
 			</tr>
 		</table>
 	</div>
 </div>
 <div class="box">	
-	
-	<ul>
-		@foreach ($genome as $kd)
-			<li style="list-style-type:none;color:#308C49;">
-				<h3><a href="{{ $kd['url'] }}" target="_blank">{{ $kd['kingdom_name'] }}</a></h3>
-			</li>
-		@endforeach
-	</ul>
-	
+	<div class="row">
+		<div class="col-md-12">
+			@if (isset($kingdom))
+				@foreach ($kingdom as $kd)
+					<p><a href="/genome/{{ $kd['kingdom_id'] }}">{{ $kd['kingdom_name'] }}</a></p>
+				@endforeach
+			@else
+				@foreach ($genome as $kd)
+					<p><a href="{{ $kd['url'] }}" target="_blank">{{ $kd['kingdom_name'] }}</a></p>
+				@endforeach
+				
+				{!! $genome->render() !!}
+			@endif
+		</div>	
+	</div>	
 </div>
 
 @endsection

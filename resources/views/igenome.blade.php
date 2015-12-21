@@ -1,6 +1,6 @@
 @extends('templates.master')
 
-@section('title', 'Gene')
+@section('title', 'Genome')
 
 @section('content')
 <style type="text/css">
@@ -11,119 +11,94 @@
 		margin:0px;
 		margin-bottom:5px;
 	}
-	#lightbox .modal-content {
-    display: inline-block;
-    text-align: center;   
-}
-
-	#lightbox .close {
-		opacity: 1;
-		color: rgb(255, 255, 255);
-		background-color: rgb(25, 25, 25);
-		padding: 5px 8px;
-		border-radius: 30px;
-		border: 2px solid rgb(255, 255, 255);
-		position: absolute;
-		top: -15px;
-		right: -55px;
-		
-		z-index:1032;
-	}
-	h4{
-		#000 !important;
-		margin:0px;
-	}
-	.panel-default{
-		border-color: #B5D2FF !important;
-	}
-	.panel-heading{
-		background-color: #fff !important;
-		border-color: #B5D2FF !important;
-	}
-	.panel-body table td{
-		padding:5px;
-		border-bottom: 1px solid #eee;
-	}
-	.tbl th{
-		background:#F5F5F5;
-	}
-	td{
-		font-size:10pt;
-	}
-	.form-control2{		
-		height:28px !important;
-		border:1px solid #aaa;
-		border-radius:4px;
-		padding:4px;
-	}
-
-}
 </style>
-<!--<script src="{{ asset('public/js/google_map.js') }}"></script>-->
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 <div id="subheader" style='height:49px;'>
 	<div class="box">
 		<table width="100%" cellspacing="0" cellpadding="0">
 			<tr>
 				<td>
-					<h1 id="title">CẬP NHẬT DỮ LIỆU GENOME</h1>
+					<h1 id="title">Genome</h1>
 				</td>
 			</tr>
 		</table>
 	</div>
 </div>
 <div class="box">
-	<div class="row">
-		
-		@if (Session::has('responseData'))
-			@if (Session::get('responseData')['statusCode'] == 1)
-				<div class="alert alert-success">{{ Session::get('responseData')['message'] }}</div>
-			@elseif (Session::get('responseData')['statusCode'] == 2)
-				<div class="alert alert-danger">{{ Session::get('responseData')['message'] }}</div>
-			@endif
-		@endif
-	
-		@if (count($errors) > 0)
-				<div class="alert alert-danger">
-					<ul>
-						@foreach ($errors->all() as $error)
-							<li>{{ $error }}</li>
-						@endforeach
-					</ul>
-				</div>
-			@endif
-		</br>
-		{!! Form::open(array('method' => 'PUT')) !!}
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">
-			<div class="tab-content col-md-12" style="padding:0px;">
-				<div class="tab-pane active" id="tab1">
-					<table class="col-lg-6 col-md-6">
+	<table style="width:100%" class="form-table">
+		<tr>
+			<td class="col-lg-4" style="padding-left:0px;">
+				@if (Session::has('responseData'))
+					@if (Session::get('responseData')['statusCode'] == 1)
+						<div class="alert alert-success">{{ Session::get('responseData')['message'] }}</div>
+					@elseif (Session::get('responseData')['statusCode'] == 2)
+						<div class="alert alert-danger">{{ Session::get('responseData')['message'] }}</div>
+					@endif
+				@endif
+			
+				@if (count($errors) > 0)
+					<div class="alert alert-danger">
+						<ul>
+							@foreach ($errors->all() as $error)
+								<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+					</div>
+				@endif
+
+				{!! Form::open(array('method' => (isset($data['genome'])) ? 'PUT' : 'POST' )) !!}
+					@if (isset($data['genome']))
+						<input type="hidden" name="genome_id" value="{{ @$data['genome'][0]['id'] }}" />
+					@endif
+					<div class="form-group">
+						<label class="control-label">Kingdom:</label>					
+						<select name="kingdom" class="form-control">
+							<option>Select Kingdom</option>
+							<?php foreach($data['list_kingdom'] as $kd){ ?>
+								<option value="<?php echo $kd['kingdom_id'] ?>" <?php echo (isset($data['genome']) && $kd['kingdom_id']==$data['genome'][0]['kingdom'])?'selected':'' ?>><?php echo $kd['kingdom_name'] ?></option>
+							<?php } ?>
+						</select>
+					</div>	
+					<div class="form-group">
+						<label class="control-label">Title:</label>
+						{!! Form::text('title', @$data['genome'][0]['title'], array('class'=>'form-control')) !!}
+					</div>
+					<div class="form-group">
+						<label class="control-label">Link:</label>
+						{!! Form::text('url', @$data['genome'][0]['url'], array('class'=>'form-control')) !!}
+					</div>				
+					<div class="form-group">
+						<input type="submit" name="submit" class="btn btn-primary" value="@if (isset($data['genome'])) Update @else Add new @endif" />
+						@if (isset($data['genome']))
+							<a href="{{ url('igenome') }}" class="btn btn-success">New Genome</a>
+						@endif
+					</div>
+				{!! Form::close() !!}
+			</td>		
+			<td class="col-lg-8" style="padding-right:0px;">
+				<table class="table table-striped table-bordered">
+					<tr>
+						<th style="text-align:center !important;width:5%">STT</th>
+						<th style="width:30%">Genome Title</th>
+						<th style="width:50%">Link</th>
+						<th style="width:15%;"></th>
+					</tr>
+					<?php $i=1; ?>
+					<?php foreach($data['list_genome'] as $genome){ ?>
 						<tr>
-							<td>
-								<table width="100%" class="table table-bordered tbl">
-									<tr>
-										<th>Kingdom</th>
-										<th>Link</th>
-									</tr>
-									@foreach ($genome AS $geno)
-									<tr>
-										<td>{{ $geno['kingdom_name'] }}</td>
-										<td><input type="text" class="form-control" name="url[{{ $geno['id'] }}]" value="{{ $geno['url'] }}" /></td>
-									</tr>
-									@endforeach
-								</table>
+							<td style="text-align:center;"><?php echo $i; ?></td>						
+							<td><?php echo $genome['title']; ?></td>
+							<td><?php echo $genome['url']; ?></td>
+							<td style="text-align:center;">
+								<a href="{{ asset('igenome?action=edit&id=').$genome['id'] }}"><button type="button" title="sửa" name="sua" class="btn btn-warning"><span class='glyphicon glyphicon-pencil'></span></button></a>
+								<a href="{{ asset('igenome?action=delete&id=').$genome['id'] }}" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" title="xóa" name="xoa" class="btn btn-danger"><span class='glyphicon glyphicon-trash'></span></button></a>
 							</td>
-						</tr>						
-					</table>					
-				</div>
-				
-			</div>
-			<div class="form-group">
-				<input type="submit" name="submit" id="submit" class="btn btn-primary" value="Cập nhật" />
-			</div>
-		{!! Form::close() !!}
-	</div>
+						</tr>
+					<?php $i+=1; ?>
+					<?php } ?>
+				</table>
+				<?php echo $data['list_genome']->render(); ?>
+			</td>
+		</tr>
+	</table>
 </div>
 @endsection
