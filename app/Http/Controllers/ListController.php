@@ -74,7 +74,7 @@ class ListController extends Controller
 				case 'genus':
 					$resource = \App\Models\Genus::find($id);
 					
-					$resourceData = $resource->species()->select('species_name as name', DB::raw("CONCAT('/viewbarcode?id=' , barcode_id) AS url"))->join('barcode', 'barcode.species', '=', 'species.species_id')->paginate(20);
+					$resourceData = $resource->species()->select('species_name as name', DB::raw("CONCAT('/viewbarcode?id=' , barcode_id) AS url"))->join('barcode', 'barcode.species', '=', 'species.species_id')->where('barcode.status', 1)->paginate(20);
 					
 					array_unshift($this->breadcrumbs, array('name' => $resource->genus_name));
 					array_unshift($this->breadcrumbs, array('name' => $resource->family->family_name, 'url' => '/dnabarcode/family/'.$resource->family->order_id));
