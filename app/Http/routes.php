@@ -165,7 +165,7 @@ Route::get('/publication', ['uses' => 'NewsController@index']);
 
 Route::post('/news', ['uses' => 'NewsController@comment']);
 
-Route::get('/dnabarcode', ['uses' => 'ListController@index']);
+Route::get('/dnabarcode/{cat?}/{id?}', ['uses' => 'ListController@index']);
 
 Route::get('/listgene', ['uses' => 'ListgeneController@index']);
 
