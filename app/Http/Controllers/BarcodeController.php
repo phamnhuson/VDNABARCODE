@@ -79,9 +79,9 @@ class BarcodeController extends Controller {
 		$update['status']=1;
 		if(DB::table('barcode')->where('barcode_id', $barcodeId)->update($update)){
 		
-			$barcode = DB::table('barcode')->where('barcode_id', $barcodeId)->get();
+			$barcode = DB::table('barcode')->join('species', 'species.species_id', '=', 'barcode.species')->where('barcode_id', $barcodeId)->get();
 			$nuRepo = new NucleotideRepository;
-			$nuRepo->create(array('id' => $barcode[0]['barcode_id'], 'sequence' => $barcode[0]['sequence'], 'name' => $barcode[0]['scientific_name']));
+			$nuRepo->create(array('id' => $barcode[0]['barcode_id'], 'sequence' => $barcode[0]['sequence'], 'name' => $barcode[0]['species_name']));
 		
 			return \Redirect('barcode')->with('responseData', array('statusCode' => 1, 'message' => 'Đã duyệt thành công'));	
 		}else{
