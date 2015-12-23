@@ -60,23 +60,19 @@
 					<div class="row">
 						<img style="width:100%; height:400px;" src="{{ asset('public/img/banner4.jpg') }}" />
 					</div>
-					<div class="row" style="background: #447639;">
-						<div class="col-lg-12">
-							<table class="table" id="thongke" style="color:#fff;margin-bottom:0px;background: #447639;margin:5px;">
-								<tr>
-									<td rowspan="4">All sequence:<?php echo ($data['barcode']+$data['gene']) ?></td>
-									<td>Barcode sequence:<?php echo $data['barcode'] ?></td>
-								</tr>
-								<tr>
-									<td>Gene sequence:<?php echo $data['gene'] ?></td>
-								</tr>
-								<tr>
-									<td>Genome:</td>
-								</tr>
-								<tr>
-									<td>Publications:<?php echo $data['publication'] ?></td>
-								</tr>
-							</table>
+					<div class="row" style="background: #447639;color:#fff;padding: 10px;">
+						<div class="col-lg-4">
+							All sequence:<?php echo ($data['barcode']+$data['gene']) ?>
+						</div>
+						<div class="col-md-4">
+							Barcode sequence:<?php echo $data['barcode'] ?><br/>
+							Gene sequence:<?php echo $data['gene'] ?><br/>
+							Publications:<?php echo $data['publication'] ?><br/>
+							Genome: <?php echo $data['genome'] ?>
+						</div>
+						<div class="col-md-4">
+							Page views: <?php echo $data['visitors'][0]['value'] ?><br/>
+							Total users: <?php echo $data['users']; ?>
 						</div>
 					</div>
 				</td>

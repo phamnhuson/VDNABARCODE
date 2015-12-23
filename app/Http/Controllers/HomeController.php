@@ -24,6 +24,12 @@ class HomeController extends Controller
 								
 		$count['news']=DB::table('news')->where('category','1')->orderBy('new_id', 'desc')->limit(5)->get();
 		
+		$count['visitors'] = DB::table('configs')->where('name', 'number_visitor')->get();
+		
+		$count['users'] = DB::table('users')->count();
+		
+		$count['genome'] = DB::table('genome')->count();
+		
         return view('pages.home')->with('data',$count);;
     }
 }
