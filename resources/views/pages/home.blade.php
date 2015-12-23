@@ -62,12 +62,12 @@
 					</div>
 					<div class="row" style="background: #447639;color:#fff;padding: 10px;">
 						<div class="col-lg-4">
-							All sequence:<?php echo ($data['barcode']+$data['gene']) ?>
+							All sequence: <?php echo ($data['barcode']+$data['gene']) ?>
 						</div>
 						<div class="col-md-4">
-							Barcode sequence:<?php echo $data['barcode'] ?><br/>
-							Gene sequence:<?php echo $data['gene'] ?><br/>
-							Publications:<?php echo $data['publication'] ?><br/>
+							Barcode sequence: <?php echo $data['barcode'] ?><br/>
+							Gene sequence: <?php echo $data['gene'] ?><br/>
+							Publications: <?php echo $data['publication'] ?><br/>
 							Genome: <?php echo $data['genome'] ?>
 						</div>
 						<div class="col-md-4">
