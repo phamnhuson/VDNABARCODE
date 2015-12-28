@@ -87,7 +87,7 @@
 				@if (isset($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'][0]))
 					{{-- */ $maxScore = 0; /*--}}
 					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
-						{{-- */ if($item['Hit_hsps']['Hsp'][0]['Hsp_bit-score'] > $maxScore) $maxScore = $item['Hit_hsps']['Hsp'][0]['Hsp_bit-score']; /*--}}
+						{{-- */ if(isset($item['Hit_hsps']['Hsp'][0]) && $item['Hit_hsps']['Hsp'][0]['Hsp_bit-score'] > $maxScore) {	$maxScore = $item['Hit_hsps']['Hsp'][0]['Hsp_bit-score']; } else if (!empty($item['Hit_hsps']['Hsp']) && $item['Hit_hsps']['Hsp']['Hsp_bit-score'] > $maxScore) { $maxScore = $item['Hit_hsps']['Hsp']['Hsp_bit-score']; } /*--}}
 					@endforeach
 					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
 						{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
