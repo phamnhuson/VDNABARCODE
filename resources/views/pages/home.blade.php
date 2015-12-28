@@ -51,7 +51,7 @@
 						<p>
 						The project is supported by the Agricultural Biotechnology Program of the Ministry of Agricultural and Rural Development, Vietnam.
 						</p>
-						<p><b>Institution of project management:</b> Vietnam Forestry University (VFU)</p>
+						<p><b>Institution of project management:</b> Viet Nam National Forestry University (VNUFU)</p>
 						<p><b>Principal investigator:</b> PhD. Ha Van Huan</p>
 					</div>
 				</td>
