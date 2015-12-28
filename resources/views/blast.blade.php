@@ -87,10 +87,10 @@
 				@if (isset($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'][0]))
 					{{-- */ $maxScore = 0; /*--}}
 					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
-						{{-- */ if(isset($item['Hit_hsps']['Hsp'][0]) && $item['Hit_hsps']['Hsp'][0]['Hsp_bit-score'] > $maxScore) {	$maxScore = $item['Hit_hsps']['Hsp'][0]['Hsp_bit-score']; } else if (!empty($item['Hit_hsps']['Hsp']) && $item['Hit_hsps']['Hsp']['Hsp_bit-score'] > $maxScore) { $maxScore = $item['Hit_hsps']['Hsp']['Hsp_bit-score']; } /*--}}
+						{{-- */ if(isset($item['Hit_hsps']['Hsp'][0]) && $item['Hit_hsps']['Hsp'][0]['Hsp_bit-score'] > $maxScore) {	$maxScore = $item['Hit_hsps']['Hsp'][0]['Hsp_bit-score']; } else if (!isset($item['Hit_hsps']['Hsp'][0]) && !empty($item['Hit_hsps']['Hsp']) && $item['Hit_hsps']['Hsp']['Hsp_bit-score'] > $maxScore) { $maxScore = $item['Hit_hsps']['Hsp']['Hsp_bit-score']; } /*--}}
 					@endforeach
 					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
-						{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
+						{{-- */ $topHsp = (isset($item['Hit_hsps']['Hsp'][0]))?$item['Hit_hsps']['Hsp'][0]:$item['Hit_hsps']['Hsp']; /* --}}
 						{{-- */ if(isset($oldInput['allowmore'])) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = substr($itemId[0], 2); } /* --}}
 						<tr>
 							<td><a href="#blast{{ $itemId }}">{{ $itemTitle }}</a></td>
@@ -104,7 +104,7 @@
 					@endforeach
 				@else
 					{{-- */ $item = $blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] /* --}}
-					{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
+					{{-- */ $topHsp = (isset($item['Hit_hsps']['Hsp'][0]))?$item['Hit_hsps']['Hsp'][0]:$item['Hit_hsps']['Hsp']; /* --}}
 					{{-- */ if(isset($oldInput['allowmore'])) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = substr($itemId[0], 2); } /* --}}
 					<tr>
 						<td><a href="#blast{{ $itemId }}">{{ $itemTitle }}</a></td>
@@ -122,7 +122,7 @@
 			<hr/>
 				@if (isset($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'][0]))
 					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
-						{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
+						{{-- */ $topHsp = (isset($item['Hit_hsps']['Hsp'][0]))?$item['Hit_hsps']['Hsp'][0]:$item['Hit_hsps']['Hsp']; /* --}}
 						{{-- */ if(isset($oldInput['allowmore'])) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = substr($itemId[0], 2); } /* --}}
 						{{-- */ 	$alignTop =  str_split($topHsp['Hsp_qseq'], 60); /* --}}
 						{{-- */ 	$alignMiddle =  str_split($topHsp['Hsp_midline'], 60); /* --}}
@@ -147,7 +147,7 @@
 					@endforeach
 				@else
 					{{-- */ $item = $blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] /* --}}
-					{{-- */ $topHsp = $item['Hit_hsps']['Hsp'][0]; /* --}}
+					{{-- */ $topHsp = (isset($item['Hit_hsps']['Hsp'][0]))?$item['Hit_hsps']['Hsp'][0]:$item['Hit_hsps']['Hsp']; /* --}}
 					{{-- */ if(isset($oldInput['allowmore'])) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = substr($itemId[0], 2); } /* --}}
 					{{-- */		$alignTop =  str_split($topHsp['Hsp_qseq'], 60); /* --}}
 					{{-- */		$alignMiddle =  str_split($topHsp['Hsp_midline'], 60); /* --}}
