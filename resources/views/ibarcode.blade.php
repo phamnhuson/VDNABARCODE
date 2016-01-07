@@ -1,6 +1,6 @@
 @extends('templates.master')
 
-@section('title', 'Barcode')
+@section('title', 'Ngân hàng dữ liệu DNA Việt Nam - Ibarcode')
 
 @section('content')
 <style type="text/css">
@@ -875,10 +875,40 @@ $(document).ready(function(){
 		  })(marker, i));
 		}
 	});
-	
+
 	$(document).on('click','#submit',function(){
+		$kingdom=$('#kingdom').val();
+		$phylum=$('#phylum').val();
+		$classes=$('#class').val();
+		$order=$('#order').val();
+		$family=$('#family').val();
+		$genus=$('#genus').val();
 		$sequence=$('#sequence').val();
 		$species=$('#species').val();
+		if($kingdom=='' || $kingdom==0){
+			alert("The kingdom field is required.")
+			return false;
+		}
+		if($phylum=='' || $phylum==0){
+			alert("The phylum field is required.")
+			return false;
+		}
+		if($classes=='' || $classes==0){
+			alert("The class field is required.")
+			return false;
+		}
+		if($order=='' || $order==0){
+			alert("The order field is required.")
+			return false;
+		}
+		if($family=='' || $family==0){
+			alert("The family field is required.")
+			return false;
+		}
+		if($genus=='' || $genus==0){
+			alert("The genus field is required.")
+			return false;
+		}
 		if($species=='' || $species==0){
 			alert("The species field is required.")
 			return false;
@@ -886,7 +916,7 @@ $(document).ready(function(){
 		if($sequence==''){
 			alert("The sequence field is required.")
 			return false;
-		}		
+		}
 	});
 	
 	$(document).on('change','#phylum',function(){
@@ -898,7 +928,7 @@ $(document).ready(function(){
 			dataType: 'json',
 			success:function(data){
 				var options="";
-				options+="<option>Chọn lớp</option>";
+				options+="<option value='0'>Chọn lớp</option>";
 				for($i=0;$i<data.length;$i++)
 				{
 				options+="<option value='"+data[$i]['class_id']+"'>"+data[$i]['class_name']+"</option>";
@@ -917,7 +947,7 @@ $(document).ready(function(){
 			dataType: 'json',
 			success:function(data){
 				var options="";
-				options+="<option>Chọn bộ</option>";
+				options+="<option value='0'>Chọn bộ</option>";
 				for($i=0;$i<data.length;$i++)
 				{
 				options+="<option value='"+data[$i]['order_id']+"'>"+data[$i]['order_name']+"</option>";
@@ -936,7 +966,7 @@ $(document).ready(function(){
 			dataType: 'json',
 			success:function(data){
 				var options="";
-				options+="<option>Chọn họ</option>";
+				options+="<option value='0'>Chọn họ</option>";
 				for($i=0;$i<data.length;$i++)
 				{
 				options+="<option value='"+data[$i]['family_id']+"'>"+data[$i]['family_name']+"</option>";
@@ -947,6 +977,7 @@ $(document).ready(function(){
 	});
 	
 	$(document).on('change','#family',function(){
+		$("#genus").val();
 		id = $(this).val();
 		$.ajax({
 			type: "GET",
@@ -955,7 +986,7 @@ $(document).ready(function(){
 			dataType: 'json',
 			success:function(data){
 				var options="";
-				options+="<option>Chọn chi</option>";
+				options+="<option value='0'>Chọn chi</option>";
 				for($i=0;$i<data.length;$i++)
 				{
 				options+="<option value='"+data[$i]['genus_id']+"'>"+data[$i]['genus_name']+"</option>";

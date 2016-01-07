@@ -1,6 +1,6 @@
 @extends('templates.master')
 
-@section('title', 'DNA Barcode')
+@section('title', 'Ngân hàng dữ liệu DNA Việt Nam - List')
 
 @section('content')
 <div class="row">

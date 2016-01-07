@@ -1,6 +1,6 @@
 @extends('templates.master')
 
-@section('title', 'Service')
+@section('title', 'Ngân hàng dữ liệu DNA Việt Nam - Generate')
 
 @section('content')
 <div class="row jform">

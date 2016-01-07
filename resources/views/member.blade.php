@@ -1,6 +1,6 @@
 @extends('templates.master')
 
-@section('title', 'Members')
+@section('title', 'Ngân hàng dữ liệu DNA Việt Nam - Members')
 
 @section('content')
 <div class="box">

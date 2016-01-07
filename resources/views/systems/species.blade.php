@@ -1,6 +1,6 @@
 @extends('templates.master')
 
-@section('title', 'Species')
+@section('title', 'Ngân hàng dữ liệu DNA Việt Nam - Species')
 
 @section('content')
 <style type="text/css">
