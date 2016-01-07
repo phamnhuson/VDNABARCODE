@@ -92,7 +92,18 @@
 							</td>
 						</tr>
 						<?php } ?>
-					</table>
+						<tr>
+							<td style="padding-top:10px;">
+								<span style="color:#FF0000" class="glyphicon glyphicon-star"></span>&nbsp;<span style="color:#036">Liên kết</span>
+								<hr style="border-top: 2px solid #eee;margin:10px 0px 10px 0px">
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-top:10px;">
+								{!! Form::select('link', @$data['arr_link'],null, array('id'=>'family','class'=>'form-control')) !!}
+							</td>
+						</tr>
+					</table>					
 				</td>
 			</tr>		
 		</table>

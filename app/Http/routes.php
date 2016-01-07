@@ -213,6 +213,12 @@ Route::put('/igenome', ['uses' => 'GenomeController@update', 'middleware' => ['a
 
 Route::post('/igenome', ['uses' => 'GenomeController@create', 'middleware' => ['auth', 'role:3']]);
 
+Route::get('/link', ['uses' => 'LinkController@index', 'middleware' => ['auth', 'role:3']]);
+
+Route::post('/link', ['uses' => 'LinkController@create', 'middleware' => ['auth', 'role:3']]);
+
+Route::put('/link', ['uses' => 'LinkController@update', 'middleware' => ['auth', 'role:3']]);
+
 /*Route::controller([
 	'city'	=> 'System\CityController',
 ]);*/

@@ -28,7 +28,18 @@ class HomeController extends Controller
 		
 		$count['users'] = DB::table('users')->count();
 		
-		$count['genome'] = DB::table('genome')->count();
+		$count['genome'] = DB::table('genome')->count();				
+		
+		$arr_link=array();
+		
+		$list_link=DB::table('link')->get();
+
+		foreach($list_link as $fm)
+		{
+			$arr_link[$fm['link_id']]=$fm['link_name'];
+		}
+		
+		$count['arr_link']=$arr_link;
 		
         return view('pages.home')->with('data',$count);;
     }
