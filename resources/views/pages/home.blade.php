@@ -32,6 +32,10 @@
 	#tbl td{
 		border-top:0px;
 	}
+	#tbl_link{
+		height: 300px;
+		overflow-y:scroll;
+	}
 </style>
 <div class="row">
 	<div class="col-lg-12">
@@ -94,13 +98,13 @@
 						<?php } ?>
 						<tr>
 							<td style="padding-top:10px;">
-								<span style="color:#FF0000" class="glyphicon glyphicon-star"></span>&nbsp;<span style="color:#036">Liên kết</span>
+								<span style="color:#FF0000" class="glyphicon glyphicon-star"></span>&nbsp;<span style="color:#036">Liên kết</span>								
 								<hr style="border-top: 2px solid #eee;margin:10px 0px 10px 0px">
 							</td>
 						</tr>
 						<tr>
-							<td style="padding-top:10px;">
-								{!! Form::select('link', @$data['arr_link'],null, array('id'=>'family','class'=>'form-control')) !!}
+							<td style="padding-top:10px;text-align:center;">
+								<button id="view_lk" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;Xem chi tiết</button>								
 							</td>
 						</tr>
 					</table>					
@@ -108,5 +112,39 @@
 			</tr>		
 		</table>
 	</div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Danh sách đơn vị liên kết</h4>
+      </div>
+      <div class="modal-body" id="tbl_link">
+        <table class="table table-striped table-bordered">
+			<tr>
+				<th style="text-align:center;">STT</th>
+				<th style="text-align:center;">Tên Đơn vị</th>
+				<th style="text-align:center;">Website</th>
+			</tr>
+			<?php $i=0; ?>
+			<?php foreach($data['list_link'] as $value){ ?>
+				<tr>
+					<td style="text-align:center;"><?php echo $i++; ?></td>
+					<td><?php echo $value['link_name']; ?></td>
+					<td><a href="<?php echo $value['url']; ?>" target="_blank"><?php echo $value['url']; ?></a></td>
+				</tr>
+			<?php } ?>
+		</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>
 @endsection

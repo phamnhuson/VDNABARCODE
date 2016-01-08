@@ -50,7 +50,11 @@
 				<div class="form-group">
 					<label class="control-label">Đơn vị liên kết:</label>
 					{!! Form::text('link_name', @$data['link'][0]['link_name'], array('class'=>'form-control')) !!}
-				</div>			
+				</div>
+				<div class="form-group">
+					<label class="control-label">Website:</label>
+					{!! Form::text('url', @$data['link'][0]['url'], array('class'=>'form-control')) !!}
+				</div>	
 				<div class="form-group">
 					<input type="submit" name="submit" class="btn btn-primary" value="@if (isset($data['link'])) Cập nhật @else Thêm @endif" />
 					@if (isset($data['link']))
@@ -66,6 +70,7 @@
 				<tr>
 					<th style="text-align:center !important;width:5%">STT</th>
 					<th>Đơn vị</th>
+					<th>Website</th>
 					<th style="width:15%;"></th>
 				</tr>
 				<?php $i=1; ?>
@@ -73,6 +78,7 @@
 					<tr>
 						<td style="text-align:center;"><?php echo $i; ?></td>
 						<td><?php echo $ct['link_name']; ?></td>
+						<td><?php echo $ct['url']; ?></td>
 						<td style="text-align:center;">
 							<a href="{{ asset('link?action=edit&id=').$ct['link_id'] }}"><button type="button" title="sửa" name="sua" class="btn btn-warning"><span class='glyphicon glyphicon-pencil'></span></button></a>
 							<a href="{{ asset('link?action=delete&id=').$ct['link_id'] }}" onclick="return confirm('Are you sure you want to delete this item?');"><button type="button" title="xóa" name="xoa" class="btn btn-danger"><span class='glyphicon glyphicon-trash'></span></button></a>

@@ -32,9 +32,9 @@ class HomeController extends Controller
 		
 		$arr_link=array();
 		
-		$list_link=DB::table('link')->get();
+		$count['list_link']=DB::table('link')->get();
 
-		foreach($list_link as $fm)
+		foreach($count['list_link'] as $fm)
 		{
 			$arr_link[$fm['link_id']]=$fm['link_name'];
 		}

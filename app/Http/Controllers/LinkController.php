@@ -51,7 +51,7 @@ class LinkController extends Controller {
 
 			$link = DB::table('link');
 			
-			$inputData = $request->only('link_name');
+			$inputData = $request->only('link_name','url');
 			
 			$inputData['created'] = date('Y-m-d h:i:s');
 			
@@ -88,7 +88,7 @@ class LinkController extends Controller {
         } else {
 			$linkId = $request->get('link_id');
 				
-			$inputData = $request->only('link_name');
+			$inputData = $request->only('link_name','url');
 			
 			$inputData['updated'] = date('Y-m-d h:i:s');
 			
