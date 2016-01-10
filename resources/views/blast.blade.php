@@ -73,103 +73,43 @@
 		
 			<h3>Blast Results</h3>
 			<hr/>
-			@if (isset($blastResult['BlastOutput_iterations']) && !empty($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']))
-			<table class="table table-stripped table-bordered">
-				<tr>
-					<th>Description</th>
-					<th>Score</th>
-					<th>Max Score</th>
-					<th>Query cover</th>
-					<th>Ident</th>
-					<th>E-value</th>
-					<th>Accession</th>
-				</tr>
-				@if (isset($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'][0]))
-					{{-- */ $maxScore = 0; /*--}}
-					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
-						{{-- */ if(isset($item['Hit_hsps']['Hsp'][0]) && $item['Hit_hsps']['Hsp'][0]['Hsp_bit-score'] > $maxScore) {	$maxScore = $item['Hit_hsps']['Hsp'][0]['Hsp_bit-score']; } else if (!isset($item['Hit_hsps']['Hsp'][0]) && !empty($item['Hit_hsps']['Hsp']) && $item['Hit_hsps']['Hsp']['Hsp_bit-score'] > $maxScore) { $maxScore = $item['Hit_hsps']['Hsp']['Hsp_bit-score']; } /*--}}
-					@endforeach
-					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
-						{{-- */ $topHsp = (isset($item['Hit_hsps']['Hsp'][0]))?$item['Hit_hsps']['Hsp'][0]:$item['Hit_hsps']['Hsp']; /* --}}
-						{{-- */ if(isset($oldInput['allowmore'])) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = $itemId[0]; } /* --}}
+			@if (!empty($blastResult))
+				<table class="table table-stripped table-bordered">
+					<tr>
+						<th>Description</th>
+						<th>Max Score</th>
+						<th>Total Score</th>
+						<th>Query cover</th>
+						<th>Ident</th>
+						<th>E-value</th>
+						<th>Accession</th>
+					</tr>
+					@foreach ($blastResult AS $hit)
 						<tr>
-							<td><a href="#blast{{ $itemId }}">{{ $itemTitle }}</a></td>
-							<td>{{ $topHsp['Hsp_bit-score'] }}</td>
-							<td>{{ $maxScore }}</td>
-							<td>{{ round((strlen($topHsp['Hsp_qseq'])/$topHsp['Hsp_align-len'])*100, 2) }}%</td>
-							<td>{{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }} ({{ round(($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100, 2) }}%)</td>
-							<td>{{ $topHsp['Hsp_evalue'] }}</td>
-							<td><a href="{{ (isset($oldInput['allowmore']))?'#':url('viewbarcode?id='.$itemId) }}">{{ $itemId }}</a></td>
+							<td><a href="#blast{{ $hit['itemId'] }}">{{ $hit['itemTitle'] }}</a></td>
+							<td>{{ $hit['maxScore'] }}</td>
+							<td>{{ $hit['totalScore'] }}</td>
+							<td>{{ $hit['queryCoverage'] }}</td>
+							<td>{{ $hit['ident'] }}</td>
+							<td>{{ $hit['evalue'] }}</td>
+							<td><a href="{{ (isset($oldInput['allowmore']))?'#':url('viewbarcode?id='.$hit['itemId']) }}">{{ $hit['itemId'] }}</a></td>
 						</tr>
 					@endforeach
-				@else
-					{{-- */ $item = $blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] /* --}}
-					{{-- */ $topHsp = (isset($item['Hit_hsps']['Hsp'][0]))?$item['Hit_hsps']['Hsp'][0]:$item['Hit_hsps']['Hsp']; /* --}}
-					{{-- */ if(isset($oldInput['allowmore'])) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = $itemId[0]; } /* --}}
-					<tr>
-						<td><a href="#blast{{ $itemId }}">{{ $itemTitle }}</a></td>
-							<td>{{ $topHsp['Hsp_bit-score'] }}</td>
-							<td>{{ $topHsp['Hsp_bit-score'] }}</td>
-							<td>{{ round((strlen($topHsp['Hsp_qseq'])/$topHsp['Hsp_align-len'])*100, 2) }}%</td>
-							<td>{{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }} ({{ round(($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100, 2) }}%)</td>
-							<td>{{ $topHsp['Hsp_evalue'] }}</td>
-							<td><a href="{{ (isset($oldInput['allowmore']))?'#':url('viewbarcode?id='.$itemId) }}">{{ $itemId }}</a></td>
-					</tr>
-				@endif
-			</table>
-			<br/>
-			<h3>Alignments</h3>
-			<hr/>
-				@if (isset($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'][0]))
-					@foreach ($blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] AS $item)
-						{{-- */ $topHsp = (isset($item['Hit_hsps']['Hsp'][0]))?$item['Hit_hsps']['Hsp'][0]:$item['Hit_hsps']['Hsp']; /* --}}
-						{{-- */ if(isset($oldInput['allowmore'])) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = $itemId[0]; } /* --}}
-						{{-- */ 	$alignTop =  str_split($topHsp['Hsp_qseq'], 60); /* --}}
-						{{-- */ 	$alignMiddle =  str_split($topHsp['Hsp_midline'], 60); /* --}}
-						{{-- */ 	$alignBottom =  str_split($topHsp['Hsp_hseq'], 60); /* --}}
-						{{-- */ 	$alignLength = $topHsp['Hsp_align-len']; /* --}}
-						{{-- */ 	$queryFrom = $topHsp['Hsp_query-from']; /* --}}
-						{{-- */ 	$queryTo = $topHsp['Hsp_query-to']; /* --}}
-						{{-- */ 	$hitFrom = $topHsp['Hsp_hit-from']; /* --}}
-						{{-- */ 	$hitTo = $topHsp['Hsp_hit-to']; /* --}}
-						{{-- */ 	$hitSpace = ($hitFrom>$hitTo)?-60:60; /* --}}
-						{{-- */ 	$totalLine = ceil($alignLength/60); /* --}}
-						
-						<p>
-						<a href="{{ (isset($oldInput['allowmore']))?'#':url('viewbarcode?id='.$itemId) }}" id="blast{{ $itemId }}">{{ $itemId }} - {{ $itemTitle }}</a><br/>
-						<b>Length:</b> {{ $item['Hit_len'] }},
-						<b>Score:</b> {{ $topHsp['Hsp_bit-score'] }} bits({{ $topHsp['Hsp_score'] }}),
-						<b>Identities:</b> {{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }} ({{ round(($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100, 2) }}%),
-						<b>E-value:</b> {{ $topHsp['Hsp_evalue'] }},
-						<b>Gaps:</b> {{ $topHsp['Hsp_gaps'] }}
-						</p>
-						<pre style="line-height:1;">@foreach ($alignTop AS $k=>$top){{ str_pad('Query '.($queryFrom+(60)*$k), 10, ' ', STR_PAD_RIGHT) }} {{ $top }}   {{ ($k+1==$totalLine)?$queryTo:($queryFrom+(60*($k+1))-1) }}</br>           {{ $alignMiddle[$k] }}</br>{{ str_pad('Hit '.($hitFrom+($hitSpace*$k)), 10, ' ', STR_PAD_RIGHT) }} {{ $alignBottom[$k] }}   {{ ($k+1==$totalLine)?$hitTo:($hitFrom+($hitSpace*($k+1))-1) }}</br></br>@endforeach</pre>
-					@endforeach
-				@else
-					{{-- */ $item = $blastResult['BlastOutput_iterations']['Iteration']['Iteration_hits']['Hit'] /* --}}
-					{{-- */ $topHsp = (isset($item['Hit_hsps']['Hsp'][0]))?$item['Hit_hsps']['Hsp'][0]:$item['Hit_hsps']['Hsp']; /* --}}
-					{{-- */ if(isset($oldInput['allowmore'])) { $itemId = $item['Hit_accession']; $itemTitle = $item['Hit_def']; } else { $itemId = explode('_', $item['Hit_def']); $itemTitle = $itemId[1]; $itemId = $itemId[0]; } /* --}}
-					{{-- */		$alignTop =  str_split($topHsp['Hsp_qseq'], 60); /* --}}
-					{{-- */		$alignMiddle =  str_split($topHsp['Hsp_midline'], 60); /* --}}
-					{{-- */		$alignBottom =  str_split($topHsp['Hsp_hseq'], 60); /* --}}
-					{{-- */		$alignLength = $topHsp['Hsp_align-len']; /* --}}
-					{{-- */		$queryFrom = $topHsp['Hsp_query-from']; /* --}}
-					{{-- */		$queryTo = $topHsp['Hsp_query-to']; /* --}}
-					{{-- */		$hitFrom = $topHsp['Hsp_hit-from']; /* --}}
-					{{-- */		$hitTo = $topHsp['Hsp_hit-to']; /* --}}
-					{{-- */		$hitSpace = ($hitFrom>$hitTo)?-60:60; /* --}}
-					{{-- */		$totalLine = ceil($alignLength/60); /* --}}
-						
-						<p>
-						<a href="{{ (isset($oldInput['allowmore']))?'#':url('viewbarcode?id='.$itemId) }}" id="blast{{ $itemId }}">{{ $itemId }} - {{ $itemTitle }}</a><br/>
-						<b>Length:</b> {{ $item['Hit_len'] }},
-						<b>Score:</b> {{ $topHsp['Hsp_bit-score'] }} bits({{ $topHsp['Hsp_score'] }}),
-						<b>Identities:</b> {{ $topHsp['Hsp_score'] }}/{{ $topHsp['Hsp_query-to'] }} ({{ round(($topHsp['Hsp_score']/$topHsp['Hsp_query-to'])*100, 2) }}%),
-						<b>E-value:</b> {{ $topHsp['Hsp_evalue'] }},
-						<b>Gaps:</b> {{ $topHsp['Hsp_gaps'] }}
-						</p>
-						<pre style="line-height:1;">@foreach ($alignTop AS $k=>$top){{ str_pad('Query '.($queryFrom+(60)*$k), 10, ' ', STR_PAD_RIGHT) }} {{ $top }}   {{ ($k+1==$totalLine)?$queryTo:($queryFrom+(60*($k+1))-1) }}</br>           {{ $alignMiddle[$k] }}</br>{{ str_pad('Hit '.($hitFrom+($hitSpace*$k)), 10, ' ', STR_PAD_RIGHT) }} {{ $alignBottom[$k] }}   {{ ($k+1==$totalLine)?$hitTo:($hitFrom+($hitSpace*($k+1))-1) }}</br></br>@endforeach</pre>
-				@endif
+				</table>
+				<br/>
+				<h3>Alignments</h3>
+				<hr/>
+				@foreach ($blastResult AS $hit)
+					<p>
+					<a href="{{ (isset($oldInput['allowmore']))?'#':url('viewbarcode?id='.$hit['itemId']) }}" id="blast{{ $hit['itemId'] }}">{{ $hit['itemId'] }} - {{ $hit['itemTitle'] }}</a><br/>
+					<b>Length:</b> {{ $hit['hitLength'] }},
+					<b>Score:</b> {{ $hit['bitScore'] }} bits({{ $hit['maxScore'] }}),
+					<b>Identities:</b> {{ $hit['ident'] }},
+					<b>E-value:</b> {{ $hit['evalue'] }},
+					<b>Gaps:</b> {{ $hit['gaps'] }}
+					</p>
+					<pre style="line-height:1;">@foreach ($hit['alignTop'] AS $k=>$top){{ str_pad('Query '.($hit['queryFrom']+(60)*$k), 10, ' ', STR_PAD_RIGHT) }} {{ $top }}   {{ ($k+1==$hit['totalLine'])?$hit['queryTo']:($hit['queryFrom']+(60*($k+1))-1) }}</br>           {{ $hit['alignMiddle'][$k] }}</br>{{ str_pad('Hit '.($hit['hitFrom']+($hit['hitSpace']*$k)), 10, ' ', STR_PAD_RIGHT) }} {{ $hit['alignBottom'][$k] }}   {{ ($k+1==$hit['totalLine'])?$hit['hitTo']:($hit['hitFrom']+($hit['hitSpace']*($k+1))-1) }}</br></br>@endforeach</pre>
+				@endforeach
 			@else
 				Không có kết quả phù hợp
 			@endif
