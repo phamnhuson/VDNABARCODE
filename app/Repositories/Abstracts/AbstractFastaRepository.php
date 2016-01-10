@@ -69,24 +69,31 @@
 					
 				} elseif (filesize($this->dbFile)) {
 				
+					$lineNum = 0;
+					
 					while(!feof($this->reader))
 					{
 						$line = fgets($this->reader);
+						$lineNum++;
 						
-						if (trim($line)=='') {
+						if (strpos($line, '>')===0) {
 						
-							$cursor=0;
-							
-						}
-						
-						if (strpos($line, '>'.$data['id']."_")===0) {
-							$cursor = 1;
-							if ($action == 'update') {
-							
-								fputs($this->tmpReader, $newline);
+							if (strpos($line, '>'.$data['id']."_")===0) {
+								$cursor = 1;
+								if ($action == 'update') {
 								
+									fputs($this->tmpReader, $newline);
+									
+								}	
+							} else {
+								$cursor=0;
+								if ($lineNum > 1) {
+									$line = "\n\n".$line;
+								}	
 							}	
 						}
+						
+						
 
 						if ($cursor == 0) {
 						
