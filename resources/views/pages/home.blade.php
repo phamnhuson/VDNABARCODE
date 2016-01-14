@@ -55,7 +55,7 @@
 						<p>
 						The project is supported by the Agricultural Biotechnology Program of the Ministry of Agricultural and Rural Development, Vietnam.
 						</p>
-						<p><b>Institution of project management:</b> Viet Nam National Forestry University (VNUFU)</p>
+						<p><b>Institution of project management:</b> Viet Nam National University of Forestry (VNUF)</p>
 						<p><b>Principal investigator:</b> PhD. Ha Van Huan</p>
 					</div>
 				</td>
@@ -90,7 +90,7 @@
 						</tr>
 						<?php foreach($data['news'] as $i=>$value){ ?>
 						<tr>
-							<td>
+							<td style="text-align:justify">
 							<a href="publication?id=<?php echo $value['new_id'] ?>" target="_blank" style="color:#036;font-size:10pt;text-decoration:none;"><?=$i+1;?>.<?php echo $value['subject']; ?></a>
 							</br></br>							
 							</td>
