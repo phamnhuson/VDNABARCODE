@@ -98,7 +98,7 @@
 						<?php } ?>
 						<tr>
 							<td style="padding-top:10px;">
-								<span style="color:#FF0000" class="glyphicon glyphicon-star"></span>&nbsp;<span style="color:#036">Liên kết</span>								
+								<span style="color:#FF0000" class="glyphicon glyphicon-star"></span>&nbsp;<span style="color:#036">Cooperating agencies</span>								
 								<hr style="border-top: 2px solid #eee;margin:10px 0px 10px 0px">
 							</td>
 						</tr>
