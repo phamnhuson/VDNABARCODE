@@ -84,7 +84,7 @@
 					<table style="width: 100%;">
 						<tr>
 							<td style="padding-top:10px;">
-								<span style="color:#FF0000" class="glyphicon glyphicon-star"></span>&nbsp;<span style="color:#036">News</span>
+								<h4 style="margin:0px;color:#FF0000"><span class="glyphicon glyphicon-star"></span>&nbsp;News</h4>
 								<hr style="border-top: 2px solid #eee;margin:10px 0px 10px 0px">
 							</td>
 						</tr>
@@ -98,7 +98,7 @@
 						<?php } ?>
 						<tr>
 							<td style="padding-top:10px;">
-								<span style="color:#FF0000" class="glyphicon glyphicon-star"></span>&nbsp;<span style="color:#036">Cooperating agencies</span>								
+								<h4 style="margin:0px;color:#FF0000"><span class="glyphicon glyphicon-star"></span>&nbsp;Cooperating Agencies</h4>								
 								<hr style="border-top: 2px solid #eee;margin:10px 0px 10px 0px">
 							</td>
 						</tr>
