@@ -60,7 +60,7 @@
 					</div>
 				</td>
 					
-				<td class="col-lg-8" style="padding:0px 0px 0px 8px;">
+				<td class="col-lg-7" style="padding:0px 0px 0px 8px;">
 					<div class="row">
 						<img style="width:100%; height:400px;" src="{{ asset('public/img/banner4.jpg') }}" />
 					</div>
@@ -80,7 +80,7 @@
 						</div>
 					</div>
 				</td>
-				<td class="col-lg-2" style="padding:0px 8px 0px 8px;">
+				<td class="col-lg-3" style="padding:0px 8px 0px 8px;">
 					<table style="width: 100%;">
 						<tr>
 							<td style="padding-top:10px;">
@@ -104,7 +104,7 @@
 						</tr>
 						<tr>
 							<td style="padding-top:10px;text-align:center;">
-								<button id="view_lk" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;Xem chi tiết</button>								
+								<button id="view_lk" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;View Detail</button>								
 							</td>
 						</tr>
 					</table>					
