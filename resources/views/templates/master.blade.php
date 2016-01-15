@@ -163,8 +163,10 @@
 				</div>
 			</div>	
 			<div id="footer">
-				Viện Công nghệ sinh học Lâm nghiệp – Trường Đại học Lâm nghiệp
-				<br/>DC: Xuân Mai, Chương Mỹ, Hà Nội - ĐT. 01223441300 (Hà Văn Huân) - E.mail: hvhuanbiotech@gmail.com
+				Copyright of Viet Nam National University of Forestry (VNUF) - Ministry of Agricultural and Rural Development
+				<br/>Addess: Xuan Mai, Chuong My, Ha Noi
+				<br/>Phone:  +841223441300 (Ha Van Huan)
+				<br/>E.mail: hvhuanbiotech@gmail.com
 			</div>
 		<!--</div>-->
 		<script>

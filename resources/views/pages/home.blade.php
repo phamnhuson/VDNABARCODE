@@ -83,7 +83,7 @@
 				<td class="col-lg-3" style="padding:0px 8px 0px 8px;">
 					<table style="width: 100%;">
 						<tr>
-							<td style="padding-top:10px;">
+							<td>
 								<h4 style="margin:0px;color:#FF0000"><span class="glyphicon glyphicon-star"></span>&nbsp;News</h4>
 								<hr style="border-top: 2px solid #eee;margin:10px 0px 10px 0px">
 							</td>
