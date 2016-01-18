@@ -639,7 +639,7 @@ input{
 	position:absolute;
 	padding: 10px 0;
 	left:0;
-	//bottom:-70px;
+	bottom:-100px;
 	/*line-height:40px;*/
 	text-align:center;
 }
