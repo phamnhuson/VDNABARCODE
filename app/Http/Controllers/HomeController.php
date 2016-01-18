@@ -41,6 +41,14 @@ class HomeController extends Controller
 		
 		$count['arr_link']=$arr_link;
 		
+		$time=time();
+		$tgout=7200;
+		$tgnew=$time - $tgout;
+		
+		DB::table('useronline')->where('time','<',$tgnew)->delete();
+		
+		$count['online']= DB::table('useronline')->count();
+		
         return view('pages.home')->with('data',$count);;
     }
 }

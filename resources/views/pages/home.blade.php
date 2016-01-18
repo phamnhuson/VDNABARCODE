@@ -76,6 +76,7 @@
 						</div>
 						<div class="col-md-4">
 							Page views: <?php echo $data['visitors'][0]['value'] ?><br/>
+							Online: <?php echo $data['online'] ?><br/>
 							Total users: <?php echo $data['users']; ?>
 						</div>
 					</div>

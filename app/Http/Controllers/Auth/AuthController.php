@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use DB;
 use Auth;
 use Validator;
 use Session;
@@ -85,6 +86,8 @@ class AuthController extends Controller
 			
 			Session::put('user', $user);
 			
+			DB::table('useronline')->insert(array('user_id'=>$user['id'],'time'=>time()));
+			
 			return redirect()->intended('user');
 			
         } else {
@@ -96,6 +99,8 @@ class AuthController extends Controller
 	
 	protected function logout()
 	{
+		$user = Session::get('user');
+		DB::table('useronline')->where('user_id',$user['id'])->delete();
 		Auth::logout();
 		return redirect('/');
 	}
