@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\Http\Controllers\Controller;
 use Auth;
+use Session;
 
 class HomeController extends Controller
 {
