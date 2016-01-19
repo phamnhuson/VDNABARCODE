@@ -86,6 +86,10 @@ class AuthController extends Controller
 			
 			Session::put('user', $user);
 			
+			$ss_id = Session::get('guest');
+			
+			DB::table('useronline')->where('user_id',$ss_id)->delete();
+			
 			DB::table('useronline')->insert(array('user_id'=>$user['id'],'time'=>time()));
 			
 			return redirect()->intended('user');

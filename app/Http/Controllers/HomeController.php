@@ -41,6 +41,13 @@ class HomeController extends Controller
 		
 		$count['arr_link']=$arr_link;
 		
+		if(Session::get('user')=='' && Session::get('guest')=='')
+		{
+			$ss_id = 'G'.rand(1,9999);
+			Session::put('guest',$ss_id);			
+			DB::table('useronline')->insert(array('user_id'=>$ss_id,'time'=>time()));
+		}
+		
 		$time=time();
 		$tgout=7200;
 		$tgnew=$time - $tgout;
