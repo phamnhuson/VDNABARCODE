@@ -1,6 +1,6 @@
 @extends('templates.master')
 
-@section('title', 'Ngân hàng dữ liệu DNA Việt Nam - List')
+@section('title', 'Ngân hàng dữ liệu DNA Việt Nam - DNA Barcode')
 
 @section('content')
 <div class="row">
@@ -21,7 +21,7 @@
 	<div class="col-md-12">
 		<ul style="padding-left:20px;">
 		@foreach ($resource AS $item)
-			<li><a href="{{ $item->url }}">{{ $item->name }}</a></li>
+			<li><a href="{{ $item->url }}">{{ $item->name }}&nbsp;({{ $item->count }})</a></li>
 		@endforeach
 		</ul>
 	</div>	

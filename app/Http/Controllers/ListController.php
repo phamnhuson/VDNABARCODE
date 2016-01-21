@@ -24,15 +24,28 @@ class ListController extends Controller
 				case 'kingdom':
 					$resource = \App\Models\Kingdom::find($id);
 					
-					$resourceData = $resource->phylums()->select('phylum_name as name', 'phylum_id as id', DB::raw("CONCAT('/dnabarcode/phylum/', phylum_id) AS url"))->paginate(20);
-					
+					$resourceData = $resource->phylums()->select('phylum.phylum_name as name', 'phylum.phylum_id as id', DB::raw('count(species.species_id) as count'), DB::raw("CONCAT('/dnabarcode/phylum/', phylum.phylum_id) AS url"))
+					->join('class', 'phylum.phylum_id', '=', 'class.phylum_id')
+					->join('order', 'class.class_id', '=', 'order.class_id')
+					->join('family', 'order.order_id', '=', 'family.order_id')
+					->join('genus', 'family.family_id', '=', 'genus.family_id')
+					->join('species', 'genus.genus_id', '=', 'species.genus_id')
+					->groupBy('phylum.phylum_id','phylum.phylum_name')
+					->paginate(20);
+
 					array_unshift($this->breadcrumbs, array('name' => $resource->kingdom_name));
 					break;
 					
 				case 'phylum':
 					$resource = \App\Models\Phylum::find($id);
 					
-					$resourceData = $resource->classes()->select('class_name as name', 'class_id as id', DB::raw("CONCAT('/dnabarcode/class/', class_id) AS url"))->paginate(20);
+					$resourceData = $resource->classes()->select('class.class_name as name', 'class.class_id as id', DB::raw('count(species.species_id) as count'), DB::raw("CONCAT('/dnabarcode/class/', class.class_id) AS url"))
+														->join('order', 'class.class_id', '=', 'order.class_id')
+														->join('family', 'order.order_id', '=', 'family.order_id')
+														->join('genus', 'family.family_id', '=', 'genus.family_id')
+														->join('species', 'genus.genus_id', '=', 'species.genus_id')
+														->groupBy('class.class_id','class.class_name')
+														->paginate(20);
 					
 					array_unshift($this->breadcrumbs, array('name' => $resource->phylum_name));
 					array_unshift($this->breadcrumbs, array('name' => $resource->kingdom->kingdom_name, 'url' => '/dnabarcode/kingdom/'.$resource->kingdom->kingdom_id));
@@ -41,7 +54,12 @@ class ListController extends Controller
 				case 'class':
 					$resource = \App\Models\Classes::find($id);
 					
-					$resourceData = $resource->orders()->select('order_name as name', 'order_id as id', DB::raw("CONCAT('/dnabarcode/order/', order_id) AS url"))->paginate(20);
+					$resourceData = $resource->orders()->select('order.order_name as name', 'order.order_id as id', DB::raw('count(species.species_id) as count'), DB::raw("CONCAT('/dnabarcode/order/', order.order_id) AS url"))
+														->join('family', 'order.order_id', '=', 'family.order_id')
+														->join('genus', 'family.family_id', '=', 'genus.family_id')
+														->join('species', 'genus.genus_id', '=', 'species.genus_id')
+														->groupBy('order.order_id','order.order_name')
+														->paginate(20);
 					
 					array_unshift($this->breadcrumbs, array('name' => $resource->class_name));
 					array_unshift($this->breadcrumbs, array('name' => $resource->phylum->phylum_name, 'url' => '/dnabarcode/phylum/'.$resource->phylum->phylum_id));
@@ -51,7 +69,11 @@ class ListController extends Controller
 				case 'order':
 					$resource = \App\Models\Order::find($id);
 					
-					$resourceData = $resource->families()->select('family_name as name', 'family_id as id', DB::raw("CONCAT('/dnabarcode/family/', family_id) AS url"))->paginate(20);
+					$resourceData = $resource->families()->select('family.family_name as name', 'family.family_id as id', DB::raw('count(species.species_id) as count'), DB::raw("CONCAT('/dnabarcode/family/', family.family_id) AS url"))
+															->join('genus', 'family.family_id', '=', 'genus.family_id')
+															->join('species', 'genus.genus_id', '=', 'species.genus_id')
+															->groupBy('family.family_id','family.family_name')
+															->paginate(20);
 					
 					array_unshift($this->breadcrumbs, array('name' => $resource->order_name));
 					array_unshift($this->breadcrumbs, array('name' => $resource->classes->class_name, 'url' => '/dnabarcode/class/'.$resource->classes->class_id));
@@ -62,7 +84,10 @@ class ListController extends Controller
 				case 'family':
 					$resource = \App\Models\Family::find($id);
 					
-					$resourceData = $resource->genus()->select('genus_name as name', 'genus_id as id', DB::raw("CONCAT('/dnabarcode/genus/', genus_id) AS url"))->paginate(20);
+					$resourceData = $resource->genus()->select('genus.genus_name as name', 'genus.genus_id as id', DB::raw('count(species.species_id) as count'), DB::raw("CONCAT('/dnabarcode/genus/', genus.genus_id) AS url"))
+														->join('species', 'genus.genus_id', '=', 'species.genus_id')
+														->groupBy('genus.genus_id','genus.genus_name')
+														->paginate(20);
 					
 					array_unshift($this->breadcrumbs, array('name' => $resource->family_name));
 					array_unshift($this->breadcrumbs, array('name' => $resource->order->order_name, 'url' => '/dnabarcode/order/'.$resource->order->order_id));
@@ -74,7 +99,7 @@ class ListController extends Controller
 				case 'genus':
 					$resource = \App\Models\Genus::find($id);
 					
-					$resourceData = $resource->species()->select('species_name as name', DB::raw("CONCAT('/viewbarcode?id=' , barcode_id) AS url"))->join('barcode', 'barcode.species', '=', 'species.species_id')->where('barcode.status', 1)->paginate(20);
+					$resourceData = $resource->species()->select('species.species_name as name', DB::raw('count(species.species_id) as count'), DB::raw("CONCAT('/viewbarcode?id=' , barcode_id) AS url"))->join('barcode', 'barcode.species', '=', 'species.species_id')->where('barcode.status', 1)->groupBy('species_name')->paginate(20);
 					
 					array_unshift($this->breadcrumbs, array('name' => $resource->genus_name));
 					array_unshift($this->breadcrumbs, array('name' => $resource->family->family_name, 'url' => '/dnabarcode/family/'.$resource->family->order_id));
@@ -91,7 +116,7 @@ class ListController extends Controller
 		$viewData = array(
 			'resource'	=>	$resourceData,
 			'breadcrumbs'	=>	$this->breadcrumbs
-		);	
+		);
 		
 		return view('list')->with($viewData);
 	}
