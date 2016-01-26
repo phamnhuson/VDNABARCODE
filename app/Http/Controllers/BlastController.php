@@ -4,6 +4,7 @@
 	use Illuminate\Http\Request;
 	use Validator;
 	use Parser;
+	use DB;
 	
 	class BlastController extends Controller
 	{
@@ -128,6 +129,9 @@
 				$itemId = $itemId[0]; 
 			}
 			
+			$get_data=DB::table('barcode')->where('barcode_id',$itemId)->get();
+			$gene = $get_data[0]['gene'];
+			
 			$queryCoverage = round((($topHsp['Hsp_align-len']-$topHsp['Hsp_gaps'])/$queryLength)*100, 2).'%';
 			$evalue = $topHsp['Hsp_evalue'];
 			$ident = sprintf("%d/%d (%01.2f%%)", $topHsp['Hsp_identity'], $topHsp['Hsp_query-to'], round(($topHsp['Hsp_identity']/$topHsp['Hsp_query-to'])*100, 2));
@@ -153,6 +157,7 @@
 					'hitLength'	=>	$hitLength,
 					'gaps'	=>	$gaps,
 					'itemId'	=>	$itemId,
+					'gene'		=>	$gene,
 					'itemTitle'	=>	$itemTitle,
 					'queryCoverage'	=>	$queryCoverage,
 					'ident'	=>	$ident,

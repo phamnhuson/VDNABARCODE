@@ -76,7 +76,8 @@
 			@if (!empty($blastResult))
 				<table class="table table-stripped table-bordered">
 					<tr>
-						<th>Description</th>
+						<th>Species name</th>
+						<th>Gene/locus</th>
 						<th>Max Score</th>
 						<th>Total Score</th>
 						<th>Query cover</th>
@@ -87,6 +88,7 @@
 					@foreach ($blastResult AS $hit)
 						<tr>
 							<td><a href="#blast{{ $hit['itemId'] }}">{{ $hit['itemTitle'] }}</a></td>
+							<td>{{ $hit['gene'] }}</td>
 							<td>{{ $hit['maxScore'] }}</td>
 							<td>{{ $hit['totalScore'] }}</td>
 							<td>{{ $hit['queryCoverage'] }}</td>

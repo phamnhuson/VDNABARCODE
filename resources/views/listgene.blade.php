@@ -60,7 +60,7 @@
 		<table width="100%" cellspacing="0" cellpadding="0">
 			<tr>
 				<td>
-					<h1 id="title">Danh Sách Gene</h1>
+					<h1 id="title">List of genes</h1>
 				</td>
 			</tr>
 		</table>
